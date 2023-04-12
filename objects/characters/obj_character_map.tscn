@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4yqal4g3q8pn"]
+
+[ext_resource type="Script" path="res://objects/characters/obj_character_map.cs" id="1_csh0g"]
+[ext_resource type="SpriteFrames" uid="uid://brekq8pelfxn1" path="res://sprites/characters/playable/spr_jario.tres" id="2_xm5c2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqjky"]
+size = Vector2(54, 84)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_myi16"]
+size = Vector2(0.5, 42)
+
+[node name="obj_character_map" type="RigidBody2D"]
+position = Vector2(0, -25)
+collision_layer = 8
+gravity_scale = 0.0
+max_contacts_reported = 2
+contact_monitor = true
+can_sleep = false
+lock_rotation = true
+script = ExtResource("1_csh0g")
+
+[node name="obj_sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("2_xm5c2")
+animation = &"jumpUp"
+
+[node name="obj_collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_aqjky")
+
+[node name="spacehitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="obj_collision" type="CollisionShape2D" parent="spacehitbox"]
+position = Vector2(0, 15)
+shape = SubResource("RectangleShape2D_myi16")
+disabled = true
+debug_color = Color(0.980392, 0, 0.392157, 0.419608)
+
+[connection signal="body_shape_entered" from="." to="." method="BodyShapeEntered"]
+[connection signal="area_entered" from="spacehitbox" to="." method="SpaceEnter"]

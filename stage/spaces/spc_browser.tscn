@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://byleutfy83se0"]
+
+[ext_resource type="Texture2D" uid="uid://dkt8kqatlw7q7" path="res://stage/gui/sprites/spaces/spr_browserspace.png" id="1_c0wq4"]
+[ext_resource type="Shape2D" uid="uid://bob0la6buryho" path="res://stage/spaces/spc_hitbox.tres" id="2_5ur5h"]
+
+[node name="spc_browser" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="spr_space" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_c0wq4")
+
+[node name="obj_collision" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(0, -1)
+rotation = 1.5708
+shape = ExtResource("2_5ur5h")

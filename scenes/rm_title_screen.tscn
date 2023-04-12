@@ -1,0 +1,68 @@
+[gd_scene load_steps=14 format=3 uid="uid://dh3sw5f6f4vv6"]
+
+[ext_resource type="Script" path="res://objects/rooms/rm_title_screen/rm_title_screen.cs" id="1_dpki8"]
+[ext_resource type="Texture2D" uid="uid://ddrb40qlnbdot" path="res://sprites/rooms/rm_title_screen/spr_title_jariopartylogo.png" id="2_lberk"]
+[ext_resource type="Texture2D" uid="uid://d35glws6snow6" path="res://sprites/rooms/rm_title_screen/bg_title_jario.png" id="3_6vxdn"]
+[ext_resource type="Script" path="res://objects/rooms/rm_title_screen/obj_logo.cs" id="3_fbxx1"]
+[ext_resource type="Script" path="res://objects/rooms/rm_title_screen/obj_bg.cs" id="5_7ogdu"]
+[ext_resource type="Texture2D" uid="uid://d2i5r82edspps" path="res://sprites/rooms/rm_title_screen/spr_title_button_start.png" id="5_pqwhl"]
+[ext_resource type="Texture2D" uid="uid://ckycs5xx3t4m" path="res://sprites/common/spr_oneblackpixel.png" id="6_c0ium"]
+[ext_resource type="Script" path="res://objects/rooms/rm_title_screen/obj_startButtons.cs" id="6_v7qu5"]
+[ext_resource type="Texture2D" uid="uid://c8m5yu31e521s" path="res://sprites/rooms/rm_title_screen/spr_title_button_challenge.png" id="8_4ouer"]
+[ext_resource type="Texture2D" uid="uid://bvrs8nq0shqpb" path="res://sprites/rooms/rm_title_screen/spr_title_button_partymode.png" id="8_eqvga"]
+[ext_resource type="Script" path="res://objects/common/cm_fadeAlpha.cs" id="8_w8kra"]
+[ext_resource type="Texture2D" uid="uid://c32bqtr4chlv0" path="res://sprites/rooms/rm_title_screen/spr_splash_button_quit_0.png" id="9_ixby7"]
+[ext_resource type="Script" path="res://objects/common/cm_transition.cs" id="12_if8tk"]
+
+[node name="rm_title_screen" type="Node2D"]
+script = ExtResource("1_dpki8")
+
+[node name="obj_logo" type="Sprite2D" parent="."]
+position = Vector2(660, 180)
+scale = Vector2(2, 2)
+texture = ExtResource("2_lberk")
+script = ExtResource("3_fbxx1")
+
+[node name="obj_bg" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
+texture = ExtResource("3_6vxdn")
+script = ExtResource("5_7ogdu")
+
+[node name="obj_transition" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 5
+position = Vector2(640, 360)
+scale = Vector2(1280, 720)
+texture = ExtResource("6_c0ium")
+script = ExtResource("12_if8tk")
+
+[node name="obj_startButtons" type="Node2D" parent="."]
+z_index = 1
+script = ExtResource("6_v7qu5")
+
+[node name="obj_pressStart" type="Sprite2D" parent="obj_startButtons"]
+position = Vector2(640, 560)
+scale = Vector2(2, 2)
+texture = ExtResource("5_pqwhl")
+script = ExtResource("8_w8kra")
+metadata/start = 0.3
+metadata/End = 0.9
+metadata/Multiplier = 2.0
+
+[node name="obj_partyMode" type="Sprite2D" parent="obj_startButtons"]
+position = Vector2(640, 480)
+scale = Vector2(2, 2)
+texture = ExtResource("8_eqvga")
+
+[node name="obj_challengeMode" type="Sprite2D" parent="obj_startButtons"]
+position = Vector2(640, 560)
+scale = Vector2(2, 2)
+texture = ExtResource("8_4ouer")
+
+[node name="obj_quit" type="Sprite2D" parent="obj_startButtons"]
+position = Vector2(640, 640)
+scale = Vector2(2, 2)
+texture = ExtResource("9_ixby7")

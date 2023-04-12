@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0sno6ew4ubj4"]
+
+[ext_resource type="Script" path="res://stage/gui/obj_mapGUI.cs" id="1_46h3d"]
+[ext_resource type="PackedScene" uid="uid://dqumai6udoy6u" path="res://objects/rooms/rm_minigame_info/obj_cloudTransition.tscn" id="5_vcwf8"]
+[ext_resource type="Script" path="res://stage/gui/Transition.cs" id="6_dvfvr"]
+[ext_resource type="Texture2D" uid="uid://ckycs5xx3t4m" path="res://sprites/common/spr_oneblackpixel.png" id="6_x2scx"]
+[ext_resource type="PackedScene" uid="uid://daeu84euga8jt" path="res://stage/gui/obj_wallet.tscn" id="8_7tnb4"]
+
+[node name="obj_mapGUI" type="CanvasLayer"]
+script = ExtResource("1_46h3d")
+
+[node name="obj_wallet1" parent="." instance=ExtResource("8_7tnb4")]
+position = Vector2(129, 81)
+
+[node name="obj_wallet2" parent="." instance=ExtResource("8_7tnb4")]
+position = Vector2(1086, 84)
+
+[node name="obj_wallet3" parent="." instance=ExtResource("8_7tnb4")]
+position = Vector2(132, 636)
+
+[node name="obj_wallet4" parent="." instance=ExtResource("8_7tnb4")]
+position = Vector2(1086, 636)
+
+[node name="Transition" type="Node2D" parent="."]
+z_index = 3
+script = ExtResource("6_dvfvr")
+
+[node name="obj_top" type="Sprite2D" parent="Transition"]
+scale = Vector2(1280, 1e-05)
+texture = ExtResource("6_x2scx")
+centered = false
+
+[node name="obj_bottom" type="Sprite2D" parent="Transition"]
+position = Vector2(0, 720)
+scale = Vector2(1280, 1e-05)
+texture = ExtResource("6_x2scx")
+centered = false
+
+[node name="obj_cloudTransition" parent="." instance=ExtResource("5_vcwf8")]
+visible = false
+z_index = 10
+metadata/Backwards = false

@@ -1,0 +1,44 @@
+using Godot;
+using System;
+
+public partial class obj_splash_creators : Sprite2D
+{
+	private float scale = 0f;
+	public float scaleMultiplier = 2f;
+	private Alarm t_transition;
+	private bool animationFinished = false;
+
+	public override void _Ready()
+	{
+		t_transition = new Alarm(2.4, true, this, new Callable(this, "GoToTitleScreen"));
+
+		GetNode<AnimationPlayer>("../anim_splash").CurrentAnimation = "anim_splash";
+		GetNode<AnimationPlayer>("../anim_splash").Play();
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+		if(Input.IsActionJustPressed("jump1"))
+			GoToTitleScreen();
+		// if(scale < 1.19f)
+		// 	scale += scaleMultiplier * (float)delta;
+		// else
+		// {
+		// 	scale = 1.2f;
+		// 	if(!animationFinished)
+		// 	{
+		// 		animationFinished = true;
+		// 		t_transition.Start();
+		// 	}
+		// }
+
+		// Scale = new Vector2(scale, scale);
+	}
+
+	public void GoToTitleScreen()
+	{
+		GetNode<AnimatedSprite2D>("/root/rm_game/spr_load").Play();
+		((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_title_screen");
+	}
+}

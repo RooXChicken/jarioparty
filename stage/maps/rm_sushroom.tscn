@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbynfkjokalo1"]
+
+[ext_resource type="Texture2D" uid="uid://b7s4ffercvxj7" path="res://stage/maps/todo.png" id="1_dtvyf"]
+
+[sub_resource type="Curve2D" id="Curve2D_wax57"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 610, 847, 0, 0, 0, 0, 409, 844, 0, 0, 0, 0, 236, 832, 0, 0, 0, 0, 48, 809, 0, 0, 0, 0, -136, 782, 0, 0, 0, 0, -281, 765, 0, 0, 0, 0, -491, 748, 0, 0, 0, 0, -641, 756, 0, 0, 0, 0, -822, 755, 0, 0, 0, 0, -981, 755, 0, 0, 0, 0, -1114, 779, 0, 0, 0, 0, -1237, 801, 0, 0, 0, 0, -1363, 830, 0, 0, 0, 0, -1479, 846, 0, 0, 0, 0, -1607, 861, 0, 0, 0, 0, -1745, 888, 0, 0, 0, 0, -1893, 890, 0, 0, 0, 0, -2026, 824, 0, 0, 0, 0, -2047, 696, 0, 0, 0, 0, -2040, 576, 0, 0, 0, 0, -1982, 479, 0, 0, 0, 0, -1978, 60, 0, 0, 0, 0, -2126, -59, 0, 0, 0, 0, -1974, -125, 0, 0, 0, 0, -1808, -151, 0, 0, 0, 0, -1670, -156, 0, 0, 0, 0, -1540, -158, 0, 0, 0, 0, -1392, -159, 0, 0, 0, 0, -1256, -155, 0, 0, 0, 0, -1087, -144, 0, 0, 0, 0, -927, -127, 0, 0, 0, 0, -787, 205, 0, 0, 0, 0, -657, 208, 0, 0, 0, 0, -541, 215, 0, 0, 0, 0, -401, 214, 0, 0, 0, 0, -298, 216, 0, 0, 0, 0, -151, 214, 0, 0, 0, 0, -14, 215, 0, 0, 0, 0, 141, 222, 0, 0, 0, 0, 306, 232, 0, 0, 0, 0, 451, 245, 0, 0, 0, 0, 595, 272)
+}
+point_count = 42
+
+[node name="rm_sushroom" type="Node2D"]
+
+[node name="spr_map" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_dtvyf")
+metadata/_edit_lock_ = true
+
+[node name="Paths" type="Node" parent="."]
+
+[node name="pt_01" type="Path2D" parent="Paths"]
+curve = SubResource("Curve2D_wax57")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Paths/pt_01"]
+position = Vector2(610, 847)
+rotation = -3.12667

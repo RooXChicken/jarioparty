@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq6ipgec6blq5"]
+
+[ext_resource type="Script" path="res://objects/rooms/minigames/mushmixup/obj_mushmixup_mushroom.cs" id="1_ga7u3"]
+[ext_resource type="Texture2D" uid="uid://ceai1vq7hu5g3" path="res://sprites/rooms/minigames/rm_minigame_mushmixup/williamIsGoingToKillMe.png" id="1_sw4gs"]
+[ext_resource type="Texture2D" uid="uid://y0dq0wu0as42" path="res://sprites/rooms/minigames/rm_minigame_mushmixup/mushroomSpots.png" id="2_l027x"]
+
+[node name="obj_mushmixup_mushroom" type="Area2D"]
+scale = Vector2(1.75, 1.75)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_ga7u3")
+
+[node name="obj_sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_sw4gs")
+
+[node name="obj_spots" type="Sprite2D" parent="."]
+texture = ExtResource("2_l027x")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-34, -52, 34, -52, 61, 0, 34, 52, -34, 52, -61, 0)
+
+[connection signal="area_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="area_exited" from="." to="." method="OnBodyExit"]

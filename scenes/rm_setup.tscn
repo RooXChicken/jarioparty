@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://cevjlhgprryav"]
+
+[ext_resource type="PackedScene" uid="uid://d1j2nfn5erdj8" path="res://objects/rooms/rm_setup/obj_dialoguebox.tscn" id="1_aga6h"]
+[ext_resource type="Script" path="res://objects/rooms/rm_setup/obj_frog.cs" id="1_jeo2x"]
+[ext_resource type="Script" path="res://objects/common/cm_bg.cs" id="3_tacu8"]
+[ext_resource type="Texture2D" uid="uid://sngjuww5tnt6" path="res://sprites/characters/npc/frog/anim_frogFall.png" id="3_wx207"]
+[ext_resource type="Texture2D" uid="uid://bn8yqkdwc5sxo" path="res://sprites/rooms/rm_setup/bg_setup.png" id="5_djedi"]
+[ext_resource type="PackedScene" path="res://objects/rooms/rm_setup/obj_playerSelect.tscn" id="6_41bc8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjxb4"]
+atlas = ExtResource("3_wx207")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_om42v"]
+atlas = ExtResource("3_wx207")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gnidu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjxb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_om42v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="rm_setup" type="Node2D"]
+
+[node name="obj_playerSelect" parent="." instance=ExtResource("6_41bc8")]
+z_index = 2
+position = Vector2(330, 300)
+scale = Vector2(2, 2)
+
+[node name="obj_dialoguebox" parent="." instance=ExtResource("1_aga6h")]
+z_index = 2
+position = Vector2(600, 630)
+
+[node name="obj_frog" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(250, 550)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_gnidu")
+frame_progress = 0.349061
+script = ExtResource("1_jeo2x")
+
+[node name="obj_bg" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(640, 720)
+scale = Vector2(2, 2)
+texture = ExtResource("5_djedi")
+region_enabled = true
+region_rect = Rect2(0, 0, 640, 720)
+script = ExtResource("3_tacu8")
+metadata/ScrollSpeed = 1000.0
+metadata/_edit_lock_ = true

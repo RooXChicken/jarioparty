@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://bck7c8xfyfh01"]
+
+[ext_resource type="Script" path="res://objects/rooms/minigames/mushmixup/obj_mushmixup_frog.cs" id="1_8wc25"]
+[ext_resource type="Texture2D" uid="uid://cxypui6vbsigy" path="res://sprites/rooms/minigames/rm_minigame_mushmixup/spr_frogflag.png" id="2_g43vc"]
+[ext_resource type="Texture2D" uid="uid://dknqilea5qy4m" path="res://sprites/rooms/minigames/rm_minigame_mushmixup/spr_flag.png" id="3_upodo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hput6"]
+atlas = ExtResource("2_g43vc")
+region = Rect2(0, 32, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cld6t"]
+atlas = ExtResource("2_g43vc")
+region = Rect2(0, 0, 35, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jqeqv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hput6")
+}],
+"loop": true,
+"name": &"flagShown",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cld6t")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tu0p1"]
+atlas = ExtResource("3_upodo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7pew"]
+atlas = ExtResource("3_upodo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmxs6"]
+atlas = ExtResource("3_upodo")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpwsi"]
+atlas = ExtResource("3_upodo")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nob2f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tu0p1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7pew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmxs6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpwsi")
+}],
+"loop": true,
+"name": &"wave",
+"speed": 7.0
+}]
+
+[node name="obj_minigame_mushmixup_frog" type="Node2D"]
+script = ExtResource("1_8wc25")
+
+[node name="obj_sprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_jqeqv")
+animation = &"flagShown"
+
+[node name="obj_flag" type="AnimatedSprite2D" parent="."]
+position = Vector2(-100, 4)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_nob2f")
+animation = &"wave"
+frame_progress = 0.251254

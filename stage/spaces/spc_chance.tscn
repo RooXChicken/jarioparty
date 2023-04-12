@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxi72gxthboow"]
+
+[ext_resource type="Texture2D" uid="uid://6wd8m0yychbd" path="res://stage/gui/sprites/spaces/spr_chancespace.png" id="1_vaxxf"]
+[ext_resource type="Shape2D" uid="uid://bob0la6buryho" path="res://stage/spaces/spc_hitbox.tres" id="2_itb2u"]
+
+[node name="spc_chance" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="spr_space" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_vaxxf")
+
+[node name="obj_collision" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(0, -1)
+rotation = 1.5708
+shape = ExtResource("2_itb2u")

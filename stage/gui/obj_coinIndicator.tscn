@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://kgulsgabeiqm"]
+
+[node name="obj_coinIndicator" type="Node2D"]
+
+[node name="spr_indicator" type="Sprite2D" parent="."]
+
+[node name="anim_coinIndicator" type="AnimationPlayer" parent="."]

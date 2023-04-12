@@ -1,0 +1,109 @@
+[gd_scene load_steps=8 format=3 uid="uid://bsr12jypdlteh"]
+
+[ext_resource type="Texture2D" uid="uid://bcmkf0t4pj1b" path="res://sprites/rooms/rm_splash_screen/spr_splash_creators.png" id="1_pq1w3"]
+[ext_resource type="Script" path="res://objects/rooms/rm_splash_screen/obj_splash_creators.cs" id="2_7qjr7"]
+[ext_resource type="Texture2D" uid="uid://cn1d3htm5nulk" path="res://sprites/rooms/rm_splash_screen/spr_brought.png" id="3_3pcyl"]
+[ext_resource type="Texture2D" uid="uid://ow3y33qugy3n" path="res://sprites/rooms/rm_splash_screen/spr_william.png" id="4_txjvx"]
+[ext_resource type="Texture2D" uid="uid://u5aunxi68it1" path="res://sprites/rooms/rm_splash_screen/spr_daxton.png" id="5_d4evh"]
+
+[sub_resource type="Animation" id="Animation_ec3wd"]
+resource_name = "anim_splash"
+length = 2.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spr_brought:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("spr_william:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("spr_daxton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("spr_william:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-175, 330), Vector2(640, 330)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("spr_daxton:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1443, 440), Vector2(640, 440)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n2gca"]
+_data = {
+"anim_splash": SubResource("Animation_ec3wd")
+}
+
+[node name="Root" type="Node2D"]
+
+[node name="obj_splashtext" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(640, 360)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_pq1w3")
+script = ExtResource("2_7qjr7")
+
+[node name="spr_brought" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(640, 320)
+scale = Vector2(2, 2)
+texture = ExtResource("3_3pcyl")
+
+[node name="spr_william" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(640, 330)
+scale = Vector2(2, 2)
+texture = ExtResource("4_txjvx")
+
+[node name="spr_daxton" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(640, 440)
+scale = Vector2(2, 2)
+texture = ExtResource("5_d4evh")
+
+[node name="anim_splash" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n2gca")
+}

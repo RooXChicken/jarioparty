@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://mili5lk1jvxf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r3n4h"]
+
+[sub_resource type="Curve2D" id="Curve2D_4xikv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 245, -105, 0, 0, 0, 0, 102, -61, 0, 0, 0, 0, 128, 64, 0, 0, 0, 0, 46, 37, 0, 0, 0, 0, -53, -55, 0, 0, 0, 0, -128, 91)
+}
+point_count = 6
+
+[node name="rm_worldmap_sushroom" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r3n4h")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_4xikv")
