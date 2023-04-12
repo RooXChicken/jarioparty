@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://daeu84euga8jt"]
 
 [ext_resource type="Texture2D" uid="uid://d0jfhvk2lw7gq" path="res://stage/gui/sprites/ids/spr_unknownid.png" id="1_fgpuv"]
-[ext_resource type="Texture2D" uid="uid://chyfpsylf60r7" path="res://stage/gui/sprites/spr_walletDef.png" id="2_ebf0f"]
-[ext_resource type="Texture2D" uid="uid://b5e7yykj5gxpw" path="res://stage/gui/sprites/spr_bagpaper.png" id="3_sdbc1"]
+[ext_resource type="Texture2D" uid="uid://bchlic3hmjb2s" path="res://stage/gui/sprites/spr_walletDef.png" id="2_ebf0f"]
+[ext_resource type="Texture2D" uid="uid://betv4xeklni0h" path="res://stage/gui/sprites/spr_bagpaper.png" id="3_sdbc1"]
 [ext_resource type="Script" path="res://stage/gui/spr_bagPaper.cs" id="4_n4bsk"]
 [ext_resource type="SpriteFrames" uid="uid://dmwtjs78d1gl0" path="res://stage/gui/anim_walletNumbers.tres" id="5_btnxn"]
 

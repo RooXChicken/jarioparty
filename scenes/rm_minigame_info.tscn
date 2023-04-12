@@ -10,7 +10,22 @@
 [ext_resource type="Texture2D" uid="uid://da1xqrq0gx0wg" path="res://sprites/rooms/rm_minigame_info/spr_controller.png" id="6_gsa07"]
 [ext_resource type="PackedScene" uid="uid://dtylccvxdo8j2" path="res://objects/rooms/rm_minigame_info/obj_itemPicker.tscn" id="6_l47ec"]
 [ext_resource type="Texture2D" uid="uid://dspaqrwgwo3c6" path="res://sprites/rooms/rm_minigame_info/spr_setupFrog.png" id="7_le71p"]
-[ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://heygorgeous.ttf" id="8_d8xi8"]
+[ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://fonts/heygorgeous.ttf" id="8_d8xi8"]
+
+[sub_resource type="Animation" id="Animation_sq5h6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spr_itemWindow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(440, -184)]
+}
 
 [sub_resource type="Animation" id="Animation_th576"]
 resource_name = "itemWindow"
@@ -40,21 +55,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(950, -180), Vector2(950, 170)]
-}
-
-[sub_resource type="Animation" id="Animation_sq5h6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("spr_itemWindow:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(440, -184)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tqtnc"]

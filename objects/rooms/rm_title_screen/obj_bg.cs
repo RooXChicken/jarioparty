@@ -27,7 +27,7 @@ public partial class obj_bg : Sprite2D
 			//GD.Print(xValue);
 			if(Position.X < 640)
 				Position = new Vector2(640, Position.Y);
-			//Modulate = new Color(1, 1, 1, alpha);
+			Modulate = new Color(1, 1, 1, alpha);
 			
 			
 			Position = new Vector2(Position.X - xValue, Position.Y);

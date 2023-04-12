@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bb7xt58iiflku"
-path="res://.godot/imported/heygorgeous.ttf-3394298313d93e9ccd341f6e491445c3.fontdata"
+path="res://.godot/imported/heygorgeous.ttf-967bd2c62ebb3ed1c19253251077d6bd.fontdata"
 
 [deps]
 
-source_file="res://heygorgeous.ttf"
-dest_files=["res://.godot/imported/heygorgeous.ttf-3394298313d93e9ccd341f6e491445c3.fontdata"]
+source_file="res://fonts/heygorgeous.ttf"
+dest_files=["res://.godot/imported/heygorgeous.ttf-967bd2c62ebb3ed1c19253251077d6bd.fontdata"]
 
 [params]
 

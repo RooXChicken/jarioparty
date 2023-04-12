@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://vd1n5w6abfbs"]
 
 [ext_resource type="Script" path="res://objects/rooms/worldmaps/obj_map.cs" id="1_hdo0i"]
-[ext_resource type="PackedScene" uid="uid://d0sno6ew4ubj4" path="res://stage/gui/obj_mapGUI.tscn" id="2_alycv"]
+[ext_resource type="PackedScene" uid="uid://b3dvuk2a216p2" path="res://stage/gui/obj_mapGUI.tscn" id="2_alycv"]
 [ext_resource type="Texture2D" uid="uid://cw7jfl3pd8pk7" path="res://stage/maps/mp_sushroom.png" id="2_qe5p7"]
 [ext_resource type="PackedScene" uid="uid://c4yqal4g3q8pn" path="res://objects/characters/obj_character_map.tscn" id="3_d6dkg"]
 [ext_resource type="Texture2D" uid="uid://xr5td1ux4eqx" path="res://stage/maps/spr_sky.png" id="3_ifiwr"]

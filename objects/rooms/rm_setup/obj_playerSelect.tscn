@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3]
+[gd_scene load_steps=51 format=3 uid="uid://d36gbi32uwdwa"]
 
 [ext_resource type="Script" path="res://objects/rooms/rm_setup/obj_playerSelect.cs" id="1_ncrli"]
 [ext_resource type="Texture2D" uid="uid://cebqc24skftad" path="res://sprites/rooms/rm_setup/spr_cloud1p.png" id="2_xlbee"]
@@ -316,6 +316,7 @@ sprite_frames = SubResource("SpriteFrames_ifk2p")
 frame_progress = 0.0387788
 
 [node name="spr_character_jario" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -220)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_1aj0h")
 animation = &"dance"
@@ -324,7 +325,7 @@ frame_progress = 0.995386
 script = ExtResource("9_485ex")
 
 [node name="spr_character_wooigi" type="AnimatedSprite2D" parent="."]
-position = Vector2(100, 0)
+position = Vector2(100, -220)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_oohdl")
 animation = &"dance"
@@ -332,7 +333,7 @@ frame_progress = 0.677092
 script = ExtResource("9_485ex")
 
 [node name="spr_character_grape" type="AnimatedSprite2D" parent="."]
-position = Vector2(200, 0)
+position = Vector2(200, -220)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_0eipc")
 animation = &"dance"
@@ -340,7 +341,7 @@ frame_progress = 0.822063
 script = ExtResource("9_485ex")
 
 [node name="spr_character_josh" type="AnimatedSprite2D" parent="."]
-position = Vector2(300, 0)
+position = Vector2(300, -220)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_rbhki")
 animation = &"dance"

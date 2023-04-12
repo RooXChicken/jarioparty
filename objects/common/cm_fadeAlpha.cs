@@ -8,12 +8,13 @@ public partial class cm_fadeAlpha : Sprite2D
 	private float alpha = 0f; //current alpha
 	private bool state = false; //false = increasing, true = decreasing (bool to save memory)
 	public float alphaMultiplier = 1.5f; //multiplier
+	private bool loop = false;
 
 	public override void _Ready()
 	{
-		if(HasMeta("start"))
+		if(HasMeta("Start"))
 		{
-			Variant _start = GetMeta("start");
+			Variant _start = GetMeta("Start");
 			start = _start.As<float>();
 		}
 		
@@ -28,20 +29,26 @@ public partial class cm_fadeAlpha : Sprite2D
 			Variant _mult = GetMeta("Multiplier");
 			alphaMultiplier = _mult.As<float>();
 		}
+
+		if(HasMeta("Loop"))
+		{
+			Variant _loop = GetMeta("Loop");
+			loop = _loop.As<bool>();
+		}
 	}
 
 	public override void _Process(double delta)
 	{
 		if(!Visible)
 			return;
-		Variant _start = GetMeta("start");
-		start = _start.As<float>();
+		// Variant _start = GetMeta("Start");
+		// start = _start.As<float>();
 		
-		Variant _end = GetMeta("End");
-		end = _end.As<float>();
+		// Variant _end = GetMeta("End");
+		// end = _end.As<float>();
 
-		Variant _mult = GetMeta("Multiplier");
-		alphaMultiplier = _mult.As<float>();
+		// Variant _mult = GetMeta("Multiplier");
+		// alphaMultiplier = _mult.As<float>();
 		if(!state)
 		{
 			alpha += alphaMultiplier * (float)delta;
@@ -51,7 +58,7 @@ public partial class cm_fadeAlpha : Sprite2D
 				state = true;
 			}
 		}
-		else if(state)
+		else if(state && loop)
 		{
 			alpha -= alphaMultiplier * (float)delta;
 			if(alpha < start)

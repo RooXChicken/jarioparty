@@ -53,6 +53,7 @@ public partial class Transition : Node2D
 				if(obj_top.Scale.Y <= 0)
 				{
 					state = 3;
+					GetNode<obj_playerStart>("../PlayerStart").StartAnimation(playerGoing);
 				}
 				break;
 			case 3:

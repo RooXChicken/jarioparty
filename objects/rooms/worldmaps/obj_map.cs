@@ -21,6 +21,7 @@ public partial class obj_map : Node2D
 
 		obj_camera = GetNode<Camera2D>("obj_camera");
 		playerGoing = GetNode<Node2D>("Paths/pt_01/pf_0" + PlayerGoing);
+		GetNode<obj_playerStart>("obj_mapGUI/PlayerStart").StartAnimation(1);
 
 		obj_camera.Position = new Vector2(0, 0);
 		obj_camera.Zoom = new Vector2(0.35f, 0.35f);

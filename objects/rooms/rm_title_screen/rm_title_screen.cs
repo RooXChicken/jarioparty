@@ -3,17 +3,22 @@ using System;
 
 public partial class rm_title_screen : Node2D
 {
-	Sprite2D obj_logo;
-	Sprite2D obj_bg;
-	Node2D obj_startButtons;
-	Alarm t_startAnimation;
+	private Sprite2D obj_logo;
+	private Sprite2D spr_bg;
+	private Sprite2D spr_arrowLeft;
+
+	private Alarm t_startAnimation;
 	public override void _Ready()
 	{
 		((AudioController)GetNode("/root/AudioController")).PlayMusic("res://sound/rooms/rm_title_screen/mus_main.wav");
 
 		obj_logo = GetNode<Sprite2D>("obj_logo");
-		obj_bg = GetNode<Sprite2D>("obj_bg");
-		obj_startButtons = GetNode<Node2D>("obj_startButtons");
+		obj_logo.Visible = false;
+		spr_bg = GetNode<Sprite2D>("spr_bg");
+		spr_bg.Visible = false;
+		spr_arrowLeft = GetNode<Sprite2D>("obj_logo/spr_arrowLeft");
+		spr_arrowLeft.Visible = false;
+		//obj_startButtons = GetNode<Node2D>("obj_startButtons");
 
 		t_startAnimation = new Alarm(1.7, true, this, new Callable(this, "StartAnimation"));
 	}
@@ -27,8 +32,9 @@ public partial class rm_title_screen : Node2D
 	private void StartAnimation()
 	{
 		obj_logo.Visible = true;
-		obj_bg.Visible = true;
-		obj_startButtons.Visible = true;
-		obj_startButtons.GetNode<Sprite2D>("obj_pressStart").Visible = true;
+		spr_bg.Visible = true;
+		spr_arrowLeft.Visible = true;
+		//obj_startButtons.Visible = true;
+		//obj_startButtons.GetNode<Sprite2D>("obj_pressStart").Visible = true;
 	}
 }

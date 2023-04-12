@@ -1,10 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://d0sno6ew4ubj4"]
+[gd_scene load_steps=11 format=3 uid="uid://b3dvuk2a216p2"]
 
 [ext_resource type="Script" path="res://stage/gui/obj_mapGUI.cs" id="1_46h3d"]
 [ext_resource type="PackedScene" uid="uid://dqumai6udoy6u" path="res://objects/rooms/rm_minigame_info/obj_cloudTransition.tscn" id="5_vcwf8"]
 [ext_resource type="Script" path="res://stage/gui/Transition.cs" id="6_dvfvr"]
+[ext_resource type="Script" path="res://stage/gui/obj_playerStart.cs" id="6_rmu7n"]
 [ext_resource type="Texture2D" uid="uid://ckycs5xx3t4m" path="res://sprites/common/spr_oneblackpixel.png" id="6_x2scx"]
+[ext_resource type="Texture2D" uid="uid://batim536joblg" path="res://sprites/gui/roundStart/spr_jario.png" id="7_w8btv"]
 [ext_resource type="PackedScene" uid="uid://daeu84euga8jt" path="res://stage/gui/obj_wallet.tscn" id="8_7tnb4"]
+[ext_resource type="Shader" path="res://shaders/shd_spr_start.gdshader" id="8_xdwlg"]
+[ext_resource type="Texture2D" uid="uid://bt2hscxeadxgp" path="res://sprites/gui/roundStart/spr_start.png" id="9_7wcct"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_orrib"]
+shader = ExtResource("8_xdwlg")
+shader_parameter/input = Vector3(0.937, 0.894, 0.69)
 
 [node name="obj_mapGUI" type="CanvasLayer"]
 script = ExtResource("1_46h3d")
@@ -40,3 +48,17 @@ centered = false
 visible = false
 z_index = 10
 metadata/Backwards = false
+
+[node name="PlayerStart" type="Node2D" parent="."]
+script = ExtResource("6_rmu7n")
+
+[node name="spr_charName" type="Sprite2D" parent="PlayerStart"]
+position = Vector2(420, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("7_w8btv")
+
+[node name="spr_start" type="Sprite2D" parent="PlayerStart"]
+material = SubResource("ShaderMaterial_orrib")
+position = Vector2(894, 345)
+scale = Vector2(2, 2)
+texture = ExtResource("9_7wcct")

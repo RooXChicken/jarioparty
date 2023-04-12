@@ -18,6 +18,7 @@ public partial class obj_playerSelect : Node2D
 	private AnimatedSprite2D[] players;
 	private Color regular = new Color(1, 1, 1, 1);
 	private Color selected = new Color(0.5f, 0.5f, 0.5f, 1);
+	private Vector2[] positions = new Vector2[4];
 
 	public override void _Ready()
 	{
@@ -33,6 +34,11 @@ public partial class obj_playerSelect : Node2D
 		players = new AnimatedSprite2D[] { 
 			GetNode<AnimatedSprite2D>("spr_character_jario"), GetNode<AnimatedSprite2D>("spr_character_wooigi"), GetNode<AnimatedSprite2D>("spr_character_grape"), GetNode<AnimatedSprite2D>("spr_character_josh") 
 			};
+
+		for(int i = 0; i < 4; i++)
+		{
+			positions[i] = new Vector2(players[i].Position.X, 0);
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -58,7 +64,7 @@ public partial class obj_playerSelect : Node2D
 				PlayerCountSelect();
 				break;
 			case 1:
-				CharacterSelect();
+				CharacterSelect(delta);
 				break;
 			case 3:
 				MapSelect();
@@ -90,11 +96,17 @@ public partial class obj_playerSelect : Node2D
 		}
 	}
 
-	private void CharacterSelect()
+	private void CharacterSelect(double delta)
 	{
 		for(int i = 0; i < 4; i++)
+		{
+			if(220 + players[i].Position.Y < 210)
+				players[i].Position = players[i].Position.Lerp(positions[i], (float)(delta * 3));
+			else
+				players[i].Position = players[i].Position.Lerp(positions[i], (float)(delta * (((GameManager)GetNode("/root/GameManager")).rand.NextDouble())));
 			if(i != index)
 				players[i].Animation = "idle";
+		}
 		
 		if(players[index].Animation != "dance")
 		{

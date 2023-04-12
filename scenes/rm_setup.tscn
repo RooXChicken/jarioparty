@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://objects/common/cm_bg.cs" id="3_tacu8"]
 [ext_resource type="Texture2D" uid="uid://sngjuww5tnt6" path="res://sprites/characters/npc/frog/anim_frogFall.png" id="3_wx207"]
 [ext_resource type="Texture2D" uid="uid://bn8yqkdwc5sxo" path="res://sprites/rooms/rm_setup/bg_setup.png" id="5_djedi"]
-[ext_resource type="PackedScene" path="res://objects/rooms/rm_setup/obj_playerSelect.tscn" id="6_41bc8"]
+[ext_resource type="PackedScene" uid="uid://d36gbi32uwdwa" path="res://objects/rooms/rm_setup/obj_playerSelect.tscn" id="6_41bc8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yjxb4"]
 atlas = ExtResource("3_wx207")

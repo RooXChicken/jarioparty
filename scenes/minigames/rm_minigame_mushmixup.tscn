@@ -1,7 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://etxvutvpbhva"]
+[gd_scene load_steps=25 format=3]
 
 [ext_resource type="PackedScene" uid="uid://vi01pdjd8l3f" path="res://objects/characters/obj_character_parent.tscn" id="1_cvchi"]
-[ext_resource type="Texture2D" uid="uid://k7rpt1tk8drl" path="res://box.png" id="2_nch8o"]
+[ext_resource type="Texture2D" uid="uid://k7rpt1tk8drl" path="res://sprites/box.png" id="2_nch8o"]
 [ext_resource type="PackedScene" uid="uid://bck7c8xfyfh01" path="res://objects/rooms/minigames/mushmixup/obj_mushmixup_frog.tscn" id="3_ijl2r"]
 [ext_resource type="PackedScene" uid="uid://bq6ipgec6blq5" path="res://objects/rooms/minigames/mushmixup/obj_mushmixup_mushroom.tscn" id="4_say3h"]
 [ext_resource type="Texture2D" uid="uid://xbucelivuin1" path="res://sprites/rooms/minigames/rm_minigame_mushmixup/spr_bg.png" id="5_5knd8"]

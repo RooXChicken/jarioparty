@@ -7,7 +7,7 @@
 size = Vector2(54, 84)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myi16"]
-size = Vector2(0.5, 42)
+size = Vector2(0.5, 11)
 
 [node name="obj_character_map" type="RigidBody2D"]
 position = Vector2(0, -25)
@@ -32,7 +32,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="obj_collision" type="CollisionShape2D" parent="spacehitbox"]
-position = Vector2(0, 15)
+position = Vector2(0, 30.5)
 shape = SubResource("RectangleShape2D_myi16")
 disabled = true
 debug_color = Color(0.980392, 0, 0.392157, 0.419608)
