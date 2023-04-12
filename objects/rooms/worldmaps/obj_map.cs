@@ -7,12 +7,12 @@ public partial class obj_map : Node2D
 	public int PlayerGoing = 1;
 
 	private Camera2D obj_camera;
-	private Node2D playerGoing;
+	private PathFollow2D playerGoing;
 	private Alarm t_zoomIn;
 
 	private double delta = 0;
 	private Vector2 zoomLevel = new Vector2(1, 1);
-	private bool cameraStarted = false;
+	public bool cameraStarted = false;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -20,13 +20,13 @@ public partial class obj_map : Node2D
 		((AudioController)GetNode("/root/AudioController")).PlayMusic("res://sound/rooms/maps/mus_sushroom.wav");
 
 		obj_camera = GetNode<Camera2D>("obj_camera");
-		playerGoing = GetNode<Node2D>("Paths/pt_01/pf_0" + PlayerGoing);
-		GetNode<obj_playerStart>("obj_mapGUI/PlayerStart").StartAnimation(1);
+		playerGoing = GetNode<PathFollow2D>("Paths/pt_01/pf_0" + PlayerGoing);
+		GetNode<obj_playerStart>("obj_mapGUI/PlayerStart").StartAnimation(playerGoing.GetNode<obj_character_map>("obj_character_map").CharacterIndex + 1, playerGoing.GetNode<obj_character_map>("obj_character_map"));
 
 		obj_camera.Position = new Vector2(0, 0);
 		obj_camera.Zoom = new Vector2(0.35f, 0.35f);
 
-		t_zoomIn = new Alarm(2, true, this, new Callable(this, "ZoomIn"));
+		t_zoomIn = new Alarm(1, true, this, new Callable(this, "ZoomIn"));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -49,9 +49,11 @@ public partial class obj_map : Node2D
 	{
 		playerGoing.GetNode<obj_character_map>("obj_character_map").isTurn = false;
 		PlayerGoing = _player;
-		playerGoing = GetNode<Node2D>("Paths/pt_01/pf_0" + PlayerGoing);
+		playerGoing = GetNode<PathFollow2D>("Paths/pt_01/pf_0" + PlayerGoing);
 		playerGoing.GetNode<obj_character_map>("obj_character_map").isTurn = true;
-		GD.Print("Player " + _player);
+		GetNode<obj_playerStart>("obj_mapGUI/PlayerStart").StartAnimation(playerGoing.GetNode<obj_character_map>("obj_character_map").CharacterIndex + 1, playerGoing.GetNode<obj_character_map>("obj_character_map"));
+		GetNode<Transition>("obj_mapGUI/Transition").snap = true;
+		//GD.Print("Player " + _player);
 	}
 
 	public void SetZoomLevel(float _zoom) { zoomLevel = new Vector2(_zoom, _zoom); }

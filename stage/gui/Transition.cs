@@ -4,7 +4,8 @@ using System;
 public partial class Transition : Node2D
 {
 	public byte state = 0;
-	public int playerGoing;
+	public int playerGoing = 0;
+	public bool snap = false;
 
 	private float speed = 1000;
 
@@ -17,7 +18,7 @@ public partial class Transition : Node2D
 		obj_top = GetNode<Sprite2D>("obj_top");
 		obj_bottom = GetNode<Sprite2D>("obj_bottom");
 
-		t_wait = new Alarm(0.5, true, this, new Callable(this, "TransitionEnd"), false);
+		t_wait = new Alarm(0.5, true, this, new Callable(this, "TransitionEnd"));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,7 +54,7 @@ public partial class Transition : Node2D
 				if(obj_top.Scale.Y <= 0)
 				{
 					state = 3;
-					GetNode<obj_playerStart>("../PlayerStart").StartAnimation(playerGoing);
+					//GetNode<obj_playerStart>("../PlayerStart").StartAnimation(playerGoing);
 				}
 				break;
 			case 3:
@@ -79,9 +80,14 @@ public partial class Transition : Node2D
 		else
 		{
 			state = 2;
-			GetNode<obj_map>("../../").SetPlayer(++playerGoing);
-			GetNode<obj_map>("../../").Snap();
 			GetNode<obj_diceBlock>("../../obj_diceBlock").Initialize();
+			if(snap)
+			{
+				GetNode<obj_map>("../../").SetPlayer(++playerGoing);
+				GetNode<obj_map>("../../").Snap();
+			}
+			else
+				GetNode<obj_map>("../../").SetPlayer(++playerGoing);
 		}
 	}
 }

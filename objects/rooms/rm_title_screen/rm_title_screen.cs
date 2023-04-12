@@ -11,6 +11,9 @@ public partial class rm_title_screen : Node2D
 	public override void _Ready()
 	{
 		((AudioController)GetNode("/root/AudioController")).PlayMusic("res://sound/rooms/rm_title_screen/mus_main.wav");
+		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/gui/snd_title_select.wav", "gui_titleScreenSelect");
+		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/gui/snd_common_selectionmove.wav", "gui_selectionMove");
+		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/gui/snd_common_select.wav", "gui_select");
 
 		obj_logo = GetNode<Sprite2D>("obj_logo");
 		obj_logo.Visible = false;

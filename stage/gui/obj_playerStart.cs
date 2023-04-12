@@ -5,6 +5,7 @@ public partial class obj_playerStart : Node2D
 {
 	private Sprite2D spr_charName;
 	private Sprite2D spr_start;
+	private obj_character_map player;
 
 	private Texture2D[] playerNames;
 	//private Vector2[] startPositions;
@@ -27,8 +28,9 @@ public partial class obj_playerStart : Node2D
 		t_vanish = new Alarm(1.5, true, this, new Callable(this, "Vanish"), false);
 	}
 
-	public void StartAnimation(int _characterIndex)
+	public void StartAnimation(int _characterIndex, obj_character_map _player)
 	{
+		player = _player;
 		Modulate = new Color(1, 1, 1, 1);
 		spr_charName.Texture = playerNames[_characterIndex - 1];
 		spr_start.Position = new Vector2((playerNames[_characterIndex - 1].GetWidth() / 1.5f) + 760, 345);
@@ -39,5 +41,6 @@ public partial class obj_playerStart : Node2D
 	public void Vanish()
 	{
 		Modulate = new Color(1, 1, 1, 0);
+		player.state = 0;
 	}
 }

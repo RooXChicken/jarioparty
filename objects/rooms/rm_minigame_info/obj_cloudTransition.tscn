@@ -17,7 +17,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(142, 90)]
+"values": [Vector2(-279, -138)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -29,7 +29,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1153, 108)]
+"values": [Vector2(1635, -168)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -41,7 +41,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(163, 632)]
+"values": [Vector2(-291, 939)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -53,7 +53,19 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1155, 645)]
+"values": [Vector2(1569, 930)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("spr_bg:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_q4neq"]
@@ -229,22 +241,22 @@ shader = ExtResource("3_esae4")
 script = ExtResource("1_ond87")
 
 [node name="cloud1" type="Sprite2D" parent="."]
-position = Vector2(142, 90)
+position = Vector2(-279, -138)
 scale = Vector2(2, 2)
 texture = ExtResource("1_fkl40")
 
 [node name="cloud2" type="Sprite2D" parent="."]
-position = Vector2(1153, 108)
+position = Vector2(1635, -168)
 scale = Vector2(2, 2)
 texture = ExtResource("1_fkl40")
 
 [node name="cloud3" type="Sprite2D" parent="."]
-position = Vector2(163, 632)
+position = Vector2(-291, 939)
 scale = Vector2(2, 2)
 texture = ExtResource("1_fkl40")
 
 [node name="cloud4" type="Sprite2D" parent="."]
-position = Vector2(1155, 645)
+position = Vector2(1569, 930)
 scale = Vector2(2, 2)
 texture = ExtResource("1_fkl40")
 

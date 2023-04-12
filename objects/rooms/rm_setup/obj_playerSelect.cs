@@ -87,11 +87,13 @@ public partial class obj_playerSelect : Node2D
 			index = 0;
 			players[0].Animation = "dance";
 			players[0].Play();
+			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_select");
 			for(int i = 0; i < 4; i++)
 			{
 				clouds[i].Visible = false;
 				players[i].Visible = true;
 			}
+			SetFrogText((short)(characterIndex + 6));
 			ChangeIndex(0);
 		}
 	}
@@ -116,6 +118,7 @@ public partial class obj_playerSelect : Node2D
 
 		if(Input.IsActionJustPressed("jump" + controllerIndex) && players[index].Modulate != selected)
 		{
+			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_select");
 			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex] = new PlayerData(-1, (ushort)index, (characterIndex >= ((GameManager)GetNode("/root/GameManager")).playerCount));
 			
 			if(realPlayer)
@@ -175,6 +178,7 @@ public partial class obj_playerSelect : Node2D
 					break;
 		}
 
+		((AudioController)GetNode("/root/AudioController")).PlaySound("gui_selectionMove");
 
 		switch(index)
 		{

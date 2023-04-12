@@ -5,12 +5,14 @@ public partial class obj_character_map : RigidBody2D
 {
 	public int Player = 0;
 	public bool isTurn = false;
-	PlayerData playerData;
+	private PlayerData playerData;
+	public int CharacterIndex { get { return playerData.characterIndex; } }
 
-	public byte state = 0;
+	public byte state = 128;
 	private int moves = 0;
 
 	public float controllerIndex = 1;
+	public bool canJump = false;
 
 	private AnimatedSprite2D sprite;
 	private float scale = 3;
@@ -84,12 +86,13 @@ public partial class obj_character_map : RigidBody2D
 	private void BeginTurn()
 	{
 		GetNode<Node2D>("../../../../obj_diceBlock").Position = new Vector2(follower.Position.X, follower.Position.Y - 138);
+		GetNode<obj_diceBlock>("../../../../obj_diceBlock").a_spinStart(this);
 		state = 1;
 	}
 
 	private void RollDice()
 	{
-		if(Input.IsActionJustPressed("jump" + controllerIndex))
+		if(canJump && Input.IsActionJustPressed("jump" + controllerIndex))
 		{
 			GravityScale = 1;
 			jumping = true;
@@ -220,7 +223,7 @@ public partial class obj_character_map : RigidBody2D
 		//GD.Print(area.Name);
 	}
 
-	private void BodyShapeEntered(Rid body_rid, Node body, long body_shape_index, long local_shape_index)
+	private new void BodyShapeEntered(Rid body_rid, Node body, long body_shape_index, long local_shape_index)
 	{
 		if(body.Name == "obj_pfloor")
 			jumping = false;

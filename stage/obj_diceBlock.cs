@@ -7,6 +7,7 @@ public partial class obj_diceBlock : Node2D
 	private AnimatedSprite2D spr_diceHit;
 	private AnimatedSprite2D spr_number;
 	private Alarm t_spinCycle;
+	private obj_character_map player;
 	public int num = -1;
 
 	private bool diceHit = false;
@@ -34,8 +35,6 @@ public partial class obj_diceBlock : Node2D
 		spr_diceHit.Visible = false;
 		spr_number.Visible = false;
 
-		a_spinStart();
-
 		GetNode<RigidBody2D>("obj_rb").Freeze = true;
 		GetNode<RigidBody2D>("obj_rb").Sleeping = true;
 
@@ -56,8 +55,13 @@ public partial class obj_diceBlock : Node2D
 			NumberAnimation((float)delta);
 	}
 
-	public void a_spinStart()
+	public void a_spinStart(obj_character_map _player)
 	{
+		player = _player;
+		GetNode<obj_diceRB>("obj_rb").newPosition = new Vector2(Position.X, Position.Y - 14);
+		GetNode<obj_diceRB>("obj_rb").shouldSnap = true;
+		GetNode<RigidBody2D>("obj_rb").Freeze = false;
+		GetNode<RigidBody2D>("obj_rb").Sleeping = false;
 		((AudioController)GetNode("/root/AudioController")).PlaySound("diceblockRoll");
 		spr_diceblock.Play("spinStart");
 		t_spinCycle.WaitTime = 0.2 * 3;
@@ -66,10 +70,7 @@ public partial class obj_diceBlock : Node2D
 
 	public void a_spinCycle()
 	{
-		GetNode<obj_diceRB>("obj_rb").newPosition = new Vector2(Position.X, Position.Y - 14);
-		GetNode<obj_diceRB>("obj_rb").shouldSnap = true;
-		GetNode<RigidBody2D>("obj_rb").Freeze = false;
-		GetNode<RigidBody2D>("obj_rb").Sleeping = false;
+		player.canJump = true;
 		spr_diceblock.Play("spinning");
 	}
 

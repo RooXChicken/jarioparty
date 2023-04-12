@@ -18,7 +18,7 @@ public partial class obj_itemPicker : Node2D
 	private Sprite2D spr_ready;
 	private int inc = 0;
 
-	public bool Ready = true;
+	public bool ready = true;
 
 	private byte player;
 	private PlayerData playerData;
@@ -66,9 +66,9 @@ public partial class obj_itemPicker : Node2D
 	{
 		GetControllerInput();
 
-		if(!Ready && joyvaxis > 0 && anim_icons.CurrentAnimation == "")
+		if(!ready && joyvaxis > 0 && anim_icons.CurrentAnimation == "")
 			ChangeItemIndex(1);
-		if(!Ready && joyvaxis < 0 && anim_icons.CurrentAnimation == "")
+		if(!ready && joyvaxis < 0 && anim_icons.CurrentAnimation == "")
 			ChangeItemIndex(-1);
 	}
 
@@ -82,12 +82,12 @@ public partial class obj_itemPicker : Node2D
 
 		if(Input.IsActionJustPressed("jump" + controllerIndex))
 		{
-			Ready = true;
+			ready = true;
 			spr_ready.Visible = true;
 		}
 		if(Input.IsActionJustPressed("back" + controllerIndex))
 		{
-			Ready = false;
+			ready = false;
 			spr_ready.Visible = false;
 		}
 	}

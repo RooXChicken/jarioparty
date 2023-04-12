@@ -61,8 +61,11 @@ public partial class obj_logo : Sprite2D
 
 	private void _HandleGUIInput()
 	{
-		if(Input.IsActionJustPressed("pause1"))
+		if(!obj_transition.Visible && Input.IsActionJustPressed("pause1"))
+		{
+			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_titleScreenSelect");
 			obj_transition.Visible = true;
+		}
 		float joyvaxis = Input.GetAxis("down1", "up1");
 		if(moving)
 		{
@@ -75,6 +78,8 @@ public partial class obj_logo : Sprite2D
 			moving = true;
 		else
 			return;
+
+		((AudioController)GetNode("/root/AudioController")).PlaySound("gui_selectionMove");
 
 		if(joyvaxis > 0)
 			index--;

@@ -34,7 +34,6 @@ public partial class obj_mushmixup_mushroom : Area2D
 		{
 			case 0:
 				return;
-				break;
 			case 1:
 				if(scale > 1.25f)
 				{
