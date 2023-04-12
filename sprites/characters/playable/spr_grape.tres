@@ -21,19 +21,19 @@ region = Rect2(0, 0, 32, 32)
 atlas = ExtResource("2_wowyl")
 region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o1i3f"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xg7m7"]
 atlas = ExtResource("3_8cmlj")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_536gq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mu637"]
 atlas = ExtResource("3_8cmlj")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ys848"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_auty1"]
 atlas = ExtResource("1_ag36v")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ic8u"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ha53e"]
 atlas = ExtResource("1_ag36v")
 region = Rect2(0, 32, 32, 32)
 
@@ -68,10 +68,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o1i3f")
+"texture": SubResource("AtlasTexture_xg7m7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_536gq")
+"texture": SubResource("AtlasTexture_mu637")
 }],
 "loop": true,
 "name": &"walkRight",
@@ -79,10 +79,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ys848")
+"texture": SubResource("AtlasTexture_auty1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1ic8u")
+"texture": SubResource("AtlasTexture_ha53e")
 }],
 "loop": true,
 "name": &"walkUp",

@@ -83,7 +83,7 @@ rotation_smoothing_speed = 4.0
 [node name="spr_map" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_33hov")
-frame_progress = 0.896417
+frame_progress = 0.644728
 metadata/_edit_lock_ = true
 
 [node name="spr_sky" type="Sprite2D" parent="spr_map"]

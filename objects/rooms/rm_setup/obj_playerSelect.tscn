@@ -337,7 +337,7 @@ position = Vector2(200, -220)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_0eipc")
 animation = &"dance"
-frame_progress = 0.822063
+frame_progress = 0.757604
 script = ExtResource("9_485ex")
 
 [node name="spr_character_josh" type="AnimatedSprite2D" parent="."]
