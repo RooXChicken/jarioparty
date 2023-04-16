@@ -1,10 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://daeu84euga8jt"]
+[gd_scene load_steps=10 format=3 uid="uid://daeu84euga8jt"]
 
 [ext_resource type="Texture2D" uid="uid://d0jfhvk2lw7gq" path="res://stage/gui/sprites/ids/spr_unknownid.png" id="1_fgpuv"]
 [ext_resource type="Texture2D" uid="uid://bchlic3hmjb2s" path="res://stage/gui/sprites/spr_walletDef.png" id="2_ebf0f"]
+[ext_resource type="Texture2D" uid="uid://ckycs5xx3t4m" path="res://sprites/common/spr_oneblackpixel.png" id="3_7bipu"]
 [ext_resource type="Texture2D" uid="uid://betv4xeklni0h" path="res://stage/gui/sprites/spr_bagpaper.png" id="3_sdbc1"]
+[ext_resource type="Shader" path="res://shaders/shd_walletColor.gdshader" id="3_t1k1u"]
 [ext_resource type="Script" path="res://stage/gui/spr_bagPaper.cs" id="4_n4bsk"]
 [ext_resource type="SpriteFrames" uid="uid://dmwtjs78d1gl0" path="res://stage/gui/anim_walletNumbers.tres" id="5_btnxn"]
+[ext_resource type="Script" path="res://stage/gui/obj_walletColor.cs" id="5_qgxlb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_84lqa"]
+shader = ExtResource("3_t1k1u")
+shader_parameter/walletColor = Vector3(1, 1, 1)
+shader_parameter/alpha = 1.0
 
 [node name="obj_wallet" type="Node2D"]
 
@@ -17,6 +25,14 @@ texture = ExtResource("1_fgpuv")
 z_index = 1
 scale = Vector2(2, 2)
 texture = ExtResource("2_ebf0f")
+
+[node name="spr_walletColor" type="Sprite2D" parent="spr_wallet"]
+z_index = -1
+material = SubResource("ShaderMaterial_84lqa")
+position = Vector2(24.5, 22)
+scale = Vector2(58, 13)
+texture = ExtResource("3_7bipu")
+script = ExtResource("5_qgxlb")
 
 [node name="spr_bagPaperClip" type="Sprite2D" parent="."]
 clip_children = 1
@@ -32,6 +48,7 @@ script = ExtResource("4_n4bsk")
 
 [node name="CoinNumbers" type="Node2D" parent="."]
 z_index = -2
+metadata/_edit_lock_ = true
 
 [node name="spr_num1" type="AnimatedSprite2D" parent="CoinNumbers"]
 z_index = 5
@@ -61,6 +78,7 @@ sprite_frames = ExtResource("5_btnxn")
 
 [node name="StarNumbers" type="Node2D" parent="."]
 z_index = -2
+metadata/_edit_lock_ = true
 
 [node name="spr_num1" type="AnimatedSprite2D" parent="StarNumbers"]
 z_index = 5

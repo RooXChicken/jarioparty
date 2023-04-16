@@ -39,5 +39,6 @@ public partial class spr_bagPaper : Sprite2D
 		}
 
 		GetNode<Node2D>("../../").Modulate = new Color(1, 1, 1, alpha);
+		((ShaderMaterial)GetNode<Sprite2D>("../../spr_wallet/spr_walletColor").Material).SetShaderParameter("alpha", alpha);
 	}
 }
