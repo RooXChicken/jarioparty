@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://bm666kgbbbn0o"]
+
+[ext_resource type="Texture2D" uid="uid://opsgneaidvdk" path="res://sprites/gui/_debugmenu/spr_jarioCursor.png" id="1_m3qc0"]
+[ext_resource type="Texture2D" uid="uid://rgcb74mamykp" path="res://sprites/gui/_debugmenu/spr_debugBG.png" id="2_6lfjv"]
+[ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://fonts/heygorgeous.ttf" id="3_kvt3q"]
+[ext_resource type="Shader" path="res://shaders/shd_debugMenuTitle.gdshader" id="3_os3t5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w60rq"]
+shader = ExtResource("3_os3t5")
+shader_parameter/sin_frequency = 0.2
+shader_parameter/light_offset = 0.5
+
+[node name="obj_debugMenu" type="Node2D"]
+
+[node name="spr_debugBG" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_6lfjv")
+metadata/_edit_lock_ = true
+
+[node name="spr_jarioCursor" type="Sprite2D" parent="spr_debugBG"]
+position = Vector2(-117.5, -35)
+texture = ExtResource("1_m3qc0")
+
+[node name="obj_titleText" type="RichTextLabel" parent="spr_debugBG"]
+z_index = 1
+material = SubResource("ShaderMaterial_w60rq")
+offset_left = -211.0
+offset_top = -127.0
+offset_right = 212.0
+offset_bottom = -67.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("3_kvt3q")
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "[center]
+Jario Party Debug Menu"
+
+[node name="obj_titleText2" type="RichTextLabel" parent="spr_debugBG"]
+offset_left = -211.0
+offset_top = -127.0
+offset_right = 212.0
+offset_bottom = -70.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("3_kvt3q")
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "[center]
+[outline_size={8}]Jario Party Debug Menu"
+
+[node name="obj_text2" type="RichTextLabel" parent="spr_debugBG"]
+offset_left = -211.0
+offset_top = -61.0
+offset_right = 212.0
+offset_bottom = 150.0
+theme_override_fonts/normal_font = ExtResource("3_kvt3q")
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "[center]Resume Game
+Go to Title Screen
+Go to Room
+Modify Objects
+Open Console
+Quit Game
+"
+metadata/_edit_lock_ = true

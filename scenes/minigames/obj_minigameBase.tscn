@@ -1,10 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://c0dcx3n08yddt"]
+[gd_scene load_steps=20 format=3 uid="uid://db8bcmriqbdqx"]
 
 [ext_resource type="SpriteFrames" uid="uid://d1gqwdyufwd3r" path="res://sprites/gui/minigames/anim_timer.tres" id="1_fmqbb"]
 [ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://fonts/heygorgeous.ttf" id="2_m8k0u"]
 [ext_resource type="Script" path="res://objects/rooms/minigames/obj_timerText.cs" id="3_6cto0"]
 [ext_resource type="Texture2D" uid="uid://claj48yeyenv8" path="res://sprites/rooms/minigames/spr_start.png" id="4_phqv6"]
-[ext_resource type="Script" path="res://scenes/minigames/obj_start.cs" id="4_vf4w4"]
+[ext_resource type="Script" path="res://objects/rooms/minigames/obj_start.cs" id="5_u5sks"]
 [ext_resource type="Script" path="res://objects/rooms/minigames/obj_winner.cs" id="6_ohh8m"]
 [ext_resource type="Texture2D" uid="uid://batim536joblg" path="res://sprites/gui/roundStart/spr_jario.png" id="6_qcpmq"]
 [ext_resource type="Texture2D" uid="uid://ojfkt48wfwh" path="res://sprites/rooms/minigames/spr_miss.png" id="7_2mu2p"]
@@ -121,22 +121,34 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Win/spr_wins:scale")
+tracks/1/path = NodePath("Win/spr_characterName:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(640, 324)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Win/spr_miss:scale")
+tracks/2/path = NodePath("Win/spr_wins:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Win/spr_miss:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -186,6 +198,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(2, 2)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Win/spr_characterName:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(640, 324), Vector2(420, 324)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rlpau"]
 _data = {
@@ -221,7 +245,7 @@ z_index = 2
 position = Vector2(640, 320)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("4_phqv6")
-script = ExtResource("4_vf4w4")
+script = ExtResource("5_u5sks")
 
 [node name="anim_start" type="AnimationPlayer" parent="."]
 libraries = {
