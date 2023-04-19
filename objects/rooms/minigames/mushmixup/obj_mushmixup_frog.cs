@@ -34,7 +34,7 @@ public partial class obj_mushmixup_frog : Node2D
 
 		rand = new Random();
 		colors = new List<Color>()
-		{ GMLColor(219, 43, 43), GMLColor(51, 100, 236), GMLColor(37, 215, 73), GMLColor(246, 202, 56), GMLColor(246, 147, 34), GMLColor(110, 52, 226), GMLColor(229, 135, 247) };
+		{ GMLColor(219, 43, 43), GMLColor(51, 100, 236), GMLColor(37, 215, 73), GMLColor(246, 202, 56), GMLColor(246, 147, 34), GMLColor(191, 0, 255), GMLColor(35, 35, 35) };
 
 		mushrooms = new obj_mushmixup_mushroom[7];
 		for(int k = 0; k < 100; k++)

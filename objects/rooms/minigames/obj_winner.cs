@@ -26,7 +26,7 @@ public partial class obj_winner : Node
 			// 		winner = players[i];
 			
 			spr_characterName.Texture = ((GameManager)GetNode("/root/GameManager")).PlayerNameImages[playerAliveIndex];
-			spr_wins.Position = new Vector2((((GameManager)GetNode("/root/GameManager")).PlayerNameImages[playerAliveIndex].GetWidth() / 1.5f) + 760, 345);
+			spr_wins.Position = new Vector2(640, 450);
 			anim_wins.Play("wins");
 		}
 		else

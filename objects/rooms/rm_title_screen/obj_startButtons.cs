@@ -35,7 +35,7 @@ public partial class obj_startButtons : Node2D
 		if(!Visible)
 			return;
 
-		if(obj_pressStart.Visible && Input.IsActionJustPressed("pause1"))
+		if(obj_pressStart.Visible && Input.IsActionJustPressed("jump1"))
 		{
 			obj_pressStart.Visible = false;
 
@@ -72,9 +72,9 @@ public partial class obj_startButtons : Node2D
 
 	private void _HandleGUIInput()
 	{
-		if(Input.IsActionJustReleased("pause1"))
+		if(Input.IsActionJustReleased("jump1"))
 			enabled = true;
-		if(enabled && Input.IsActionJustPressed("pause1"))
+		if(enabled && Input.IsActionJustPressed("jump1"))
 			obj_transition.Visible = true;
 		float joyvaxis = Input.GetAxis("down1", "up1");
 		if(moving)

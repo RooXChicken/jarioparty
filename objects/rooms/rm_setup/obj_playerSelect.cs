@@ -37,7 +37,7 @@ public partial class obj_playerSelect : Node2D
 
 		for(int i = 0; i < 4; i++)
 		{
-			positions[i] = new Vector2(players[i].Position.X, 0);
+			positions[i] = new Vector2(players[i].Position.X, -1);
 		}
 	}
 
@@ -103,15 +103,16 @@ public partial class obj_playerSelect : Node2D
 		for(int i = 0; i < 4; i++)
 		{
 			if(220 + players[i].Position.Y < 210)
-				players[i].Position = players[i].Position.Lerp(positions[i], (float)(delta * 3));
+				players[i].Position = players[i].Position.Lerp(positions[i], (float)(delta * 2));
 			else
 				players[i].Position = players[i].Position.Lerp(positions[i], (float)(delta * (((GameManager)GetNode("/root/GameManager")).rand.NextDouble())));
-			if(i != index)
+			if(i != index && players[i].Modulate != selected)
 				players[i].Animation = "idle";
 		}
 		
 		if(players[index].Animation != "dance")
 		{
+			
 			players[index].Animation = "dance";
 			players[index].Play();
 		}
@@ -125,6 +126,7 @@ public partial class obj_playerSelect : Node2D
 				((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].controllerIndex = controllerIndex;
 			
 			players[index].Modulate = selected;
+		
 
 			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(new ItemBase(((GameManager)GetNode("/root/GameManager")).itemLookup[0]));
 			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(new ItemBase(((GameManager)GetNode("/root/GameManager")).itemLookup[1]));

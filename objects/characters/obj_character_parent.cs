@@ -60,7 +60,13 @@ public partial class obj_character_parent : RigidBody2D
 	public override void _Process(double delta)
 	{
 		if(!((GameManager)GetNode("/root/GameManager")).MinigameStarted)
+		{
+			joyhaxis = 0;
+			joyvaxis = 0;
+			sprite.Play("idle");
 			return;
+		}
+			
 		
 		GetControllerInput();
 

@@ -5,7 +5,7 @@ public partial class obj_bob : AnimatedSprite2D
 {
 	private float start = -5;
 	private float end = 5;
-	private float floatSpeed = 10f;
+	private float floatSpeed = 4f;
 	private short state = 0;
 	
 	public override void _Ready()
