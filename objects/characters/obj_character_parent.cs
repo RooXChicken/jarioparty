@@ -59,11 +59,9 @@ public partial class obj_character_parent : RigidBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if(!minigameStarted)
-		{
-			minigameStarted = ((GameManager)GetNode("/root/GameManager")).MinigameStarted;
+		if(!((GameManager)GetNode("/root/GameManager")).MinigameStarted)
 			return;
-		}
+		
 		GetControllerInput();
 
 		idleTimer += (float)delta;

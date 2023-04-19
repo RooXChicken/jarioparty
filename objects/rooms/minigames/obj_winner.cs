@@ -17,6 +17,7 @@ public partial class obj_winner : Node
 
 	public void EndMiniGame(int playersAlive, int playerAliveIndex)
 	{
+		((GameManager)GetNode("/root/GameManager")).MinigameStarted = false;
 		if(playersAlive == 1)
 		{
 			//obj_character_parent winner = null;

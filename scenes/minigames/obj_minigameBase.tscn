@@ -224,6 +224,7 @@ metadata/Minigame = 0
 
 [node name="spr_timer" type="AnimatedSprite2D" parent="."]
 visible = false
+z_index = 2
 position = Vector2(640, 56)
 scale = Vector2(1.6, 1.6)
 sprite_frames = ExtResource("1_fmqbb")
@@ -240,6 +241,7 @@ text = "60"
 script = ExtResource("3_6cto0")
 
 [node name="obj_start" type="Sprite2D" parent="."]
+z_index = 2
 position = Vector2(640, 320)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("4_phqv6")

@@ -65,6 +65,8 @@ public partial class obj_mushmixup_frog : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(state == 3)
+			return;
 		bool playersLost = false;
 		switch(state)
 		{
@@ -117,7 +119,12 @@ public partial class obj_mushmixup_frog : Node2D
 
 			if(playersAlive < 2)
 			{
+				invulnerable = true;
+				t_goDown.Stop();
+				t_goUp.WaitTime = 0.5;
+				t_goUp.Start();
 				state = 3;
+				((AudioController)GetNode("/root/AudioController")).StopMusic();
 				GetNode<obj_winner>("../obj_minigameBase/Win").EndMiniGame(playersAlive, players[playerIndex].CharacterIndex);
 			}
 		}
@@ -148,6 +155,8 @@ public partial class obj_mushmixup_frog : Node2D
 
 	public void ShroomsGoDown()
 	{
+		if(state == 3)
+			return;
 		for(int i = 0; i < 7; i++)
 		{
 			mushrooms[i].state = 1;
@@ -170,6 +179,8 @@ public partial class obj_mushmixup_frog : Node2D
 
 	public void ShroomsGoUp()
 	{
+		if(state == 3)
+			return;
 		for(int i = 0; i < 7; i++)
 		{
 			mushrooms[i].state = 2;
