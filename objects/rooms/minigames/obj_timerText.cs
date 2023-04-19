@@ -8,6 +8,7 @@ public partial class obj_timerText : RichTextLabel
 
 	public override void _Ready()
 	{
+		((GameManager)GetNode("/root/GameManager")).MinigameStarted = false;
 		Variant _Minigame = GetNode<Node2D>("../../").GetMeta("Minigame");
 		Time = ((GameManager)GetNode("/root/GameManager")).minigameLookup[_Minigame.As<int>()].MinigameTime;
 
