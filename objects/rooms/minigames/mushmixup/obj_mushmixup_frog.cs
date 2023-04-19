@@ -65,6 +65,7 @@ public partial class obj_mushmixup_frog : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		bool playersLost = false;
 		switch(state)
 		{
 			case 0:
@@ -85,7 +86,7 @@ public partial class obj_mushmixup_frog : Node2D
 					}
 
 					if(playerOut)
-						KillPlayer(k);
+						playersLost = KillPlayer(k);
 				}
 				}
 				break;
@@ -95,19 +96,41 @@ public partial class obj_mushmixup_frog : Node2D
 				for(int k = 0; k < 4; k++)
 				{
 					if(!players[k].Lost && !_CheckMushCollision(players[k], mush))
-						KillPlayer(k);
+						playersLost = KillPlayer(k);
 				}
 				}
 				break;
 		}
+
+		if(playersLost)
+		{
+			int playersAlive = 0;
+			int playerIndex = 0;
+			for(int i = 0; i < 4; i++)
+			{
+				if(!players[i].Lost)
+				{
+					playerIndex = i;
+					playersAlive++;
+				}
+			}
+
+			if(playersAlive < 2)
+			{
+				state = 3;
+				GetNode<obj_winner>("../obj_minigameBase/Win").EndMiniGame(playersAlive, players[playerIndex].CharacterIndex);
+			}
+		}
 	}
 
-	private void KillPlayer(int player)
+	private bool KillPlayer(int player)
 	{
 		players[player].Lost = true;
 		GetNode<obj_splash>("../splashes/obj_splash" + (player + 1)).Position = players[player].Position;
 		GetNode<obj_splash>("../splashes/obj_splash" + (player + 1)).Splash();
 		players[player].Position = new Vector2(1000000, 0);
+
+		return true;
 	}
 
 	private bool _CheckMushCollision(obj_character_parent character, obj_mushmixup_mushroom _mush)

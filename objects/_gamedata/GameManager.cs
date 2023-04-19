@@ -25,6 +25,10 @@ public partial class GameManager : Node
 		};
 	public Random rand = new Random();
 
+	public Texture2D[] PlayerNameImages = new Texture2D[] {
+		GD.Load<Texture2D>("res://sprites/gui/roundStart/spr_jario.png"), GD.Load<Texture2D>("res://sprites/gui/roundStart/spr_wooigi.png"), GD.Load<Texture2D>("res://sprites/gui/roundStart/spr_grapejuice.png"), GD.Load<Texture2D>("res://sprites/gui/roundStart/spr_josh.png")
+	};
+
 	public bool Fullscreen = false;
 	
 	private bool DebugMode = true;

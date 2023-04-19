@@ -4,7 +4,8 @@ using System;
 public partial class obj_character_parent : RigidBody2D
 {
 	public int Player = 0;
-	PlayerData playerData;
+	private PlayerData playerData;
+	public int CharacterIndex {get {return playerData.characterIndex; }}
 
 	private int state = 0;
 	private bool minigameStarted = false;
