@@ -1,80 +1,81 @@
-[gd_scene load_steps=28 format=3 uid="uid://bg7pi6ra6fsw0"]
+[gd_scene load_steps=29 format=3 uid="uid://dt5vwx3en48kt"]
 
 [ext_resource type="PackedScene" uid="uid://vi01pdjd8l3f" path="res://objects/characters/obj_character_parent.tscn" id="1_cvchi"]
 [ext_resource type="Script" path="res://objects/rooms/minigames/mushmixup/rm_minigame_mushmixup.cs" id="1_gc22k"]
 [ext_resource type="PackedScene" uid="uid://c0dcx3n08yddt" path="res://scenes/minigames/obj_minigameBase.tscn" id="2_acbce"]
 [ext_resource type="Texture2D" uid="uid://k7rpt1tk8drl" path="res://sprites/box.png" id="2_nch8o"]
-[ext_resource type="PackedScene" uid="uid://bck7c8xfyfh01" path="res://objects/rooms/minigames/mushmixup/obj_mushmixup_frog.tscn" id="3_ijl2r"]
-[ext_resource type="PackedScene" uid="uid://bq6ipgec6blq5" path="res://objects/rooms/minigames/mushmixup/obj_mushmixup_mushroom.tscn" id="4_say3h"]
-[ext_resource type="Texture2D" uid="uid://xbucelivuin1" path="res://sprites/rooms/minigames/rm_minigame_mushmixup/spr_bg.png" id="5_5knd8"]
+[ext_resource type="PackedScene" uid="uid://duuayvcmdqx5f" path="res://objects/rooms/minigames/mushmixup/obj_mushmixup_frog.tscn" id="3_ijl2r"]
+[ext_resource type="PackedScene" path="res://objects/rooms/minigames/mushmixup/obj_mushmixup_mushroom.tscn" id="4_say3h"]
 [ext_resource type="PackedScene" uid="uid://b43oe3831x1i" path="res://objects/rooms/minigames/mushmixup/obj_jumpbar.tscn" id="6_163ms"]
+[ext_resource type="PackedScene" uid="uid://8u3pawyqs28k" path="res://objects/rooms/minigames/mushmixup/obj_splash.tscn" id="7_lxue6"]
+[ext_resource type="Texture2D" uid="uid://xbucelivuin1" path="res://sprites/rooms/minigames/mushmixup/spr_bg.png" id="7_skmtv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3wjb"]
-atlas = ExtResource("5_5knd8")
+atlas = ExtResource("7_skmtv")
 region = Rect2(0, 0, 640, 360)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pfhut"]
-atlas = ExtResource("5_5knd8")
+atlas = ExtResource("7_skmtv")
 region = Rect2(640, 0, 640, 360)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dtiq6"]
-atlas = ExtResource("5_5knd8")
+atlas = ExtResource("7_skmtv")
 region = Rect2(1280, 0, 640, 360)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gap7a"]
-atlas = ExtResource("5_5knd8")
+atlas = ExtResource("7_skmtv")
 region = Rect2(1920, 0, 640, 360)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wonlr"]
-atlas = ExtResource("5_5knd8")
+atlas = ExtResource("7_skmtv")
 region = Rect2(2560, 0, 640, 360)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_832wv"]
-atlas = ExtResource("5_5knd8")
+atlas = ExtResource("7_skmtv")
 region = Rect2(3200, 0, 640, 360)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3y4m"]
-atlas = ExtResource("5_5knd8")
+atlas = ExtResource("7_skmtv")
 region = Rect2(3840, 0, 640, 360)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lxl5k"]
-atlas = ExtResource("5_5knd8")
+atlas = ExtResource("7_skmtv")
 region = Rect2(4480, 0, 640, 360)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ymwe"]
-atlas = ExtResource("5_5knd8")
+atlas = ExtResource("7_skmtv")
 region = Rect2(5120, 0, 640, 360)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sbcol"]
-atlas = ExtResource("5_5knd8")
+atlas = ExtResource("7_skmtv")
 region = Rect2(5760, 0, 640, 360)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8lkvo"]
-atlas = ExtResource("5_5knd8")
+atlas = ExtResource("7_skmtv")
 region = Rect2(6400, 0, 640, 360)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyc2f"]
-atlas = ExtResource("5_5knd8")
+atlas = ExtResource("7_skmtv")
 region = Rect2(7040, 0, 640, 360)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eks8l"]
-atlas = ExtResource("5_5knd8")
+atlas = ExtResource("7_skmtv")
 region = Rect2(7680, 0, 640, 360)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fxems"]
-atlas = ExtResource("5_5knd8")
+atlas = ExtResource("7_skmtv")
 region = Rect2(8320, 0, 640, 360)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7rga7"]
-atlas = ExtResource("5_5knd8")
+atlas = ExtResource("7_skmtv")
 region = Rect2(8960, 0, 640, 360)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dniov"]
-atlas = ExtResource("5_5knd8")
+atlas = ExtResource("7_skmtv")
 region = Rect2(9600, 0, 640, 360)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lkd5g"]
-atlas = ExtResource("5_5knd8")
+atlas = ExtResource("7_skmtv")
 region = Rect2(10240, 0, 640, 360)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_havvs"]
@@ -143,10 +144,15 @@ size = Vector2(255.133, 189.861)
 script = ExtResource("1_gc22k")
 
 [node name="obj_minigameBase" parent="." instance=ExtResource("2_acbce")]
+metadata/Minigame = 1
 
 [node name="obj_minigame_mushmixup_frog" parent="." instance=ExtResource("3_ijl2r")]
 z_index = 5
 position = Vector2(1200, 360)
+
+[node name="obj_mushmixup_mushroom" parent="obj_minigame_mushmixup_frog" instance=ExtResource("4_say3h")]
+z_index = -1
+position = Vector2(21, 26)
 
 [node name="mushrooms" type="Node" parent="."]
 
@@ -218,6 +224,20 @@ metadata/Player = 2
 metadata/State = 1
 
 [node name="obj_jumpbar" parent="players/obj_character_parent4" instance=ExtResource("6_163ms")]
+
+[node name="splashes" type="Node" parent="."]
+
+[node name="obj_splash1" parent="splashes" instance=ExtResource("7_lxue6")]
+z_index = 5
+
+[node name="obj_splash2" parent="splashes" instance=ExtResource("7_lxue6")]
+z_index = 5
+
+[node name="obj_splash3" parent="splashes" instance=ExtResource("7_lxue6")]
+z_index = 5
+
+[node name="obj_splash4" parent="splashes" instance=ExtResource("7_lxue6")]
+z_index = 5
 
 [node name="obj_bg" type="AnimatedSprite2D" parent="."]
 position = Vector2(640, 360)

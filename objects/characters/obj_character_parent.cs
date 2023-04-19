@@ -14,6 +14,7 @@ public partial class obj_character_parent : RigidBody2D
 	public float scale = 4;
 	public float density = 1f;
 	public float strength = 400f;
+	public bool Lost = false;
 
 	private Area2D feetArea;
 	private CollisionShape2D collider;

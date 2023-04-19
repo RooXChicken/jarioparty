@@ -16,10 +16,11 @@ public partial class rm_minigame_info : Node2D
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/rooms/minigames/mus_playMinigamesIntro.wav", "mus_playMinigamesIntro");
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/rooms/minigames/snd_itemPickerMove.wav", "itemPickerMove");
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/rooms/minigames/mus_playMinigames.wav", "mus_playMinigames");
+
 		anim_whackitu = GetNode<AnimationPlayer>("anim_whackitu");
 		obj_text = GetNode<RichTextLabel>("obj_text");
 		obj_text.Text = ((GameManager)GetNode("/root/GameManager")).minigameLookup[minigame].Description;
-		nextMinigame = "rm_minigame_" + ((GameManager)GetNode("/root/GameManager")).minigameLookup[minigame].Name.ToString().ToLower();
+		nextMinigame = "rm_minigame_" + ((GameManager)GetNode("/root/GameManager")).minigameLookup[minigame].MinigameName;
 		spr_whackitu = GetNode<Sprite2D>("spr_itemWindow");
 		spr_whackitu.Visible = false;
 
@@ -38,8 +39,8 @@ public partial class rm_minigame_info : Node2D
 	{
 		if(!itemWindowShown && Input.IsActionJustPressed("jump1"))
 			ShowItemWindow();
-		if(itemWindowShown && Input.IsActionJustPressed("pause1"))
-			((GameManager)GetNode("/root/GameManager")).SwitchScene("minigames/" + nextMinigame);
+		if(itemWindowShown && Input.IsActionJustPressed("pause1") && !GetNode<AnimationPlayer>("../../anim_whackitu").IsPlaying())
+			GetNode<AnimationPlayer>("../../anim_whackitu").Play("transition");
 	}
 
 	private void ShowItemWindow()
@@ -51,6 +52,15 @@ public partial class rm_minigame_info : Node2D
 
 		spr_whackitu.Visible = true;
 	}
+
+	private void TransitionFinished(StringName anim_name)
+	{
+		if(anim_name == "transition")
+		{
+			((GameManager)GetNode("/root/GameManager")).SwitchScene("minigames/" + nextMinigame);
+		}
+	}
+
 
 	public void PlayMusic()
 	{

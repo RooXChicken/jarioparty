@@ -165,6 +165,8 @@ public partial class obj_character_map : RigidBody2D
 
 	private void EndTurn()
 	{
+		if(GetNode<obj_coinIndicator>("obj_coinIndicator/Indicator").AnimationFinished)
+			return;
 		GetNode<Transition>("../../../../obj_mapGUI/Transition").playerGoing = Player + 1;
 		GetNode<Transition>("../../../../obj_mapGUI/Transition").state = 1;
 		state = 6;

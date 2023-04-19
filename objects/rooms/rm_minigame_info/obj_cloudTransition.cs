@@ -17,9 +17,4 @@ public partial class obj_cloudTransition : Node2D
 			anim_cloudTransition.PlayBackwards("clouds");
 		}
 	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
 }

@@ -6,6 +6,7 @@
 
 [node name="obj_minigameBase" type="Node2D"]
 z_index = 6
+metadata/Minigame = 0
 
 [node name="spr_timer" type="AnimatedSprite2D" parent="."]
 position = Vector2(640, 56)
@@ -20,7 +21,7 @@ offset_right = 138.75
 offset_bottom = 39.0
 theme_override_fonts/normal_font = ExtResource("2_m8k0u")
 theme_override_font_sizes/normal_font_size = 15
-text = "128"
+text = "60"
 script = ExtResource("3_6cto0")
 
 [connection signal="frame_changed" from="spr_timer" to="spr_timer/obj_text" method="FrameChanged"]

@@ -3,12 +3,14 @@ using System;
 
 public partial class obj_timerText : RichTextLabel
 {
-	public int Time = 110;
+	public int Time = 60;
 	private float x = 2.75f;
 
 	public override void _Ready()
 	{
 		GetNode<AnimatedSprite2D>("../").Play();
+		Variant _Minigame = GetNode<Node2D>("../../").GetMeta("Minigame");
+		Time = ((GameManager)GetNode("/root/GameManager")).minigameLookup[_Minigame.As<int>()].MinigameTime;
 	}
 
 	private void FrameChanged()

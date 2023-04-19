@@ -14,7 +14,10 @@ public partial class obj_mushmixup_frog : Node2D
 	private obj_mushmixup_mushroom mush;
 	private Random rand;
 
-	private float startDelay = 10;
+	private AnimatedSprite2D obj_sprite;
+	private AnimatedSprite2D obj_flag;
+
+	private float startDelay = 1;
 	
 	private short state = -1;
 	private Alarm t_goDown;
@@ -22,6 +25,13 @@ public partial class obj_mushmixup_frog : Node2D
 
 	public override void _Ready()
 	{
+		obj_sprite = GetNode<AnimatedSprite2D>("obj_sprite");
+		obj_flag = GetNode<AnimatedSprite2D>("obj_flag");
+
+		obj_sprite.Play("idle");
+		obj_flag.Play();
+		obj_flag.Visible = false;
+
 		rand = new Random();
 		colors = new List<Color>()
 		{ GMLColor(219, 43, 43), GMLColor(51, 100, 236), GMLColor(37, 215, 73), GMLColor(246, 202, 56), GMLColor(246, 147, 34), GMLColor(110, 52, 226), GMLColor(229, 135, 247) };
@@ -39,6 +49,8 @@ public partial class obj_mushmixup_frog : Node2D
 			mushrooms[i - 1].color = colors[i - 1];
 		}
 
+		GetNode<obj_mushmixup_mushroom>("obj_mushmixup_mushroom").color = GMLColor(255, 255, 255);
+
 		players = new obj_character_parent[4];
 		for(int i = 1; i <= 4; i++)
 		{
@@ -48,6 +60,8 @@ public partial class obj_mushmixup_frog : Node2D
 
 		t_goDown = new Alarm(2.5 + startDelay, true, this, new Callable(this, "ShroomsGoDown"));
 		t_goUp = new Alarm(4 + startDelay, true, this, new Callable(this, "ShroomsGoUp"), false);
+
+		invulnerable = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -60,6 +74,8 @@ public partial class obj_mushmixup_frog : Node2D
 				{
 				for(int k = 0; k < 4; k++)
 				{
+					if(players[k].Lost)
+						return;
 					bool playerOut = true;
 					for(int i = 0; i < 7; i++)
 					{
@@ -68,7 +84,7 @@ public partial class obj_mushmixup_frog : Node2D
 					}
 
 					if(playerOut)
-						players[k].Position = new Vector2(1000000, 0);
+						KillPlayer(k);
 				}
 				}
 				break;
@@ -77,8 +93,10 @@ public partial class obj_mushmixup_frog : Node2D
 				{
 				for(int k = 0; k < 4; k++)
 				{
+					if(players[k].Lost)
+						return;
 					if(!_CheckMushCollision(players[k], mush))
-						players[k].Position = new Vector2(1000000, 0);
+						KillPlayer(k);
 				}
 				}
 				break;
@@ -88,6 +106,14 @@ public partial class obj_mushmixup_frog : Node2D
 				state = 0;
 				break;
 		}
+	}
+
+	private void KillPlayer(int player)
+	{
+		players[player].Lost = true;
+		GetNode<obj_splash>("../splashes/obj_splash" + (player + 1)).Position = players[player].Position;
+		GetNode<obj_splash>("../splashes/obj_splash" + (player + 1)).Splash();
+		players[player].Position = new Vector2(1000000, 0);
 	}
 
 	private bool _CheckMushCollision(obj_character_parent character, obj_mushmixup_mushroom _mush)
@@ -116,6 +142,10 @@ public partial class obj_mushmixup_frog : Node2D
 		
 		mush = mushrooms[rand.Next(0, 7)];
 		mush.state = 0;
+		GetNode<obj_mushmixup_mushroom>("obj_mushmixup_mushroom").color = mush.color;
+		GetNode<AnimatedSprite2D>("obj_flag").Modulate = mush.color;
+		obj_sprite.Play("flagShown");
+		obj_flag.Visible = true;
 
 		t_goUp.WaitTime -= 0.1;
 		t_goUp.Start();
@@ -128,6 +158,9 @@ public partial class obj_mushmixup_frog : Node2D
 			mushrooms[i].state = 2;
 			mushrooms[i].mult += 0.02f;
 		}
+
+		obj_sprite.Play("idle");
+		obj_flag.Visible = false;
 
 		state = 0;
 

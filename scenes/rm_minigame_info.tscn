@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bffqpue2t7tnq"]
+[gd_scene load_steps=20 format=3 uid="uid://bffqpue2t7tnq"]
 
 [ext_resource type="Texture2D" uid="uid://clf3msf2jcdhb" path="res://sprites/rooms/rm_minigame_info/spr_curtains.png" id="1_pmcdl"]
 [ext_resource type="Script" path="res://objects/rooms/rm_minigame_info/rm_minigame_info.cs" id="1_xy7vy"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://co1je2c40fedf" path="res://sprites/rooms/rm_minigame_info/spr_bg.png" id="2_aat4f"]
 [ext_resource type="Texture2D" uid="uid://em4i3uf62h8j" path="res://sprites/rooms/rm_minigame_info/spr_minigamePreview.png" id="3_jgraw"]
 [ext_resource type="Texture2D" uid="uid://br5313jdb5dm1" path="res://sprites/rooms/rm_minigame_info/whackituSelect.png" id="3_rxbe7"]
+[ext_resource type="Texture2D" uid="uid://bauaiydvxvct7" path="res://sprites/rooms/rm_minigame_info/spr_onlycurtains.png" id="3_v6fu3"]
 [ext_resource type="Texture2D" uid="uid://cbojnt0povk60" path="res://sprites/rooms/rm_minigame_info/spr_bubble.png" id="5_qwx8k"]
 [ext_resource type="Texture2D" uid="uid://da1xqrq0gx0wg" path="res://sprites/rooms/rm_minigame_info/spr_controller.png" id="6_gsa07"]
 [ext_resource type="PackedScene" uid="uid://dtylccvxdo8j2" path="res://objects/rooms/rm_minigame_info/obj_itemPicker.tscn" id="6_l47ec"]
@@ -135,9 +136,13 @@ metadata/_edit_lock_ = true
 metadata/Backwards = true
 
 [node name="spr_curtains" type="Sprite2D" parent="."]
-z_index = 2
+z_index = 3
 position = Vector2(640, 360)
 scale = Vector2(2, 2)
+texture = ExtResource("3_v6fu3")
+
+[node name="spr_bg" type="Sprite2D" parent="spr_curtains"]
+z_index = -1
 texture = ExtResource("1_pmcdl")
 
 [node name="spr_bg" type="Sprite2D" parent="."]
@@ -227,3 +232,5 @@ metadata/Player = 2
 z_index = 2
 position = Vector2(-37, 238)
 metadata/Player = 1
+
+[connection signal="animation_finished" from="anim_whackitu" to="." method="TransitionFinished"]
