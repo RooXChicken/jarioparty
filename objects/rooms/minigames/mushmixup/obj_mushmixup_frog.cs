@@ -19,7 +19,7 @@ public partial class obj_mushmixup_frog : Node2D
 
 	private float startDelay = 1;
 	
-	private short state = -1;
+	public short state = -1;
 	private Alarm t_goDown;
 	private Alarm t_goUp;
 
@@ -60,8 +60,6 @@ public partial class obj_mushmixup_frog : Node2D
 
 		t_goDown = new Alarm(2.5 + startDelay, true, this, new Callable(this, "ShroomsGoDown"));
 		t_goUp = new Alarm(4 + startDelay, true, this, new Callable(this, "ShroomsGoUp"), false);
-
-		invulnerable = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -74,11 +72,14 @@ public partial class obj_mushmixup_frog : Node2D
 				{
 				for(int k = 0; k < 4; k++)
 				{
-					if(players[k].Lost)
-						return;
 					bool playerOut = true;
 					for(int i = 0; i < 7; i++)
 					{
+						if(players[k].Lost)
+						{
+							playerOut = false;
+							return;
+						}
 						if(_CheckMushCollision(players[k], mushrooms[i]))
 							playerOut = false;
 					}
@@ -93,17 +94,10 @@ public partial class obj_mushmixup_frog : Node2D
 				{
 				for(int k = 0; k < 4; k++)
 				{
-					if(players[k].Lost)
-						return;
-					if(!_CheckMushCollision(players[k], mush))
+					if(!players[k].Lost && !_CheckMushCollision(players[k], mush))
 						KillPlayer(k);
 				}
 				}
-				break;
-
-			case -1:
-				invulnerable = false;
-				state = 0;
 				break;
 		}
 	}

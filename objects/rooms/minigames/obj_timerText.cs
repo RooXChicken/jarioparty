@@ -8,9 +8,16 @@ public partial class obj_timerText : RichTextLabel
 
 	public override void _Ready()
 	{
-		GetNode<AnimatedSprite2D>("../").Play();
 		Variant _Minigame = GetNode<Node2D>("../../").GetMeta("Minigame");
 		Time = ((GameManager)GetNode("/root/GameManager")).minigameLookup[_Minigame.As<int>()].MinigameTime;
+
+		GetNode<AnimationPlayer>("../../anim_start").Play("start");
+	}
+
+	private void TimerStart()
+	{
+		if(GetNode<AnimatedSprite2D>("../").Visible)
+			GetNode<AnimatedSprite2D>("../").Play();
 	}
 
 	private void FrameChanged()

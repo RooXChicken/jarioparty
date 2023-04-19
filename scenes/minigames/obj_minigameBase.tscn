@@ -1,14 +1,106 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0dcx3n08yddt"]
+[gd_scene load_steps=10 format=3 uid="uid://c0dcx3n08yddt"]
 
 [ext_resource type="SpriteFrames" uid="uid://d1gqwdyufwd3r" path="res://sprites/gui/minigames/anim_timer.tres" id="1_fmqbb"]
 [ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://fonts/heygorgeous.ttf" id="2_m8k0u"]
 [ext_resource type="Script" path="res://objects/rooms/minigames/obj_timerText.cs" id="3_6cto0"]
+[ext_resource type="Texture2D" uid="uid://claj48yeyenv8" path="res://sprites/rooms/minigames/spr_start.png" id="4_phqv6"]
+[ext_resource type="Script" path="res://scenes/minigames/obj_start.cs" id="4_vf4w4"]
+
+[sub_resource type="Animation" id="Animation_0mxg4"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("obj_start:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("spr_timer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ygq1c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("obj_start:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("obj_start:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("spr_timer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_shdu4"]
+resource_name = "fadeout"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("obj_start:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e3tye"]
+_data = {
+"RESET": SubResource("Animation_ygq1c"),
+"fadeout": SubResource("Animation_shdu4"),
+"start": SubResource("Animation_0mxg4")
+}
 
 [node name="obj_minigameBase" type="Node2D"]
 z_index = 6
 metadata/Minigame = 0
 
 [node name="spr_timer" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(640, 56)
 scale = Vector2(1.6, 1.6)
 sprite_frames = ExtResource("1_fmqbb")
@@ -24,4 +116,17 @@ theme_override_font_sizes/normal_font_size = 15
 text = "60"
 script = ExtResource("3_6cto0")
 
+[node name="obj_start" type="Sprite2D" parent="."]
+position = Vector2(640, 320)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4_phqv6")
+script = ExtResource("4_vf4w4")
+
+[node name="anim_start" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e3tye")
+}
+
 [connection signal="frame_changed" from="spr_timer" to="spr_timer/obj_text" method="FrameChanged"]
+[connection signal="visibility_changed" from="spr_timer" to="spr_timer/obj_text" method="TimerStart"]
+[connection signal="animation_finished" from="anim_start" to="obj_start" method="StartMinigame"]

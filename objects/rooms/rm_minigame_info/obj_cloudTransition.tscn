@@ -242,22 +242,22 @@ script = ExtResource("1_ond87")
 
 [node name="cloud1" type="Sprite2D" parent="."]
 position = Vector2(-279, -138)
-scale = Vector2(2, 2)
+scale = Vector2(7.85, 7.85)
 texture = ExtResource("1_fkl40")
 
 [node name="cloud2" type="Sprite2D" parent="."]
 position = Vector2(1635, -168)
-scale = Vector2(2, 2)
+scale = Vector2(7.85, 7.85)
 texture = ExtResource("1_fkl40")
 
 [node name="cloud3" type="Sprite2D" parent="."]
 position = Vector2(-291, 939)
-scale = Vector2(2, 2)
+scale = Vector2(7.85, 7.85)
 texture = ExtResource("1_fkl40")
 
 [node name="cloud4" type="Sprite2D" parent="."]
 position = Vector2(1569, 930)
-scale = Vector2(2, 2)
+scale = Vector2(7.85, 7.85)
 texture = ExtResource("1_fkl40")
 
 [node name="anim_cloudTransition" type="AnimationPlayer" parent="."]

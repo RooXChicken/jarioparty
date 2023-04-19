@@ -8,15 +8,17 @@ public partial class MinigameBase : Node
 	public string MinigameName;
 	public string Description;
 	public int MinigameTime;
+	public string Music;
 	public Node2D[] Buttons;
 	public int[] ButtonIndexs;
 
-	public MinigameBase(int _MinigameIndex, string _MinigameName, string _Description, int _MinigameTime = 60, int[] _ButtonIndexs = null)
+	public MinigameBase(int _MinigameIndex, string _MinigameName, string _Description, string _Music = "", int _MinigameTime = 60, int[] _ButtonIndexs = null)
 	{
 		MinigameIndex = _MinigameIndex;
 
 		MinigameName = _MinigameName;
 		Description = _Description;
+		Music = _Music;
 
 		MinigameTime = _MinigameTime;
 
@@ -35,5 +37,5 @@ public partial class MinigameBase : Node
 		}
 	}
 
-	public MinigameBase(MinigameBase _Clone) : this(_Clone.MinigameIndex, _Clone.MinigameName, _Clone.Description, _Clone.MinigameTime, _Clone.ButtonIndexs) {}
+	public MinigameBase(MinigameBase _Clone) : this(_Clone.MinigameIndex, _Clone.MinigameName, _Clone.Description, _Clone.Music, _Clone.MinigameTime, _Clone.ButtonIndexs) {}
 }

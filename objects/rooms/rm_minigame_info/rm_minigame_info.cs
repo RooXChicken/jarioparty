@@ -39,8 +39,8 @@ public partial class rm_minigame_info : Node2D
 	{
 		if(!itemWindowShown && Input.IsActionJustPressed("jump1"))
 			ShowItemWindow();
-		if(itemWindowShown && Input.IsActionJustPressed("pause1") && !GetNode<AnimationPlayer>("../../anim_whackitu").IsPlaying())
-			GetNode<AnimationPlayer>("../../anim_whackitu").Play("transition");
+		if(itemWindowShown && Input.IsActionJustPressed("pause1") && !GetNode<AnimationPlayer>("anim_whackitu").IsPlaying())
+			GetNode<AnimationPlayer>("anim_whackitu").Play("transition");
 	}
 
 	private void ShowItemWindow()
