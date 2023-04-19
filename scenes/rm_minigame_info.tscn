@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bffqpue2t7tnq"]
+[gd_scene load_steps=19 format=3 uid="uid://bffqpue2t7tnq"]
 
 [ext_resource type="Texture2D" uid="uid://clf3msf2jcdhb" path="res://sprites/rooms/rm_minigame_info/spr_curtains.png" id="1_pmcdl"]
 [ext_resource type="Script" path="res://objects/rooms/rm_minigame_info/rm_minigame_info.cs" id="1_xy7vy"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dtylccvxdo8j2" path="res://objects/rooms/rm_minigame_info/obj_itemPicker.tscn" id="6_l47ec"]
 [ext_resource type="Texture2D" uid="uid://dspaqrwgwo3c6" path="res://sprites/rooms/rm_minigame_info/spr_setupFrog.png" id="7_le71p"]
 [ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://fonts/heygorgeous.ttf" id="8_d8xi8"]
+[ext_resource type="PackedScene" uid="uid://faxrqppb6hvx" path="res://objects/characters/obj_character_info.tscn" id="13_qyf1n"]
 
 [sub_resource type="Animation" id="Animation_sq5h6"]
 length = 0.001
@@ -26,6 +27,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(440, -184)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("obj_camera:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(640, 360)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("obj_camera:zoom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_th576"]
 resource_name = "itemWindow"
@@ -40,6 +65,33 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.999999, 1),
 "update": 0,
 "values": [Vector2(440, -184), Vector2(440, 170)]
+}
+
+[sub_resource type="Animation" id="Animation_u0uk2"]
+resource_name = "transition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("obj_camera:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2.15, 2.15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("obj_camera:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(640, 360), Vector2(944, 201)]
 }
 
 [sub_resource type="Animation" id="Animation_vgwei"]
@@ -61,6 +113,7 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_sq5h6"),
 "itemWindow": SubResource("Animation_th576"),
+"transition": SubResource("Animation_u0uk2"),
 "whackitu": SubResource("Animation_vgwei")
 }
 
@@ -70,6 +123,10 @@ default_font_size = 10
 
 [node name="rm_minigame_info" type="Node2D"]
 script = ExtResource("1_xy7vy")
+
+[node name="obj_camera" type="Camera2D" parent="."]
+z_index = 5
+position = Vector2(640, 360)
 
 [node name="obj_cloudTransition" parent="." instance=ExtResource("2_4mm6i")]
 visible = false
@@ -93,6 +150,7 @@ metadata/_edit_lock_ = true
 position = Vector2(640, 360)
 scale = Vector2(2, 2)
 texture = ExtResource("3_jgraw")
+metadata/_edit_lock_ = true
 
 [node name="spr_itemWindow" type="Sprite2D" parent="."]
 z_index = 3
@@ -143,8 +201,29 @@ offset_right = 1206.0
 offset_bottom = 647.0
 theme = SubResource("Theme_38776")
 theme_override_font_sizes/normal_font_size = 16
-text = "There are 7 mushrooms, but be careful!
-Frog will wave his flag and you must stay on the mushroom of the same color, as the others will fall!
-     - Move (Navigate mushrooms!)
-     - Jump (Save yourself!)
-     - Attack (Push players!)"
+text = "Hello Jario Party!"
+
+[node name="Buttons" type="Node2D" parent="."]
+z_index = 5
+
+[node name="Players" type="Node" parent="."]
+
+[node name="obj_character_info" parent="Players" instance=ExtResource("13_qyf1n")]
+z_index = 2
+position = Vector2(-396, 238)
+metadata/Player = 4
+
+[node name="obj_character_info2" parent="Players" instance=ExtResource("13_qyf1n")]
+z_index = 2
+position = Vector2(-278, 238)
+metadata/Player = 3
+
+[node name="obj_character_info3" parent="Players" instance=ExtResource("13_qyf1n")]
+z_index = 2
+position = Vector2(-156, 238)
+metadata/Player = 2
+
+[node name="obj_character_info4" parent="Players" instance=ExtResource("13_qyf1n")]
+z_index = 2
+position = Vector2(-37, 238)
+metadata/Player = 1

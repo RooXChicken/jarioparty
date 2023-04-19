@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4yqal4g3q8pn"]
+[gd_scene load_steps=6 format=3 uid="uid://c4yqal4g3q8pn"]
 
 [ext_resource type="Script" path="res://objects/characters/obj_character_map.cs" id="1_csh0g"]
 [ext_resource type="SpriteFrames" uid="uid://brekq8pelfxn1" path="res://sprites/characters/playable/spr_jario.tres" id="2_xm5c2"]
+[ext_resource type="PackedScene" uid="uid://kgulsgabeiqm" path="res://stage/gui/obj_coinIndicator.tscn" id="3_om5hn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqjky"]
 size = Vector2(54, 84)
@@ -36,6 +37,9 @@ position = Vector2(0, 30.5)
 shape = SubResource("RectangleShape2D_myi16")
 disabled = true
 debug_color = Color(0.980392, 0, 0.392157, 0.419608)
+
+[node name="obj_coinIndicator" parent="." instance=ExtResource("3_om5hn")]
+position = Vector2(42, -42)
 
 [connection signal="body_shape_entered" from="." to="." method="BodyShapeEntered"]
 [connection signal="area_entered" from="spacehitbox" to="." method="SpaceEnter"]

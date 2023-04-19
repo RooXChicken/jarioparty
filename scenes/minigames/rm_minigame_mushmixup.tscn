@@ -1,10 +1,13 @@
-[gd_scene load_steps=25 format=3]
+[gd_scene load_steps=28 format=3 uid="uid://bg7pi6ra6fsw0"]
 
 [ext_resource type="PackedScene" uid="uid://vi01pdjd8l3f" path="res://objects/characters/obj_character_parent.tscn" id="1_cvchi"]
+[ext_resource type="Script" path="res://objects/rooms/minigames/mushmixup/rm_minigame_mushmixup.cs" id="1_gc22k"]
+[ext_resource type="PackedScene" uid="uid://c0dcx3n08yddt" path="res://scenes/minigames/obj_minigameBase.tscn" id="2_acbce"]
 [ext_resource type="Texture2D" uid="uid://k7rpt1tk8drl" path="res://sprites/box.png" id="2_nch8o"]
 [ext_resource type="PackedScene" uid="uid://bck7c8xfyfh01" path="res://objects/rooms/minigames/mushmixup/obj_mushmixup_frog.tscn" id="3_ijl2r"]
 [ext_resource type="PackedScene" uid="uid://bq6ipgec6blq5" path="res://objects/rooms/minigames/mushmixup/obj_mushmixup_mushroom.tscn" id="4_say3h"]
 [ext_resource type="Texture2D" uid="uid://xbucelivuin1" path="res://sprites/rooms/minigames/rm_minigame_mushmixup/spr_bg.png" id="5_5knd8"]
+[ext_resource type="PackedScene" uid="uid://b43oe3831x1i" path="res://objects/rooms/minigames/mushmixup/obj_jumpbar.tscn" id="6_163ms"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3wjb"]
 atlas = ExtResource("5_5knd8")
@@ -137,6 +140,9 @@ animations = [{
 size = Vector2(255.133, 189.861)
 
 [node name="rm_minigame_mushmixup" type="Node2D"]
+script = ExtResource("1_gc22k")
+
+[node name="obj_minigameBase" parent="." instance=ExtResource("2_acbce")]
 
 [node name="obj_minigame_mushmixup_frog" parent="." instance=ExtResource("3_ijl2r")]
 z_index = 5
@@ -187,11 +193,15 @@ position = Vector2(455, 451)
 metadata/Player = 3
 metadata/State = 1
 
+[node name="obj_jumpbar" parent="players/obj_character_parent1" instance=ExtResource("6_163ms")]
+
 [node name="obj_character_parent2" parent="players" instance=ExtResource("1_cvchi")]
 z_index = 5
 position = Vector2(457, 240)
 metadata/Player = 1
 metadata/State = 1
+
+[node name="obj_jumpbar" parent="players/obj_character_parent2" instance=ExtResource("6_163ms")]
 
 [node name="obj_character_parent3" parent="players" instance=ExtResource("1_cvchi")]
 z_index = 5
@@ -199,11 +209,15 @@ position = Vector2(831, 447)
 metadata/Player = 4
 metadata/State = 1
 
+[node name="obj_jumpbar" parent="players/obj_character_parent3" instance=ExtResource("6_163ms")]
+
 [node name="obj_character_parent4" parent="players" instance=ExtResource("1_cvchi")]
 z_index = 5
 position = Vector2(828, 242)
 metadata/Player = 2
 metadata/State = 1
+
+[node name="obj_jumpbar" parent="players/obj_character_parent4" instance=ExtResource("6_163ms")]
 
 [node name="obj_bg" type="AnimatedSprite2D" parent="."]
 position = Vector2(640, 360)

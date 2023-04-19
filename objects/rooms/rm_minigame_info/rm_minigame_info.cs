@@ -5,17 +5,28 @@ public partial class rm_minigame_info : Node2D
 {
 	private AnimationPlayer anim_whackitu;
 	private Node2D spr_whackitu;
+	private RichTextLabel obj_text;
 	private bool itemWindowShown = false;
-	Alarm t_music;
+	private string nextMinigame;
+	private Alarm t_music;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		int minigame = ((GameManager)GetNode("/root/GameManager")).CurrentMinigame;
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/rooms/minigames/mus_playMinigamesIntro.wav", "mus_playMinigamesIntro");
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/rooms/minigames/snd_itemPickerMove.wav", "itemPickerMove");
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/rooms/minigames/mus_playMinigames.wav", "mus_playMinigames");
 		anim_whackitu = GetNode<AnimationPlayer>("anim_whackitu");
+		obj_text = GetNode<RichTextLabel>("obj_text");
+		obj_text.Text = ((GameManager)GetNode("/root/GameManager")).minigameLookup[minigame].Description;
+		nextMinigame = "rm_minigame_" + ((GameManager)GetNode("/root/GameManager")).minigameLookup[minigame].Name.ToString().ToLower();
 		spr_whackitu = GetNode<Sprite2D>("spr_itemWindow");
 		spr_whackitu.Visible = false;
+
+		for(int i = 0; i < ((GameManager)GetNode("/root/GameManager")).minigameLookup[minigame].ButtonIndexs.Length; i++)
+		{
+			GetNode<Node2D>("Buttons").AddChild(((GameManager)GetNode("/root/GameManager")).minigameLookup[minigame].Buttons[i]);
+		}
 
 		((AudioController)GetNode("/root/AudioController")).PlaySound("mus_playMinigamesIntro");
 
@@ -27,6 +38,8 @@ public partial class rm_minigame_info : Node2D
 	{
 		if(!itemWindowShown && Input.IsActionJustPressed("jump1"))
 			ShowItemWindow();
+		if(itemWindowShown && Input.IsActionJustPressed("pause1"))
+			((GameManager)GetNode("/root/GameManager")).SwitchScene("minigames/" + nextMinigame);
 	}
 
 	private void ShowItemWindow()

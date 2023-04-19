@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://faxrqppb6hvx"]
+
+[ext_resource type="SpriteFrames" uid="uid://brekq8pelfxn1" path="res://sprites/characters/playable/spr_jario.tres" id="1_1frxq"]
+[ext_resource type="Script" path="res://objects/characters/obj_character_info.cs" id="1_sntro"]
+
+[node name="obj_character_info" type="Node2D"]
+script = ExtResource("1_sntro")
+metadata/Player = 0
+
+[node name="obj_sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("1_1frxq")
+animation = &"idle"

@@ -79,17 +79,17 @@ region = Rect2(96, 0, 32, 32)
 atlas = ExtResource("5_v5qtp")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7o17s"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhx1k"]
 atlas = ExtResource("5_v5qtp")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ex4l"]
 atlas = ExtResource("5_v5qtp")
 region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fhx1k"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7o17s"]
 atlas = ExtResource("5_v5qtp")
-region = Rect2(32, 32, 32, 32)
+region = Rect2(32, 0, 32, 32)
 
 [resource]
 animations = [{
@@ -174,13 +174,13 @@ animations = [{
 "texture": SubResource("AtlasTexture_4ein3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7o17s")
+"texture": SubResource("AtlasTexture_fhx1k")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8ex4l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fhx1k")
+"texture": SubResource("AtlasTexture_7o17s")
 }],
 "loop": true,
 "name": &"walkUp",

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvgvubdcyo31o"
-path="res://.godot/imported/spr_stickR.png-6854b8f94766d71388be3e545d98975d.ctex"
+uid="uid://scgcdmcetb1d"
+path="res://.godot/imported/spr_buttonB.png-a3302461dc4eb90f9824aa849352d0da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/gui/controls/spr_stickR.png"
-dest_files=["res://.godot/imported/spr_stickR.png-6854b8f94766d71388be3e545d98975d.ctex"]
+source_file="res://sprites/gui/controls/sprites/spr_buttonB.png"
+dest_files=["res://.godot/imported/spr_buttonB.png-a3302461dc4eb90f9824aa849352d0da.ctex"]
 
 [params]
 

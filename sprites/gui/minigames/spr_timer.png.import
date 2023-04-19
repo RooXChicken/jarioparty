@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjyth7he8q6ou"
-path="res://.godot/imported/spr_buttonY.png-d83dbfb7e490a9450507aaff3a7c48ab.ctex"
+uid="uid://31lplodmdapj"
+path="res://.godot/imported/spr_timer.png-f4fcbf78b28e0df300cf944da4b604bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/gui/controls/spr_buttonY.png"
-dest_files=["res://.godot/imported/spr_buttonY.png-d83dbfb7e490a9450507aaff3a7c48ab.ctex"]
+source_file="res://sprites/gui/minigames/spr_timer.png"
+dest_files=["res://.godot/imported/spr_timer.png-f4fcbf78b28e0df300cf944da4b604bd.ctex"]
 
 [params]
 

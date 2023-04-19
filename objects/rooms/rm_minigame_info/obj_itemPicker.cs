@@ -15,6 +15,8 @@ public partial class obj_itemPicker : Node2D
 	private Vector2 item3Def;
 
 	private AnimationPlayer anim_icons;
+	private AnimationPlayer anim_whackitu;
+	private bool transitioning = false;
 	private Sprite2D spr_ready;
 	private int inc = 0;
 
@@ -47,6 +49,7 @@ public partial class obj_itemPicker : Node2D
 		item3Def = spr_item3.Position;
 
 		anim_icons = GetNode<AnimationPlayer>("anim_icons");
+		anim_whackitu = GetNode<AnimationPlayer>("../../anim_whackitu");
 
 		Variant _Player = GetMeta("Player");
 		player = _Player.As<byte>();
@@ -63,7 +66,7 @@ public partial class obj_itemPicker : Node2D
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
-	{
+	{				
 		GetControllerInput();
 
 		if(!ready && joyvaxis > 0 && anim_icons.CurrentAnimation == "")
@@ -79,6 +82,12 @@ public partial class obj_itemPicker : Node2D
 		
 		joyhaxis = Input.GetAxis("left" + controllerIndex, "right" + controllerIndex);
 		joyvaxis = Input.GetAxis("up" + controllerIndex, "down" + controllerIndex);
+
+		if(!anim_whackitu.IsPlaying() && Input.IsActionJustPressed("pause" + controllerIndex))
+		{
+			anim_whackitu.Play("transition");
+			transitioning = true;
+		}
 
 		if(Input.IsActionJustPressed("jump" + controllerIndex))
 		{

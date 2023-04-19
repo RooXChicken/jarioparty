@@ -151,8 +151,8 @@ public partial class obj_playerSelect : Node2D
 			GD.Print(i + " loaded");
 		}
 
-		((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_map");
-		//((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_minigame_info");
+		//((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_map");
+		((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_minigame_info");
 	}
 
 	private void ChangeIndex(short val)

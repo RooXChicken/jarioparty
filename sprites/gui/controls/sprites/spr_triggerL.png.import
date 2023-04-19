@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://scgcdmcetb1d"
-path="res://.godot/imported/spr_buttonB.png-05c7b82b625830730feac5a05ce7bca2.ctex"
+uid="uid://6nnvx2obajrh"
+path="res://.godot/imported/spr_triggerL.png-649f2485086457c4fd57d6e4100ee721.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/gui/controls/spr_buttonB.png"
-dest_files=["res://.godot/imported/spr_buttonB.png-05c7b82b625830730feac5a05ce7bca2.ctex"]
+source_file="res://sprites/gui/controls/sprites/spr_triggerL.png"
+dest_files=["res://.godot/imported/spr_triggerL.png-649f2485086457c4fd57d6e4100ee721.ctex"]
 
 [params]
 

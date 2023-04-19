@@ -9,13 +9,22 @@ public partial class GameManager : Node
 	public short playerCount = 1;
 
 	public int controllersConnected = 0;
+	public int CurrentMinigame = 1;
 
 	public PlayerData[] playerData = new PlayerData[4];
 	public ItemBase[] itemLookup = new ItemBase[]
 		{
 			new ItemBase(0, 7), new ItemBase(1, 4), new ItemBase(2, 9)
 		};
+	public MinigameBase[] minigameLookup = new MinigameBase[]
+		{
+			new MinigameBase(0, "TestMiniGame", "YOU SHOULD NOT SEE THIS"),
+			new MinigameBase(1, "MushMixUp", "There are 7 mushrooms, but be careful!\nFrog will wave his flag and you must stay on the mushroom of the same color, as the others will fall!\n     - Move (Navigate mushrooms!)\n     - Jump (Save yourself!)\n     - Attack (Push players!)",
+			new int[] {8, 1, 3})
+		};
 	public Random rand = new Random();
+
+	public bool Fullscreen = false;
 	
 	private bool DebugMode = true;
 	private string lastScene = "";
@@ -34,6 +43,16 @@ public partial class GameManager : Node
 		if(Input.IsActionJustPressed("DB_restartroom"))
 		{
 			SwitchScene(currentScene);
+		}
+
+		if(Input.IsActionJustPressed("fullscreen"))
+		{
+			if(Fullscreen)
+				DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
+			else
+				DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+
+			Fullscreen = !Fullscreen;
 		}
 	}
 

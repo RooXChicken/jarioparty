@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://h2wjapqoudhp"]
+
+[ext_resource type="Texture2D" uid="uid://bddo21xbtahra" path="res://sprites/gui/controls/sprites/spr_dPad.png" id="1_dtt4h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qb2r"]
+atlas = ExtResource("1_dtt4h")
+region = Rect2(0, 0, 180, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gostx"]
+atlas = ExtResource("1_dtt4h")
+region = Rect2(180, 0, 180, 180)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qb2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gostx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]

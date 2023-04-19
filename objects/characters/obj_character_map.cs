@@ -135,26 +135,28 @@ public partial class obj_character_map : RigidBody2D
 		{
 			case "spc_bl":
 				((GameManager)GetNode("/root/GameManager")).playerData[Player].coins += 3;
+				GetNode<obj_coinIndicator>("obj_coinIndicator/Indicator").PlayAnimation(3);
 				((ShaderMaterial)GetNode<Sprite2D>("../../../../obj_mapGUI/obj_wallet" + walletID + "/spr_wallet/spr_walletColor").Material).SetShaderParameter("walletColor", new Vector3(0.2f, 0.2f, 1));
 				break;
 			case "spc_re":
 				((GameManager)GetNode("/root/GameManager")).playerData[Player].coins -= 3;
+				GetNode<obj_coinIndicator>("obj_coinIndicator/Indicator").PlayAnimation(-3);
 				((ShaderMaterial)GetNode<Sprite2D>("../../../../obj_mapGUI/obj_wallet" + walletID + "/spr_wallet/spr_walletColor").Material).SetShaderParameter("walletColor", new Vector3(1f, 0.2f, 0.2f));
 				break;
 			case "spc_br":
-				((GameManager)GetNode("/root/GameManager")).playerData[Player].coins += 3;
+			
 				break;
 			case "spc_ch":
-				((GameManager)GetNode("/root/GameManager")).playerData[Player].coins += 3;
+				
 				break;
 			case "spc_ev":
-				((GameManager)GetNode("/root/GameManager")).playerData[Player].coins += 3;
+				
 				break;
 			case "spc_it":
-				((GameManager)GetNode("/root/GameManager")).playerData[Player].coins += 3;
+				
 				break;
 			case "spc_ar":
-				((GameManager)GetNode("/root/GameManager")).playerData[Player].coins += 3;
+				
 				break;
 		}
 

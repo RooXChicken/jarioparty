@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bddo21xbtahra"
-path="res://.godot/imported/spr_dPad.png-9fa2b990d17bd8879544e3879d25eb06.ctex"
+uid="uid://n6m57po4mfi5"
+path="res://.godot/imported/spr_indicatorMinus.png-88afd6d84eb37b9c46d2a2398f0d5b38.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/gui/controls/spr_dPad.png"
-dest_files=["res://.godot/imported/spr_dPad.png-9fa2b990d17bd8879544e3879d25eb06.ctex"]
+source_file="res://stage/gui/sprites/spr_indicatorMinus.png"
+dest_files=["res://.godot/imported/spr_indicatorMinus.png-88afd6d84eb37b9c46d2a2398f0d5b38.ctex"]
 
 [params]
 
