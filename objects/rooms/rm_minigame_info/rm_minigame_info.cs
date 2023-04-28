@@ -17,6 +17,7 @@ public partial class rm_minigame_info : Node2D
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/rooms/minigames/snd_itemPickerMove.wav", "itemPickerMove");
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/rooms/minigames/mus_playMinigames.wav", "mus_playMinigames");
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/rooms/minigames/snd_start.wav", "minigameStart");
+		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/rooms/minigames/snd_transition.wav", "transition");
 
 		anim_whackitu = GetNode<AnimationPlayer>("anim_whackitu");
 		obj_text = GetNode<RichTextLabel>("obj_text");
@@ -41,7 +42,10 @@ public partial class rm_minigame_info : Node2D
 		if(!itemWindowShown && Input.IsActionJustPressed("jump1"))
 			ShowItemWindow();
 		if(itemWindowShown && Input.IsActionJustPressed("pause1") && !GetNode<AnimationPlayer>("anim_whackitu").IsPlaying())
+		{
+			((AudioController)GetNode("/root/AudioController")).PlaySound("transition");
 			GetNode<AnimationPlayer>("anim_whackitu").Play("transition");
+		}
 	}
 
 	private void ShowItemWindow()

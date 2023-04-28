@@ -61,7 +61,7 @@ public partial class obj_logo : Sprite2D
 
 	private void _HandleGUIInput()
 	{
-		if(!obj_transition.Visible && Input.IsActionJustPressed("pause1"))
+		if(!obj_transition.Visible && Input.IsActionJustPressed("jump1"))
 		{
 			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_titleScreenSelect");
 			obj_transition.Visible = true;

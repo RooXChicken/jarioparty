@@ -8,6 +8,7 @@ script = ExtResource("1_sntro")
 metadata/Player = 0
 
 [node name="obj_sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
 scale = Vector2(4, 4)
 sprite_frames = ExtResource("1_1frxq")
 animation = &"idle"

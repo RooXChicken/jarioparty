@@ -47,7 +47,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_shdu4"]
@@ -64,6 +64,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("obj_start:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_0mxg4"]
@@ -121,34 +133,22 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Win/spr_characterName:position")
+tracks/1/path = NodePath("Win/spr_wins:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(640, 324)]
+"values": [Vector2(0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Win/spr_wins:scale")
+tracks/2/path = NodePath("Win/spr_miss:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Win/spr_miss:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -198,18 +198,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(2, 2)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Win/spr_characterName:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.5, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(640, 324), Vector2(420, 324)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rlpau"]
 _data = {
@@ -223,12 +211,11 @@ z_index = 6
 metadata/Minigame = 0
 
 [node name="spr_timer" type="AnimatedSprite2D" parent="."]
-visible = false
 z_index = 2
 position = Vector2(640, 56)
 scale = Vector2(1.6, 1.6)
 sprite_frames = ExtResource("1_fmqbb")
-frame_progress = 0.348647
+frame_progress = 0.283672
 
 [node name="obj_text" type="RichTextLabel" parent="spr_timer"]
 offset_left = 2.75
@@ -241,7 +228,7 @@ text = "60"
 script = ExtResource("3_6cto0")
 
 [node name="obj_start" type="Sprite2D" parent="."]
-z_index = 2
+z_index = 9
 position = Vector2(640, 320)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("4_phqv6")
@@ -256,20 +243,20 @@ libraries = {
 script = ExtResource("6_ohh8m")
 
 [node name="spr_characterName" type="Sprite2D" parent="Win"]
-z_index = 6
-position = Vector2(640, 324)
+z_index = 9
+position = Vector2(640, 304)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("6_qcpmq")
 
 [node name="spr_wins" type="Sprite2D" parent="Win"]
-z_index = 6
+z_index = 9
 material = SubResource("ShaderMaterial_n43ov")
 position = Vector2(894, 324)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("8_pds34")
 
 [node name="spr_miss" type="Sprite2D" parent="Win"]
-z_index = 6
+z_index = 9
 position = Vector2(640, 324)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("7_2mu2p")

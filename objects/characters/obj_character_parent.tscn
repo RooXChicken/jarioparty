@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://vi01pdjd8l3f"]
+[gd_scene load_steps=6 format=3 uid="uid://vi01pdjd8l3f"]
 
 [ext_resource type="Script" path="res://objects/characters/obj_character_parent.cs" id="1_y278h"]
-[ext_resource type="SpriteFrames" uid="uid://lh0vq8p7oajg" path="res://sprites/characters/playable/spr_jario.tres" id="2_1bdto"]
+[ext_resource type="SpriteFrames" uid="uid://brekq8pelfxn1" path="res://sprites/characters/playable/spr_jario.tres" id="2_ldhjv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_km6qn"]
+friction = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c5nfd"]
 size = Vector2(50, 17)
@@ -10,6 +13,8 @@ size = Vector2(50, 17)
 size = Vector2(13.5, 21)
 
 [node name="obj_rigidbody" type="RigidBody2D"]
+mass = 2.4
+physics_material_override = SubResource("PhysicsMaterial_km6qn")
 gravity_scale = 0.0
 continuous_cd = 2
 can_sleep = false
@@ -18,14 +23,16 @@ linear_damp = 25.0
 script = ExtResource("1_y278h")
 
 [node name="obj_sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -6)
 scale = Vector2(3, 3)
-sprite_frames = ExtResource("2_1bdto")
+sprite_frames = ExtResource("2_ldhjv")
 animation = &"idle"
 
 [node name="obj_feetArea" type="Area2D" parent="."]
 z_index = 1
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
+monitoring = false
 
 [node name="obj_feet" type="CollisionShape2D" parent="obj_feetArea"]
 position = Vector2(0, 33.5)

@@ -20,7 +20,7 @@ public partial class obj_frog : AnimatedSprite2D
 		Play("default");
 		dialogue = new string[16];
 		dialogue[0] = "Before your adventure begins, I am going to need to know some basic information";
-		dialogue[1] = "how many people are playing on this fine evening.";
+		dialogue[1] = "how many people are playing on this fine evening";
 		dialogue[2] = "1-player game\n1 Player vs. 3 CPU";
 		dialogue[3] = "2-player game\n2 Players vs. 2 CPU";
 		dialogue[4] = "3-player game\n3 Players vs. 1 CPU";

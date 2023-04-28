@@ -2,8 +2,10 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class MinigameBase : Node
+public partial class MinigameBase
 {
+	public List<string> Abilities;
+
 	public int MinigameIndex;
 	public string MinigameName;
 	public string Description;
@@ -12,12 +14,13 @@ public partial class MinigameBase : Node
 	public Node2D[] Buttons;
 	public int[] ButtonIndexs;
 
-	public MinigameBase(int _MinigameIndex, string _MinigameName, string _Description, string _Music = "", int _MinigameTime = 60, int[] _ButtonIndexs = null)
+	public MinigameBase(int _MinigameIndex, string _MinigameName, string _Description, List<string> _Abilities, string _Music = "", int _MinigameTime = 60, int[] _ButtonIndexs = null)
 	{
 		MinigameIndex = _MinigameIndex;
 
 		MinigameName = _MinigameName;
 		Description = _Description;
+		Abilities = _Abilities;
 		Music = _Music;
 
 		MinigameTime = _MinigameTime;
@@ -37,5 +40,5 @@ public partial class MinigameBase : Node
 		}
 	}
 
-	public MinigameBase(MinigameBase _Clone) : this(_Clone.MinigameIndex, _Clone.MinigameName, _Clone.Description, _Clone.Music, _Clone.MinigameTime, _Clone.ButtonIndexs) {}
+	public MinigameBase(MinigameBase _Clone) : this(_Clone.MinigameIndex, _Clone.MinigameName, _Clone.Description, _Clone.Abilities, _Clone.Music, _Clone.MinigameTime, _Clone.ButtonIndexs) {}
 }

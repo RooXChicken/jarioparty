@@ -46,8 +46,9 @@ public partial class obj_character_map : RigidBody2D
 		follower = GetNode<PathFollow2D>("../../pf_0" + (Player + 1));
 		sprite.SpriteFrames = playerData.animationFrames;
 		
-		//controllerIndex = playerData.controllerIndex;
-		controllerIndex = 1;
+		controllerIndex = playerData.controllerIndex;
+		if(controllerIndex == -1)
+			controllerIndex = 1;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -23,11 +23,20 @@ public partial class obj_timerText : RichTextLabel
 
 	private void FrameChanged()
 	{
+		if(!((GameManager)GetNode("/root/GameManager")).MinigameStarted)
+		{
+			GetNode<AnimatedSprite2D>("../").Stop();
+		}
+
 		Vector2 newPos;
 		switch(GetNode<AnimatedSprite2D>("../").Frame)
 		{
 			case 0:
 				Time--;
+				if(Time < 20 && GetNode<AnimatedSprite2D>("../").Animation != "lowTime")
+					GetNode<AnimatedSprite2D>("../").Play("lowTime");
+				if(Time <= 0)
+					GetNode<obj_mushmixup_frog>("../../../obj_mushmixup_frog").EndMiniGame();
 				newPos = new Vector2(x, -9.5f);
 				break;
 			case 1:

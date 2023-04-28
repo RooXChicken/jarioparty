@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ooammgcvonrc"
-path="res://.godot/imported/anim_jarioRunRight.png-4cb90afdb54cf976ce372c0308b78f2f.ctex"
+uid="uid://p2bf473fk46t"
+path="res://.godot/imported/anim_jarioFace.png-92a78172cbc4324f2cf0d144a3f0a3a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/characters/playable/jario/anim_jarioRunRight.png"
-dest_files=["res://.godot/imported/anim_jarioRunRight.png-4cb90afdb54cf976ce372c0308b78f2f.ctex"]
+source_file="res://sprites/characters/playable/jario/anim_jarioFace.png"
+dest_files=["res://.godot/imported/anim_jarioFace.png-92a78172cbc4324f2cf0d144a3f0a3a1.ctex"]
 
 [params]
 

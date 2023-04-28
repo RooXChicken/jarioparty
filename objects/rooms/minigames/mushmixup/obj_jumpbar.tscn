@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b43oe3831x1i"]
+[gd_scene load_steps=6 format=3 uid="uid://b43oe3831x1i"]
 
 [ext_resource type="Shader" path="res://shaders/shd_jumpbar.gdshader" id="1_d5lpb"]
+[ext_resource type="Script" path="res://objects/rooms/minigames/mushmixup/obj_jumpbar.cs" id="1_ggqau"]
 [ext_resource type="Texture2D" uid="uid://fec3u7ek6gva" path="res://sprites/gui/minigames/mushmixup/spr_jumpOutline.png" id="1_y2kms"]
 [ext_resource type="Texture2D" uid="uid://b45msyeeyhd4d" path="res://sprites/gui/minigames/mushmixup/spr_jumpBar.png" id="3_ln0nj"]
 
@@ -11,11 +12,16 @@ shader_parameter/size = 1.0
 [node name="obj_jumpbar" type="Node2D"]
 position = Vector2(46, 0)
 scale = Vector2(1.6, 1.6)
+script = ExtResource("1_ggqau")
+metadata/Min = 10.0
+metadata/Max = 100.0
+metadata/RefillRate = 20.0
 
 [node name="spr_outline" type="Sprite2D" parent="."]
+z_index = 7
 texture = ExtResource("1_y2kms")
 
 [node name="spr_bar" type="Sprite2D" parent="."]
-z_index = -1
+z_index = 6
 material = SubResource("ShaderMaterial_1x021")
 texture = ExtResource("3_ln0nj")

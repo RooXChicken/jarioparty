@@ -24,6 +24,8 @@ public partial class obj_character_info : Node2D
 
 		playerData = ((GameManager)GetNode("/root/GameManager")).playerData[Player];
 
+		controllerIndex = playerData.controllerIndex;
+
 		sprite = GetNode<AnimatedSprite2D>("obj_sprite");
 		sprite.SpriteFrames = playerData.animationFrames;
 	}
@@ -39,7 +41,14 @@ public partial class obj_character_info : Node2D
 	private void GetControllerInput()
 	{
 		if(controllerIndex == -1)
+		{
+			if(joyhaxis != 0 || joyvaxis != 0)
+			{
+				joyhaxis = 0;
+				joyvaxis = 0;
+			}
 			return;
+		}
 
 		joyhaxis = Input.GetAxis("left" + controllerIndex, "right" + controllerIndex);
 		joyvaxis = Input.GetAxis("up" + controllerIndex, "down" + controllerIndex);

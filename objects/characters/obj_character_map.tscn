@@ -21,9 +21,10 @@ lock_rotation = true
 script = ExtResource("1_csh0g")
 
 [node name="obj_sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -6)
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("2_xm5c2")
-animation = &"jumpUp"
+animation = &"walkUp"
 
 [node name="obj_collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_aqjky")

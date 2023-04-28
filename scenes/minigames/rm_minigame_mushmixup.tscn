@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://vi01pdjd8l3f" path="res://objects/characters/obj_character_parent.tscn" id="1_cvchi"]
 [ext_resource type="Script" path="res://objects/rooms/minigames/mushmixup/rm_minigame_mushmixup.cs" id="1_gc22k"]
-[ext_resource type="PackedScene" uid="uid://c0dcx3n08yddt" path="res://scenes/minigames/obj_minigameBase.tscn" id="2_acbce"]
+[ext_resource type="PackedScene" uid="uid://db8bcmriqbdqx" path="res://scenes/minigames/obj_minigameBase.tscn" id="2_acbce"]
 [ext_resource type="Texture2D" uid="uid://k7rpt1tk8drl" path="res://sprites/box.png" id="2_nch8o"]
 [ext_resource type="PackedScene" uid="uid://duuayvcmdqx5f" path="res://objects/rooms/minigames/mushmixup/obj_mushmixup_frog.tscn" id="3_ijl2r"]
 [ext_resource type="PackedScene" uid="uid://c1u120oaxo2er" path="res://objects/rooms/minigames/mushmixup/obj_mushmixup_mushroom.tscn" id="4_say3h"]
@@ -157,37 +157,37 @@ position = Vector2(21, 26)
 [node name="mushrooms" type="Node" parent="."]
 
 [node name="obj_mushmixup_mushroom1" parent="mushrooms" instance=ExtResource("4_say3h")]
-z_index = 1
+z_index = 2
 z_as_relative = false
 position = Vector2(640, 350)
 
 [node name="obj_mushmixup_mushroom2" parent="mushrooms" instance=ExtResource("4_say3h")]
-z_index = 1
+z_index = 2
 z_as_relative = false
 position = Vector2(640, 532)
 
 [node name="obj_mushmixup_mushroom3" parent="mushrooms" instance=ExtResource("4_say3h")]
-z_index = 1
+z_index = 2
 z_as_relative = false
 position = Vector2(806, 441)
 
 [node name="obj_mushmixup_mushroom4" parent="mushrooms" instance=ExtResource("4_say3h")]
-z_index = 1
+z_index = 2
 z_as_relative = false
 position = Vector2(806, 259)
 
 [node name="obj_mushmixup_mushroom5" parent="mushrooms" instance=ExtResource("4_say3h")]
-z_index = 1
+z_index = 2
 z_as_relative = false
 position = Vector2(640, 168)
 
 [node name="obj_mushmixup_mushroom6" parent="mushrooms" instance=ExtResource("4_say3h")]
-z_index = 1
+z_index = 2
 z_as_relative = false
 position = Vector2(474, 441)
 
 [node name="obj_mushmixup_mushroom7" parent="mushrooms" instance=ExtResource("4_say3h")]
-z_index = 1
+z_index = 2
 z_as_relative = false
 position = Vector2(474, 259)
 
@@ -228,22 +228,23 @@ metadata/State = 1
 [node name="splashes" type="Node" parent="."]
 
 [node name="obj_splash1" parent="splashes" instance=ExtResource("7_lxue6")]
-z_index = 5
+z_index = 1
 
 [node name="obj_splash2" parent="splashes" instance=ExtResource("7_lxue6")]
-z_index = 5
+z_index = 1
 
 [node name="obj_splash3" parent="splashes" instance=ExtResource("7_lxue6")]
-z_index = 5
+z_index = 1
 
 [node name="obj_splash4" parent="splashes" instance=ExtResource("7_lxue6")]
-z_index = 5
+z_index = 1
 
 [node name="obj_bg" type="AnimatedSprite2D" parent="."]
 position = Vector2(640, 360)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_havvs")
-frame_progress = 0.13344
+autoplay = "default"
+frame_progress = 0.713365
 metadata/_edit_lock_ = true
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]

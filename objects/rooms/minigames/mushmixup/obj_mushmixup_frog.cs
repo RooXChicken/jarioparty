@@ -58,6 +58,8 @@ public partial class obj_mushmixup_frog : Node2D
 			players[i - 1].scale = 3;
 		}
 
+		RandomizeAITargets();
+
 		t_goDown = new Alarm(2.5 + startDelay, true, this, new Callable(this, "ShroomsGoDown"));
 		t_goUp = new Alarm(4 + startDelay, true, this, new Callable(this, "ShroomsGoUp"), false);
 	}
@@ -87,7 +89,7 @@ public partial class obj_mushmixup_frog : Node2D
 							playerOut = false;
 					}
 
-					if(playerOut)
+					if(!players[k].jumping && playerOut)
 						playersLost = KillPlayer(k);
 				}
 				}
@@ -97,7 +99,7 @@ public partial class obj_mushmixup_frog : Node2D
 				{
 				for(int k = 0; k < 4; k++)
 				{
-					if(!players[k].Lost && !_CheckMushCollision(players[k], mush))
+					if(!players[k].jumping && !players[k].Lost && !_CheckMushCollision(players[k], mush))
 						playersLost = KillPlayer(k);
 				}
 				}
@@ -106,27 +108,32 @@ public partial class obj_mushmixup_frog : Node2D
 
 		if(playersLost)
 		{
-			int playersAlive = 0;
-			int playerIndex = 0;
-			for(int i = 0; i < 4; i++)
-			{
-				if(!players[i].Lost)
-				{
-					playerIndex = i;
-					playersAlive++;
-				}
-			}
+			EndMiniGame();
+		}
+	}
 
-			if(playersAlive < 2)
+	public void EndMiniGame(bool force = false)
+	{
+		int playersAlive = 0;
+		int playerIndex = 0;
+		for(int i = 0; i < 4; i++)
+		{
+			if(!players[i].Lost)
 			{
-				invulnerable = true;
-				t_goDown.Stop();
-				t_goUp.WaitTime = 0.5;
-				t_goUp.Start();
-				state = 3;
-				((AudioController)GetNode("/root/AudioController")).StopMusic();
-				GetNode<obj_winner>("../obj_minigameBase/Win").EndMiniGame(playersAlive, players[playerIndex].CharacterIndex);
+				playerIndex = i;
+				playersAlive++;
 			}
+		}
+
+		if(playersAlive < 2 || force)
+		{
+			invulnerable = true;
+			t_goDown.Stop();
+			t_goUp.WaitTime = 0.5;
+			t_goUp.Start();
+			state = 3;
+			((AudioController)GetNode("/root/AudioController")).StopMusic();
+			GetNode<obj_winner>("../obj_minigameBase/Win").EndMiniGame(playersAlive, players[playerIndex].CharacterIndex);
 		}
 	}
 
@@ -159,7 +166,7 @@ public partial class obj_mushmixup_frog : Node2D
 			return;
 		for(int i = 0; i < 7; i++)
 		{
-			mushrooms[i].state = 1;
+			mushrooms[i].PlayForwards(2.75f - (((float)t_goUp.WaitTime - 1.5f) / 2f));
 		}
 
 		state = 1;
@@ -167,7 +174,9 @@ public partial class obj_mushmixup_frog : Node2D
 		invulnerable = true;
 		
 		mush = mushrooms[rand.Next(0, 7)];
-		mush.state = 0;
+		mush.StopAnimation();
+		for(int i = 0; i < 4; i++)
+			players[i].aiTarget = mush.Position;
 		GetNode<obj_mushmixup_mushroom>("obj_mushmixup_mushroom").color = mush.color;
 		GetNode<AnimatedSprite2D>("obj_flag").Modulate = mush.color;
 		obj_sprite.Play("flagShown");
@@ -183,8 +192,8 @@ public partial class obj_mushmixup_frog : Node2D
 			return;
 		for(int i = 0; i < 7; i++)
 		{
-			mushrooms[i].state = 2;
-			mushrooms[i].mult += 0.02f;
+			if(mushrooms[i] != mush)
+				mushrooms[i].PlayBackwards(2.75f - (((float)t_goUp.WaitTime - 1.5f) / 2f));
 		}
 
 		obj_sprite.Play("idle");
@@ -196,5 +205,11 @@ public partial class obj_mushmixup_frog : Node2D
 		
 		t_goDown.WaitTime -= 0.1;
 		t_goDown.Start();
+	}
+
+	public void RandomizeAITargets()
+	{
+		for(int i = 0; i < 4; i++)
+			players[i].aiTarget = mushrooms[rand.Next(0, 7)].Position;
 	}
 }

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1fxp7sa32po0"]
+
+[ext_resource type="PackedScene" uid="uid://db8bcmriqbdqx" path="res://scenes/minigames/obj_minigameBase.tscn" id="1_88fdi"]
+[ext_resource type="PackedScene" uid="uid://eorh1dpsynug" path="res://objects/characters/obj_character_lookaway.tscn" id="2_cn341"]
+
+[node name="rm_minigame_lookaway" type="Node2D"]
+
+[node name="obj_minigameBase" parent="." instance=ExtResource("1_88fdi")]
+
+[node name="obj_character_lookaway" parent="." instance=ExtResource("2_cn341")]
+position = Vector2(619, 321)

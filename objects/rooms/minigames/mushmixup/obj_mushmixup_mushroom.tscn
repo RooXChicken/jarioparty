@@ -1,10 +1,96 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1u120oaxo2er"]
+[gd_scene load_steps=8 format=3 uid="uid://c1u120oaxo2er"]
 
 [ext_resource type="Script" path="res://objects/rooms/minigames/mushmixup/obj_mushmixup_mushroom.cs" id="1_ga7u3"]
 [ext_resource type="Texture2D" uid="uid://ceai1vq7hu5g3" path="res://sprites/rooms/minigames/mushmixup/spr_mushroom.png" id="1_sw4gs"]
 [ext_resource type="Texture2D" uid="uid://y0dq0wu0as42" path="res://sprites/rooms/minigames/mushmixup/spr_mushroomSpots.png" id="2_l027x"]
 
+[sub_resource type="Animation" id="Animation_311la"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.75, 1.75)]
+}
+
+[sub_resource type="Animation" id="Animation_wjyh0"]
+resource_name = "mushroom"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.75, 1.75), Vector2(1.25, 1.25)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.6],
+"method": &"SetAlpha"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_k4345"]
+resource_name = "mushroomB"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.25, 1.25), Vector2(1.75, 1.75)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [1.0],
+"method": &"SetAlpha"
+}, {
+"args": [],
+"method": &"RandomizeAI"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8jifc"]
+_data = {
+"RESET": SubResource("Animation_311la"),
+"mushroom": SubResource("Animation_wjyh0"),
+"mushroomB": SubResource("Animation_k4345")
+}
+
 [node name="obj_mushmixup_mushroom" type="Area2D"]
+self_modulate = Color(1, 1, 1, 0.919216)
 scale = Vector2(1.75, 1.75)
 collision_layer = 2
 collision_mask = 2
@@ -18,6 +104,11 @@ texture = ExtResource("2_l027x")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-34, -52, 34, -52, 61, 0, 34, 52, -34, 52, -61, 0)
+
+[node name="anim_mushroom" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8jifc")
+}
 
 [connection signal="area_entered" from="." to="." method="OnBodyEntered"]
 [connection signal="area_exited" from="." to="." method="OnBodyExit"]

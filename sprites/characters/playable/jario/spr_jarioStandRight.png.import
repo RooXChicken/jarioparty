@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dovgohjcw4h70"
-path="res://.godot/imported/anim_joshIdle.png-844fcc0a487e5b458780081b8ebd28e9.ctex"
+uid="uid://yx07o3n3k4km"
+path="res://.godot/imported/spr_jarioStandRight.png-378f5057f2e5656bf86632cbd3b79de4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/characters/playable/josh/anim_joshIdle.png"
-dest_files=["res://.godot/imported/anim_joshIdle.png-844fcc0a487e5b458780081b8ebd28e9.ctex"]
+source_file="res://sprites/characters/playable/jario/spr_jarioStandRight.png"
+dest_files=["res://.godot/imported/spr_jarioStandRight.png-378f5057f2e5656bf86632cbd3b79de4.ctex"]
 
 [params]
 

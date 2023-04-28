@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cc8b0s53uj0vb" path="res://sprites/rooms/rm_setup/spr_cloud3p.png" id="4_f8oqd"]
 [ext_resource type="Texture2D" uid="uid://dylvkjwit8qcp" path="res://sprites/rooms/rm_setup/spr_cloud4p.png" id="5_7tfs7"]
 [ext_resource type="Texture2D" uid="uid://nhdn3jdrgunw" path="res://sprites/rooms/rm_setup/spr_gui_hand_select.png" id="6_ueme0"]
-[ext_resource type="Texture2D" uid="uid://ooammgcvonrc" path="res://sprites/characters/playable/jario/anim_jarioEmote01.png" id="7_onxgo"]
+[ext_resource type="Texture2D" uid="uid://ooammgcvonrc" path="res://sprites/characters/playable/jario/anim_jarioRunRight.png" id="7_onxgo"]
 [ext_resource type="Texture2D" uid="uid://00tob5mahp2w" path="res://sprites/characters/playable/jario/anim_jarioWalkFront.png" id="8_2ekvb"]
 [ext_resource type="Script" path="res://objects/rooms/rm_setup/obj_bob.cs" id="9_485ex"]
 [ext_resource type="Texture2D" uid="uid://dtsb2arume5jg" path="res://sprites/characters/playable/josh/anim_joshEmote01.png" id="9_570v7"]
@@ -70,9 +70,9 @@ region = Rect2(192, 0, 32, 32)
 atlas = ExtResource("7_onxgo")
 region = Rect2(224, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0qpga"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_prg5b"]
 atlas = ExtResource("8_2ekvb")
-region = Rect2(0, 32, 32, 32)
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1aj0h"]
 animations = [{
@@ -107,7 +107,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0qpga")
+"texture": SubResource("AtlasTexture_prg5b")
 }],
 "loop": true,
 "name": &"idle",
@@ -320,8 +320,6 @@ position = Vector2(0, -220)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_1aj0h")
 animation = &"dance"
-frame = 7
-frame_progress = 0.995386
 script = ExtResource("9_485ex")
 
 [node name="spr_character_wooigi" type="AnimatedSprite2D" parent="."]
@@ -329,7 +327,6 @@ position = Vector2(100, -220)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_oohdl")
 animation = &"dance"
-frame_progress = 0.677092
 script = ExtResource("9_485ex")
 
 [node name="spr_character_grape" type="AnimatedSprite2D" parent="."]

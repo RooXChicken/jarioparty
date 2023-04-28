@@ -9,7 +9,7 @@ public partial class GameManager : Node
 	public short playerCount = 1;
 
 	public int controllersConnected = 0;
-	public int CurrentMinigame = 1;
+	public int CurrentMinigame = 2;
 	public bool MinigameStarted = false;
 
 	public PlayerData[] playerData = new PlayerData[4];
@@ -19,9 +19,11 @@ public partial class GameManager : Node
 		};
 	public MinigameBase[] minigameLookup = new MinigameBase[]
 		{
-			new MinigameBase(0, "testminigame", "YOU SHOULD NOT SEE THIS"),
+			new MinigameBase(0, "testminigame", "YOU SHOULD NOT SEE THIS", new List<string>()),
 			new MinigameBase(1, "mushmixup", "There are 7 mushrooms, but be careful!\nFrog will wave his flag and you must stay on the mushroom of the same color, as the others will fall!\n     - Move (Navigate mushrooms!)\n     - Jump (Save yourself!)\n     - Attack (Push players!)",
-			"mus_minigame_savingcourage", 60, new int[] {8, 1, 3})
+				new List<string>() {"move", "jump", "jump_bar", "punch"}, "mus_minigame_savingcourage", 60, new int[] {8, 1, 3}),
+			new MinigameBase(2, "lookaway", "When the music drops, look away from the top player!",
+				new List<string>() {"move"}, "mus_minigame_savingcourage", 0, new int[] {8})
 		};
 	public Random rand = new Random();
 
