@@ -1,10 +1,31 @@
-[gd_resource type="SpriteFrames" load_steps=35 format=3 uid="uid://dxbv2eqvlcvn1"]
+[gd_resource type="SpriteFrames" load_steps=41 format=3 uid="uid://dxbv2eqvlcvn1"]
 
 [ext_resource type="Texture2D" uid="uid://o1jtv0ljqjgh" path="res://sprites/characters/playable/wooigi/anim_wooigiWalkFront.png" id="1_ee4ii"]
+[ext_resource type="Texture2D" uid="uid://wata5houkfqd" path="res://sprites/characters/playable/wooigi/anim_wooigiFace.png" id="1_weugy"]
 [ext_resource type="Texture2D" uid="uid://21bvedwk0ak4" path="res://sprites/characters/playable/wooigi/anim_wooigiWalkBack.png" id="2_g5oxy"]
 [ext_resource type="Texture2D" uid="uid://dud3yqhjxpyhn" path="res://sprites/characters/playable/wooigi/anim_wooigiWalkRight.png" id="2_n127n"]
 [ext_resource type="Texture2D" uid="uid://cpjfhfrs1cmcg" path="res://sprites/characters/playable/wooigi/anim_wooigiIdle.png" id="2_qkkaf"]
 [ext_resource type="Texture2D" uid="uid://c4cj17ap5vx5e" path="res://sprites/characters/playable/wooigi/anim_wooigiJumpFront.png" id="2_qrfp0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51fcc"]
+atlas = ExtResource("1_weugy")
+region = Rect2(0, 0, 76, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2trv"]
+atlas = ExtResource("1_weugy")
+region = Rect2(76, 0, 76, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fykdm"]
+atlas = ExtResource("1_weugy")
+region = Rect2(152, 0, 76, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7qg2"]
+atlas = ExtResource("1_weugy")
+region = Rect2(228, 0, 76, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vivqk"]
+atlas = ExtResource("1_weugy")
+region = Rect2(304, 0, 76, 76)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_70dj8"]
 atlas = ExtResource("1_ee4ii")
@@ -124,6 +145,26 @@ region = Rect2(32, 32, 32, 32)
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51fcc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2trv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fykdm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7qg2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vivqk")
+}],
+"loop": true,
+"name": &"face",
+"speed": 0.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_70dj8")

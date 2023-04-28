@@ -28,7 +28,7 @@ public partial class obj_character_lookaway : Node2D
 		sprite.SpriteFrames = playerData.animationFrames;
 		
 		controllerIndex = playerData.controllerIndex;
-		t_cooldown = new Alarm(0.2, true, this, new Callable(this, "ResetCooldown"), false);
+		t_cooldown = new Alarm(0.5, true, this, new Callable(this, "ResetCooldown"), false);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -57,34 +57,40 @@ public partial class obj_character_lookaway : Node2D
 		if(cooldown)
 			return;
 		
-		if(-joyhaxis > joyvaxis && -joyhaxis > -joyvaxis)
+		if(-joyhaxis > joyvaxis && -joyhaxis > -joyvaxis && facing != 1)
 		{
 			facing = 1;
 			t_cooldown.Start();
+			cooldown = true;
 		}
-		if(joyhaxis > joyvaxis && joyhaxis > -joyvaxis)
+		if(joyhaxis > joyvaxis && joyhaxis > -joyvaxis && facing != 2)
 		{
 			facing = 2;
 			t_cooldown.Start();
+			cooldown = true;
 		}
-		else if(-joyvaxis > joyhaxis && -joyvaxis > -joyhaxis)
+		else if(-joyvaxis > joyhaxis && -joyvaxis > -joyhaxis && facing != 4)
 		{
 			facing = 4;
 			t_cooldown.Start();
+			cooldown = true;
 		}
-		else if(joyvaxis > joyhaxis && joyvaxis > -joyhaxis)
+		else if(joyvaxis > joyhaxis && joyvaxis > -joyhaxis && facing != 3)
 		{
 			facing = 3;
 			t_cooldown.Start();
+			cooldown = true;
 		}
 	}
 
 	public void ResetCooldown()
 	{
 		cooldown = false;
-		if(joyhaxis == 0 && joyvaxis == 0)
+		if(joyhaxis == 0 && joyvaxis == 0 && facing != 0)
 		{
 			facing = 0;
+			t_cooldown.Start();
+			cooldown = true;
 		}
 	}
 }

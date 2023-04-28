@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1fxp7sa32po0"]
+[gd_scene load_steps=4 format=3 uid="uid://d1fxp7sa32po0"]
 
 [ext_resource type="PackedScene" uid="uid://db8bcmriqbdqx" path="res://scenes/minigames/obj_minigameBase.tscn" id="1_88fdi"]
+[ext_resource type="Script" path="res://objects/rooms/minigames/lookaway/rm_minigame_lookaway.cs" id="1_cons0"]
 [ext_resource type="PackedScene" uid="uid://eorh1dpsynug" path="res://objects/characters/obj_character_lookaway.tscn" id="2_cn341"]
 
 [node name="rm_minigame_lookaway" type="Node2D"]
+script = ExtResource("1_cons0")
 
 [node name="obj_minigameBase" parent="." instance=ExtResource("1_88fdi")]
+metadata/Minigame = 2
 
 [node name="obj_character_lookaway" parent="." instance=ExtResource("2_cn341")]
 position = Vector2(619, 321)

@@ -24,6 +24,9 @@ public partial class AudioController : Node2D
 
 	public void PreLoad(string path, string name = "")
 	{
+		if(path == "")
+			return;
+			
 		if(loadedSounds.ContainsKey(path) || loadedSounds.ContainsKey(name))
 			return;
 			
@@ -36,6 +39,9 @@ public partial class AudioController : Node2D
 
 	public void PlaySound(string path, bool loop = false)
 	{
+		if(path == "")
+			return;
+
 		int index = 1;
 		while(pool[index].Playing)
 			index++;
@@ -55,6 +61,9 @@ public partial class AudioController : Node2D
 
 	public void PlayMusic(string path)
 	{
+		if(path == "")
+			return;
+		
 		if(!loadedSounds.ContainsKey(path))
 			loadedSounds.Add(path, GD.Load<AudioStream>(path));
 
@@ -64,6 +73,9 @@ public partial class AudioController : Node2D
 	
 	public bool StopSound(string path)
 	{
+		if(path == "")
+			return false;
+		
 		pool[playingSoundIndex[path]].Stop();
 		return playingSoundIndex.Remove(path);
 	}

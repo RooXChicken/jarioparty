@@ -6,6 +6,8 @@ public partial class obj_timerText : RichTextLabel
 	public int Time = 60;
 	private float x = 2.75f;
 
+	public Callable onEnd;
+
 	public override void _Ready()
 	{
 		((GameManager)GetNode("/root/GameManager")).MinigameStarted = false;
@@ -17,6 +19,13 @@ public partial class obj_timerText : RichTextLabel
 
 	private void TimerStart()
 	{
+		GD.Print("Time:" + Time);
+		if(Time < 0)
+		{
+			GetNode<AnimatedSprite2D>("../").Stop();
+			GetNode<AnimatedSprite2D>("../").Visible = false;
+		}
+		
 		if(GetNode<AnimatedSprite2D>("../").Visible)
 			GetNode<AnimatedSprite2D>("../").Play();
 	}
@@ -36,7 +45,7 @@ public partial class obj_timerText : RichTextLabel
 				if(Time < 20 && GetNode<AnimatedSprite2D>("../").Animation != "lowTime")
 					GetNode<AnimatedSprite2D>("../").Play("lowTime");
 				if(Time <= 0)
-					GetNode<obj_mushmixup_frog>("../../../obj_mushmixup_frog").EndMiniGame();
+					onEnd.Call();
 				newPos = new Vector2(x, -9.5f);
 				break;
 			case 1:

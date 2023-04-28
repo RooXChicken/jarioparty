@@ -23,7 +23,7 @@ public partial class GameManager : Node
 			new MinigameBase(1, "mushmixup", "There are 7 mushrooms, but be careful!\nFrog will wave his flag and you must stay on the mushroom of the same color, as the others will fall!\n     - Move (Navigate mushrooms!)\n     - Jump (Save yourself!)\n     - Attack (Push players!)",
 				new List<string>() {"move", "jump", "jump_bar", "punch"}, "mus_minigame_savingcourage", 60, new int[] {8, 1, 3}),
 			new MinigameBase(2, "lookaway", "When the music drops, look away from the top player!",
-				new List<string>() {"move"}, "mus_minigame_savingcourage", 0, new int[] {8})
+				new List<string>() {"move"}, "mus_minigame_lookaway", -1, new int[] {8})
 		};
 	public Random rand = new Random();
 

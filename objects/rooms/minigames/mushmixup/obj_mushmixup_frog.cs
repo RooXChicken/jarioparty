@@ -58,6 +58,9 @@ public partial class obj_mushmixup_frog : Node2D
 			players[i - 1].scale = 3;
 		}
 
+		GetNode<obj_start>("../obj_minigameBase/obj_start").onStart = new Callable(this, "StartMinigame");
+		GetNode<obj_timerText>("../obj_minigameBase/spr_timer/obj_text").onEnd = new Callable(this, "EndMiniGame");
+
 		RandomizeAITargets();
 
 		t_goDown = new Alarm(2.5 + startDelay, true, this, new Callable(this, "ShroomsGoDown"));
@@ -145,6 +148,12 @@ public partial class obj_mushmixup_frog : Node2D
 		players[player].Position = new Vector2(1000000, 0);
 
 		return true;
+	}
+
+	public void StartMinigame()
+	{
+		state = 0;
+		invulnerable = false;
 	}
 
 	private bool _CheckMushCollision(obj_character_parent character, obj_mushmixup_mushroom _mush)
