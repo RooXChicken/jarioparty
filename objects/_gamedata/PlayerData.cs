@@ -10,12 +10,14 @@ public partial class PlayerData : Node
 	public bool ai = false;
 
 	//game data
-	public ushort coins = 0;
-	public ushort stars = 0;
+	public short coins = 0;
+	public short stars = 0;
 
 	public float speedMult = 1; //speed
 	public float weightMult = 1; //density
 	public float strengthMult = 1; //punch strength
+
+	public float progress = 0.1959f;
 
 	public List<ItemBase> items;
 	public SpriteFrames animationFrames;

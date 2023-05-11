@@ -23,6 +23,7 @@ public partial class obj_character_map : RigidBody2D
 	private bool grace = true;
 
 	private Area2D lastCollision;
+	private CollisionShape2D collision;
 
 	private Alarm t_moveOnBoard;
 	private bool jumping = false;
@@ -44,11 +45,15 @@ public partial class obj_character_map : RigidBody2D
 
 		sprite = GetNode<AnimatedSprite2D>("obj_sprite");
 		follower = GetNode<PathFollow2D>("../../pf_0" + (Player + 1));
+		collision = GetNode<CollisionShape2D>("obj_collision");
+		follower.ProgressRatio = playerData.progress;
 		sprite.SpriteFrames = playerData.animationFrames;
 		
 		controllerIndex = playerData.controllerIndex;
 		if(controllerIndex == -1)
 			controllerIndex = 1;
+
+		collision.Disabled = true;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -88,6 +93,7 @@ public partial class obj_character_map : RigidBody2D
 	{
 		GetNode<Node2D>("../../../../obj_diceBlock").Position = new Vector2(follower.Position.X, follower.Position.Y - 138);
 		GetNode<obj_diceBlock>("../../../../obj_diceBlock").a_spinStart(this);
+		collision.Disabled = false;
 		state = 1;
 	}
 
@@ -161,6 +167,8 @@ public partial class obj_character_map : RigidBody2D
 				break;
 		}
 
+		((GameManager)GetNode("/root/GameManager")).playerData[Player].coins = Math.Clamp(((GameManager)GetNode("/root/GameManager")).playerData[Player].coins, (short)0, (short)9999);
+
 		state = 5;
 	}
 
@@ -170,6 +178,8 @@ public partial class obj_character_map : RigidBody2D
 			return;
 		GetNode<Transition>("../../../../obj_mapGUI/Transition").playerGoing = Player + 1;
 		GetNode<Transition>("../../../../obj_mapGUI/Transition").state = 1;
+		playerData.progress = follower.ProgressRatio;
+		collision.Disabled = true;
 		state = 6;
 	}
 

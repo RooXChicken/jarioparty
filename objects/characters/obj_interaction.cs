@@ -18,10 +18,12 @@ public partial class obj_interaction : Area2D
 
 	private void OnBodyEntered(Area2D body)
 	{
-		if(!collisions.Contains(body))
+		if(body.Name == "obj_feetArea" && !collisions.Contains(body) && body != GetNode<Area2D>("../obj_feetArea"))
+		{
 			collisions.Add(body);
+			GD.Print(body.Name);
+		}
 
-		GD.Print(body.Name);
 	}
 
 	private void OnBodyExit(Area2D body)

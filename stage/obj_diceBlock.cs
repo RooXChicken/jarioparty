@@ -31,7 +31,7 @@ public partial class obj_diceBlock : Node2D
 
 	public void Initialize()
 	{
-		((ShaderMaterial)spr_diceblock.Material).SetShaderParameter("alpha", 1);
+		((ShaderMaterial)spr_diceblock.Material).SetShaderParameter("alpha", 0);
 		spr_diceHit.Visible = false;
 		spr_number.Visible = false;
 
@@ -43,8 +43,6 @@ public partial class obj_diceBlock : Node2D
 		numberAnimation = false;
 		numState = 0;
 		fadeAlpha = 1;
-		Visible = true;
-		((ShaderMaterial)spr_diceblock.Material).SetShaderParameter("alpha", 1);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -66,6 +64,12 @@ public partial class obj_diceBlock : Node2D
 		spr_diceblock.Play("spinStart");
 		t_spinCycle.WaitTime = 0.2 * 3;
 		t_spinCycle.Start();
+	}
+
+	public void Show()
+	{
+		Visible = true;
+		((ShaderMaterial)spr_diceblock.Material).SetShaderParameter("alpha", 1);
 	}
 
 	public void a_spinCycle()

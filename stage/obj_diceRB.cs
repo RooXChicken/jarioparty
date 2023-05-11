@@ -12,5 +12,7 @@ public partial class obj_diceRB : RigidBody2D
 			state.Transform = new Transform2D(0, new Vector2(1, 1), 0, newPosition);
 		shouldSnap = false;
 		base._IntegrateForces(state);
+
+		GetNode<obj_diceBlock>("../").Show();
 	}
 }

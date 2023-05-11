@@ -299,7 +299,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fy8et"]
-size = Vector2(78, 84)
+size = Vector2(50, 82)
 
 [node name="obj_rigidbody" type="RigidBody2D"]
 mass = 2.4
@@ -357,10 +357,13 @@ libraries = {
 }
 
 [node name="obj_interaction" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
 script = ExtResource("6_auua0")
 
 [node name="obj_hitbox" type="CollisionShape2D" parent="obj_interaction"]
-position = Vector2(12, 0)
+position = Vector2(26, 0)
 shape = SubResource("RectangleShape2D_fy8et")
 
 [connection signal="animation_changed" from="scaleManager/obj_sprite" to="." method="SpriteChanged"]

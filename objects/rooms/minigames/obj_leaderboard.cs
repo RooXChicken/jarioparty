@@ -24,6 +24,12 @@ public partial class obj_leaderboard : Node2D
 		((AudioController)GetNode("/root/AudioController")).PlayMusic("minigameResults");
 	}
 
+	public void End()
+	{
+		((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_map");
+		((GameManager)GetNode("/root/GameManager")).CurrentMinigame = 3;
+	}
+
 	public void StartSequence(List<PlayerData> players)
 	{
 		for(int i = 0; i < 4; i++)

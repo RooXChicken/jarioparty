@@ -25,6 +25,7 @@ public partial class obj_character_parent : RigidBody2D
 	private obj_shadow shadow;
 	private AnimationPlayer animation;
 	private bool justJumped = false;
+	private int punchForce = 10500;
 
 	private float joyhaxis = 0;
 	private float joyvaxis = 0;
@@ -32,7 +33,7 @@ public partial class obj_character_parent : RigidBody2D
 	private float animhaxis = 0;
 	private float animvaxis = 0;
 
-	private short lastDirection = 0;
+	private short lastDirection = 1;
 	public bool joyLock = false;
 	private bool resetAnim = true;
 
@@ -202,7 +203,7 @@ public partial class obj_character_parent : RigidBody2D
 
 	private void ProcessAnimations()
 	{
-		if(controllerIndex < -1 || (animhaxis == 0 && animvaxis == 0) && resetAnim)
+		if(resetAnim && (controllerIndex < -1 || (animhaxis == 0 && animvaxis == 0)))
 		{
 			if(idleTimer > 5 && abilities.Contains("move"))
 			{
@@ -211,6 +212,10 @@ public partial class obj_character_parent : RigidBody2D
 			}
 			else
 				sprite.Frame = 0;
+			if(jumping)
+			{
+				Animate("jump");
+			}
 			return;
 		}
 
@@ -244,24 +249,35 @@ public partial class obj_character_parent : RigidBody2D
 			sprite.SpeedScale = 1;
 		}
 
+		Animate(action);
+
+		if(-animhaxis > animvaxis && -animhaxis > -animvaxis)
+			lastDirection = 2;
+
+		sprite.Scale = new Vector2(3 * scale * flip, 3 * scale * 1);
+		obj_interact.Scale = new Vector2(flip, 1);
+	}
+
+	private void Animate(string action)
+	{
 		if((animhaxis > animvaxis && animhaxis > -animvaxis) || (-animhaxis > animvaxis && -animhaxis > -animvaxis))
 		{
 			lastDirection = 1;
+			//obj_interact.Position = new Vector2(0, 0);
 			sprite.Play(action + "Right");
 		}
 		else if(-animvaxis > animhaxis && -animvaxis > -animhaxis)
 		{
-			lastDirection = 2;
+			lastDirection = 3;
+			//obj_interact.Position = new Vector2(-26, -26);
 			sprite.Play(action + "Down");
 		}
 		else if(animvaxis > animhaxis && animvaxis > -animhaxis)
 		{
-			lastDirection = 3;
+			lastDirection = 4;
+			//obj_interact.Position = new Vector2(-26, 26);
 			sprite.Play(action + "Up");
 		}
-
-		sprite.Scale = new Vector2(3 * scale * flip, 3 * scale * 1);
-		obj_interact.Scale = new Vector2(flip, 1);
 	}
 
 	public void Burn()
@@ -328,7 +344,22 @@ public partial class obj_character_parent : RigidBody2D
 				case 3:
 					foreach(Area2D area in obj_interact.collisions)
 					{
-						area.GetNode<RigidBody2D>("../").ApplyCentralImpulse(new Vector2(10500, 0));
+						switch(flip)
+						{
+							case 1:
+								area.GetNode<RigidBody2D>("../").ApplyCentralImpulse(new Vector2(punchForce, 0));
+								break;
+							case -1:
+								area.GetNode<RigidBody2D>("../").ApplyCentralImpulse(new Vector2(-punchForce, 0));
+								break;
+							// case 3:
+							// 	area.GetNode<RigidBody2D>("../").ApplyCentralImpulse(new Vector2(0, -punchForce));
+							// 	break;
+							// case 4:
+							// 	area.GetNode<RigidBody2D>("../").ApplyCentralImpulse(new Vector2(0, punchForce));
+							// 	break;
+						}
+
 						area.GetNode<obj_character_parent>("../").t_stun.Start();
 						area.GetNode<obj_character_parent>("../").joyLock = true;
 						area.GetNode<obj_character_parent>("../").ResetJoystick();
