@@ -1,11 +1,14 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class obj_winner : Node
 {
 	private Sprite2D spr_characterName;
 	private Sprite2D spr_wins;
 	private AnimationPlayer anim_wins;
+
+	private List<PlayerData> places;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -15,7 +18,7 @@ public partial class obj_winner : Node
 		anim_wins = GetNode<AnimationPlayer>("anim_wins");
 	}
 
-	public void EndMiniGame(int playersAlive, int playerAliveIndex)
+	public void EndMiniGame(int playersAlive, int playerAliveIndex, List<PlayerData> _places)
 	{
 		((GameManager)GetNode("/root/GameManager")).MinigameStarted = false;
 		if(playersAlive == 1)
@@ -33,5 +36,12 @@ public partial class obj_winner : Node
 		{
 			anim_wins.Play("miss");
 		}
+
+		places = _places;
+	}
+
+	public void ShowResults()
+	{
+		GetNode<obj_leaderboard>("../WinGUI").StartSequence(places);
 	}
 }

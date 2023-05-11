@@ -15,5 +15,6 @@ public partial class rm_minigame_mushmixup : Node2D
 	public void StartMinigame()
 	{
 		((AudioController)GetNode("/root/AudioController")).PlayMusic("mus_minigame_savingcourage");
+		GetNode<obj_mushmixup_frog>("obj_minigame_mushmixup_frog").StartMinigame();
 	}
 }

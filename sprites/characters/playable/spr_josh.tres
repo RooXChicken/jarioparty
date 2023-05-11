@@ -1,9 +1,10 @@
-[gd_resource type="SpriteFrames" load_steps=33 format=3 uid="uid://dbmgbhtfc8tfj"]
+[gd_resource type="SpriteFrames" load_steps=35 format=3 uid="uid://dbmgbhtfc8tfj"]
 
 [ext_resource type="Texture2D" uid="uid://3hdxh6tpletr" path="res://sprites/characters/playable/josh/anim_joshBurnt.png" id="1_0tvnm"]
 [ext_resource type="Texture2D" uid="uid://dtsb2arume5jg" path="res://sprites/characters/playable/josh/anim_joshEmote01.png" id="1_j2wwp"]
 [ext_resource type="Texture2D" uid="uid://bithcgiogx163" path="res://sprites/characters/playable/josh/anim_joshJumpFront.png" id="2_0nun7"]
 [ext_resource type="Texture2D" uid="uid://b83b12axeeuxw" path="res://sprites/characters/playable/josh/anim_joshWalkBack.png" id="2_dcgf3"]
+[ext_resource type="Texture2D" uid="uid://bww3r2niibnau" path="res://sprites/characters/playable/josh/anim_joshHurtT.png" id="2_laqlw"]
 [ext_resource type="Texture2D" uid="uid://obejs7jx2a45" path="res://sprites/characters/playable/josh/anim_joshJumpBack.png" id="2_n12sc"]
 [ext_resource type="Texture2D" uid="uid://byyyhp46b8ky5" path="res://sprites/characters/playable/josh/anim_joshRight.png" id="3_xcu51"]
 [ext_resource type="Texture2D" uid="uid://ds5ndmpv3w3su" path="res://sprites/characters/playable/josh/anim_joshJumpRight.png" id="4_1y8x1"]
@@ -12,6 +13,10 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6hksa"]
 atlas = ExtResource("1_0tvnm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo0af"]
+atlas = ExtResource("2_laqlw")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e7ygh"]
@@ -110,6 +115,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"burnt",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wo0af")
+}],
+"loop": false,
+"name": &"hurt",
 "speed": 1.0
 }, {
 "frames": [{

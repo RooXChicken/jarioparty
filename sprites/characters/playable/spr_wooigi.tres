@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=51 format=3 uid="uid://dxbv2eqvlcvn1"]
+[gd_resource type="SpriteFrames" load_steps=53 format=3 uid="uid://dxbv2eqvlcvn1"]
 
 [ext_resource type="Texture2D" uid="uid://o1jtv0ljqjgh" path="res://sprites/characters/playable/wooigi/anim_wooigiWalkFront.png" id="1_ee4ii"]
 [ext_resource type="Texture2D" uid="uid://dkgyyrfma5n6r" path="res://sprites/characters/playable/wooigi/anim_wooigiBurnt.png" id="1_h1yqj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dud3yqhjxpyhn" path="res://sprites/characters/playable/wooigi/anim_wooigiWalkRight.png" id="2_n127n"]
 [ext_resource type="Texture2D" uid="uid://cpjfhfrs1cmcg" path="res://sprites/characters/playable/wooigi/anim_wooigiIdle.png" id="2_qkkaf"]
 [ext_resource type="Texture2D" uid="uid://c4cj17ap5vx5e" path="res://sprites/characters/playable/wooigi/anim_wooigiJumpFront.png" id="2_qrfp0"]
+[ext_resource type="Texture2D" uid="uid://wtnithso20di" path="res://sprites/characters/playable/wooigi/anim_wooigiHurt.png" id="3_yv2mt"]
 [ext_resource type="Texture2D" uid="uid://ra3bxk3hhu1i" path="res://sprites/characters/playable/wooigi/anim_wooigiJumpBack.png" id="4_nikt5"]
 [ext_resource type="Texture2D" uid="uid://d1bqcm4ju7tur" path="res://sprites/characters/playable/wooigi/anim_wooigiJumpRight.png" id="5_u2jos"]
 [ext_resource type="Texture2D" uid="uid://dq84ebtxo4qcv" path="res://sprites/characters/playable/wooigi/anim_wooigiPortrait.png" id="8_c5ha3"]
@@ -34,6 +35,10 @@ region = Rect2(228, 0, 76, 76)
 [sub_resource type="AtlasTexture" id="AtlasTexture_vivqk"]
 atlas = ExtResource("1_weugy")
 region = Rect2(304, 0, 76, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbig7"]
+atlas = ExtResource("3_yv2mt")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_70dj8"]
 atlas = ExtResource("1_ee4ii")
@@ -200,6 +205,14 @@ animations = [{
 "loop": true,
 "name": &"face",
 "speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbig7")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,

@@ -5,10 +5,13 @@ using System.Collections.Generic;
 public partial class obj_leaderboard : Node2D
 {
 	private Node2D[] portraits;
+	private AnimationPlayer animation;
 	private int[] places = new int[] {0, 1, 1, 2};
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		animation = GetNode<AnimationPlayer>("anim_wingui");
+
 		portraits = new Node2D[4];
 		for(int i = 1; i < 5; i++)
 		{
@@ -18,10 +21,10 @@ public partial class obj_leaderboard : Node2D
 
 	public void Start()
 	{
-		((AudioController)GetNode("/root/AudioController")).PlayMusic("")
+		((AudioController)GetNode("/root/AudioController")).PlayMusic("minigameResults");
 	}
 
-	public void Organize(List<PlayerData> players)
+	public void StartSequence(List<PlayerData> players)
 	{
 		for(int i = 0; i < 4; i++)
 		{
@@ -30,5 +33,7 @@ public partial class obj_leaderboard : Node2D
 			portraits[i].GetNode<AnimatedSprite2D>("spr_portrait").Frame = places[i];
 			portraits[i].GetNode<Sprite2D>("spr_place").Frame = i;
 		}
+
+		animation.Play("play");
 	}
 }

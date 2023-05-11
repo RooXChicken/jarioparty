@@ -224,16 +224,16 @@ metadata/Player = 2
 [node name="splashes" type="Node" parent="."]
 
 [node name="obj_splash1" parent="splashes" instance=ExtResource("7_lxue6")]
-z_index = 1
+z_index = 5
 
 [node name="obj_splash2" parent="splashes" instance=ExtResource("7_lxue6")]
-z_index = 1
+z_index = 5
 
 [node name="obj_splash3" parent="splashes" instance=ExtResource("7_lxue6")]
-z_index = 1
+z_index = 5
 
 [node name="obj_splash4" parent="splashes" instance=ExtResource("7_lxue6")]
-z_index = 1
+z_index = 5
 
 [node name="obj_bg" type="AnimatedSprite2D" parent="."]
 position = Vector2(640, 360)

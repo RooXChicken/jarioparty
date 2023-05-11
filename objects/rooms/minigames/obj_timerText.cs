@@ -57,6 +57,11 @@ public partial class obj_timerText : RichTextLabel
 				break;
 		}
 
+		if(Time <= 0)
+		{
+			onEnd.Call();
+		}
+
 		Position = newPos;
 		Text = Time.ToString();
 	}

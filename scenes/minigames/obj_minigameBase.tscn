@@ -160,7 +160,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_qp7e7"]
 resource_name = "miss"
-length = 0.5
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -168,15 +168,29 @@ tracks/0/path = NodePath("Win/spr_miss:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.5, 1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1e-05, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(2, 2)]
+"values": [Vector2(0, 0), Vector2(2, 2), Vector2(2, 2), Vector2(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Win")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ShowResults"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_x6d77"]
 resource_name = "wins"
-length = 1.5
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -184,10 +198,10 @@ tracks/0/path = NodePath("Win/spr_characterName:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.5, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1e-05, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(2, 2)]
+"values": [Vector2(0, 0), Vector2(2, 2), Vector2(2, 2), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -196,10 +210,24 @@ tracks/1/path = NodePath("Win/spr_wins:scale")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.5, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.5, 1, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1e-05, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(2, 2)]
+"values": [Vector2(0, 0), Vector2(2, 2), Vector2(2, 2), Vector2(0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Win")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ShowResults"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rlpau"]
@@ -318,7 +346,7 @@ libraries = {
 }
 
 [node name="WinGUI" type="Node2D" parent="."]
-modulate = Color(1, 1, 1, 0)
+visible = false
 script = ExtResource("11_r7gwb")
 
 [node name="obj_portrait1" parent="WinGUI" instance=ExtResource("11_uxfim")]
@@ -343,11 +371,6 @@ scale = Vector2(2, 2)
 texture = ExtResource("13_wwxeg")
 
 [node name="anim_wingui" type="AnimationPlayer" parent="WinGUI"]
-libraries = {
-"": SubResource("AnimationLibrary_1rcsk")
-}
-
-[node name="anim_wingui2" type="AnimationPlayer" parent="WinGUI"]
 libraries = {
 "": SubResource("AnimationLibrary_1rcsk")
 }

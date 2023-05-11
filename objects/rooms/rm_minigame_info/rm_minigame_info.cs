@@ -17,6 +17,7 @@ public partial class rm_minigame_info : Node2D
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/rooms/minigames/snd_itemPickerMove.wav", "itemPickerMove");
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/rooms/minigames/mus_playMinigames.wav", "mus_playMinigames");
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/rooms/minigames/snd_start.wav", "minigameStart");
+		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/rooms/minigames/mus_results.wav", "minigameResults");
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/rooms/minigames/snd_transition.wav", "transition");
 
 		anim_whackitu = GetNode<AnimationPlayer>("anim_whackitu");
