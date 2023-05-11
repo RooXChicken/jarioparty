@@ -12,14 +12,14 @@ public partial class obj_timerText : RichTextLabel
 	{
 		((GameManager)GetNode("/root/GameManager")).MinigameStarted = false;
 		Variant _Minigame = GetNode<Node2D>("../../").GetMeta("Minigame");
-		Time = ((GameManager)GetNode("/root/GameManager")).minigameLookup[_Minigame.As<int>()].MinigameTime;
+		Time = ((GameManager)GetNode("/root/GameManager")).minigameLookup[_Minigame.As<int>()].MinigameTime + 2;
+		((AudioController)GetNode("/root/AudioController")).PlaySound(("minigameStart"));
 
 		GetNode<AnimationPlayer>("../../anim_start").Play("start");
 	}
 
 	private void TimerStart()
 	{
-		GD.Print("Time:" + Time);
 		if(Time < 0)
 		{
 			GetNode<AnimatedSprite2D>("../").Stop();

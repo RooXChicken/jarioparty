@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://77rqat2lijkq"]
+
+[ext_resource type="Texture2D" uid="uid://csp8n3x4t7oyt" path="res://sprites/characters/playable/jario/ragdoll/armL.png" id="1_ue8nq"]
+[ext_resource type="Texture2D" uid="uid://bepu0wkmp2hkm" path="res://sprites/characters/playable/jario/ragdoll/armTL.png" id="2_vs0qg"]
+[ext_resource type="Texture2D" uid="uid://bkg8bxdxohlp1" path="res://sprites/characters/playable/jario/ragdoll/armR.png" id="3_cy84b"]
+[ext_resource type="Texture2D" uid="uid://cxrm0ro3j5ckg" path="res://sprites/characters/playable/jario/ragdoll/armTR.png" id="4_8idvi"]
+[ext_resource type="Texture2D" uid="uid://m5q1sm84jjow" path="res://sprites/characters/playable/jario/ragdoll/head.png" id="5_tgl6x"]
+[ext_resource type="Texture2D" uid="uid://bgxn4lkpueash" path="res://sprites/characters/playable/jario/ragdoll/body.png" id="6_2xpxr"]
+[ext_resource type="Texture2D" uid="uid://d7l8fbi62ng6" path="res://sprites/characters/playable/jario/ragdoll/legL.png" id="7_f7ccm"]
+[ext_resource type="Texture2D" uid="uid://cc831edy2uc68" path="res://sprites/characters/playable/jario/ragdoll/legR.png" id="8_vchff"]
+
+[node name="obj_ragdoll" type="Node2D"]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+
+[node name="armL" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(173, 245)
+
+[node name="armTL" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(190, 156)
+
+[node name="armR" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(393, 218)
+
+[node name="armTR" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(343, 149)
+
+[node name="head" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(341, 5)
+
+[node name="body" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(266, 172)
+
+[node name="legL" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(214, 316)
+
+[node name="legR" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(324, 314)
+
+[node name="SPRITES" type="Node2D" parent="."]
+
+[node name="sprite" type="Sprite2D" parent="SPRITES"]
+position = Vector2(324, 313)
+texture = ExtResource("8_vchff")
+
+[node name="sprite2" type="Sprite2D" parent="SPRITES"]
+position = Vector2(214, 315)
+texture = ExtResource("7_f7ccm")
+
+[node name="sprite3" type="Sprite2D" parent="SPRITES"]
+position = Vector2(341, 4)
+texture = ExtResource("5_tgl6x")
+
+[node name="sprite4" type="Sprite2D" parent="SPRITES"]
+position = Vector2(343, 148)
+texture = ExtResource("4_8idvi")
+
+[node name="sprite5" type="Sprite2D" parent="SPRITES"]
+position = Vector2(393, 217)
+texture = ExtResource("3_cy84b")
+
+[node name="sprite6" type="Sprite2D" parent="SPRITES"]
+position = Vector2(190, 155)
+texture = ExtResource("2_vs0qg")
+
+[node name="sprite7" type="Sprite2D" parent="SPRITES"]
+position = Vector2(173, 244)
+texture = ExtResource("1_ue8nq")
+
+[node name="sprite8" type="Sprite2D" parent="SPRITES"]
+position = Vector2(266, 171)
+texture = ExtResource("6_2xpxr")

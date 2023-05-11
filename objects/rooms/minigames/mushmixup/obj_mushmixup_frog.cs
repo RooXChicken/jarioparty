@@ -11,6 +11,7 @@ public partial class obj_mushmixup_frog : Node2D
 	private int mushroomIndex = 0;
 	private obj_mushmixup_mushroom[] mushrooms;
 	private obj_character_parent[] players;
+	private List<PlayerData> places = new List<PlayerData>();
 	private obj_mushmixup_mushroom mush;
 	private Random rand;
 
@@ -27,6 +28,8 @@ public partial class obj_mushmixup_frog : Node2D
 	{
 		obj_sprite = GetNode<AnimatedSprite2D>("obj_sprite");
 		obj_flag = GetNode<AnimatedSprite2D>("obj_flag");
+
+		GetNode<obj_timerText>("../obj_minigameBase/spr_timer/obj_text").onEnd = new Callable(this, "EndMiniGame");
 
 		obj_sprite.Play("idle");
 		obj_flag.Play();
@@ -111,11 +114,11 @@ public partial class obj_mushmixup_frog : Node2D
 
 		if(playersLost)
 		{
-			EndMiniGame();
+			EndMiniGame(false);
 		}
 	}
 
-	public void EndMiniGame(bool force = false)
+	public void EndMiniGame(bool force = true)
 	{
 		int playersAlive = 0;
 		int playerIndex = 0;
@@ -128,8 +131,10 @@ public partial class obj_mushmixup_frog : Node2D
 			}
 		}
 
-		if(playersAlive < 2 || force)
+		if(playersAlive < 1 || force)
 		{
+			GetNode<obj_leaderboard>("../obj_minigameBase/WinGUI").Organize(places);
+			GetNode<obj_leaderboard>("../obj_minigameBase/WinGUI").Visible = true;
 			invulnerable = true;
 			t_goDown.Stop();
 			t_goUp.WaitTime = 0.5;
@@ -142,7 +147,9 @@ public partial class obj_mushmixup_frog : Node2D
 
 	private bool KillPlayer(int player)
 	{
+		places.Add(players[player].playerData);
 		players[player].Lost = true;
+		players[player].PlayAnimation = "out";
 		GetNode<obj_splash>("../splashes/obj_splash" + (player + 1)).Position = players[player].Position;
 		GetNode<obj_splash>("../splashes/obj_splash" + (player + 1)).Splash();
 		players[player].Position = new Vector2(1000000, 0);

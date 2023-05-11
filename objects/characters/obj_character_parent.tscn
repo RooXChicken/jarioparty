@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://vi01pdjd8l3f"]
+[gd_scene load_steps=13 format=3 uid="uid://vi01pdjd8l3f"]
 
 [ext_resource type="Script" path="res://objects/characters/obj_character_parent.cs" id="1_y278h"]
 [ext_resource type="SpriteFrames" uid="uid://brekq8pelfxn1" path="res://sprites/characters/playable/spr_jario.tres" id="2_ldhjv"]
+[ext_resource type="PackedScene" uid="uid://b1brh0mlgjyoo" path="res://obj_shadow.tscn" id="3_cv4x7"]
+[ext_resource type="Texture2D" uid="uid://jlcluxnqxto3" path="res://sprites/characters/playable/jario/jarioidle.png" id="4_ybyto"]
+[ext_resource type="SpriteFrames" uid="uid://cdiou2x4q8pja" path="res://sprites/characters/assets/anim_out.tres" id="5_sxmvd"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_km6qn"]
 friction = 0.0
@@ -12,6 +15,264 @@ size = Vector2(50, 17)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4vi1y"]
 size = Vector2(13.5, 21)
 
+[sub_resource type="Animation" id="Animation_dl2kg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scaleManager/obj_sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("scaleManager:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("spr_out:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("scaleManager/obj_sprite:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [&"idle"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("scaleManager:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("spr_out:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("spr_out:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_x5tj1"]
+resource_name = "out_burn"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scaleManager/obj_sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("scaleManager/obj_shadow:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("spr_out:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("spr_out:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.7, 1.2, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("spr_out:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3, 0.7, 1.2, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("scaleManager/obj_sprite:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"burnt"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("scaleManager:position")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1280)]
+}
+
+[sub_resource type="Animation" id="Animation_k4ncd"]
+resource_name = "out"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scaleManager/obj_sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("scaleManager/obj_shadow:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("spr_out:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("spr_out:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.7, 1.2, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("spr_out:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3, 0.7, 1.2, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("scaleManager:scale")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wfhy4"]
+_data = {
+"RESET": SubResource("Animation_dl2kg"),
+"out": SubResource("Animation_k4ncd"),
+"out_burn": SubResource("Animation_x5tj1")
+}
+
 [node name="obj_rigidbody" type="RigidBody2D"]
 mass = 2.4
 physics_material_override = SubResource("PhysicsMaterial_km6qn")
@@ -21,12 +282,31 @@ can_sleep = false
 lock_rotation = true
 linear_damp = 25.0
 script = ExtResource("1_y278h")
+metadata/Player = 0
 
-[node name="obj_sprite" type="AnimatedSprite2D" parent="."]
+[node name="scaleManager" type="Node2D" parent="."]
+
+[node name="obj_sprite" type="AnimatedSprite2D" parent="scaleManager"]
 position = Vector2(0, -6)
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("2_ldhjv")
 animation = &"idle"
+
+[node name="obj_shadow" parent="scaleManager" instance=ExtResource("3_cv4x7")]
+z_index = -2
+position = Vector2(48, 59)
+skew = -1.0472
+texture = ExtResource("4_ybyto")
+
+[node name="spr_out" type="AnimatedSprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("5_sxmvd")
+autoplay = "default"
+frame_progress = 0.311268
+
+[node name="obj_shadow2" type="Sprite2D" parent="."]
 
 [node name="obj_feetArea" type="Area2D" parent="."]
 z_index = 1
@@ -42,3 +322,11 @@ debug_color = Color(0.992157, 0, 0.266667, 0.419608)
 [node name="obj_hitbox" type="CollisionShape2D" parent="."]
 scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_4vi1y")
+
+[node name="animations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wfhy4")
+}
+
+[connection signal="animation_changed" from="scaleManager/obj_sprite" to="." method="SpriteChanged"]
+[connection signal="frame_changed" from="scaleManager/obj_sprite" to="." method="SpriteChanged"]

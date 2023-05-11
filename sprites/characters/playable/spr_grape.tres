@@ -1,17 +1,45 @@
-[gd_resource type="SpriteFrames" load_steps=13 format=3 uid="uid://isxq0qdtra0y"]
+[gd_resource type="SpriteFrames" load_steps=23 format=3 uid="uid://isxq0qdtra0y"]
 
 [ext_resource type="Texture2D" uid="uid://bbhcxhpxni8p5" path="res://sprites/characters/playable/grape/anim_grapeWalkFront.png" id="1_ag36v"]
+[ext_resource type="Texture2D" uid="uid://iaky4igbiqpd" path="res://sprites/characters/playable/grape/anim_grapeBurnt.png" id="1_rcp2b"]
 [ext_resource type="Texture2D" uid="uid://cujof3ab7ocpa" path="res://sprites/characters/playable/grape/anim_grapeJumpFront.png" id="2_0br57"]
+[ext_resource type="Texture2D" uid="uid://b0ho2msfoth4n" path="res://sprites/characters/playable/grape/anim_grapeJumpBack.png" id="2_vw3x0"]
 [ext_resource type="Texture2D" uid="uid://bbur35kf68wjq" path="res://sprites/characters/playable/grape/anim_grapeWalkBack.png" id="2_wowyl"]
 [ext_resource type="Texture2D" uid="uid://cnclvaiw6ifc0" path="res://sprites/characters/playable/grape/anim_grapeWalkRight.png" id="3_8cmlj"]
+[ext_resource type="Texture2D" uid="uid://bl5wea6y2aigg" path="res://sprites/characters/playable/grape/anim_grapeJumpRight.png" id="4_5ssfa"]
+[ext_resource type="Texture2D" uid="uid://btf1b4owh4egc" path="res://sprites/characters/playable/grape/anim_grapePortrait.png" id="6_5uwnd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d01h"]
+atlas = ExtResource("1_rcp2b")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bg7b5"]
 atlas = ExtResource("1_ag36v")
 region = Rect2(0, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdwg8"]
+atlas = ExtResource("2_vw3x0")
+region = Rect2(0, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ic641"]
 atlas = ExtResource("2_0br57")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa4fl"]
+atlas = ExtResource("4_5ssfa")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xd428"]
+atlas = ExtResource("6_5uwnd")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qepqw"]
+atlas = ExtResource("6_5uwnd")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx13h"]
+atlas = ExtResource("6_5uwnd")
+region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3730l"]
 atlas = ExtResource("2_wowyl")
@@ -41,6 +69,14 @@ region = Rect2(0, 32, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_5d01h")
+}],
+"loop": false,
+"name": &"burnt",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_bg7b5")
 }],
 "loop": true,
@@ -49,10 +85,40 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_pdwg8")
+}],
+"loop": false,
+"name": &"jumpBack",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ic641")
 }],
+"loop": false,
+"name": &"jumpFront",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fa4fl")
+}],
 "loop": true,
-"name": &"jumpUp",
+"name": &"jumpRight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xd428")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qepqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx13h")
+}],
+"loop": true,
+"name": &"portrait",
 "speed": 5.0
 }, {
 "frames": [{

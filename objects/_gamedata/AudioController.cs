@@ -70,6 +70,16 @@ public partial class AudioController : Node2D
 		pool[0].Stream = loadedSounds[path];
 		pool[0].Play();
 	}
+
+	public void MusicEffect(string effect, float value)
+	{
+		switch(effect)
+		{
+			case "pitch":
+				pool[0].PitchScale = value;
+				break;
+		}
+	}
 	
 	public bool StopSound(string path)
 	{

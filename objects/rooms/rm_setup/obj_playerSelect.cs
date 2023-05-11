@@ -16,6 +16,7 @@ public partial class obj_playerSelect : Node2D
 	private AnimatedSprite2D spr_hand;
 	private Sprite2D[] clouds;
 	private AnimatedSprite2D[] players;
+	private Sprite2D[] portraits;
 	private Color regular = new Color(1, 1, 1, 1);
 	private Color selected = new Color(0.5f, 0.5f, 0.5f, 1);
 	private Vector2[] positions = new Vector2[4];
@@ -32,7 +33,11 @@ public partial class obj_playerSelect : Node2D
 			};
 
 		players = new AnimatedSprite2D[] { 
-			GetNode<AnimatedSprite2D>("spr_character_jario"), GetNode<AnimatedSprite2D>("spr_character_wooigi"), GetNode<AnimatedSprite2D>("spr_character_grape"), GetNode<AnimatedSprite2D>("spr_character_josh") 
+			GetNode<AnimatedSprite2D>("Characters/spr_character_jario"), GetNode<AnimatedSprite2D>("Characters/spr_character_wooigi"), GetNode<AnimatedSprite2D>("Characters/spr_character_grape"), GetNode<AnimatedSprite2D>("Characters/spr_character_josh") 
+			};
+
+		portraits = new Sprite2D[] { 
+			GetNode<Sprite2D>("Portraits/spr_portrait_jario"), GetNode<Sprite2D>("Portraits/spr_portrait_wooigi"), GetNode<Sprite2D>("Portraits/spr_portrait_grape"), GetNode<Sprite2D>("Portraits/spr_portrait_josh") 
 			};
 
 		for(int i = 0; i < 4; i++)
@@ -82,16 +87,13 @@ public partial class obj_playerSelect : Node2D
 		if(Input.IsActionJustPressed("jump" + controllerIndex))
 		{
 			((GameManager)GetNode("/root/GameManager")).playerCount = (short)(index + 1);
-			GD.Print(index);
 			state = 1;
 			index = 0;
-			players[0].Animation = "dance";
-			players[0].Play();
 			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_select");
 			for(int i = 0; i < 4; i++)
 			{
 				clouds[i].Visible = false;
-				players[i].Visible = true;
+				portraits[i].Visible = true;
 			}
 			SetFrogText((short)(characterIndex + 6));
 			ChangeIndex(0);
@@ -106,15 +108,11 @@ public partial class obj_playerSelect : Node2D
 				players[i].Position = players[i].Position.Lerp(positions[i], (float)(delta * 2));
 			else
 				players[i].Position = players[i].Position.Lerp(positions[i], (float)(delta * (((GameManager)GetNode("/root/GameManager")).rand.NextDouble())));
-			if(i != index && players[i].Modulate != selected)
-				players[i].Animation = "idle";
-		}
-		
-		if(players[index].Animation != "dance")
-		{
-			
-			players[index].Animation = "dance";
-			players[index].Play();
+
+			if(220 + portraits[i].Position.Y < 210)
+				portraits[i].Position = portraits[i].Position.Lerp(positions[i], (float)(delta * 2));
+			else
+				portraits[i].Position = portraits[i].Position.Lerp(positions[i], (float)(delta * (((GameManager)GetNode("/root/GameManager")).rand.NextDouble())));
 		}
 
 		if(Input.IsActionJustPressed("jump" + controllerIndex) && players[index].Modulate != selected)
@@ -124,9 +122,10 @@ public partial class obj_playerSelect : Node2D
 			
 			if(realPlayer)
 				((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].controllerIndex = controllerIndex;
-			
-			players[index].Modulate = selected;
 		
+			portraits[index].Visible = false;
+			players[index].Play("dance");
+			players[index].Visible = true;
 
 			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(new ItemBase(((GameManager)GetNode("/root/GameManager")).itemLookup[0]));
 			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(new ItemBase(((GameManager)GetNode("/root/GameManager")).itemLookup[1]));
@@ -150,7 +149,7 @@ public partial class obj_playerSelect : Node2D
 		for(int i = 0; i < 4; i++)
 		{
 			((GameManager)GetNode("/root/GameManager")).playerData[i].Load();
-			GD.Print(i + " loaded");
+			//GD.Print(i + " loaded");
 		}
 
 		//((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_map");

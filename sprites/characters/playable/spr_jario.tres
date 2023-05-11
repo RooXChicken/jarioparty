@@ -1,11 +1,19 @@
-[gd_resource type="SpriteFrames" load_steps=29 format=3 uid="uid://brekq8pelfxn1"]
+[gd_resource type="SpriteFrames" load_steps=39 format=3 uid="uid://brekq8pelfxn1"]
 
 [ext_resource type="Texture2D" uid="uid://cqoy1qvvrmgik" path="res://sprites/characters/playable/jario/anim_jarioIdle.png" id="1_dfjse"]
 [ext_resource type="Texture2D" uid="uid://p2bf473fk46t" path="res://sprites/characters/playable/jario/anim_jarioFace.png" id="1_h3g7i"]
+[ext_resource type="Texture2D" uid="uid://b5c408oexxu4t" path="res://sprites/characters/playable/jario/anim_jarioBurnt.png" id="1_ns4wo"]
 [ext_resource type="Texture2D" uid="uid://dr8up7w5br7pm" path="res://sprites/characters/playable/jario/anim_jarioJumpFront.png" id="2_8oi6j"]
+[ext_resource type="Texture2D" uid="uid://bxu61kp7l6olm" path="res://sprites/characters/playable/jario/anim_jarioJumpRight.png" id="3_gtg74"]
 [ext_resource type="Texture2D" uid="uid://c81wdb2dae4xd" path="res://sprites/characters/playable/jario/anim_jarioWalkBack.png" id="3_jafdr"]
+[ext_resource type="Texture2D" uid="uid://bq08xf43emwm7" path="res://sprites/characters/playable/jario/anim_jarioJumpBack.png" id="3_tfnxg"]
 [ext_resource type="Texture2D" uid="uid://cd1a6p3i6v8d3" path="res://sprites/characters/playable/jario/anim_jarioWalkRight.png" id="4_w532c"]
 [ext_resource type="Texture2D" uid="uid://00tob5mahp2w" path="res://sprites/characters/playable/jario/anim_jarioWalkFront.png" id="5_v5qtp"]
+[ext_resource type="Texture2D" uid="uid://cayrr5aq5hnbv" path="res://sprites/characters/playable/jario/anim_jarioPortrait.png" id="7_beyce"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f14kj"]
+atlas = ExtResource("1_ns4wo")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ie0yf"]
 atlas = ExtResource("1_h3g7i")
@@ -43,9 +51,29 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("1_dfjse")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_omgc0"]
+atlas = ExtResource("3_tfnxg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6t0h"]
+atlas = ExtResource("3_gtg74")
+region = Rect2(32, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_vx7yg"]
 atlas = ExtResource("2_8oi6j")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rx76g"]
+atlas = ExtResource("7_beyce")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vw4r"]
+atlas = ExtResource("7_beyce")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ik7rn"]
+atlas = ExtResource("7_beyce")
+region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_73ppa"]
 atlas = ExtResource("3_jafdr")
@@ -99,6 +127,14 @@ region = Rect2(96, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_f14kj")
+}],
+"loop": false,
+"name": &"burnt",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ie0yf")
 }, {
 "duration": 1.0,
@@ -136,11 +172,41 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_omgc0")
+}],
+"loop": false,
+"name": &"jumpDown",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6t0h")
+}],
+"loop": false,
+"name": &"jumpRight",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_vx7yg")
 }],
-"loop": true,
+"loop": false,
 "name": &"jumpUp",
-"speed": 5.0
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rx76g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vw4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ik7rn")
+}],
+"loop": false,
+"name": &"portrait",
+"speed": 0.0
 }, {
 "frames": [{
 "duration": 1.0,

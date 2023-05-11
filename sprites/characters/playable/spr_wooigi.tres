@@ -1,11 +1,19 @@
-[gd_resource type="SpriteFrames" load_steps=41 format=3 uid="uid://dxbv2eqvlcvn1"]
+[gd_resource type="SpriteFrames" load_steps=51 format=3 uid="uid://dxbv2eqvlcvn1"]
 
 [ext_resource type="Texture2D" uid="uid://o1jtv0ljqjgh" path="res://sprites/characters/playable/wooigi/anim_wooigiWalkFront.png" id="1_ee4ii"]
+[ext_resource type="Texture2D" uid="uid://dkgyyrfma5n6r" path="res://sprites/characters/playable/wooigi/anim_wooigiBurnt.png" id="1_h1yqj"]
 [ext_resource type="Texture2D" uid="uid://wata5houkfqd" path="res://sprites/characters/playable/wooigi/anim_wooigiFace.png" id="1_weugy"]
 [ext_resource type="Texture2D" uid="uid://21bvedwk0ak4" path="res://sprites/characters/playable/wooigi/anim_wooigiWalkBack.png" id="2_g5oxy"]
 [ext_resource type="Texture2D" uid="uid://dud3yqhjxpyhn" path="res://sprites/characters/playable/wooigi/anim_wooigiWalkRight.png" id="2_n127n"]
 [ext_resource type="Texture2D" uid="uid://cpjfhfrs1cmcg" path="res://sprites/characters/playable/wooigi/anim_wooigiIdle.png" id="2_qkkaf"]
 [ext_resource type="Texture2D" uid="uid://c4cj17ap5vx5e" path="res://sprites/characters/playable/wooigi/anim_wooigiJumpFront.png" id="2_qrfp0"]
+[ext_resource type="Texture2D" uid="uid://ra3bxk3hhu1i" path="res://sprites/characters/playable/wooigi/anim_wooigiJumpBack.png" id="4_nikt5"]
+[ext_resource type="Texture2D" uid="uid://d1bqcm4ju7tur" path="res://sprites/characters/playable/wooigi/anim_wooigiJumpRight.png" id="5_u2jos"]
+[ext_resource type="Texture2D" uid="uid://dq84ebtxo4qcv" path="res://sprites/characters/playable/wooigi/anim_wooigiPortrait.png" id="8_c5ha3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppqwb"]
+atlas = ExtResource("1_h1yqj")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_51fcc"]
 atlas = ExtResource("1_weugy")
@@ -91,9 +99,29 @@ region = Rect2(416, 0, 32, 32)
 atlas = ExtResource("2_qkkaf")
 region = Rect2(448, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwrpy"]
+atlas = ExtResource("4_nikt5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e06x1"]
+atlas = ExtResource("5_u2jos")
+region = Rect2(0, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ueh2d"]
 atlas = ExtResource("2_qrfp0")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_112df"]
+atlas = ExtResource("8_c5ha3")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1oy21"]
+atlas = ExtResource("8_c5ha3")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsf3u"]
+atlas = ExtResource("8_c5ha3")
+region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pxr34"]
 atlas = ExtResource("2_g5oxy")
@@ -145,6 +173,14 @@ region = Rect2(32, 32, 32, 32)
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppqwb")
+}],
+"loop": false,
+"name": &"burnt",
+"speed": 1.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_51fcc")
@@ -220,11 +256,41 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_vwrpy")
+}],
+"loop": false,
+"name": &"jumpBack",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e06x1")
+}],
+"loop": false,
+"name": &"jumpRight",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ueh2d")
 }],
-"loop": true,
+"loop": false,
 "name": &"jumpUp",
-"speed": 5.0
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_112df")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1oy21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsf3u")
+}],
+"loop": false,
+"name": &"portrait",
+"speed": 0.0
 }, {
 "frames": [{
 "duration": 1.0,

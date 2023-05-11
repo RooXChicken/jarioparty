@@ -5,17 +5,15 @@ using System.Collections.Generic;
 public partial class obj_character_parent : RigidBody2D
 {
 	public int Player = 0;
-	private PlayerData playerData;
+	public PlayerData playerData;
 	private List<string> abilities;
 	public int CharacterIndex {get {return playerData.characterIndex; }}
-
-	private int state = 0;
-	private bool minigameStarted = false;
-
 	public int controllerIndex = 1;
 
+	public string Animation {get { return animation}}
+
 	public float movementSpeed = 450f;
-	public float scale = 4;
+	public float scale = 3;
 	public float density = 1f;
 	public float strength = 400f;
 	public bool Lost = false;
@@ -25,12 +23,21 @@ public partial class obj_character_parent : RigidBody2D
 	private CollisionShape2D collider;
 	private AnimatedSprite2D sprite;
 	private obj_jumpbar jumpBar;
+	private obj_shadow shadow;
+	private AnimationPlayer animation;
+	private bool justJumped = false;
 
 	private float joyhaxis = 0;
 	private float joyvaxis = 0;
 
+	private float animhaxis = 0;
+	private float animvaxis = 0;
+	
+	private bool joyLock = false;
+
 	private Vector2 velocity = new Vector2(0, 0);
-	private float jumpHeight = 600;
+	private float jumpHeight = 700;
+	private float jumpCountdown = 0;
 	private float idleTimer = 0;
 	private short flip = 1;
 	public bool jumping = false;
@@ -39,33 +46,63 @@ public partial class obj_character_parent : RigidBody2D
 
 	public override void _Ready()
 	{
+		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/player/snd_jump.wav", "plr_jump");
+		joyhaxis = 0;
+		joyvaxis = 0;
+		
 		feetArea = GetNode<Area2D>("obj_feetArea");
 		collider = GetNode<CollisionShape2D>("obj_hitbox");
-		sprite = GetNode<AnimatedSprite2D>("obj_sprite");
-		jumpBar = GetNode<obj_jumpbar>("obj_jumpbar");
-
-		Variant _State = GetMeta("State");
-		state = _State.As<int>();
+		sprite = GetNode<AnimatedSprite2D>("scaleManager/obj_sprite");
+		animation = GetNode<AnimationPlayer>("animations");
 
 		Variant _Player = GetMeta("Player");
 		Player = _Player.As<int>() - 1;
 
 		playerData = ((GameManager)GetNode("/root/GameManager")).playerData[Player];
 		abilities = ((GameManager)GetNode("/root/GameManager")).minigameLookup[((GameManager)GetNode("/root/GameManager")).CurrentMinigame].Abilities;
+		if(abilities.Contains("jump_bar"))
+			jumpBar = GetNode<obj_jumpbar>("obj_jumpbar");
 		sprite.SpriteFrames = playerData.animationFrames;
-		
+
+		scale = ((GameManager)GetNode("/root/GameManager")).minigameLookup[((GameManager)GetNode("/root/GameManager")).CurrentMinigame].Scale;
+		scale /= 3;
+		//GD.Print(scale);
+		sprite.Scale = new Vector2(3 * scale, 3 * scale);
+		collider.Scale = new Vector2(4 * scale, 4 * scale);
+		feetArea.Scale = new Vector2(1 * scale, 1 * scale);
+
+		if(abilities.Contains("jump_phy"))
+		{
+			GravityScale = 1.3f;
+			PhysicsMaterialOverride = null;
+			LinearDamp = 0;
+
+			animvaxis = 1;
+			joyLock = true;
+		}
+
 		controllerIndex = playerData.controllerIndex;
 		movementSpeed *= playerData.speedMult;
 		density *= playerData.weightMult;
 		strength *= playerData.strengthMult;
 
-		t_jumpDuration = new Alarm(0, true, this, new Callable(this, "StopJump"), false);
+		t_jumpDuration = new Alarm(0.1, true, this, new Callable(this, "StopJump"), false);
 
 		if(HasMeta("MovementSpeed"))
 		{
 			Variant _movementSpeed = GetMeta("MovementSpeed");
 			movementSpeed = _movementSpeed.As<float>();
 		}
+
+		if(abilities.Contains("shadow"))
+		{
+			shadow = (obj_shadow)GetNode<Sprite2D>("scaleManager/obj_shadow");
+			shadow.Visible = true;
+
+			shadow.Scale = new Vector2(3 * scale, 3 * scale);
+		}
+
+		SpriteChanged();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -73,67 +110,61 @@ public partial class obj_character_parent : RigidBody2D
 	{
 		if(!((GameManager)GetNode("/root/GameManager")).MinigameStarted)
 		{
-			joyhaxis = 0;
-			joyvaxis = 0;
-			sprite.Play("idle");
+			
+			//sprite.Play("idle");
 			return;
 		}
 			
-		
 		GetControllerInput();
 
 		idleTimer += (float)delta;
+		jumpCountdown -= (float)delta;
 		ProcessAnimations();
-
-		switch(state)
-		{
-			case 0:
-				GameMap();
-				break;
-			case 1:
-				MushMixUp();
-				break;
-		}
-	}
-
-	private void GameMap()
-	{
-		
-	}
-
-	private void MushMixUp()
-	{
-
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		velocity = new Vector2(joyhaxis * movementSpeed, joyvaxis * movementSpeed);
-		ApplyCentralImpulse(velocity);
-
+		ApplyCentralImpulse(new Vector2(joyhaxis * movementSpeed, joyvaxis * movementSpeed) + velocity);
+		velocity = new Vector2(0, 0);
 		//feetArea.Position = Position;
+		justJumped = false;
 	}
 
 	private void GetControllerInput()
 	{
-		if(controllerIndex == -1)
+		if(controllerIndex < 0)
 		{
-			ProcessAI();
+			if(controllerIndex == -1)
+				ProcessAI();
 			return;
 		}
 
-		if(abilities.Contains("move"))
+		if(!joyLock && abilities.Contains("move"))
 		{
 			joyhaxis = Input.GetAxis("left" + controllerIndex, "right" + controllerIndex);
 			joyvaxis = Input.GetAxis("up" + controllerIndex, "down" + controllerIndex);
+
+			animhaxis = joyhaxis;
+			animvaxis = joyvaxis;
 		}
 
 		if(abilities.Contains("jump") && Input.IsActionJustPressed("jump" + controllerIndex))
+		{
+			jumpCountdown = 0.2f;
+		}
+
+		if(Position.Y > 458 && LinearVelocity.Y > 0)
+		{
+			jumping = false;
+		}
+
+		if(abilities.Contains("jump") && jumpCountdown > 0)
 		{
 			if(abilities.Contains("jump_bar"))
 			{
 				if(jumpBar.JumpTime > 0)
 				{
+					((AudioController)GetNode("/root/AudioController")).PlaySound("plr_jump");
 					jumping = true;
 					sprite.Modulate = new Color(1, 1, 1, 0.5f);
 					collider.Disabled = true;
@@ -141,17 +172,27 @@ public partial class obj_character_parent : RigidBody2D
 					t_jumpDuration.Start();
 				}
 			}
-			else if(abilities.Contains("jump_phys"))
-				if(velocity.Y == 0)
-					velocity.Y = jumpHeight;
+			else if(abilities.Contains("jump_phy"))
+				if(LinearVelocity.Y == 0 && !justJumped)
+				{
+					((AudioController)GetNode("/root/AudioController")).PlaySound("plr_jump");
+					velocity.Y = -jumpHeight;
+					jumping = true;
+					justJumped = true;
+				}
+		}
+
+		if(abilities.Contains("jump_phy") && !Input.IsActionPressed("jump" + controllerIndex) && LinearVelocity.Y < 0)
+		{
+			StopJump();
 		}
 	}
 
 	private void ProcessAnimations()
 	{
-		if(joyhaxis == 0 && joyvaxis == 0)
+		if(controllerIndex < -1 || (animhaxis == 0 && animvaxis == 0))
 		{
-			if(idleTimer > 5)
+			if(idleTimer > 5 && abilities.Contains("move"))
 			{
 				sprite.SpeedScale = 1;
 				sprite.Play("idle");
@@ -163,56 +204,100 @@ public partial class obj_character_parent : RigidBody2D
 
 		idleTimer = 0;
 
-		if(joyhaxis > 0)
+		if(animhaxis > 0)
 			flip = 1;
-		else if(joyhaxis < 0)
+		else if(animhaxis < 0)
 			flip = -1;
 
-		if((joyhaxis > joyvaxis && joyhaxis > -joyvaxis) || (-joyhaxis > joyvaxis && -joyhaxis > -joyvaxis))
+		string action = "null";
+
+		if(jumping)
 		{
-			sprite.SpeedScale = Mathf.Clamp(Mathf.Abs(joyhaxis), 0.2f, 1);
-			sprite.Play("walkRight");
+			action = "jump";
+			sprite.SpeedScale = 0;
 		}
-		else if(-joyvaxis > joyhaxis && -joyvaxis > -joyhaxis)
+		else
 		{
-			sprite.SpeedScale = Mathf.Clamp(Mathf.Abs(joyvaxis), 0.2f, 1);
-			sprite.Play("walkDown");
-		}
-		else if(joyvaxis > joyhaxis && joyvaxis > -joyhaxis)
-		{
-			sprite.SpeedScale = Mathf.Clamp(Mathf.Abs(joyvaxis), 0.2f, 1);
-			sprite.Play("walkUp");
+			action = "walk";
+			sprite.SpeedScale = 0;
 		}
 
-		sprite.Scale = new Vector2(scale * flip, scale * 1);
+		if(abilities.Contains("move"))
+		{
+			sprite.SpeedScale = Mathf.Clamp(Mathf.Abs(animhaxis), 0.2f, 1);
+		}
+
+		if((animhaxis > animvaxis && animhaxis > -animvaxis) || (-animhaxis > animvaxis && -animhaxis > -animvaxis))
+		{
+			sprite.Play(action + "Right");
+		}
+		else if(-animvaxis > animhaxis && -animvaxis > -animhaxis)
+		{
+			sprite.Play(action + "Down");
+		}
+		else if(animvaxis > animhaxis && animvaxis > -animhaxis)
+		{
+			sprite.Play(action + "Up");
+		}
+
+		sprite.Scale = new Vector2(3 * scale * flip, 3 * scale * 1);
+	}
+
+	public void Burn()
+	{
+		if(controllerIndex != -2)
+		{
+			controllerIndex = -2;
+			((AudioController)GetNode("/root/AudioController")).PlaySound("jumprope_burn");
+			animation.Play("out_burn");
+		}
 	}
 
 	public void StopJump()
 	{
-		sprite.Modulate = new Color(1, 1, 1, 1);
-		collider.Disabled = false;
-		jumping = false;
+		if(abilities.Contains("jump_bar"))
+		{
+			sprite.Modulate = new Color(1, 1, 1, 1);
+			collider.Disabled = false;
+			jumping = false;
+		}
+		else if(abilities.Contains("jump_phy"))
+		{
+			velocity.Y = -LinearVelocity.Y * 0.3f;
+		}
 	}
 
 	private void ProcessAI()
 	{
-		switch(((GameManager)GetNode("/root/GameManager")).CurrentMinigame)
-		{
-			case 1:
-				float distanceX = (Position.X / aiTarget.X - 0.1f);
-				if(distanceX < 0.9f)
-					distanceX = -(aiTarget.X / Position.X - 0.1f);
-				joyhaxis = -Mathf.Clamp(distanceX, -1, 1);
-				if(Math.Abs(joyhaxis) < 0.98f)
-					joyhaxis = 0;
+		// switch(((GameManager)GetNode("/root/GameManager")).CurrentMinigame)
+		// {
+		// 	case 1:
+		// 		float distanceX = (Position.X / aiTarget.X - 0.1f);
+		// 		if(distanceX < 0.9f)
+		// 			distanceX = -(aiTarget.X / Position.X - 0.1f);
+		// 		joyhaxis = -Mathf.Clamp(distanceX, -1, 1);
+		// 		if(Math.Abs(joyhaxis) < 0.98f)
+		// 			joyhaxis = 0;
 				
-				float distanceY = (Position.Y / aiTarget.Y - 0.1f);
-				if(distanceY < 0.9f)
-					distanceY = -(aiTarget.Y / Position.Y - 0.1f);
-				joyvaxis = -Mathf.Clamp(distanceY, -1, 1);
-				if(Math.Abs(joyvaxis) < 0.98f)
-					joyvaxis = 0;
-				break;
+		// 		float distanceY = (Position.Y / aiTarget.Y - 0.1f);
+		// 		if(distanceY < 0.9f)
+		// 			distanceY = -(aiTarget.Y / Position.Y - 0.1f);
+		// 		joyvaxis = -Mathf.Clamp(distanceY, -1, 1);
+		// 		if(Math.Abs(joyvaxis) < 0.98f)
+		// 			joyvaxis = 0;
+		// 		break;
+		// }
+
+		animhaxis = joyhaxis;
+		animvaxis = joyvaxis;
+	}
+
+	private void SpriteChanged()
+	{
+		if(abilities.Contains("shadow"))
+		{
+			//GD.Print(sprite.Animation + " | " + sprite.Frame);
+			shadow.Texture = sprite.SpriteFrames.GetFrameTexture(sprite.Animation, sprite.Frame);
 		}
 	}
 }
