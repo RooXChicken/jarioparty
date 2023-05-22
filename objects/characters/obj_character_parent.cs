@@ -25,7 +25,7 @@ public partial class obj_character_parent : RigidBody2D
 	private obj_shadow shadow;
 	private AnimationPlayer animation;
 	private bool justJumped = false;
-	private int punchForce = 10500;
+	private int punchForce = 70500;
 
 	private float joyhaxis = 0;
 	private float joyvaxis = 0;
@@ -154,7 +154,7 @@ public partial class obj_character_parent : RigidBody2D
 		if(abilities.Contains("punch") && Input.IsActionJustPressed("punch" + controllerIndex) && sprite.Animation != "punch")
 		{
 			joyLock = true;
-			sprite.Animation = "punch";
+			sprite.Animation = "attack";
 
 			resetAnim = false;
 			ResetJoystick();
@@ -244,7 +244,7 @@ public partial class obj_character_parent : RigidBody2D
 			sprite.SpeedScale = Mathf.Clamp(Mathf.Abs(animhaxis + animvaxis), 0.2f, 1);
 		}
 
-		if(sprite.Animation == "punch")
+		if(sprite.Animation == "attack")
 		{
 			sprite.SpeedScale = 1;
 		}
@@ -284,6 +284,7 @@ public partial class obj_character_parent : RigidBody2D
 	{
 		if(controllerIndex != -2)
 		{
+			Lost = true;
 			controllerIndex = -2;
 			((AudioController)GetNode("/root/AudioController")).PlaySound("jumprope_burn");
 			animation.Play("out_burn");
@@ -337,7 +338,7 @@ public partial class obj_character_parent : RigidBody2D
 			shadow.Texture = sprite.SpriteFrames.GetFrameTexture(sprite.Animation, sprite.Frame);
 		}
 
-		if(sprite.Animation == "punch")
+		if(sprite.Animation == "attack")
 		{
 			switch(sprite.Frame)
 			{

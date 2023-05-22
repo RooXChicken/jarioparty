@@ -5,13 +5,14 @@ public partial class obj_character_map : RigidBody2D
 {
 	public int Player = 0;
 	public bool isTurn = false;
-	private PlayerData playerData;
+	public PlayerData playerData;
 	public int CharacterIndex { get { return playerData.characterIndex; } }
 
 	public byte state = 128;
 	private int moves = 0;
+	private bool starSpace = false;
 
-	public float controllerIndex = 1;
+	public int controllerIndex = 1;
 	public bool canJump = false;
 
 	private AnimatedSprite2D sprite;
@@ -27,10 +28,12 @@ public partial class obj_character_map : RigidBody2D
 
 	private Alarm t_moveOnBoard;
 	private bool jumping = false;
+	private bool canMove = true;
 
 	private float velocityX;
 	private float velocityY;
 	private Vector2 posOld;
+	private bool locked = false;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -50,10 +53,13 @@ public partial class obj_character_map : RigidBody2D
 		sprite.SpriteFrames = playerData.animationFrames;
 		
 		controllerIndex = playerData.controllerIndex;
-		if(controllerIndex == -1)
-			controllerIndex = 1;
+		// if(controllerIndex == -1)
+		// 	controllerIndex = 1;
 
 		collision.Disabled = true;
+
+		if(playerData.PlayerStarted)
+			Position = new Vector2(0, -25);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -93,30 +99,55 @@ public partial class obj_character_map : RigidBody2D
 	{
 		GetNode<Node2D>("../../../../obj_diceBlock").Position = new Vector2(follower.Position.X, follower.Position.Y - 138);
 		GetNode<obj_diceBlock>("../../../../obj_diceBlock").a_spinStart(this);
-		collision.Disabled = false;
+		EnableCollision();
 		state = 1;
+	}
+
+	public void EnableCollision()
+	{
+		collision.Disabled = false;
 	}
 
 	private void RollDice()
 	{
+		if(controllerIndex == -1)
+			if(canJump)
+			{
+				Jump();
+				return;
+			}
+		
 		if(canJump && Input.IsActionJustPressed("jump" + controllerIndex))
-		{
-			GravityScale = 1;
-			jumping = true;
-			ApplyCentralImpulse(new Vector2(0, -750));
-			state = 2;
-		}
+			Jump();
+
+		Input.ActionRelease("jump" + controllerIndex);
+	}
+
+	private void Jump()
+	{
+		GravityScale = 1;
+		jumping = true;
+		ApplyCentralImpulse(new Vector2(0, -750));
+		state = 2;
 	}
 
 	public void DiceRolled()
 	{
-		if(((obj_diceBlock)GetNode<Node2D>("../../../../obj_diceBlock")).numState == 2)
+		if(playerData.PlayerStarted)
 		{
-			moves = ((obj_diceBlock)GetNode<Node2D>("../../../../obj_diceBlock")).num + 1;
-			GetNode<CollisionShape2D>("spacehitbox/obj_collision").Disabled = false;
-			Freeze = true;
-			movesCount = true;
-			state = 3;
+			if(((obj_diceBlock)GetNode<Node2D>("../../../../obj_diceBlock")).numState == 2)
+			{
+				moves = ((obj_diceBlock)GetNode<Node2D>("../../../../obj_diceBlock")).num + 1;
+				GetNode<CollisionShape2D>("spacehitbox/obj_collision").Disabled = false;
+				Freeze = true;
+				movesCount = true;
+				state = 3;
+			}
+		}
+		else
+		{
+			GetNode<obj_shawarma>("../../../../obj_shawarma").diceRoll--;
+			state = 6;
 		}
 	}
 
@@ -124,22 +155,34 @@ public partial class obj_character_map : RigidBody2D
 	{
 		if(moves > 0)
 		{
+			if(!canMove)
+				return;
 			GetNode<Node2D>("../../../../obj_diceBlock").Position = new Vector2(follower.Position.X, follower.Position.Y - 138);
 			follower.ProgressRatio += delta * 0.04f;
 		}
 		else
 		{
+			starSpace = false;
 			state = 4;
 		}
 	}
 
 	private void HandleSpace()
 	{
+		if(locked)
+			return;
 		//GD.Print(lastCollision.Name);
 		byte walletID = (byte)(Player + 1);
 		((ShaderMaterial)GetNode<Sprite2D>("../../../../obj_mapGUI/obj_wallet" + walletID + "/spr_wallet/spr_walletColor").Material).SetShaderParameter("walletColor", new Vector3(0.2f, 1, 0.2f));
+		if(!locked && !starSpace)
 		switch(lastCollision.Name.ToString().Substring(0, 6))
 		{
+			case "spc_st":
+				HandleStar();
+				locked = true;
+				return;
+
+				break;
 			case "spc_bl":
 				((GameManager)GetNode("/root/GameManager")).playerData[Player].coins += 3;
 				GetNode<obj_coinIndicator>("obj_coinIndicator/Indicator").PlayAnimation(3);
@@ -168,7 +211,7 @@ public partial class obj_character_map : RigidBody2D
 		}
 
 		((GameManager)GetNode("/root/GameManager")).playerData[Player].coins = Math.Clamp(((GameManager)GetNode("/root/GameManager")).playerData[Player].coins, (short)0, (short)9999);
-
+		
 		state = 5;
 	}
 
@@ -244,20 +287,43 @@ public partial class obj_character_map : RigidBody2D
 
 	private void SpaceEnter(Area2D area)
 	{
-		if(area.Name != "obj_character_map")
-			if(movesCount)
-				if(!grace)
-				{
-					moves--;
-					GetNode<obj_diceBlock>("../../../../obj_diceBlock").num--;
-					lastCollision = area;
-				}
-				else
-				{
-					grace = false;
-				}
+		if(area.Name == "obj_character_map" || !movesCount)
+			return;
 
-		//GD.Print(area.Name);
+		if(grace)
+		{
+			grace = false;
+			return;
+		}
+
+		moves--;
+		GetNode<obj_diceBlock>("../../../../obj_diceBlock").num--;
+		if(canMove)
+			lastCollision = area;
+
+		if(area.Name == "spc_star")
+		{
+			lastCollision = area;
+			HandleStar();
+		}
+	}
+
+	private void HandleStar()
+	{
+		((obj_map)GetNode<Node2D>("../../../../")).SetZoomLevel(1.5f);
+		((obj_map)GetNode<Node2D>("../../../../")).offset = new Vector2(0, -64);
+		GetNode<spc_star>("../../../../spc_star").ShowDialogue(playerData, new Callable(this, "Unlock"));
+		canMove = false;
+		starSpace = true;
+	}
+
+	public void Unlock(bool gotStar = false)
+	{
+		locked = false;
+		canMove = true;
+		((obj_map)GetNode<Node2D>("../../../../")).SetZoomLevel(1f);
+		((obj_map)GetNode<Node2D>("../../../../")).offset = new Vector2(0, 0);
+		GetNode<spc_star>("../../../../spc_star").HideDialogue();
 	}
 
 	private new void BodyShapeEntered(Rid body_rid, Node body, long body_shape_index, long local_shape_index)
@@ -265,6 +331,4 @@ public partial class obj_character_map : RigidBody2D
 		if(body.Name == "obj_pfloor")
 			jumping = false;
 	}
-
-
 }

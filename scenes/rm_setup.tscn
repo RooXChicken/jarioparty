@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cevjlhgprryav"]
+[gd_scene load_steps=13 format=3 uid="uid://cevjlhgprryav"]
 
 [ext_resource type="PackedScene" uid="uid://d1j2nfn5erdj8" path="res://objects/rooms/rm_setup/obj_dialoguebox.tscn" id="1_aga6h"]
 [ext_resource type="Script" path="res://objects/rooms/rm_setup/obj_frog.cs" id="1_jeo2x"]
@@ -29,6 +29,139 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="Animation" id="Animation_e6baa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("obj_frog:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("obj_frog:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, 6)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("obj_frog:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [10]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("obj_frog:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("obj_frog:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(250, 550)]
+}
+
+[sub_resource type="Animation" id="Animation_mwf4v"]
+resource_name = "transition"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("obj_frog:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 18.8496]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("obj_frog:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(6, 6), Vector2(76, 76)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("obj_frog:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("obj_frog:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("obj_frog:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(250, 550), Vector2(634, 414)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y0wob"]
+_data = {
+"RESET": SubResource("Animation_e6baa"),
+"transition": SubResource("Animation_mwf4v")
+}
+
 [node name="rm_setup" type="Node2D"]
 
 [node name="obj_playerSelect" parent="." instance=ExtResource("6_41bc8")]
@@ -38,10 +171,10 @@ scale = Vector2(2, 2)
 
 [node name="obj_dialoguebox" parent="." instance=ExtResource("1_aga6h")]
 z_index = 2
-position = Vector2(600, 630)
+position = Vector2(600, 560)
 
 [node name="obj_frog" type="AnimatedSprite2D" parent="."]
-z_index = 1
+z_index = 10
 position = Vector2(250, 550)
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_gnidu")
@@ -58,3 +191,10 @@ region_rect = Rect2(0, 0, 640, 720)
 script = ExtResource("3_tacu8")
 metadata/ScrollSpeed = 1000.0
 metadata/_edit_lock_ = true
+
+[node name="anim_transition" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y0wob")
+}
+
+[connection signal="animation_finished" from="anim_transition" to="obj_playerSelect" method="AnimationFinished"]

@@ -78,6 +78,9 @@ public partial class AudioController : Node2D
 			case "pitch":
 				pool[0].PitchScale = value;
 				break;
+			case "volume":
+				pool[0].VolumeDb = value;
+				break;
 		}
 	}
 	

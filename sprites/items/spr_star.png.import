@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1wc473hmo63d"
-path="res://.godot/imported/bg.png-1332daed4723c48da5d3211d58ac4c39.ctex"
+uid="uid://dpsqggb0yt1sc"
+path="res://.godot/imported/spr_star.png-b21dd363ff98a20ce368eeb4af9075c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/rooms/minigames/lookaway/bg.png"
-dest_files=["res://.godot/imported/bg.png-1332daed4723c48da5d3211d58ac4c39.ctex"]
+source_file="res://sprites/items/spr_star.png"
+dest_files=["res://.godot/imported/spr_star.png-b21dd363ff98a20ce368eeb4af9075c2.ctex"]
 
 [params]
 

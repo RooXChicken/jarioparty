@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://vi01pdjd8l3f"]
+[gd_scene load_steps=15 format=3]
 
 [ext_resource type="Script" path="res://objects/characters/obj_character_parent.cs" id="1_y278h"]
 [ext_resource type="SpriteFrames" uid="uid://brekq8pelfxn1" path="res://sprites/characters/playable/spr_jario.tres" id="2_ldhjv"]
-[ext_resource type="PackedScene" uid="uid://b1brh0mlgjyoo" path="res://obj_shadow.tscn" id="3_cv4x7"]
+[ext_resource type="PackedScene" path="res://obj_shadow.tscn" id="3_cv4x7"]
 [ext_resource type="Texture2D" uid="uid://jlcluxnqxto3" path="res://sprites/characters/playable/jario/jarioidle.png" id="4_ybyto"]
 [ext_resource type="SpriteFrames" uid="uid://cdiou2x4q8pja" path="res://sprites/characters/assets/anim_out.tres" id="5_sxmvd"]
 [ext_resource type="Script" path="res://objects/characters/obj_interaction.cs" id="6_auua0"]

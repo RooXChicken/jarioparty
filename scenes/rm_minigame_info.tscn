@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bffqpue2t7tnq"]
+[gd_scene load_steps=20 format=3]
 
 [ext_resource type="Texture2D" uid="uid://clf3msf2jcdhb" path="res://sprites/rooms/rm_minigame_info/spr_curtains.png" id="1_pmcdl"]
 [ext_resource type="Script" path="res://objects/rooms/rm_minigame_info/rm_minigame_info.cs" id="1_xy7vy"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dtylccvxdo8j2" path="res://objects/rooms/rm_minigame_info/obj_itemPicker.tscn" id="6_l47ec"]
 [ext_resource type="Texture2D" uid="uid://dspaqrwgwo3c6" path="res://sprites/rooms/rm_minigame_info/spr_setupFrog.png" id="7_le71p"]
 [ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://fonts/heygorgeous.ttf" id="8_d8xi8"]
-[ext_resource type="PackedScene" uid="uid://faxrqppb6hvx" path="res://objects/characters/obj_character_info.tscn" id="13_qyf1n"]
+[ext_resource type="PackedScene" path="res://objects/characters/obj_character_info.tscn" id="13_qyf1n"]
 
 [sub_resource type="Animation" id="Animation_sq5h6"]
 length = 0.001

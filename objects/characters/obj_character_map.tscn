@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4yqal4g3q8pn"]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://objects/characters/obj_character_map.cs" id="1_csh0g"]
 [ext_resource type="SpriteFrames" uid="uid://brekq8pelfxn1" path="res://sprites/characters/playable/spr_jario.tres" id="2_xm5c2"]

@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://dilqto181kfni"]
+
+[ext_resource type="Script" path="res://stage/spaces/obj_shawarma.cs" id="1_0ifr1"]
+[ext_resource type="Texture2D" uid="uid://6sqluv7fcayi" path="res://sprites/characters/npc/shawarma/Schwarma.png" id="2_4ihm1"]
+[ext_resource type="Texture2D" uid="uid://c6l5jd8yl4qtn" path="res://sprites/characters/npc/shawarma/SchwarmaSpeak.png" id="3_dlilt"]
+[ext_resource type="PackedScene" uid="uid://dmml732knqi75" path="res://objects/common/obj_dialogueController.tscn" id="4_00flk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4r7k"]
+atlas = ExtResource("2_4ihm1")
+region = Rect2(0, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvt01"]
+atlas = ExtResource("2_4ihm1")
+region = Rect2(32, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kiii8"]
+atlas = ExtResource("2_4ihm1")
+region = Rect2(64, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vpw8"]
+atlas = ExtResource("2_4ihm1")
+region = Rect2(96, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbtpw"]
+atlas = ExtResource("3_dlilt")
+region = Rect2(0, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8aap"]
+atlas = ExtResource("3_dlilt")
+region = Rect2(32, 0, 32, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_25j3v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4r7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvt01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kiii8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvt01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4r7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvt01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4r7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vpw8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbtpw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8aap")
+}],
+"loop": true,
+"name": &"speak",
+"speed": 6.0
+}]
+
+[node name="obj_shawarma" type="Node2D"]
+script = ExtResource("1_0ifr1")
+
+[node name="spr_shawarma" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_25j3v")
+animation = &"speak"
+frame_progress = 0.256317
+
+[node name="obj_dialogueController" parent="." instance=ExtResource("4_00flk")]
+position = Vector2(-50, -32)
+scale = Vector2(1.5, 1.5)

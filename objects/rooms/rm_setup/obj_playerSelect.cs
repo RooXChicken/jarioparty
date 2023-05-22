@@ -16,20 +16,26 @@ public partial class obj_playerSelect : Node2D
 	private AnimatedSprite2D spr_hand;
 	private Sprite2D[] clouds;
 	private AnimatedSprite2D[] players;
+	private AnimationPlayer anim_transition;
 	private Sprite2D[] portraits;
 	private Color regular = new Color(1, 1, 1, 1);
 	private Color selected = new Color(0.5f, 0.5f, 0.5f, 1);
 	private Vector2[] positions = new Vector2[4];
 
+	private AnimationPlayer animation;
+
 	public override void _Ready()
 	{
+		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/rooms/rm_setup/snd_frog_scream.wav", "frogscream");
+		animation = GetNode<AnimationPlayer>("anim_player");
 		spr_hand = GetNode<AnimatedSprite2D>("spr_hand");
+		anim_transition = GetNode<AnimationPlayer>("../anim_transition");
 		Visible = false;
 
 		spr_hand.Play("default");
 
 		clouds = new Sprite2D[] { 
-			GetNode<Sprite2D>("spr_cloudp1"), GetNode<Sprite2D>("spr_cloudp2"), GetNode<Sprite2D>("spr_cloudp3"), GetNode<Sprite2D>("spr_cloudp4") 
+			GetNode<Sprite2D>("Clouds/spr_cloudp1"), GetNode<Sprite2D>("Clouds/spr_cloudp2"), GetNode<Sprite2D>("Clouds/spr_cloudp3"), GetNode<Sprite2D>("Clouds/spr_cloudp4") 
 			};
 
 		players = new AnimatedSprite2D[] { 
@@ -91,10 +97,8 @@ public partial class obj_playerSelect : Node2D
 			index = 0;
 			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_select");
 			for(int i = 0; i < 4; i++)
-			{
-				clouds[i].Visible = false;
-				portraits[i].Visible = true;
-			}
+			animation.Play("cloudtoport");
+			GetNode<Sprite2D>("Portraits/spr_frame");
 			SetFrogText((short)(characterIndex + 6));
 			ChangeIndex(0);
 		}
@@ -103,19 +107,10 @@ public partial class obj_playerSelect : Node2D
 	private void CharacterSelect(double delta)
 	{
 		for(int i = 0; i < 4; i++)
-		{
-			if(220 + players[i].Position.Y < 210)
-				players[i].Position = players[i].Position.Lerp(positions[i], (float)(delta * 2));
-			else
-				players[i].Position = players[i].Position.Lerp(positions[i], (float)(delta * (((GameManager)GetNode("/root/GameManager")).rand.NextDouble())));
-
-			if(220 + portraits[i].Position.Y < 210)
-				portraits[i].Position = portraits[i].Position.Lerp(positions[i], (float)(delta * 2));
-			else
-				portraits[i].Position = portraits[i].Position.Lerp(positions[i], (float)(delta * (((GameManager)GetNode("/root/GameManager")).rand.NextDouble())));
-		}
-
-		if(Input.IsActionJustPressed("jump" + controllerIndex) && players[index].Modulate != selected)
+			portraits[i].Frame = 0;
+			
+		portraits[index].Frame = 1;
+		if(Input.IsActionJustPressed("jump" + controllerIndex) && !players[index].Visible)
 		{
 			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_select");
 			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex] = new PlayerData(-1, (ushort)index, (characterIndex >= ((GameManager)GetNode("/root/GameManager")).playerCount));
@@ -152,7 +147,11 @@ public partial class obj_playerSelect : Node2D
 			//GD.Print(i + " loaded");
 		}
 
-		((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_map");
+		((AudioController)GetNode("/root/AudioController")).PlaySound("frogscream");
+		anim_transition.Play("transition");
+		state = 4;
+
+		//((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_map");
 		//((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_minigame_info");
 	}
 
@@ -187,13 +186,13 @@ public partial class obj_playerSelect : Node2D
 				spr_hand.Position = new Vector2(0, -76);
 				break;
 			case 1:
-				spr_hand.Position = new Vector2(100, -76);
+				spr_hand.Position = new Vector2(102, -76);
 				break;
 			case 2:
-				spr_hand.Position = new Vector2(200, -76);
+				spr_hand.Position = new Vector2(204, -76);
 				break;
 			case 3:
-				spr_hand.Position = new Vector2(300, -76);
+				spr_hand.Position = new Vector2(306, -76);
 				break;
 		}
 	}
@@ -219,5 +218,10 @@ public partial class obj_playerSelect : Node2D
 
 		joyhaxis = Input.GetAxis("left" + controllerIndex, "right" + controllerIndex);
 		joyvaxis = Input.GetAxis("up" + controllerIndex, "down" + controllerIndex);
+	}
+
+	private void AnimationFinished(StringName anim_name)
+	{
+		((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_map");
 	}
 }

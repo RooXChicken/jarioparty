@@ -1,30 +1,25 @@
-[gd_scene load_steps=15 format=3 uid="uid://bu1frohvt4j0a"]
+[gd_scene load_steps=13 format=3 uid="uid://cb2qmpabg3g68"]
 
 [ext_resource type="PackedScene" uid="uid://db8bcmriqbdqx" path="res://scenes/minigames/obj_minigameBase.tscn" id="1_88fdi"]
 [ext_resource type="Script" path="res://objects/rooms/minigames/lookaway/rm_minigame_lookaway.cs" id="1_cons0"]
-[ext_resource type="PackedScene" uid="uid://eorh1dpsynug" path="res://objects/characters/obj_character_lookaway.tscn" id="2_cn341"]
-[ext_resource type="Texture2D" uid="uid://dqjorbiki7fqr" path="res://sprites/rooms/minigames/lookaway/spr_bg.png" id="4_bjvx7"]
+[ext_resource type="PackedScene" path="res://objects/characters/obj_character_lookaway.tscn" id="2_cn341"]
+[ext_resource type="Texture2D" uid="uid://4d412peo3oln" path="res://sprites/rooms/minigames/lookaway/spr_bg.png" id="4_bjvx7"]
 [ext_resource type="Shader" path="res://shaders/shd_lookawayScore.shd.gdshader" id="4_lvvae"]
-[ext_resource type="Texture2D" uid="uid://1wc473hmo63d" path="res://sprites/rooms/minigames/lookaway/bg.png" id="4_q48va"]
 [ext_resource type="Texture2D" uid="uid://bm4vpi7535dp5" path="res://sprites/rooms/minigames/lookaway/score.png" id="7_2mpus"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j76ve"]
-atlas = ExtResource("4_q48va")
-region = Rect2(0, 0, 640, 360)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dsywg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_whacq"]
 atlas = ExtResource("4_bjvx7")
 region = Rect2(0, 0, 640, 360)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7hhtf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wj2fs"]
 atlas = ExtResource("4_bjvx7")
 region = Rect2(640, 0, 640, 360)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0buhv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtmrw"]
 atlas = ExtResource("4_bjvx7")
 region = Rect2(1280, 0, 640, 360)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vuaoi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3svd0"]
 atlas = ExtResource("4_bjvx7")
 region = Rect2(1920, 0, 640, 360)
 
@@ -32,52 +27,43 @@ region = Rect2(1920, 0, 640, 360)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j76ve")
+"texture": SubResource("AtlasTexture_whacq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dsywg")
+"texture": SubResource("AtlasTexture_whacq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dsywg")
+"texture": SubResource("AtlasTexture_whacq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dsywg")
+"texture": SubResource("AtlasTexture_whacq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dsywg")
+"texture": SubResource("AtlasTexture_whacq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dsywg")
+"texture": SubResource("AtlasTexture_whacq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dsywg")
+"texture": SubResource("AtlasTexture_whacq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dsywg")
+"texture": SubResource("AtlasTexture_whacq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dsywg")
+"texture": SubResource("AtlasTexture_whacq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dsywg")
+"texture": SubResource("AtlasTexture_wj2fs")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dsywg")
+"texture": SubResource("AtlasTexture_jtmrw")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_3svd0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dsywg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7hhtf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0buhv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vuaoi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vuaoi")
+"texture": SubResource("AtlasTexture_3svd0")
 }],
 "loop": false,
 "name": &"default",
@@ -86,7 +72,7 @@ animations = [{
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ce57l"]
 shader = ExtResource("4_lvvae")
-shader_parameter/remaining = 0.83
+shader_parameter/remaining = 1.0
 
 [node name="rm_minigame_lookaway" type="Node2D"]
 script = ExtResource("1_cons0")
@@ -118,7 +104,7 @@ position = Vector2(640, 360)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_p4e42")
 autoplay = "default"
-frame_progress = 0.605071
+frame_progress = 1.0
 metadata/_edit_lock_ = true
 
 [node name="spr_score" type="Sprite2D" parent="spr_bg"]

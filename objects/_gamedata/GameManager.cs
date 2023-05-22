@@ -22,9 +22,9 @@ public partial class GameManager : Node
 			new MinigameBase(0, "testminigame", "YOU SHOULD NOT SEE THIS", new List<string>()),
 			new MinigameBase(1, "mushmixup", "There are 7 mushrooms, but be careful!\nFrog will wave his flag and you must stay on the mushroom of the same color, as the others will fall!\n     - Move (Navigate mushrooms!)\n     - Jump (Save yourself!)\n     - Attack (Push players!)",
 				new List<string>() {"move", "jump", "jump_bar", "punch"}, "mus_minigame_savingcourage", 60, new int[] {8, 1, 3}),
-			new MinigameBase(2, "lookaway", "When the music drops, look away from the top player!",
+			new MinigameBase(2, "lookaway", "When the music drops, look away from the top player!\n     - Look (A different way!)",
 				new List<string>() {"move"}, "mus_minigame_lookaway", -1, new int[] {8}),
-			new MinigameBase(3, "jumprope", "Jump over the jumprope when it goes underneath you! Last person standing wins!",
+			new MinigameBase(3, "jumprope", "Don't get hit by the fire! The Jumprope will speed up as it progresses. The last person standing wins!\n\n     - Jump (Dodge the fire!)",
 				new List<string>() {"jump", "jump_phy", "shadow"}, "mus_minigame_jumprope", 120, new int[] {1}, 4)
 		};
 	public Random rand = new Random();

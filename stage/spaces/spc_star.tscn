@@ -1,0 +1,276 @@
+[gd_scene load_steps=18 format=3 uid="uid://sya1whdofhnh"]
+
+[ext_resource type="Texture2D" uid="uid://ccw31uiuj5rdk" path="res://stage/gui/sprites/spaces/starspace.png" id="1_0t8yo"]
+[ext_resource type="Script" path="res://stage/spaces/spc_star.cs" id="1_m7ahh"]
+[ext_resource type="Shape2D" uid="uid://bob0la6buryho" path="res://stage/spaces/spc_hitbox.tres" id="2_r33xb"]
+[ext_resource type="Texture2D" uid="uid://c4upy77kklf4v" path="res://stage/gui/sprites/spaces/toomba.png" id="3_0mnhv"]
+[ext_resource type="PackedScene" uid="uid://dmml732knqi75" path="res://objects/common/obj_dialogueController.tscn" id="5_4ir4c"]
+[ext_resource type="Texture2D" uid="uid://dfwwppd7ojmab" path="res://sprites/characters/npc/toomba/toombaspeak.png" id="5_xs6pg"]
+[ext_resource type="Texture2D" uid="uid://dpsqggb0yt1sc" path="res://sprites/items/spr_star.png" id="8_uoyth"]
+[ext_resource type="Texture2D" uid="uid://cn3nfaqda8ba3" path="res://sprites/common/spr_point.png" id="9_577dd"]
+[ext_resource type="Texture2D" uid="uid://c8phnm25adb2x" path="res://stage/gui/sprites/spr_starGet.png" id="10_vn42q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g030f"]
+atlas = ExtResource("3_0mnhv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6qd7"]
+atlas = ExtResource("3_0mnhv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu1l2"]
+atlas = ExtResource("5_xs6pg")
+region = Rect2(0, 0, 32, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdb11"]
+atlas = ExtResource("5_xs6pg")
+region = Rect2(32, 0, 32, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4vroj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g030f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6qd7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vu1l2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdb11")
+}],
+"loop": true,
+"name": &"speak",
+"speed": 6.0
+}]
+
+[sub_resource type="Animation" id="Animation_rkoy3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spr_star:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("spr_star:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1e-05),
+"update": 0,
+"values": [Vector2(0, -32)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("spr_star:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("spr_starget:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("spr_starget:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("obj_dialogueController:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_tx4lg"]
+resource_name = "starget"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spr_star:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("spr_star:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.6, 2.2),
+"transitions": PackedFloat32Array(1e-05, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -32), Vector2(0, -32), Vector2(0, -164), Vector2(0, 32)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("spr_star:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7, 2, 2.2),
+"transitions": PackedFloat32Array(1, 1e-05, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.2, 6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"GiveStar"
+}, {
+"args": [],
+"method": &"FinishStarAnimation"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("spr_starget:scale")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3, 3.5, 5, 5.5),
+"transitions": PackedFloat32Array(1, 1e-05, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("spr_starget:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("obj_dialogueController:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5kpol"]
+_data = {
+"RESET": SubResource("Animation_rkoy3"),
+"starget": SubResource("Animation_tx4lg")
+}
+
+[node name="spc_star" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
+input_pickable = false
+script = ExtResource("1_m7ahh")
+
+[node name="spr_space" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1, -1)
+scale = Vector2(2, 2)
+texture = ExtResource("1_0t8yo")
+
+[node name="obj_collision" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(0, -1)
+rotation = 1.5708
+shape = ExtResource("2_r33xb")
+
+[node name="spr_toomba" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -56)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_4vroj")
+autoplay = "default"
+frame_progress = 0.998977
+
+[node name="obj_dialogueController" parent="spr_toomba" instance=ExtResource("5_4ir4c")]
+visible = false
+
+[node name="anim_starGet" type="AnimationPlayer" parent="spr_toomba"]
+libraries = {
+"": SubResource("AnimationLibrary_5kpol")
+}
+
+[node name="spr_star" type="Sprite2D" parent="spr_toomba"]
+visible = false
+z_index = 10
+position = Vector2(0, -32)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("8_uoyth")
+
+[node name="lgt_star" type="PointLight2D" parent="spr_toomba/spr_star"]
+texture = ExtResource("9_577dd")
+texture_scale = 0.2
+
+[node name="spr_starget" type="Sprite2D" parent="spr_toomba"]
+visible = false
+z_index = 12
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("10_vn42q")

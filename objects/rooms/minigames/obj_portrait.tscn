@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c38e7potf8l16"]
+[gd_scene load_steps=7 format=3 uid="uid://c38e7potf8l16"]
 
 [ext_resource type="SpriteFrames" uid="uid://brekq8pelfxn1" path="res://sprites/characters/playable/spr_jario.tres" id="1_86tmd"]
 [ext_resource type="Texture2D" uid="uid://duyhevb3offnv" path="res://sprites/characters/assets/placements.png" id="2_y33jh"]
+[ext_resource type="SpriteFrames" uid="uid://dmwtjs78d1gl0" path="res://stage/gui/anim_walletNumbers.tres" id="3_rvxr2"]
+[ext_resource type="Texture2D" uid="uid://bgyuat2i50jqq" path="res://stage/gui/sprites/spr_coin.png" id="4_vc85p"]
+[ext_resource type="Texture2D" uid="uid://ct510yi63at1s" path="res://stage/gui/sprites/spr_star.png" id="5_5v076"]
+[ext_resource type="Texture2D" uid="uid://dkyxqhdyrxyfe" path="res://stage/gui/sprites/spr_indicatorPlus.png" id="6_nkux7"]
 
 [node name="obj_portrait" type="Node2D"]
 
@@ -18,3 +22,83 @@ position = Vector2(180, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("2_y33jh")
 hframes = 4
+
+[node name="CoinNumbers" type="Node2D" parent="."]
+z_index = -2
+position = Vector2(270, 40)
+scale = Vector2(2, 2)
+
+[node name="spr_num1" type="AnimatedSprite2D" parent="CoinNumbers"]
+z_index = 5
+position = Vector2(28, -21)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("3_rvxr2")
+frame_progress = 0.778236
+
+[node name="spr_num2" type="AnimatedSprite2D" parent="CoinNumbers"]
+z_index = 5
+position = Vector2(48, -21)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("3_rvxr2")
+frame_progress = 0.612314
+
+[node name="spr_num3" type="AnimatedSprite2D" parent="CoinNumbers"]
+z_index = 5
+position = Vector2(68, -21)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("3_rvxr2")
+
+[node name="spr_num4" type="AnimatedSprite2D" parent="CoinNumbers"]
+z_index = 5
+position = Vector2(88, -21)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("3_rvxr2")
+
+[node name="spr_coin" type="Sprite2D" parent="."]
+position = Vector2(280, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("4_vc85p")
+
+[node name="spr_star" type="Sprite2D" parent="."]
+position = Vector2(500, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("5_5v076")
+
+[node name="spr_plus" type="Sprite2D" parent="."]
+position = Vector2(680, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("6_nkux7")
+
+[node name="StarNumbers" type="Node2D" parent="."]
+z_index = -2
+position = Vector2(490, -26)
+scale = Vector2(2, 2)
+
+[node name="spr_num1" type="AnimatedSprite2D" parent="StarNumbers"]
+z_index = 5
+position = Vector2(30, 12)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("3_rvxr2")
+
+[node name="spr_num2" type="AnimatedSprite2D" parent="StarNumbers"]
+z_index = 5
+position = Vector2(50, 12)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("3_rvxr2")
+
+[node name="AdditionNumbers" type="Node2D" parent="."]
+z_index = -2
+position = Vector2(720, -26)
+scale = Vector2(2, 2)
+
+[node name="spr_num1" type="AnimatedSprite2D" parent="AdditionNumbers"]
+z_index = 5
+position = Vector2(30, 12)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("3_rvxr2")
+
+[node name="spr_num2" type="AnimatedSprite2D" parent="AdditionNumbers"]
+z_index = 5
+position = Vector2(50, 12)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("3_rvxr2")

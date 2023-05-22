@@ -126,7 +126,7 @@ public partial class obj_mushmixup_frog : Node2D
 			}
 		}
 
-		if(playersAlive < 1 || force)
+		if(playersAlive < 2 || force)
 		{
 			invulnerable = true;
 			obj_sprite.Play("idle");
@@ -136,23 +136,39 @@ public partial class obj_mushmixup_frog : Node2D
 			t_goUp.WaitTime = 0.5;
 			t_goUp.Start();
 			state = 3;
+			int[] aliveList = new int[playersAlive];
+			int ind = 0;
+			for(int i = 0; i < 4; i++)
+			{
+				if(!players[i].Lost)
+				{
+					aliveList[ind] = players[i].CharacterIndex;
+					Register(i);
+					ind++;
+				}
+			}
 			((AudioController)GetNode("/root/AudioController")).StopMusic();
-			GetNode<obj_winner>("../obj_minigameBase/Win").EndMiniGame(playersAlive, players[playerIndex].CharacterIndex, places);
+			GetNode<obj_winner>("../obj_minigameBase/Win").EndMiniGame(playersAlive, aliveList, places, new int[] {10, 6, 4, 0});
 		}
 	}
 
 	private bool KillPlayer(int player)
 	{
-		places.Add(players[player].playerData);
+		Register(player);
 		players[player].Lost = true;
-		players[player].GetNode<Node2D>("obj_jumpbar").Visible = false;
-		players[player].joyLock = true;
-		players[player].ResetJoystick();
 		players[player].PlayAnimation("out");
 		GetNode<obj_splash>("../splashes/obj_splash" + (player + 1)).Position = players[player].Position;
 		GetNode<obj_splash>("../splashes/obj_splash" + (player + 1)).Splash();
 		//players[player].Position = new Vector2(1000000, 0);
 		return true;
+	}
+
+	private void Register(int player)
+	{
+		places.Add(players[player].playerData);
+		players[player].GetNode<Node2D>("obj_jumpbar").Visible = false;
+		players[player].joyLock = true;
+		players[player].ResetJoystick();
 	}
 
 	public void StartMinigame()

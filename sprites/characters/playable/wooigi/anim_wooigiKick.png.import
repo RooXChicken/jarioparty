@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://67seyb7x5jn0"
-path="res://.godot/imported/spr_dialoguebox.png-23fb8fc7bedde6b869b527e6a4d2b783.ctex"
+uid="uid://df5w07yehlcue"
+path="res://.godot/imported/anim_wooigiKick.png-e8b9eaba23e737790e421da542f9a20a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/rooms/rm_setup/spr_dialoguebox.png"
-dest_files=["res://.godot/imported/spr_dialoguebox.png-23fb8fc7bedde6b869b527e6a4d2b783.ctex"]
+source_file="res://sprites/characters/playable/wooigi/anim_wooigiKick.png"
+dest_files=["res://.godot/imported/anim_wooigiKick.png-e8b9eaba23e737790e421da542f9a20a.ctex"]
 
 [params]
 

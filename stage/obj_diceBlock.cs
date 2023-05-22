@@ -14,6 +14,7 @@ public partial class obj_diceBlock : Node2D
 	private bool numberAnimation = false;
 	public byte numState = 0;
 	private float fadeAlpha = 1;
+	public bool stopRolling = true;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -22,6 +23,7 @@ public partial class obj_diceBlock : Node2D
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://stage/sound/snd_diceblockHit.wav", "diceblockHit");
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://stage/sound/snd_diceblockNumber.wav", "diceblockNumber");
 		spr_diceblock = GetNode<AnimatedSprite2D>("obj_rb/spr_diceblock");
+		spr_diceblock.Material = new ShaderMaterial() { Shader = (spr_diceblock.Material as ShaderMaterial).Shader.Duplicate() as Shader};
 		spr_diceHit = GetNode<AnimatedSprite2D>("spr_diceHit");
 		spr_number = GetNode<AnimatedSprite2D>("obj_rb/spr_number");
 		t_spinCycle = new Alarm(0.2 * 3, true, this, new Callable(this, "a_spinCycle"), false);
@@ -84,11 +86,13 @@ public partial class obj_diceBlock : Node2D
 		spr_diceHit.Visible = true;
 		spr_diceHit.Play();
 		spr_diceblock.Play("spinEnd");
-		((AudioController)GetNode("/root/AudioController")).StopSound("diceblockRoll");
+		if(stopRolling)
+			((AudioController)GetNode("/root/AudioController")).StopSound("diceblockRoll");
+		
 		((AudioController)GetNode("/root/AudioController")).PlaySound("diceblockHit");
 		num = ((GameManager)GetNode("/root/GameManager")).rand.Next(1, 6);
-		//GD.Print("NUM: " + num);
 		spr_number.Frame = num;
+		player.playerData.diceRoll = num;
 	}
 
 	private void NumberAnimation(float delta)

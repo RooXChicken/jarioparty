@@ -1,9 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://vd1n5w6abfbs"]
+[gd_scene load_steps=26 format=3 uid="uid://bswcrbdgjif17"]
 
 [ext_resource type="Script" path="res://objects/rooms/worldmaps/obj_map.cs" id="1_hdo0i"]
 [ext_resource type="PackedScene" uid="uid://b3dvuk2a216p2" path="res://stage/gui/obj_mapGUI.tscn" id="2_alycv"]
-[ext_resource type="Texture2D" uid="uid://cw7jfl3pd8pk7" path="res://stage/maps/mp_sushroom.png" id="2_qe5p7"]
-[ext_resource type="PackedScene" uid="uid://c4yqal4g3q8pn" path="res://objects/characters/obj_character_map.tscn" id="3_d6dkg"]
+[ext_resource type="Texture2D" uid="uid://b1tad8cjl18vw" path="res://stage/maps/mp_sushroom.png" id="2_qe5p7"]
+[ext_resource type="PackedScene" path="res://objects/characters/obj_character_map.tscn" id="3_d6dkg"]
 [ext_resource type="Texture2D" uid="uid://xr5td1ux4eqx" path="res://stage/maps/spr_sky.png" id="3_ifiwr"]
 [ext_resource type="Texture2D" uid="uid://is6orawyddw2" path="res://stage/maps/spr_clouds.png" id="4_guai6"]
 [ext_resource type="PackedScene" uid="uid://p326cvlwh631" path="res://stage/spaces/spc_blue.tscn" id="5_4js1t"]
@@ -14,25 +14,28 @@
 [ext_resource type="PackedScene" uid="uid://bv4ejghb583tv" path="res://stage/spaces/spc_item.tscn" id="9_kvsjk"]
 [ext_resource type="PackedScene" uid="uid://doo8uq3xs3y3" path="res://stage/spaces/spc_red.tscn" id="10_y1o5j"]
 [ext_resource type="PackedScene" uid="uid://ck33wl1r2xx30" path="res://stage/obj_diceBlock.tscn" id="14_c7dl6"]
+[ext_resource type="PackedScene" uid="uid://sya1whdofhnh" path="res://stage/spaces/spc_star.tscn" id="14_dd5qy"]
 [ext_resource type="PackedScene" uid="uid://c2setw7ammq8u" path="res://stage/spaces/spc_arrow.tscn" id="15_b7gon"]
+[ext_resource type="Script" path="res://scenes/obj_setup.cs" id="17_nrxdv"]
+[ext_resource type="PackedScene" uid="uid://dilqto181kfni" path="res://stage/spaces/obj_shawarma.tscn" id="18_cbqk6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v1u5o"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hf5q7"]
 atlas = ExtResource("2_qe5p7")
 region = Rect2(0, 0, 1084, 544)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_33v24"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdiao"]
 atlas = ExtResource("2_qe5p7")
 region = Rect2(1084, 0, 1084, 544)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p67jo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3utu"]
 atlas = ExtResource("2_qe5p7")
 region = Rect2(2168, 0, 1084, 544)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vk46s"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0xjg"]
 atlas = ExtResource("2_qe5p7")
 region = Rect2(3252, 0, 1084, 544)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r03yk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_evi2c"]
 atlas = ExtResource("2_qe5p7")
 region = Rect2(4336, 0, 1084, 544)
 
@@ -40,19 +43,19 @@ region = Rect2(4336, 0, 1084, 544)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v1u5o")
+"texture": SubResource("AtlasTexture_hf5q7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_33v24")
+"texture": SubResource("AtlasTexture_cdiao")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p67jo")
+"texture": SubResource("AtlasTexture_k3utu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vk46s")
+"texture": SubResource("AtlasTexture_t0xjg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r03yk")
+"texture": SubResource("AtlasTexture_evi2c")
 }],
 "loop": true,
 "name": &"default",
@@ -61,9 +64,9 @@ animations = [{
 
 [sub_resource type="Curve2D" id="Curve2D_3rwww"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 594, 844, 0, 0, 0, 0, 460, 844, 0, 0, 0, 0, 327, 836, 0, 0, 0, 0, 199, 827, 0, 0, 0, 0, 63, 804, 0, 0, 0, 0, -65, 786, 0, 0, 0, 0, -201, 772, 0, 0, 0, 0, -332, 757, 0, 0, 0, 0, -470, 750, 0, 0, 0, 0, -600, 754, 0, 0, 0, 0, -737, 752, 0, 0, 0, 0, -865, 755, 0, 0, 0, 0, -1006, 761, 0, 0, 0, 0, -1130, 776, 0, 0, 0, 0, -1252, 806, 0, 0, 0, 0, -1379, 835, 0, 0, 0, 0, -1500, 856, 0, 0, 0, 0, -1637, 875, 0, 0, 0, 0, -1777, 887, 0, 0, 0, 0, -1912, 886, 0, 0, 0, 0, -2012, 827, 0, 0, 0, 0, -2037, 740, 0, 0, 0, 0, -2049, 649, 0, 0, 0, 0, -2034, 559, 0, 0, 0, 0, -1998, 490, -5.99323, 50.1933, 5.99323, -50.1933, -1978, 431, -0.453611, 30.7153, 0.453611, -30.7153, -1982, 58, 0, 0, 0, 0, -2003, 22, 0, 0, 0, 0, -2106, -62, 0, 0, 0, 0, -1981, -116, 0, 0, 0, 0, -1847, -147, 0, 0, 0, 0, -1721, -157, 0, 0, 0, 0, -1585, -153, 0, 0, 0, 0, -1444, -157, 0, 0, 0, 0, -1311, -156, 0, 0, 0, 0, -1170, -149, 0, 0, 0, 0, -1018, -144, 0, 0, 0, 0, -923.227, -127.172, -0.890899, -32.0724, 0.890899, 32.0724, -885, -88, -33.8541, -30.2906, 33.8541, 30.2906, -815, 174, 0, 0, 0, 0, -726, 204, 0, 0, 0, 0, -582, 209, 0, 0, 0, 0, -446, 211, 0, 0, 0, 0, -282, 209, 0, 0, 0, 0, -133, 214, 0, 0, 0, 0, -22, 216, 0, 0, 0, 0, 91, 220, 0, 0, 0, 0, 203, 223, 0, 0, 0, 0, 305, 228, 0, 0, 0, 0, 413, 243, 0, 0, 0, 0, 543, 263, 0, 0, 0, 0, 837, 267, 0, 0, 0, 0, 994, 282, 0, 0, 0, 0, 1141, 322, 0, 0, 0, 0, 1111, 439, 0, 0, 0, 0, 1180, 775, 0, 0, 0, 0, 1093, 860, 0, 0, 0, 0, 945, 870, 0, 0, 0, 0, 804, 868, 0, 0, 0, 0, 594, 844)
+"points": PackedVector2Array(0, 0, 0, 0, 594, 844, 0, 0, 0, 0, 460, 844, 0, 0, 0, 0, 327, 836, 0, 0, 0, 0, 199, 827, 0, 0, 0, 0, 63, 804, 0, 0, 0, 0, -65, 786, 0, 0, 0, 0, -201, 772, 0, 0, 0, 0, -332, 757, 0, 0, 0, 0, -470, 750, 0, 0, 0, 0, -600, 754, 0, 0, 0, 0, -737, 752, 0, 0, 0, 0, -865, 755, 0, 0, 0, 0, -1006, 761, 0, 0, 0, 0, -1130, 776, 0, 0, 0, 0, -1252, 806, 0, 0, 0, 0, -1379, 835, 0, 0, 0, 0, -1500, 856, 0, 0, 0, 0, -1637, 875, 0, 0, 0, 0, -1777, 887, 0, 0, 0, 0, -1912, 886, 0, 0, 0, 0, -2012, 827, 0, 0, 0, 0, -2037, 740, 0, 0, 0, 0, -2049, 649, 0, 0, 0, 0, -2034, 559, 0, 0, 0, 0, -1998, 490, -5.99323, 50.1933, 5.99323, -50.1933, -1978, 431, -0.453611, 30.7153, 0.453611, -30.7153, -1982, 58, 0, 0, 0, 0, -2003, 22, 0, 0, 0, 0, -2106, -62, 0, 0, 0, 0, -1981, -116, 0, 0, 0, 0, -1847, -147, 0, 0, 0, 0, -1721, -157, 0, 0, 0, 0, -1585, -153, 0, 0, 0, 0, -1444, -157, 0, 0, 0, 0, -1311, -156, 0, 0, 0, 0, -1170, -149, 0, 0, 0, 0, -1018, -144, 0, 0, 0, 0, -923.227, -127.172, -0.890899, -32.0724, 0.890899, 32.0724, -885, -88, -33.8541, -30.2906, 33.8541, 30.2906, -815, 174, 0, 0, 0, 0, -726, 204, 0, 0, 0, 0, -582, 209, 0, 0, 0, 0, -446, 211, 0, 0, 0, 0, -282, 209, 0, 0, 0, 0, -133, 214, 0, 0, 0, 0, -22, 216, 0, 0, 0, 0, 91, 220, 0, 0, 0, 0, 203, 223, 0, 0, 0, 0, 305, 228, 0, 0, 0, 0, 413, 243, 0, 0, 0, 0, 543, 263, 0, 0, 0, 0, 837, 267, 0, 0, 0, 0, 994, 282, 0, 0, 0, 0, 1141, 322, 0, 0, 0, 0, 1111, 439, 0, 0, 0, 0, 1001, 548, 0, 0, 0, 0, 1180, 775, 0, 0, 0, 0, 1093, 860, 0, 0, 0, 0, 945, 870, 0, 0, 0, 0, 804, 868, 0, 0, 0, 0, 594, 844)
 }
-point_count = 60
+point_count = 61
 
 [node name="rm_map" type="Node2D"]
 script = ExtResource("1_hdo0i")
@@ -83,7 +86,7 @@ rotation_smoothing_speed = 4.0
 [node name="spr_map" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_33hov")
-frame_progress = 0.644728
+frame_progress = 0.674179
 metadata/_edit_lock_ = true
 
 [node name="spr_sky" type="Sprite2D" parent="spr_map"]
@@ -101,52 +104,56 @@ region_rect = Rect2(0, 0, 2168, 230)
 script = ExtResource("5_7ohj6")
 metadata/ScrollSpeed = 10.0
 
-[node name="Paths" type="Node" parent="."]
+[node name="Paths" type="Node2D" parent="."]
 
 [node name="pt_01" type="Path2D" parent="Paths"]
 curve = SubResource("Curve2D_3rwww")
 
 [node name="pf_01" type="PathFollow2D" parent="Paths/pt_01"]
-z_index = 1
-position = Vector2(-1637.24, 875.026)
-progress = 2247.95
+z_index = 2
+position = Vector2(-864.705, 754.991)
+progress = 1464.27
 rotates = false
 loop = false
 
 [node name="obj_character_map" parent="Paths/pt_01/pf_01" instance=ExtResource("3_d6dkg")]
+position = Vector2(-235.296, -226.991)
 metadata/Player = 1
 metadata/IsTurn = true
 
 [node name="pf_02" type="PathFollow2D" parent="Paths/pt_01"]
-z_index = 1
-position = Vector2(327.072, 836.005)
-progress = 267.164
+z_index = 2
+position = Vector2(-864.705, 754.991)
+progress = 1464.27
 rotates = false
 loop = false
 
 [node name="obj_character_map" parent="Paths/pt_01/pf_02" instance=ExtResource("3_d6dkg")]
+position = Vector2(-105.296, -226.991)
 metadata/Player = 2
 metadata/IsTurn = false
 
 [node name="pf_03" type="PathFollow2D" parent="Paths/pt_01"]
-z_index = 1
-position = Vector2(-1005.76, 760.983)
-progress = 1605.44
+z_index = 2
+position = Vector2(-864.705, 754.991)
+progress = 1464.27
 rotates = false
 loop = false
 
 [node name="obj_character_map" parent="Paths/pt_01/pf_03" instance=ExtResource("3_d6dkg")]
+position = Vector2(98.7052, -226.991)
 metadata/Player = 3
 metadata/IsTurn = false
 
 [node name="pf_04" type="PathFollow2D" parent="Paths/pt_01"]
-z_index = 1
-position = Vector2(-331.707, 757.027)
-progress = 930.976
+z_index = 2
+position = Vector2(-864.705, 754.991)
+progress = 1464.27
 rotates = false
 loop = false
 
 [node name="obj_character_map" parent="Paths/pt_01/pf_04" instance=ExtResource("3_d6dkg")]
+position = Vector2(228.704, -226.991)
 metadata/Player = 4
 metadata/IsTurn = false
 
@@ -409,6 +416,7 @@ position = Vector2(-1501, 856)
 scale = Vector2(1.448, 1.448)
 
 [node name="obj_diceBlock" parent="." instance=ExtResource("14_c7dl6")]
+visible = false
 z_index = 1
 position = Vector2(-1637, 744)
 
@@ -418,3 +426,31 @@ position = Vector2(-1637, 744)
 position = Vector2(-261, 217)
 rotation = 0.0176658
 scale = Vector2(2, 2)
+
+[node name="spc_star" parent="." instance=ExtResource("14_dd5qy")]
+z_index = 1
+position = Vector2(-1252, 807)
+scale = Vector2(1.5, 1.5)
+
+[node name="Setup" type="Node2D" parent="."]
+script = ExtResource("17_nrxdv")
+
+[node name="obj_diceBlock1" parent="Setup" instance=ExtResource("14_c7dl6")]
+z_index = 1
+position = Vector2(-1100, 414)
+
+[node name="obj_diceBlock2" parent="Setup" instance=ExtResource("14_c7dl6")]
+z_index = 1
+position = Vector2(-970, 414)
+
+[node name="obj_diceBlock3" parent="Setup" instance=ExtResource("14_c7dl6")]
+z_index = 1
+position = Vector2(-766, 414)
+
+[node name="obj_diceBlock4" parent="Setup" instance=ExtResource("14_c7dl6")]
+z_index = 1
+position = Vector2(-636, 414)
+
+[node name="obj_shawarma" parent="." instance=ExtResource("18_cbqk6")]
+position = Vector2(-860, 360)
+scale = Vector2(3, 3)

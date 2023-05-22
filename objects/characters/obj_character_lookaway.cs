@@ -5,9 +5,10 @@ using System.Collections.Generic;
 public partial class obj_character_lookaway : Node2D
 {
 	public int Player = 0;
-	private PlayerData playerData;
+	public PlayerData playerData;
 	private List<string> abilities;
 	public int CharacterIndex {get {return playerData.characterIndex; }}
+	public bool Lost = false;
 
 	public int controllerIndex = 1;
 	private int facing;
@@ -63,7 +64,9 @@ public partial class obj_character_lookaway : Node2D
 	private void GetControllerInput()
 	{
 		if(controllerIndex == -1)
+		{
 			return;
+		}
 
 		if(abilities.Contains("move"))
 		{
@@ -85,6 +88,11 @@ public partial class obj_character_lookaway : Node2D
 	{
 		if(timer > 0 || Locked || Out)
 			return;
+
+		if(controllerIndex == -1)
+		{
+			ProcessAI();
+		}
 		
 		if(-joyhaxis > joyvaxis && -joyhaxis > -joyvaxis && facing != 1)
 		{
@@ -110,6 +118,19 @@ public partial class obj_character_lookaway : Node2D
 		if(timer <= 0 && joyhaxis == 0 && joyvaxis == 0)
 		{
 			facing = 0;
+			if(controllerIndex == -1)
+				timer = timerReset;
 		}
+	}
+
+	public void ProcessAI()
+	{
+		joyhaxis = (float)(((GameManager)GetNode("/root/GameManager")).rand.NextDouble() * 2) - 1;
+		joyvaxis = (float)(((GameManager)GetNode("/root/GameManager")).rand.NextDouble() * 2) - 1;
+
+		if(joyhaxis > -0.2f && joyhaxis < 0.2f)
+			joyhaxis = 0;
+		if(joyvaxis > -0.2f && joyvaxis < 0.2f)
+			joyvaxis = 0;
 	}
 }

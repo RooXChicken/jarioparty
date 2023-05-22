@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3dvuk2a216p2"]
+[gd_scene load_steps=18 format=3 uid="uid://b3dvuk2a216p2"]
 
 [ext_resource type="Script" path="res://stage/gui/obj_mapGUI.cs" id="1_46h3d"]
 [ext_resource type="PackedScene" uid="uid://dqumai6udoy6u" path="res://objects/rooms/rm_minigame_info/obj_cloudTransition.tscn" id="5_vcwf8"]
@@ -9,10 +9,93 @@
 [ext_resource type="PackedScene" uid="uid://daeu84euga8jt" path="res://stage/gui/obj_wallet.tscn" id="8_7tnb4"]
 [ext_resource type="Shader" path="res://shaders/shd_spr_start.gdshader" id="8_xdwlg"]
 [ext_resource type="Texture2D" uid="uid://bt2hscxeadxgp" path="res://sprites/gui/roundStart/spr_start.png" id="9_7wcct"]
+[ext_resource type="Texture2D" uid="uid://sngjuww5tnt6" path="res://sprites/characters/npc/frog/anim_frogFall.png" id="10_j2jws"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_orrib"]
 shader = ExtResource("8_xdwlg")
 shader_parameter/input = Vector3(0.937, 0.894, 0.69)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjxb4"]
+atlas = ExtResource("10_j2jws")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_om42v"]
+atlas = ExtResource("10_j2jws")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xx2tt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjxb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_om42v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="Animation" id="Animation_htgxc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("obj_frog:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("obj_frog:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_yf8gx"]
+resource_name = "transition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("obj_frog:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("obj_frog:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u5ciq"]
+_data = {
+"RESET": SubResource("Animation_htgxc"),
+"transition": SubResource("Animation_yf8gx")
+}
 
 [node name="obj_mapGUI" type="CanvasLayer"]
 script = ExtResource("1_46h3d")
@@ -62,3 +145,16 @@ material = SubResource("ShaderMaterial_orrib")
 position = Vector2(894, 345)
 scale = Vector2(2, 2)
 texture = ExtResource("9_7wcct")
+
+[node name="obj_frog" type="AnimatedSprite2D" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 1)
+z_index = 10
+position = Vector2(634, 414)
+scale = Vector2(76, 76)
+sprite_frames = SubResource("SpriteFrames_xx2tt")
+
+[node name="anim_transition" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u5ciq")
+}

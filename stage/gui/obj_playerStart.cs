@@ -19,12 +19,16 @@ public partial class obj_playerStart : Node2D
 
 		spr_charName = GetNode<Sprite2D>("spr_charName");
 		spr_start = GetNode<Sprite2D>("spr_start");
+		
+		Modulate = new Color(1, 1, 1, 0);
+		Visible = false;
 
 		t_vanish = new Alarm(1.5, true, this, new Callable(this, "Vanish"), false);
 	}
 
 	public void StartAnimation(int _characterIndex, obj_character_map _player)
 	{
+		Visible = true;
 		player = _player;
 		Modulate = new Color(1, 1, 1, 1);
 		spr_charName.Texture = ((GameManager)GetNode("/root/GameManager")).PlayerNameImages[_characterIndex - 1];
@@ -36,6 +40,7 @@ public partial class obj_playerStart : Node2D
 	public void Vanish()
 	{
 		Modulate = new Color(1, 1, 1, 0);
+		Visible = false;
 		player.state = 0;
 	}
 }

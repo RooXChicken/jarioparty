@@ -1,11 +1,14 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class obj_fire : AnimatedSprite2D
 {
 	private float speed = 1;
+	private short deadPlayers = 0;
 	private AnimatedSprite2D spr_bg;
 	private obj_character_parent[] players;
+	private List<PlayerData> places = new List<PlayerData>();
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -44,6 +47,11 @@ public partial class obj_fire : AnimatedSprite2D
 				if(players[i].Position.Y > 450)
 				{
 					players[i].Burn();
+					places.Add(players[i].playerData);
+					if(++deadPlayers >= 3)
+					{
+						EndMinigame();
+					}
 				}
 			}
 		}
@@ -53,6 +61,28 @@ public partial class obj_fire : AnimatedSprite2D
 		{
 			ZIndex = 3;
 		}
+	}
+
+	private void EndMinigame()
+	{
+		int playersAlive = 0;
+		SpeedScale = 0;
+		short ind = 0;
+		int[] aliveList = new int[4-deadPlayers];
+
+		for(int i = 0; i < 4; i++)
+		{
+			if(!players[i].Lost)
+			{
+				playersAlive++;
+				aliveList[ind] = players[i].CharacterIndex;
+				players[i].joyLock = true;
+				places.Add(players[i].playerData);
+				ind++;
+			}
+		}
+		((AudioController)GetNode("/root/AudioController")).StopMusic();
+		GetNode<obj_winner>("../obj_minigameBase/Win").EndMiniGame(playersAlive, aliveList, places, new int[] {12, 8, 4, 0});
 	}
 
 }

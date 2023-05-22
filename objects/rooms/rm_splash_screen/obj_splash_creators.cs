@@ -10,6 +10,7 @@ public partial class obj_splash_creators : Sprite2D
 
 	public override void _Ready()
 	{
+		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/rooms/minigames/snd_coin.wav", "minigame_coin");
 		t_transition = new Alarm(2.4, true, this, new Callable(this, "GoToTitleScreen"));
 
 		GetNode<AnimationPlayer>("../anim_splash").CurrentAnimation = "anim_splash";

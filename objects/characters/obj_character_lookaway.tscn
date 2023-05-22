@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://eorh1dpsynug"]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://objects/characters/obj_character_lookaway.cs" id="1_moowm"]
 [ext_resource type="SpriteFrames" uid="uid://brekq8pelfxn1" path="res://sprites/characters/playable/spr_jario.tres" id="1_tncrd"]
@@ -58,6 +58,7 @@ _data = {
 }
 
 [node name="obj_character_lookaway" type="Node2D"]
+position = Vector2(1, 0)
 script = ExtResource("1_moowm")
 metadata/Player = 0
 

@@ -4,8 +4,16 @@ using System;
 public partial class obj_mapGUI : CanvasLayer
 {
 	private Node[] wallets;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
+	{
+		Initialize();
+
+		wallets[0].GetNode<spr_bagPaper>("spr_bagPaperClip/spr_bagPaper").state = 1;
+	}
+
+	public void Initialize()
 	{
 		wallets = new Node[4];
 		for(int i = 0; i < 4; i++)
@@ -13,8 +21,6 @@ public partial class obj_mapGUI : CanvasLayer
 			wallets[i] = GetNode<Node>("obj_wallet" + (i + 1));
 			wallets[i].GetNode<Sprite2D>("spr_icon").Texture = GD.Load<CompressedTexture2D>("res://stage/gui/sprites/ids/spr_" + ((GameManager)GetNode("/root/GameManager")).playerData[i].characterName.ToLower() + "ID.png");
 		}
-
-		wallets[0].GetNode<spr_bagPaper>("spr_bagPaperClip/spr_bagPaper").state = 1;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -79,5 +85,23 @@ public partial class obj_mapGUI : CanvasLayer
 			else
 				wallets[i].GetNode<spr_bagPaper>("spr_bagPaperClip/spr_bagPaper").state = 0;
 		}
+	}
+
+	public void HideWallets()
+	{
+		for(int i = 1; i <= 4; i++)
+			GetNode<Node2D>("obj_wallet" + i).Visible = false;
+	}
+
+	public void ShowWallet(int player)
+	{
+		GetNode<Node2D>("obj_wallet" + player).Visible = true;
+		wallets[player-1].GetNode<spr_bagPaper>("spr_bagPaperClip/spr_bagPaper").state = 1;
+	}
+
+	public void ShowWallets()
+	{
+		for(int i = 1; i <= 4; i++)
+			GetNode<Node2D>("obj_wallet" + i).Visible = true;
 	}
 }

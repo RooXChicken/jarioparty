@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1brh0mlgjyoo"]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Shader" path="res://shaders/grayscale.gdshader" id="1_nb7rq"]
 [ext_resource type="Script" path="res://objects/characters/obj_shadow.cs" id="2_prdga"]

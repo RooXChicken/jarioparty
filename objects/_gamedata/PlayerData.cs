@@ -8,6 +8,7 @@ public partial class PlayerData : Node
 	public ushort characterIndex = 1; //1 = jario; 2 = wooigi; 3 = grape; 4 = josh
 	public string characterName = "NULL";
 	public bool ai = false;
+	public int diceRoll = 0;
 
 	//game data
 	public short coins = 0;
@@ -17,7 +18,8 @@ public partial class PlayerData : Node
 	public float weightMult = 1; //density
 	public float strengthMult = 1; //punch strength
 
-	public float progress = 0.1959f;
+	public float progress = 0.1765f;
+	public bool PlayerStarted = false;
 
 	public List<ItemBase> items;
 	public SpriteFrames animationFrames;

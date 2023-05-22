@@ -1,22 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1j2nfn5erdj8"]
+[gd_scene load_steps=4 format=3 uid="uid://d1j2nfn5erdj8"]
 
-[ext_resource type="Texture2D" uid="uid://67seyb7x5jn0" path="res://sprites/rooms/rm_setup/spr_dialoguebox.png" id="1_c1e7a"]
-[ext_resource type="Script" path="res://objects/rooms/rm_setup/obj_dialoguebox.cs" id="1_gp5gq"]
-[ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://heygorgeous.ttf" id="3_uyymf"]
+[ext_resource type="Texture2D" uid="uid://drrbi5o84tb3t" path="res://sprites/characters/spr_dialoguebox.png" id="2_8ohfr"]
+[ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://fonts/heygorgeous.ttf" id="3_uyymf"]
 
 [sub_resource type="Theme" id="Theme_83a8d"]
 default_font = ExtResource("3_uyymf")
 default_font_size = 10
 
 [node name="obj_dialoguebox" type="Node2D"]
-script = ExtResource("1_gp5gq")
 
 [node name="obj_spr" type="Sprite2D" parent="."]
-position = Vector2(120, -40)
-scale = Vector2(1.52381, 1.35537)
-texture = ExtResource("1_c1e7a")
+modulate = Color(1, 1, 1, 0.882353)
+position = Vector2(106, -24.6487)
+scale = Vector2(-2.243, 1.563)
+texture = ExtResource("2_8ohfr")
 
 [node name="obj_text" type="RichTextLabel" parent="."]
+modulate = Color(0, 0, 0, 1)
 offset_left = -223.0
 offset_top = -115.0
 offset_right = 446.0

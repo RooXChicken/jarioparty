@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://d36gbi32uwdwa"]
+[gd_scene load_steps=50 format=3 uid="uid://d36gbi32uwdwa"]
 
 [ext_resource type="Script" path="res://objects/rooms/rm_setup/obj_playerSelect.cs" id="1_ncrli"]
 [ext_resource type="Texture2D" uid="uid://cebqc24skftad" path="res://sprites/rooms/rm_setup/spr_cloud1p.png" id="2_xlbee"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dylvkjwit8qcp" path="res://sprites/rooms/rm_setup/spr_cloud4p.png" id="5_7tfs7"]
 [ext_resource type="Texture2D" uid="uid://nhdn3jdrgunw" path="res://sprites/rooms/rm_setup/spr_gui_hand_select.png" id="6_ueme0"]
 [ext_resource type="Texture2D" uid="uid://ooammgcvonrc" path="res://sprites/characters/playable/jario/anim_jarioRunRight.png" id="7_onxgo"]
-[ext_resource type="Script" path="res://objects/rooms/rm_setup/obj_bob.cs" id="9_485ex"]
 [ext_resource type="Texture2D" uid="uid://dtsb2arume5jg" path="res://sprites/characters/playable/josh/anim_joshEmote01.png" id="9_570v7"]
 [ext_resource type="Texture2D" uid="uid://blsg05vpp5oft" path="res://sprites/characters/playable/wooigi/anim_wooigiEmote01.png" id="9_lyovm"]
 [ext_resource type="Texture2D" uid="uid://dq83lkl0dihpb" path="res://sprites/characters/playable/grape/anim_grapeEmote01.png" id="11_rg1ut"]
@@ -15,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dq84ebtxo4qcv" path="res://sprites/characters/playable/wooigi/anim_wooigiPortrait.png" id="13_ng7mp"]
 [ext_resource type="Texture2D" uid="uid://btf1b4owh4egc" path="res://sprites/characters/playable/grape/anim_grapePortrait.png" id="14_la5ps"]
 [ext_resource type="Texture2D" uid="uid://c3euyra70g651" path="res://sprites/characters/playable/josh/anim_joshPortrait.png" id="15_g85wf"]
+[ext_resource type="Texture2D" uid="uid://28ydft2i2y2b" path="res://sprites/gui/minigames/spr_frame.png" id="16_qp0yu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i5pyu"]
 atlas = ExtResource("6_ueme0")
@@ -238,25 +238,87 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="Animation" id="Animation_hr21l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Clouds:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_y8054"]
+resource_name = "cloudtoport"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Clouds:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 220)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4lcu4"]
+_data = {
+"RESET": SubResource("Animation_hr21l"),
+"cloudtoport": SubResource("Animation_y8054")
+}
+
 [node name="obj_playerSelect" type="Node2D"]
 script = ExtResource("1_ncrli")
 
-[node name="spr_cloudp1" type="Sprite2D" parent="."]
+[node name="Clouds" type="Node2D" parent="."]
+
+[node name="spr_cloudp1" type="Sprite2D" parent="Clouds"]
 scale = Vector2(2, 2)
 texture = ExtResource("2_xlbee")
 
-[node name="spr_cloudp2" type="Sprite2D" parent="."]
-position = Vector2(100, 0)
+[node name="spr_cloudp2" type="Sprite2D" parent="Clouds"]
+position = Vector2(102, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("3_ipgdo")
 
-[node name="spr_cloudp3" type="Sprite2D" parent="."]
-position = Vector2(200, 0)
+[node name="spr_cloudp3" type="Sprite2D" parent="Clouds"]
+position = Vector2(204, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("4_f8oqd")
 
-[node name="spr_cloudp4" type="Sprite2D" parent="."]
-position = Vector2(300, 0)
+[node name="spr_cloudp4" type="Sprite2D" parent="Clouds"]
+position = Vector2(306, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("5_7tfs7")
 
@@ -268,6 +330,7 @@ sprite_frames = SubResource("SpriteFrames_ifk2p")
 frame_progress = 0.0387788
 
 [node name="Characters" type="Node2D" parent="."]
+position = Vector2(0, 220)
 
 [node name="spr_character_jario" type="AnimatedSprite2D" parent="Characters"]
 visible = false
@@ -276,34 +339,30 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_1aj0h")
 animation = &"dance"
 autoplay = "dance"
-script = ExtResource("9_485ex")
 
 [node name="spr_character_wooigi" type="AnimatedSprite2D" parent="Characters"]
 visible = false
-position = Vector2(100, -220)
+position = Vector2(102, -220)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_oohdl")
 animation = &"dance"
 autoplay = "dance"
-script = ExtResource("9_485ex")
 
 [node name="spr_character_grape" type="AnimatedSprite2D" parent="Characters"]
 visible = false
-position = Vector2(200, -220)
+position = Vector2(204, -220)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_0eipc")
 animation = &"dance"
 autoplay = "dance"
-script = ExtResource("9_485ex")
 
 [node name="spr_character_josh" type="AnimatedSprite2D" parent="Characters"]
 visible = false
-position = Vector2(300, -220)
+position = Vector2(306, -220)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_rbhki")
 animation = &"dance"
 autoplay = "dance"
-script = ExtResource("9_485ex")
 
 [node name="Portraits" type="Node2D" parent="."]
 
@@ -314,19 +373,30 @@ texture = ExtResource("12_5eu5h")
 hframes = 3
 
 [node name="spr_portrait_wooigi" type="Sprite2D" parent="Portraits"]
-position = Vector2(100, -220)
+position = Vector2(102, -220)
 scale = Vector2(2, 2)
 texture = ExtResource("13_ng7mp")
 hframes = 3
 
 [node name="spr_portrait_grape" type="Sprite2D" parent="Portraits"]
-position = Vector2(200, -220)
+position = Vector2(204, -220)
 scale = Vector2(2, 2)
 texture = ExtResource("14_la5ps")
 hframes = 3
 
 [node name="spr_portrait_josh" type="Sprite2D" parent="Portraits"]
-position = Vector2(300, -220)
+position = Vector2(306, -220)
 scale = Vector2(2, 2)
 texture = ExtResource("15_g85wf")
 hframes = 3
+
+[node name="spr_frame" type="Sprite2D" parent="Portraits"]
+z_index = 1
+position = Vector2(153, -220)
+texture = ExtResource("16_qp0yu")
+
+[node name="anim_player" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Portraits")
+libraries = {
+"": SubResource("AnimationLibrary_4lcu4")
+}
