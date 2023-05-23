@@ -9,7 +9,7 @@ public partial class GameManager : Node
 	public short playerCount = 1;
 
 	public int controllersConnected = 0;
-	public int CurrentMinigame = 2;
+	public int CurrentMinigame = 1;
 	public bool MinigameStarted = false;
 	public Vector2 StarSpacePos = new Vector2(0, 0);
 
