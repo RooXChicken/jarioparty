@@ -14,7 +14,7 @@ public partial class obj_diceBlock : Node2D
 	private bool numberAnimation = false;
 	public byte numState = 0;
 	private float fadeAlpha = 1;
-	public bool stopRolling = true;
+	public bool playSound = true;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -62,7 +62,8 @@ public partial class obj_diceBlock : Node2D
 		GetNode<obj_diceRB>("obj_rb").shouldSnap = true;
 		GetNode<RigidBody2D>("obj_rb").Freeze = false;
 		GetNode<RigidBody2D>("obj_rb").Sleeping = false;
-		((AudioController)GetNode("/root/AudioController")).PlaySound("diceblockRoll");
+		if(playSound)
+			((AudioController)GetNode("/root/AudioController")).PlaySound("diceblockRoll");
 		spr_diceblock.Play("spinStart");
 		t_spinCycle.WaitTime = 0.2 * 3;
 		t_spinCycle.Start();
@@ -86,7 +87,7 @@ public partial class obj_diceBlock : Node2D
 		spr_diceHit.Visible = true;
 		spr_diceHit.Play();
 		spr_diceblock.Play("spinEnd");
-		if(stopRolling)
+		if(playSound)
 			((AudioController)GetNode("/root/AudioController")).StopSound("diceblockRoll");
 		
 		((AudioController)GetNode("/root/AudioController")).PlaySound("diceblockHit");

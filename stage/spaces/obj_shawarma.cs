@@ -19,7 +19,10 @@ public partial class obj_shawarma : Node2D
 	public override void _Ready()
 	{
 		if(((GameManager)GetNode("/root/GameManager")).playerData[0].PlayerStarted)
+		{
+			dialogue = false;
 			return;
+		}
 
 		GetNode<AnimationPlayer>("../obj_mapGUI/anim_transition").Play("transition");
 		GetNode<obj_mapGUI>("../obj_mapGUI").HideWallets();
@@ -37,7 +40,7 @@ public partial class obj_shawarma : Node2D
 		shawarmaDialogue[5] = "Smash da A button on ur dope asf controller, let's roll some MFing DIIIIIIIIICE!\n\n\n  <Press A to roll>";
 		shawarmaDialogue[6] = "Oooh baby smack those dice!\n\n\n\n  Continue";
 		shawarmaDialogue[11] = "Since I am ballin, I finna give u all 10 coins to start.\n\n\n\n  Continue";
-		shawarmaDialogue[12] = "OKIII enjoy the dope party. Bye felicia!\n\n\n\n\n  Exit";
+		shawarmaDialogue[12] = "OKIII enjoy the dope party. Bye felicia!\n\n\n\n  Exit";
 
 		obj_dialogueBox.Init(shawarmaDialogue, new List<int>() {0, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12}, new Callable(this, "ChangeDialogue"), spr_characterSprite);
 		ShowDialogue();
@@ -46,10 +49,16 @@ public partial class obj_shawarma : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if(dialogue)
+		if(Input.IsActionJustPressed("skip"))
 		{
-			obj_dialogueBox.ProcessDialogue(delta);
+			for(int i = 0; i < 4; i++)
+					playerData[i].PlayerStarted = true;
+
+				//GetNode<obj_map>("../").Initialize();
+				((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_map");
 		}
+		if(dialogue)
+			obj_dialogueBox.ProcessDialogue(delta);
 	}
 
 	private int ChangeDialogue(int index, int _dialogueIndex)
@@ -69,9 +78,10 @@ public partial class obj_shawarma : Node2D
 			dialogueIndex++;
 			if(dialogueIndex == 4)
 			{
+				((AudioController)GetNode("/root/AudioController")).PlaySound("diceblockRoll");
 				for(int i = 0; i < 4; i++)
 				{
-					GetNode<obj_diceBlock>("../Setup/obj_diceBlock" + (i+1)).stopRolling = false;
+					GetNode<obj_diceBlock>("../Setup/obj_diceBlock" + (i+1)).playSound = false;
 					GetNode<obj_diceBlock>("../Setup/obj_diceBlock" + (i+1)).Initialize();
 					GetNode<obj_diceBlock>("../Setup/obj_diceBlock" + (i+1)).a_spinStart(GetNode<obj_character_map>("../Paths/pt_01/pf_0" + (i+1) + "/obj_character_map"));
 					GetNode<obj_character_map>("../Paths/pt_01/pf_0" + (i+1) + "/obj_character_map").canJump = true;
@@ -92,6 +102,7 @@ public partial class obj_shawarma : Node2D
 			}
 			if(dialogueIndex == 6)
 			{
+				((AudioController)GetNode("/root/AudioController")).StopSound("diceblockRoll");
 				dialogueIndex++;
 
 				//PlayerData[] sort = playerData;

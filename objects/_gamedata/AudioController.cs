@@ -88,6 +88,8 @@ public partial class AudioController : Node2D
 	{
 		if(path == "")
 			return false;
+
+		
 		
 		pool[playingSoundIndex[path]].Stop();
 		return playingSoundIndex.Remove(path);

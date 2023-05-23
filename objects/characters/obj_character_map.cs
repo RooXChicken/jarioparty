@@ -33,6 +33,7 @@ public partial class obj_character_map : RigidBody2D
 	private float velocityX;
 	private float velocityY;
 	private Vector2 posOld;
+	private double delay;
 	private bool locked = false;
 
 	// Called when the node enters the scene tree for the first time.
@@ -45,6 +46,7 @@ public partial class obj_character_map : RigidBody2D
 		isTurn = _IsTurn.As<bool>();
 
 		playerData = ((GameManager)GetNode("/root/GameManager")).playerData[Player];
+		delay = ((GameManager)GetNode("/root/GameManager")).rand.NextDouble() * 2;
 
 		sprite = GetNode<AnimatedSprite2D>("obj_sprite");
 		follower = GetNode<PathFollow2D>("../../pf_0" + (Player + 1));
@@ -78,7 +80,7 @@ public partial class obj_character_map : RigidBody2D
 				BeginTurn();
 				break;
 			case 1:
-				RollDice();
+				RollDice(delta);
 				break;
 			case 2:
 				DiceRolled();
@@ -108,12 +110,14 @@ public partial class obj_character_map : RigidBody2D
 		collision.Disabled = false;
 	}
 
-	private void RollDice()
+	private void RollDice(double delta)
 	{
 		if(controllerIndex == -1)
 			if(canJump)
 			{
-				Jump();
+				delay -= delta;
+				if(delay <= 0)
+					Jump();
 				return;
 			}
 		

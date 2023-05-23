@@ -14,7 +14,7 @@ public partial class obj_dialogueController : Node2D
 	public string[] characterDialogue;
 	public List<int> lockedNumbers = new List<int>();
 	private int selection = 0;
-	private int dialogueIndex = 0;
+	public int dialogueIndex = 0;
 	private int index = 0;
 	private int arrowIndex = 0;
 	private double delay = 0.02;
@@ -93,6 +93,7 @@ public partial class obj_dialogueController : Node2D
 			if(!frozen && Input.GetAxis("up" + controllerIndex, "down" + controllerIndex) != 0)
 			{
 				arrowIndex = 1 - arrowIndex;
+				((AudioController)GetNode("/root/AudioController")).PlaySound("gui_selectionMove");
 				frozen = true;
 			}
 			else if(Input.GetAxis("up" + controllerIndex, "down" + controllerIndex) == 0)
@@ -113,6 +114,8 @@ public partial class obj_dialogueController : Node2D
 		int tempDialogue = changeDialogue.Call(arrowIndex, dialogueIndex).As<int>();
 		if(tempDialogue == dialogueIndex)
 			return;
+
+		((AudioController)GetNode("/root/AudioController")).PlaySound("gui_select");
 
 		dialogueIndex = tempDialogue;
 		arrowIndex = 0;

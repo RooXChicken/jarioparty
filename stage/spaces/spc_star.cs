@@ -22,6 +22,8 @@ public partial class spc_star : Area2D
 	public override void _Ready()
 	{
 		obj_dialogueBox = GetNode<obj_dialogueController>("spr_toomba/obj_dialogueController");
+		((AudioController)GetNode("/root/AudioController")).PreLoad("res://stage/sound/snd_starGet.wav", "starGet");
+		((AudioController)GetNode("/root/AudioController")).PreLoad("res://stage/sound/snd_starCollect.wav", "starCollect");
 		anim_starGet = GetNode<AnimationPlayer>("spr_toomba/anim_starGet");
 		spr_characterSprite = GetNode<AnimatedSprite2D>("spr_toomba");
 
@@ -37,6 +39,7 @@ public partial class spc_star : Area2D
 		toombaDialogue[8] = "Thank you for your purchase. I look forward to future buisness.\n\n\n  Exit";
 
 		obj_dialogueBox.Init(toombaDialogue, new List<int>() {5, 6, 7, 8}, new Callable(this, "ChangeDialogue"), spr_characterSprite);
+		obj_dialogueBox.setDelay = 2.3;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -113,6 +116,7 @@ public partial class spc_star : Area2D
 
 	public void ShowDialogue(PlayerData _playerData, Callable _interactionEnd)
 	{
+		obj_dialogueBox.dialogueIndex = 0;
 		obj_dialogueBox.Visible = true;
 		playerData = _playerData;
 		interactionEnd = _interactionEnd;
@@ -146,6 +150,7 @@ public partial class spc_star : Area2D
 				if(!anim_starGet.IsPlaying())
 					{
 					anim_starGet.Play("starget");
+					((AudioController)GetNode("/root/AudioController")).PlaySound("starCollect");
 					((AudioController)GetNode("/root/AudioController")).MusicEffect("volume", -100);
 				}
 				buyingStar = false;
@@ -158,8 +163,14 @@ public partial class spc_star : Area2D
 		playerData.stars++;
 	}
 
+	private void PlaySound()
+	{
+		((AudioController)GetNode("/root/AudioController")).PlaySound("starGet");
+	}
+
 	private void FinishStarAnimation()
 	{
+		obj_dialogueBox.dialogueIndex = 8;
 		((AudioController)GetNode("/root/AudioController")).MusicEffect("volume", 0);
 	}
 }
