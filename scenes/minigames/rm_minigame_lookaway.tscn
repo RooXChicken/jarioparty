@@ -67,7 +67,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 2.25
+"speed": 2.24
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ce57l"]
