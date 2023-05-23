@@ -1,9 +1,8 @@
-[gd_scene load_steps=20 format=3]
+[gd_scene load_steps=20 format=3 uid="uid://bswpsopq2fhsg"]
 
 [ext_resource type="Texture2D" uid="uid://clf3msf2jcdhb" path="res://sprites/rooms/rm_minigame_info/spr_curtains.png" id="1_pmcdl"]
 [ext_resource type="Script" path="res://objects/rooms/rm_minigame_info/rm_minigame_info.cs" id="1_xy7vy"]
 [ext_resource type="PackedScene" uid="uid://dqumai6udoy6u" path="res://objects/rooms/rm_minigame_info/obj_cloudTransition.tscn" id="2_4mm6i"]
-[ext_resource type="Texture2D" uid="uid://co1je2c40fedf" path="res://sprites/rooms/rm_minigame_info/spr_bg.png" id="2_aat4f"]
 [ext_resource type="Texture2D" uid="uid://em4i3uf62h8j" path="res://sprites/rooms/rm_minigame_info/spr_minigamePreview.png" id="3_jgraw"]
 [ext_resource type="Texture2D" uid="uid://br5313jdb5dm1" path="res://sprites/rooms/rm_minigame_info/whackituSelect.png" id="3_rxbe7"]
 [ext_resource type="Texture2D" uid="uid://bauaiydvxvct7" path="res://sprites/rooms/rm_minigame_info/spr_onlycurtains.png" id="3_v6fu3"]
@@ -13,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://dspaqrwgwo3c6" path="res://sprites/rooms/rm_minigame_info/spr_setupFrog.png" id="7_le71p"]
 [ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://fonts/heygorgeous.ttf" id="8_d8xi8"]
 [ext_resource type="PackedScene" path="res://objects/characters/obj_character_info.tscn" id="13_qyf1n"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2rsa7"]
+load_path = "res://.godot/imported/spr_bg.png-7da523eb4937f271b0b7de9d8d48d794.ctex"
 
 [sub_resource type="Animation" id="Animation_sq5h6"]
 length = 0.001
@@ -146,9 +148,13 @@ z_index = -1
 texture = ExtResource("1_pmcdl")
 
 [node name="spr_bg" type="Sprite2D" parent="."]
+texture_repeat = 2
 position = Vector2(640, 360)
 scale = Vector2(2, 2)
-texture = ExtResource("2_aat4f")
+texture = SubResource("CompressedTexture2D_2rsa7")
+offset = Vector2(320, 0)
+region_enabled = true
+region_rect = Rect2(0, 0, 1280, 360)
 metadata/_edit_lock_ = true
 
 [node name="spr_minigamePreview" type="Sprite2D" parent="."]
