@@ -25,7 +25,7 @@ public partial class obj_character_parent : RigidBody2D
 	private obj_shadow shadow;
 	private AnimationPlayer animation;
 	private bool justJumped = false;
-	private int punchForce = 70500;
+	private int punchForce = 7500;
 
 	private float joyhaxis = 0;
 	private float joyvaxis = 0;
@@ -307,24 +307,24 @@ public partial class obj_character_parent : RigidBody2D
 
 	private void ProcessAI()
 	{
-		// switch(((GameManager)GetNode("/root/GameManager")).CurrentMinigame)
-		// {
-		// 	case 1:
-		// 		float distanceX = (Position.X / aiTarget.X - 0.1f);
-		// 		if(distanceX < 0.9f)
-		// 			distanceX = -(aiTarget.X / Position.X - 0.1f);
-		// 		joyhaxis = -Mathf.Clamp(distanceX, -1, 1);
-		// 		if(Math.Abs(joyhaxis) < 0.98f)
-		// 			joyhaxis = 0;
+		switch(((GameManager)GetNode("/root/GameManager")).CurrentMinigame)
+		{
+			case 1:
+				float distanceX = (Position.X / aiTarget.X - 0.1f);
+				if(distanceX < 0.9f)
+					distanceX = -(aiTarget.X / Position.X - 0.1f);
+				joyhaxis = -Mathf.Clamp(distanceX, -1, 1);
+				if(Math.Abs(joyhaxis) < 0.98f)
+					joyhaxis = 0;
 				
-		// 		float distanceY = (Position.Y / aiTarget.Y - 0.1f);
-		// 		if(distanceY < 0.9f)
-		// 			distanceY = -(aiTarget.Y / Position.Y - 0.1f);
-		// 		joyvaxis = -Mathf.Clamp(distanceY, -1, 1);
-		// 		if(Math.Abs(joyvaxis) < 0.98f)
-		// 			joyvaxis = 0;
-		// 		break;
-		// }
+				float distanceY = (Position.Y / aiTarget.Y - 0.1f);
+				if(distanceY < 0.9f)
+					distanceY = -(aiTarget.Y / Position.Y - 0.1f);
+				joyvaxis = -Mathf.Clamp(distanceY, -1, 1);
+				if(Math.Abs(joyvaxis) < 0.98f)
+					joyvaxis = 0;
+				break;
+		}
 
 		animhaxis = joyhaxis;
 		animvaxis = joyvaxis;

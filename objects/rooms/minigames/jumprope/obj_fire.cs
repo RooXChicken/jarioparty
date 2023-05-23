@@ -81,6 +81,7 @@ public partial class obj_fire : AnimatedSprite2D
 				ind++;
 			}
 		}
+		((AudioController)GetNode("/root/AudioController")).MusicEffect("pitch", 1);
 		((AudioController)GetNode("/root/AudioController")).StopMusic();
 		GetNode<obj_winner>("../obj_minigameBase/Win").EndMiniGame(playersAlive, aliveList, places, new int[] {12, 8, 4, 0});
 	}

@@ -59,6 +59,8 @@ public partial class obj_shawarma : Node2D
 		}
 		if(dialogue)
 			obj_dialogueBox.ProcessDialogue(delta);
+		else
+			GD.Print("hi");
 	}
 
 	private int ChangeDialogue(int index, int _dialogueIndex)

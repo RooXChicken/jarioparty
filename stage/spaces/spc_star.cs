@@ -106,7 +106,9 @@ public partial class spc_star : Area2D
 						buyingStar = true;
 					break;
 				case 8:
-					interactionEnd.Call(true);
+					GetNode<Transition>("../obj_mapGUI/Transition").transitionEnd = new Callable(this, "ShowNextStar");
+					GetNode<Transition>("../obj_mapGUI/Transition").state = 5;
+					//interactionEnd.Call(true);
 					break;
 			}
 		}
@@ -166,6 +168,11 @@ public partial class spc_star : Area2D
 	private void PlaySound()
 	{
 		((AudioController)GetNode("/root/AudioController")).PlaySound("starGet");
+	}
+
+	public void ShowNextStar()
+	{
+		
 	}
 
 	private void FinishStarAnimation()
