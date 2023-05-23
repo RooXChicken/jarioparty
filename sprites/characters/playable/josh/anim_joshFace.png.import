@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp76emwagbjgy"
-path="res://.godot/imported/spr_bg.png-7da523eb4937f271b0b7de9d8d48d794.ctex"
+uid="uid://cmcjh4riqqu0v"
+path="res://.godot/imported/anim_joshFace.png-6a812d3e1a98d0de885ed210afc00e99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/rooms/rm_minigame_info/spr_bg.png"
-dest_files=["res://.godot/imported/spr_bg.png-7da523eb4937f271b0b7de9d8d48d794.ctex"]
+source_file="res://sprites/characters/playable/josh/anim_joshFace.png"
+dest_files=["res://.godot/imported/anim_joshFace.png-6a812d3e1a98d0de885ed210afc00e99.ctex"]
 
 [params]
 

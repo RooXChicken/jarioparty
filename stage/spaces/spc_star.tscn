@@ -3,20 +3,20 @@
 [ext_resource type="Texture2D" uid="uid://ccw31uiuj5rdk" path="res://stage/gui/sprites/spaces/starspace.png" id="1_0t8yo"]
 [ext_resource type="Script" path="res://stage/spaces/spc_star.cs" id="1_m7ahh"]
 [ext_resource type="Shape2D" uid="uid://bob0la6buryho" path="res://stage/spaces/spc_hitbox.tres" id="2_r33xb"]
-[ext_resource type="Texture2D" uid="uid://c4upy77kklf4v" path="res://stage/gui/sprites/spaces/toomba.png" id="3_0mnhv"]
+[ext_resource type="Texture2D" uid="uid://kwyeo31jtv7l" path="res://sprites/characters/npc/toomba/toomba.png" id="4_gjdo3"]
 [ext_resource type="PackedScene" uid="uid://dmml732knqi75" path="res://objects/common/obj_dialogueController.tscn" id="5_4ir4c"]
 [ext_resource type="Texture2D" uid="uid://dfwwppd7ojmab" path="res://sprites/characters/npc/toomba/toombaspeak.png" id="5_xs6pg"]
 [ext_resource type="Texture2D" uid="uid://dpsqggb0yt1sc" path="res://sprites/items/spr_star.png" id="8_uoyth"]
 [ext_resource type="Texture2D" uid="uid://cn3nfaqda8ba3" path="res://sprites/common/spr_point.png" id="9_577dd"]
 [ext_resource type="Texture2D" uid="uid://c8phnm25adb2x" path="res://stage/gui/sprites/spr_starGet.png" id="10_vn42q"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g030f"]
-atlas = ExtResource("3_0mnhv")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_nm8us"]
+atlas = ExtResource("4_gjdo3")
+region = Rect2(0, 0, 32, 33)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x6qd7"]
-atlas = ExtResource("3_0mnhv")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3ivm"]
+atlas = ExtResource("4_gjdo3")
+region = Rect2(32, 0, 32, 33)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vu1l2"]
 atlas = ExtResource("5_xs6pg")
@@ -30,10 +30,10 @@ region = Rect2(32, 0, 32, 33)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g030f")
+"texture": SubResource("AtlasTexture_nm8us")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x6qd7")
+"texture": SubResource("AtlasTexture_i3ivm")
 }],
 "loop": true,
 "name": &"default",
@@ -48,7 +48,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"speak",
-"speed": 6.0
+"speed": 5.0
 }]
 
 [sub_resource type="Animation" id="Animation_rkoy3"]
@@ -246,10 +246,13 @@ rotation = 1.5708
 shape = ExtResource("2_r33xb")
 
 [node name="spr_toomba" type="AnimatedSprite2D" parent="."]
-position = Vector2(-2, -56)
+position = Vector2(-2, -59)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_4vroj")
+animation = &"speak"
 autoplay = "default"
+frame_progress = 0.60455
+offset = Vector2(0, 1)
 
 [node name="obj_dialogueController" parent="spr_toomba" instance=ExtResource("5_4ir4c")]
 visible = false

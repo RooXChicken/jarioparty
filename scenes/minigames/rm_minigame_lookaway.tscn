@@ -67,7 +67,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 2.0
+"speed": 2.24
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ce57l"]
@@ -104,6 +104,7 @@ position = Vector2(640, 360)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_p4e42")
 autoplay = "default"
+frame = 12
 frame_progress = 1.0
 metadata/_edit_lock_ = true
 
