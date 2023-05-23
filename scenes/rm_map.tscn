@@ -159,7 +159,7 @@ metadata/IsTurn = false
 
 [node name="Spaces" type="Node" parent="."]
 
-[node name="spc_blue" parent="Spaces" instance=ExtResource("5_4js1t")]
+[node name="spc_blue1" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-737, 752)
 scale = Vector2(1.49956, 1.49956)
 

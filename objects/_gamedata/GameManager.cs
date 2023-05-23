@@ -11,6 +11,7 @@ public partial class GameManager : Node
 	public int controllersConnected = 0;
 	public int CurrentMinigame = 1;
 	public bool MinigameStarted = false;
+	public Vector2 StarSpacePos = new Vector2(0, 0);
 
 	public PlayerData[] playerData = new PlayerData[4];
 	public ItemBase[] itemLookup = new ItemBase[]

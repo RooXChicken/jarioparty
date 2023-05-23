@@ -21,6 +21,7 @@ public partial class obj_shawarma : Node2D
 		if(((GameManager)GetNode("/root/GameManager")).playerData[0].PlayerStarted)
 		{
 			dialogue = false;
+			Visible = false;
 			return;
 		}
 
@@ -59,8 +60,6 @@ public partial class obj_shawarma : Node2D
 		}
 		if(dialogue)
 			obj_dialogueBox.ProcessDialogue(delta);
-		else
-			GD.Print("hi");
 	}
 
 	private int ChangeDialogue(int index, int _dialogueIndex)

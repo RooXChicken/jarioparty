@@ -250,7 +250,6 @@ position = Vector2(-2, -56)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_4vroj")
 autoplay = "default"
-frame_progress = 0.998977
 
 [node name="obj_dialogueController" parent="spr_toomba" instance=ExtResource("5_4ir4c")]
 visible = false

@@ -77,8 +77,7 @@ script = ExtResource("1_0ifr1")
 
 [node name="spr_shawarma" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_25j3v")
-animation = &"speak"
-frame_progress = 0.256317
+autoplay = "default"
 
 [node name="obj_dialogueController" parent="." instance=ExtResource("4_00flk")]
 position = Vector2(-50, -32)

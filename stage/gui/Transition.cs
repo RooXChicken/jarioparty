@@ -20,7 +20,7 @@ public partial class Transition : Node2D
 		obj_top = GetNode<Sprite2D>("obj_top");
 		obj_bottom = GetNode<Sprite2D>("obj_bottom");
 
-		t_wait = new Alarm(0.5, true, this, new Callable(this, "TransitionEnd"));
+		t_wait = new Alarm(0.5, true, this, new Callable(this, "TransitionEnd"), false);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,7 +36,7 @@ public partial class Transition : Node2D
 					GetNode<obj_cloudTransition>("../obj_cloudTransition").PlayAnimation();
 					t_wait.WaitTime = 1.5;
 					t_wait.Start();
-					state = 5;
+					state = 7;
 				}
 				else
 				{
@@ -65,28 +65,33 @@ public partial class Transition : Node2D
 				break;
 
 			case 5:
-				obj_top.Scale = new Vector2(obj_top.Scale.X, obj_top.Scale.Y - (float)delta * speed);
-				obj_bottom.Scale = new Vector2(obj_bottom.Scale.X, obj_bottom.Scale.Y + (float)delta * speed);
-				if(obj_top.Scale.Y <= 0)
-				{
-					state = 6;
-					transitionEnd.Call();
-					//GetNode<obj_playerStart>("../PlayerStart").StartAnimation(playerGoing);
-				}
-				break;
-			case 6:
 				obj_top.Scale = new Vector2(obj_top.Scale.X, obj_top.Scale.Y + (float)delta * speed);
 				obj_bottom.Scale = new Vector2(obj_bottom.Scale.X, obj_bottom.Scale.Y - (float)delta * speed);
 
 				if(obj_top.Scale.Y >= 360)
+				{
+					t_wait.Start();
+					transitionEnd.Call();
+					state = 7;
+					//GetNode<obj_playerStart>("../PlayerStart").StartAnimation(playerGoing);
+				}
+				break;
+			case 6:
+				obj_top.Scale = new Vector2(obj_top.Scale.X, obj_top.Scale.Y - (float)delta * speed);
+				obj_bottom.Scale = new Vector2(obj_bottom.Scale.X, obj_bottom.Scale.Y + (float)delta * speed);
+				if(obj_top.Scale.Y <= 0)
+				{
 					state = 4;
+				}
 				break;
 		}
 	}
 
 	public void TransitionEnd()
 	{
-		if(playerGoing == 4)
+		if(state == 7)
+			state = 6;
+		else if(playerGoing == 4)
 			//if(state == 5)
 			((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_minigame_info");
 			// else

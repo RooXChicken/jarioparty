@@ -49,6 +49,13 @@ public partial class obj_dialogueController : Node2D
 		spr_characterSprite = _spr_characterSprite;
 	}
 
+	public void Reset()
+	{
+		dialogueIndex = 0;
+		index = 0;
+		obj_text.Text = "";
+	}
+
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public void ProcessDialogue(double delta)
 	{

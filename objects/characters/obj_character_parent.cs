@@ -25,7 +25,7 @@ public partial class obj_character_parent : RigidBody2D
 	private obj_shadow shadow;
 	private AnimationPlayer animation;
 	private bool justJumped = false;
-	private int punchForce = 7500;
+	private int punchForce = 8000;
 
 	private float joyhaxis = 0;
 	private float joyvaxis = 0;
@@ -307,6 +307,9 @@ public partial class obj_character_parent : RigidBody2D
 
 	private void ProcessAI()
 	{
+		if(Lost)
+			return;
+		
 		switch(((GameManager)GetNode("/root/GameManager")).CurrentMinigame)
 		{
 			case 1:

@@ -74,6 +74,8 @@ public partial class obj_map : Node2D
 	}
 
 	public void SetZoomLevel(float _zoom) { zoomLevel = new Vector2(_zoom, _zoom); }
+	public void SetPosition (Vector2 _pos) { offset = _pos - playerGoing.Position; }
+	public void SetPosition () { offset = new Vector2(0, 0); }
 
 	public void Snap()
 	{
