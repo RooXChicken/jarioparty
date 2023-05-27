@@ -1,0 +1,210 @@
+[gd_scene load_steps=29 format=3 uid="uid://bnghei8vtcbvg"]
+
+[ext_resource type="Texture2D" uid="uid://rglxunbkcj3" path="res://sprites/rooms/minigames/susville/spr_amongus.png" id="1_4si8y"]
+[ext_resource type="Texture2D" uid="uid://wxlc7nfu2h6p" path="res://sprites/rooms/minigames/susville/spr_amongdead.png" id="1_jkxxm"]
+[ext_resource type="Script" path="res://objects/rooms/minigames/susville/obj_amongus.cs" id="1_u711x"]
+[ext_resource type="Shader" path="res://shaders/shd_amongus.gdshader" id="2_tpyp6"]
+[ext_resource type="Texture2D" uid="uid://6cufinxwdmuf" path="res://sprites/rooms/minigames/susville/spr_amongblood.png" id="3_cc2xa"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ubm7d"]
+friction = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3bk5o"]
+shader = ExtResource("2_tpyp6")
+shader_parameter/newHue = 0.177
+shader_parameter/alpha = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13jql"]
+atlas = ExtResource("1_jkxxm")
+region = Rect2(0, 0, 30, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6m63"]
+atlas = ExtResource("1_jkxxm")
+region = Rect2(30, 0, 30, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrye5"]
+atlas = ExtResource("1_jkxxm")
+region = Rect2(60, 0, 30, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xugjl"]
+atlas = ExtResource("1_jkxxm")
+region = Rect2(90, 0, 30, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovvii"]
+atlas = ExtResource("1_jkxxm")
+region = Rect2(120, 0, 30, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4pf8"]
+atlas = ExtResource("1_jkxxm")
+region = Rect2(150, 0, 30, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wir3e"]
+atlas = ExtResource("1_jkxxm")
+region = Rect2(180, 0, 30, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lca8"]
+atlas = ExtResource("1_jkxxm")
+region = Rect2(210, 0, 30, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dq78e"]
+atlas = ExtResource("1_jkxxm")
+region = Rect2(240, 0, 30, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wakm1"]
+atlas = ExtResource("1_4si8y")
+region = Rect2(0, 0, 30, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehlg7"]
+atlas = ExtResource("1_4si8y")
+region = Rect2(30, 0, 30, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpo3j"]
+atlas = ExtResource("1_4si8y")
+region = Rect2(60, 0, 30, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6hxf"]
+atlas = ExtResource("1_4si8y")
+region = Rect2(90, 0, 30, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qs7kh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13jql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6m63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrye5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xugjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovvii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4pf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wir3e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lca8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dq78e")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wakm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehlg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpo3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6hxf")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6oyne"]
+atlas = ExtResource("3_cc2xa")
+region = Rect2(30, 0, 30, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmbs1"]
+atlas = ExtResource("3_cc2xa")
+region = Rect2(60, 0, 30, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nh57r"]
+atlas = ExtResource("3_cc2xa")
+region = Rect2(90, 0, 30, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3il4y"]
+atlas = ExtResource("3_cc2xa")
+region = Rect2(120, 0, 30, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdh66"]
+atlas = ExtResource("3_cc2xa")
+region = Rect2(240, 0, 30, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sdnno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6oyne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmbs1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nh57r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3il4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdh66")
+}],
+"loop": false,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrbnm"]
+size = Vector2(25, 32)
+
+[node name="obj_amongus" type="RigidBody2D"]
+z_index = 1
+collision_layer = 0
+physics_material_override = SubResource("PhysicsMaterial_ubm7d")
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 25.0
+script = ExtResource("1_u711x")
+
+[node name="spr_amongus" type="AnimatedSprite2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_3bk5o")
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_qs7kh")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="spr_blood" type="AnimatedSprite2D" parent="CanvasLayer"]
+visible = false
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_sdnno")
+frame = 4
+frame_progress = 1.0
+
+[node name="obj_collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(5, 2)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_yrbnm")
+
+[node name="hitDetect" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+monitoring = false
+
+[node name="obj_collision" type="CollisionShape2D" parent="hitDetect"]
+position = Vector2(5, 2)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_yrbnm")
+
+[connection signal="area_entered" from="hitDetect" to="." method="AreaEntered"]
+[connection signal="area_exited" from="hitDetect" to="." method="AreaExited"]

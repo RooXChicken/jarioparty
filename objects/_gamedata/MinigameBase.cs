@@ -13,9 +13,10 @@ public partial class MinigameBase
 	public string Music;
 	public Node2D[] Buttons;
 	public int[] ButtonIndexs;
+	public int[] UsableItems;
 	public float Scale;
 
-	public MinigameBase(int _MinigameIndex, string _MinigameName, string _Description, List<string> _Abilities, string _Music = "", int _MinigameTime = 60, int[] _ButtonIndexs = null, float _Scale = 3)
+	public MinigameBase(int _MinigameIndex, string _MinigameName, string _Description, List<string> _Abilities, string _Music = "", int _MinigameTime = 60, int[] _ButtonIndexs = null, int[] _UsableItems = null, float _Scale = 3)
 	{
 		MinigameIndex = _MinigameIndex;
 
@@ -40,8 +41,11 @@ public partial class MinigameBase
 			}
 		}
 
+		if(_UsableItems != null)
+			UsableItems = _UsableItems;
+
 		Scale = _Scale;
 	}
 
-	public MinigameBase(MinigameBase _Clone) : this(_Clone.MinigameIndex, _Clone.MinigameName, _Clone.Description, _Clone.Abilities, _Clone.Music, _Clone.MinigameTime, _Clone.ButtonIndexs, _Clone.Scale) {}
+	public MinigameBase(MinigameBase _Clone) : this(_Clone.MinigameIndex, _Clone.MinigameName, _Clone.Description, _Clone.Abilities, _Clone.Music, _Clone.MinigameTime, _Clone.ButtonIndexs, _Clone.UsableItems, _Clone.Scale) {}
 }

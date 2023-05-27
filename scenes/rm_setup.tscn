@@ -178,7 +178,8 @@ z_index = 10
 position = Vector2(250, 550)
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_gnidu")
-frame_progress = 0.349061
+autoplay = "default"
+frame_progress = 0.552969
 script = ExtResource("1_jeo2x")
 
 [node name="obj_bg" type="Sprite2D" parent="."]

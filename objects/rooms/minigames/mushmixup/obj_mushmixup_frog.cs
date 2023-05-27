@@ -30,6 +30,7 @@ public partial class obj_mushmixup_frog : Node2D
 		obj_flag = GetNode<AnimatedSprite2D>("obj_flag");
 
 		GetNode<obj_timerText>("../obj_minigameBase/spr_timer/obj_text").onEnd = new Callable(this, "EndMiniGame");
+		GetNode<obj_timerText>("../obj_minigameBase/spr_timer/obj_text").Start();
 
 		obj_sprite.Play("idle");
 		obj_flag.Play();

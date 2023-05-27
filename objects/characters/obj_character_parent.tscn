@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3]
+[gd_scene load_steps=15 format=3 uid="uid://cfl0hvcgmxski"]
 
 [ext_resource type="Script" path="res://objects/characters/obj_character_parent.cs" id="1_y278h"]
 [ext_resource type="SpriteFrames" uid="uid://brekq8pelfxn1" path="res://sprites/characters/playable/spr_jario.tres" id="2_ldhjv"]
@@ -299,7 +299,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fy8et"]
-size = Vector2(50, 82)
+size = Vector2(50, 101)
 
 [node name="obj_rigidbody" type="RigidBody2D"]
 mass = 2.4
@@ -363,7 +363,7 @@ monitorable = false
 script = ExtResource("6_auua0")
 
 [node name="obj_hitbox" type="CollisionShape2D" parent="obj_interaction"]
-position = Vector2(26, 0)
+position = Vector2(26, 9.5)
 shape = SubResource("RectangleShape2D_fy8et")
 
 [connection signal="animation_changed" from="scaleManager/obj_sprite" to="." method="SpriteChanged"]

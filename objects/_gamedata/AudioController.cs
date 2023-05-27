@@ -39,14 +39,14 @@ public partial class AudioController : Node2D
 
 	public void PlaySound(string path, bool loop = false)
 	{
-		if(path == "")
+		if(path == "")// || AudioServer.GetOutputDeviceList().Length <= 1)
 			return;
 
 		int index = 1;
 		while(pool[index].Playing)
 			index++;
 
-		if(index > MAX_SOUNDS)
+		if(index > MAX_SOUNDS - 1)
 			return;
 
 		if(!loadedSounds.ContainsKey(path))

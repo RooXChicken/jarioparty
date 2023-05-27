@@ -18,6 +18,7 @@ public partial class rm_minigame_lookaway : Node2D
 		spr_bg = GetNode<AnimatedSprite2D>("spr_bg");
 		GetNode<obj_start>("obj_minigameBase/obj_start").onStart = new Callable(this, "StartMinigame");
 		GetNode<obj_timerText>("obj_minigameBase/spr_timer/obj_text").onEnd = new Callable(this, "EndMiniGame");
+		GetNode<obj_timerText>("obj_minigameBase/spr_timer/obj_text").Start();
 
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/rooms/minigames/mus_minigame_lookaway.wav", "mus_minigame_lookaway");
 

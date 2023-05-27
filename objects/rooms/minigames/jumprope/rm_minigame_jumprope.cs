@@ -10,6 +10,7 @@ public partial class rm_minigame_jumprope : Node2D
 	{
 		GetNode<obj_start>("obj_minigameBase/obj_start").onStart = new Callable(this, "StartMinigame");
 		GetNode<obj_timerText>("obj_minigameBase/spr_timer/obj_text").onEnd = new Callable(this, "EndMiniGame");
+		GetNode<obj_timerText>("obj_minigameBase/spr_timer/obj_text").Start();
 
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/rooms/minigames/mus_minigame_jumprope.wav", "mus_minigame_jumprope");
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/player/snd_burn.wav", "jumprope_burn");

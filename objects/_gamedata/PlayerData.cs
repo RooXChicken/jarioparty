@@ -20,6 +20,7 @@ public partial class PlayerData : Node
 
 	public float progress = 0.1765f;
 	public bool PlayerStarted = false;
+	public Color PlayerColor;
 
 	public List<ItemBase> items;
 	public SpriteFrames animationFrames;
@@ -31,6 +32,12 @@ public partial class PlayerData : Node
 		characterName = GetCharacterNameFromIndex();
 		ai = _ai;
 		items = new List<ItemBase>();
+
+		Vector3[] startColors = new Vector3[] {
+			new Vector3(239 / 255f, 228 / 255f, 176 / 255f), new Vector3(112 / 255f, 146 / 255f, 190 / 255f), new Vector3(163 / 255f, 73 / 255f, 164 / 255f), new Vector3(1, 174 / 255f, 201 / 255f)
+		};
+
+		PlayerColor = new Color(startColors[characterIndex].X, startColors[characterIndex].Y, startColors[characterIndex].Z, 1);
 	}
 
 	private string GetCharacterNameFromIndex()
@@ -38,20 +45,12 @@ public partial class PlayerData : Node
 		switch(characterIndex)
 		{
 			case 0:
-				coins = 420;
-				stars = 69;
 				return "Jario";
 			case 1:
-				coins = 0;
-				stars = 0;
 				return "Wooigi";
 			case 2:
-				coins = 9523;
-				stars = 97;
 				return "Grape";
 			case 3:
-				coins = 17;
-				stars = 4;
 				return "Josh";
 
 			default:
@@ -67,21 +66,7 @@ public partial class PlayerData : Node
 	private SpriteFrames _GetSpriteFrames()
 	{
 		SpriteFrames spr = null;
-		switch(characterIndex)
-		{
-			case 0:
-				spr = GD.Load<SpriteFrames>("res://sprites/characters/playable/spr_jario.tres");
-				break;
-			case 1:
-				spr = GD.Load<SpriteFrames>("res://sprites/characters/playable/spr_wooigi.tres");
-				break;
-			case 2:
-				spr = GD.Load<SpriteFrames>("res://sprites/characters/playable/spr_grape.tres");
-				break;
-			case 3:
-				spr = GD.Load<SpriteFrames>("res://sprites/characters/playable/spr_josh.tres");
-				break;
-		}
+		spr = GD.Load<SpriteFrames>("res://sprites/characters/playable/spr_" + characterName.ToLower() + ".tres");
 
 		return spr;
 	}

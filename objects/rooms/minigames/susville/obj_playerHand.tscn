@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfex84vtco5dy"]
+
+[ext_resource type="Script" path="res://objects/rooms/minigames/susville/obj_playerHand.cs" id="1_gqixs"]
+[ext_resource type="Texture2D" uid="uid://bil672wb7brkt" path="res://sprites/rooms/minigames/susville/spr_flashlight.png" id="2_hw1i1"]
+[ext_resource type="SpriteFrames" uid="uid://brekq8pelfxn1" path="res://sprites/characters/playable/spr_jario.tres" id="3_aepd5"]
+[ext_resource type="Shader" path="res://shaders/shd_playerHand.gdshader" id="3_qo3tb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b82df"]
+size = Vector2(30, 30)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_35r5w"]
+shader = ExtResource("3_qo3tb")
+shader_parameter/progress = 1.0
+
+[node name="obj_playerHand" type="RigidBody2D"]
+z_index = 2
+collision_layer = 4
+collision_mask = 3
+gravity_scale = 0.0
+lock_rotation = true
+linear_damp = 50.0
+script = ExtResource("1_gqixs")
+metadata/Player = 0
+
+[node name="lgt_hand" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(-25.5, -28.5)
+scale = Vector2(1.5, 1.5)
+energy = 0.7
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("2_hw1i1")
+texture_scale = 1.25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-25.5, -28.5)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_b82df")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="spr_hand" type="AnimatedSprite2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_35r5w")
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("3_aepd5")
+animation = &"shoot"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-25.5, -28.5)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_b82df")
+
+[connection signal="area_entered" from="Area2D" to="." method="OnBodyEntered"]
+[connection signal="area_exited" from="Area2D" to="." method="OnBodyExited"]

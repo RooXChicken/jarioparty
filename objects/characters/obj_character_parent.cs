@@ -135,6 +135,11 @@ public partial class obj_character_parent : RigidBody2D
 
 	private void GetControllerInput()
 	{
+		if(Lost)
+		{
+			ResetJoystick();
+			return;
+		}
 		if(controllerIndex < 0)
 		{
 			if(controllerIndex == -1)
@@ -313,6 +318,9 @@ public partial class obj_character_parent : RigidBody2D
 		switch(((GameManager)GetNode("/root/GameManager")).CurrentMinigame)
 		{
 			case 1:
+				if(joyLock)
+					return;
+				
 				float distanceX = (Position.X / aiTarget.X - 0.1f);
 				if(distanceX < 0.9f)
 					distanceX = -(aiTarget.X / Position.X - 0.1f);
@@ -381,6 +389,7 @@ public partial class obj_character_parent : RigidBody2D
 	public void EndStun()
 	{
 		joyLock = false;
+		sprite.Animation = "idle";
 	}
 
 	public void PlayAnimation(string anim)

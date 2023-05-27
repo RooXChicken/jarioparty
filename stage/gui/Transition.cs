@@ -36,7 +36,7 @@ public partial class Transition : Node2D
 					GetNode<obj_cloudTransition>("../obj_cloudTransition").PlayAnimation();
 					t_wait.WaitTime = 1.5;
 					t_wait.Start();
-					state = 7;
+					state = 4;
 				}
 				else
 				{
@@ -90,8 +90,11 @@ public partial class Transition : Node2D
 	public void TransitionEnd()
 	{
 		if(state == 7)
+		{
 			state = 6;
+		}
 		else if(playerGoing == 4)
+		{
 			//if(state == 5)
 			((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_minigame_info");
 			// else
@@ -102,6 +105,7 @@ public partial class Transition : Node2D
 			// 	t_wait.Start();
 			// 	state = 5;
 			// }
+		}
 		else
 		{
 			state = 2;

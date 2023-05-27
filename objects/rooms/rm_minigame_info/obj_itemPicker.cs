@@ -1,11 +1,10 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class obj_itemPicker : Node2D
 {
-	private Sprite2D spr_item1;
-	private Sprite2D spr_item2;
-	private Sprite2D spr_item3;
+	private List<Sprite2D> items;
 
 	private Sprite2D spr_arrowUp;
 	private Sprite2D spr_arrowDown;
@@ -19,8 +18,9 @@ public partial class obj_itemPicker : Node2D
 	private bool transitioning = false;
 	private Sprite2D spr_ready;
 	private int inc = 0;
+	private int index = 0;
 
-	public bool ready = true;
+	public bool ready = false;
 
 	private byte player;
 	private PlayerData playerData;
@@ -35,18 +35,19 @@ public partial class obj_itemPicker : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		spr_item1 = GetNode<Sprite2D>("spr_mask/spr_item1");
-		spr_item2 = GetNode<Sprite2D>("spr_mask/spr_item2");
-		spr_item3 = GetNode<Sprite2D>("spr_mask/spr_item3");
+		// spr_noitem = GetNode<Sprite2D>("spr_mask/spr_noitem");
+		// spr_item1 = GetNode<Sprite2D>("spr_mask/spr_item1");
+		// spr_item2 = GetNode<Sprite2D>("spr_mask/spr_item2");
+		// spr_item3 = GetNode<Sprite2D>("spr_mask/spr_item3");
 
 		spr_arrowUp = GetNode<Sprite2D>("spr_arrowUp");
 		spr_arrowDown = GetNode<Sprite2D>("spr_arrowDown");
 
 		spr_ready = GetNode<Sprite2D>("spr_ready");
 
-		item1Def = spr_item1.Position;
-		item2Def = spr_item2.Position;
-		item3Def = spr_item3.Position;
+		// item1Def = spr_item1.Position;
+		// item2Def = spr_item2.Position;
+		// item3Def = spr_item3.Position;
 
 		anim_icons = GetNode<AnimationPlayer>("anim_icons");
 		anim_whackitu = GetNode<AnimationPlayer>("../../anim_whackitu");
@@ -57,9 +58,9 @@ public partial class obj_itemPicker : Node2D
 		playerData = ((GameManager)GetNode("/root/GameManager")).playerData[player];
 		controllerIndex = playerData.controllerIndex;
 
-		spr_item1.Texture = playerData.items[0].Texture;
-		spr_item2.Texture = playerData.items[1].Texture;
-		spr_item3.Texture = playerData.items[2].Texture;
+		// spr_item1.Texture = playerData.items[0].Texture;
+		// spr_item2.Texture = playerData.items[1].Texture;
+		// spr_item3.Texture = playerData.items[2].Texture;
 
 		t_arrows = new Alarm(0.15, true, this, new Callable(this, "SetArrows"));
 	}
@@ -133,56 +134,56 @@ public partial class obj_itemPicker : Node2D
 
 	public void SetIcons()
 	{
-		anim_icons.CurrentAnimation = "[stop]";
-		// spr_item1.Position = item1Def;
-		// spr_item1.Modulate = new Color(1, 1, 1, 1);
-		// spr_item2.Position = item2Def;
-		// spr_item2.Modulate = new Color(1, 1, 1, 0.5f);
-		// spr_item3.Position = item3Def;
-		// spr_item3.Modulate = new Color(1, 1, 1, 0.5f);
-		if(inc > 0)
-		{
-			switch(itemIndex)
-			{
-				case 0:
-					spr_item1.Texture = playerData.items[0].Texture;
-					spr_item2.Texture = playerData.items[1].Texture;
-					spr_item3.Texture = playerData.items[2].Texture;
-					break;
-				case 1:
-					spr_item1.Texture = playerData.items[2].Texture;
-					spr_item2.Texture = playerData.items[0].Texture;
-					spr_item3.Texture = playerData.items[1].Texture;
-					break;
-				case 2:
-					spr_item1.Texture = playerData.items[1].Texture;
-					spr_item2.Texture = playerData.items[2].Texture;
-					spr_item3.Texture = playerData.items[0].Texture;
-					break;
-			}
-		}
-		if(inc < 0)
-		{
-			anim_icons.Seek(0.5, true);
-			switch(itemIndex)
-			{
-				case 1:
-					spr_item1.Texture = playerData.items[1].Texture;
-					spr_item2.Texture = playerData.items[2].Texture;
-					spr_item3.Texture = playerData.items[0].Texture;
-					break;
-				case 2:
-					spr_item1.Texture = playerData.items[0].Texture;
-					spr_item2.Texture = playerData.items[1].Texture;
-					spr_item3.Texture = playerData.items[2].Texture;
-					break;
-				case 0:
-					spr_item1.Texture = playerData.items[2].Texture;
-					spr_item2.Texture = playerData.items[0].Texture;
-					spr_item3.Texture = playerData.items[1].Texture;
-					break;
-			}
-		}
+		// anim_icons.CurrentAnimation = "[stop]";
+		// // spr_item1.Position = item1Def;
+		// // spr_item1.Modulate = new Color(1, 1, 1, 1);
+		// // spr_item2.Position = item2Def;
+		// // spr_item2.Modulate = new Color(1, 1, 1, 0.5f);
+		// // spr_item3.Position = item3Def;
+		// // spr_item3.Modulate = new Color(1, 1, 1, 0.5f);
+		// if(inc > 0)
+		// {
+		// 	switch(itemIndex)
+		// 	{
+		// 		case 0:
+		// 			spr_item1.Texture = playerData.items[0].Texture;
+		// 			spr_item2.Texture = playerData.items[1].Texture;
+		// 			spr_item3.Texture = playerData.items[2].Texture;
+		// 			break;
+		// 		case 1:
+		// 			spr_item1.Texture = playerData.items[2].Texture;
+		// 			spr_item2.Texture = playerData.items[0].Texture;
+		// 			spr_item3.Texture = playerData.items[1].Texture;
+		// 			break;
+		// 		case 2:
+		// 			spr_item1.Texture = playerData.items[1].Texture;
+		// 			spr_item2.Texture = playerData.items[2].Texture;
+		// 			spr_item3.Texture = playerData.items[0].Texture;
+		// 			break;
+		// 	}
+		// }
+		// if(inc < 0)
+		// {
+		// 	anim_icons.Seek(0.5, true);
+		// 	switch(itemIndex)
+		// 	{
+		// 		case 1:
+		// 			spr_item1.Texture = playerData.items[1].Texture;
+		// 			spr_item2.Texture = playerData.items[2].Texture;
+		// 			spr_item3.Texture = playerData.items[0].Texture;
+		// 			break;
+		// 		case 2:
+		// 			spr_item1.Texture = playerData.items[0].Texture;
+		// 			spr_item2.Texture = playerData.items[1].Texture;
+		// 			spr_item3.Texture = playerData.items[2].Texture;
+		// 			break;
+		// 		case 0:
+		// 			spr_item1.Texture = playerData.items[2].Texture;
+		// 			spr_item2.Texture = playerData.items[0].Texture;
+		// 			spr_item3.Texture = playerData.items[1].Texture;
+		// 			break;
+		// 	}
+		// }
 	}
 
 	public void SetArrows()

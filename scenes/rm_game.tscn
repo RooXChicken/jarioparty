@@ -327,3 +327,5 @@ position = Vector2(1147, 681)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_alceq")
 frame_progress = 0.490021
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

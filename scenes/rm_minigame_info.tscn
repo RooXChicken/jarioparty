@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bswpsopq2fhsg"]
+[gd_scene load_steps=22 format=3 uid="uid://bswpsopq2fhsg"]
 
 [ext_resource type="Texture2D" uid="uid://clf3msf2jcdhb" path="res://sprites/rooms/rm_minigame_info/spr_curtains.png" id="1_pmcdl"]
 [ext_resource type="Script" path="res://objects/rooms/rm_minigame_info/rm_minigame_info.cs" id="1_xy7vy"]
@@ -6,12 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://em4i3uf62h8j" path="res://sprites/rooms/rm_minigame_info/spr_minigamePreview.png" id="3_jgraw"]
 [ext_resource type="Texture2D" uid="uid://br5313jdb5dm1" path="res://sprites/rooms/rm_minigame_info/whackituSelect.png" id="3_rxbe7"]
 [ext_resource type="Texture2D" uid="uid://bauaiydvxvct7" path="res://sprites/rooms/rm_minigame_info/spr_onlycurtains.png" id="3_v6fu3"]
+[ext_resource type="Script" path="res://objects/common/cm_bg.cs" id="5_7iird"]
 [ext_resource type="Texture2D" uid="uid://cbojnt0povk60" path="res://sprites/rooms/rm_minigame_info/spr_bubble.png" id="5_qwx8k"]
 [ext_resource type="Texture2D" uid="uid://da1xqrq0gx0wg" path="res://sprites/rooms/rm_minigame_info/spr_controller.png" id="6_gsa07"]
 [ext_resource type="PackedScene" uid="uid://dtylccvxdo8j2" path="res://objects/rooms/rm_minigame_info/obj_itemPicker.tscn" id="6_l47ec"]
 [ext_resource type="Texture2D" uid="uid://dspaqrwgwo3c6" path="res://sprites/rooms/rm_minigame_info/spr_setupFrog.png" id="7_le71p"]
 [ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://fonts/heygorgeous.ttf" id="8_d8xi8"]
 [ext_resource type="PackedScene" path="res://objects/characters/obj_character_info.tscn" id="13_qyf1n"]
+[ext_resource type="Texture2D" uid="uid://bafq22qmok25h" path="res://sprites/common/spr_onewhitepixel.png" id="14_sx4si"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2rsa7"]
 load_path = "res://.godot/imported/spr_bg.png-7da523eb4937f271b0b7de9d8d48d794.ctex"
@@ -54,6 +56,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("obj_transition:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_th576"]
 resource_name = "itemWindow"
@@ -72,6 +86,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_u0uk2"]
 resource_name = "transition"
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -95,6 +110,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(640, 360), Vector2(944, 201)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("obj_transition:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("spr_itemWindow:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(440, 170), Vector2(440, -200)]
 }
 
 [sub_resource type="Animation" id="Animation_vgwei"]
@@ -149,13 +188,15 @@ texture = ExtResource("1_pmcdl")
 
 [node name="spr_bg" type="Sprite2D" parent="."]
 texture_repeat = 2
-position = Vector2(640, 360)
+position = Vector2(0, 360)
 scale = Vector2(2, 2)
 texture = SubResource("CompressedTexture2D_2rsa7")
-offset = Vector2(320, 0)
 region_enabled = true
 region_rect = Rect2(0, 0, 1280, 360)
+script = ExtResource("5_7iird")
 metadata/_edit_lock_ = true
+metadata/ScrollSpeed = 200.0
+metadata/DirectionIsY = false
 
 [node name="spr_minigamePreview" type="Sprite2D" parent="."]
 position = Vector2(640, 360)
@@ -238,5 +279,13 @@ metadata/Player = 2
 z_index = 2
 position = Vector2(-37, 238)
 metadata/Player = 1
+
+[node name="obj_transition" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+position = Vector2(640, 360)
+scale = Vector2(1280, 720)
+texture = ExtResource("14_sx4si")
+metadata/_edit_lock_ = true
 
 [connection signal="animation_finished" from="anim_whackitu" to="." method="TransitionFinished"]

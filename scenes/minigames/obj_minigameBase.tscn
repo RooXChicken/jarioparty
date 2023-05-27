@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://db8bcmriqbdqx"]
+[gd_scene load_steps=33 format=3 uid="uid://db8bcmriqbdqx"]
 
 [ext_resource type="SpriteFrames" uid="uid://d1gqwdyufwd3r" path="res://sprites/gui/minigames/anim_timer.tres" id="1_fmqbb"]
 [ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://fonts/heygorgeous.ttf" id="2_m8k0u"]
@@ -13,6 +13,10 @@
 [ext_resource type="Script" path="res://objects/rooms/minigames/obj_leaderboard.cs" id="11_r7gwb"]
 [ext_resource type="PackedScene" uid="uid://c38e7potf8l16" path="res://objects/rooms/minigames/obj_portrait.tscn" id="11_uxfim"]
 [ext_resource type="Texture2D" uid="uid://b4ubbm3h1836q" path="res://sprites/rooms/minigames/spr_results.png" id="13_wwxeg"]
+[ext_resource type="Texture2D" uid="uid://b2rjdcj2jqnt5" path="res://sprites/gui/minigames/spr_playerBar.png" id="14_0ns66"]
+[ext_resource type="Shader" path="res://shaders/shd_score.gdshader" id="14_aewh4"]
+[ext_resource type="Script" path="res://objects/rooms/minigames/susville/obj_score.cs" id="14_n1vwt"]
+[ext_resource type="Script" path="res://objects/rooms/minigames/susville/obj_playerScore.cs" id="17_imivh"]
 
 [sub_resource type="Animation" id="Animation_ygq1c"]
 length = 0.001
@@ -464,8 +468,11 @@ _data = {
 "play": SubResource("Animation_p5e0v")
 }
 
-[node name="obj_minigameBase" type="Node2D"]
-z_index = 6
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wdumr"]
+shader = ExtResource("14_aewh4")
+shader_parameter/newColor = Vector3(0.937, 0.894, 0.843)
+
+[node name="obj_minigameBase" type="CanvasLayer"]
 metadata/Minigame = 0
 
 [node name="spr_timer" type="AnimatedSprite2D" parent="."]
@@ -567,6 +574,41 @@ texture = ExtResource("13_wwxeg")
 libraries = {
 "": SubResource("AnimationLibrary_1rcsk")
 }
+
+[node name="Score" type="Node2D" parent="."]
+script = ExtResource("14_n1vwt")
+
+[node name="spr_playerScore1" type="Sprite2D" parent="Score"]
+material = SubResource("ShaderMaterial_wdumr")
+position = Vector2(92, 662)
+scale = Vector2(2, 2)
+texture = ExtResource("14_0ns66")
+hframes = 4
+script = ExtResource("17_imivh")
+
+[node name="spr_playerScore2" type="Sprite2D" parent="Score"]
+material = SubResource("ShaderMaterial_wdumr")
+position = Vector2(402, 662)
+scale = Vector2(2, 2)
+texture = ExtResource("14_0ns66")
+hframes = 4
+script = ExtResource("17_imivh")
+
+[node name="spr_playerScore3" type="Sprite2D" parent="Score"]
+material = SubResource("ShaderMaterial_wdumr")
+position = Vector2(878, 662)
+scale = Vector2(-2, 2)
+texture = ExtResource("14_0ns66")
+hframes = 4
+script = ExtResource("17_imivh")
+
+[node name="spr_playerScore4" type="Sprite2D" parent="Score"]
+material = SubResource("ShaderMaterial_wdumr")
+position = Vector2(1190, 662)
+scale = Vector2(-2, 2)
+texture = ExtResource("14_0ns66")
+hframes = 4
+script = ExtResource("17_imivh")
 
 [connection signal="frame_changed" from="spr_timer" to="spr_timer/obj_text" method="FrameChanged"]
 [connection signal="visibility_changed" from="spr_timer" to="spr_timer/obj_text" method="TimerStart"]
