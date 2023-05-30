@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://db8bcmriqbdqx"]
+[gd_scene load_steps=32 format=3 uid="uid://db8bcmriqbdqx"]
 
 [ext_resource type="SpriteFrames" uid="uid://d1gqwdyufwd3r" path="res://sprites/gui/minigames/anim_timer.tres" id="1_fmqbb"]
 [ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://fonts/heygorgeous.ttf" id="2_m8k0u"]
@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://b4ubbm3h1836q" path="res://sprites/rooms/minigames/spr_results.png" id="13_wwxeg"]
 [ext_resource type="Texture2D" uid="uid://b2rjdcj2jqnt5" path="res://sprites/gui/minigames/spr_playerBar.png" id="14_0ns66"]
 [ext_resource type="Shader" path="res://shaders/shd_score.gdshader" id="14_aewh4"]
-[ext_resource type="Script" path="res://objects/rooms/minigames/susville/obj_score.cs" id="14_n1vwt"]
 [ext_resource type="Script" path="res://objects/rooms/minigames/susville/obj_playerScore.cs" id="17_imivh"]
 
 [sub_resource type="Animation" id="Animation_ygq1c"]
@@ -576,7 +575,7 @@ libraries = {
 }
 
 [node name="Score" type="Node2D" parent="."]
-script = ExtResource("14_n1vwt")
+visible = false
 
 [node name="spr_playerScore1" type="Sprite2D" parent="Score"]
 material = SubResource("ShaderMaterial_wdumr")

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public partial class obj_fire : AnimatedSprite2D
 {
-	private float speed = 1;
+	public float speed = 1;
 	private short deadPlayers = 0;
 	private AnimatedSprite2D spr_bg;
 	private obj_character_parent[] players;
@@ -44,7 +44,7 @@ public partial class obj_fire : AnimatedSprite2D
 
 			for(int i = 0; i < 4; i++)
 			{
-				if(players[i].Position.Y > 450)
+				if(!players[i].Lost && players[i].Position.Y > 450)
 				{
 					players[i].Burn();
 					places.Add(players[i].playerData);

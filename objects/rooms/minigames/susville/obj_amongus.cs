@@ -12,6 +12,8 @@ public partial class obj_amongus : RigidBody2D
 	public bool Dead;
 	public bool CanKill = false;
 
+	public int Index = -1;
+
 	private Vector2 aiTarget = new Vector2(0, 0);
 	private int state = 0;
 	private float movementSpeed = 120;
@@ -51,6 +53,9 @@ public partial class obj_amongus : RigidBody2D
 			if(alpha <= 0)
 				QueueFree();
 		}
+
+		if(GetNode<obj_amongies>("../").fadeOut)
+			fadeOut = true;
 	}
 
 	private bool KillAmongUs(obj_amongus among)
@@ -106,19 +111,13 @@ public partial class obj_amongus : RigidBody2D
 	{
 		if(Imposter && CanKill)
 		{
-			GD.Print("AMONGUS");
 			int index = 0;
-			while(index < collisions.Count && KillAmongUs(collisions[index]))
+			while(index < collisions.Count && !KillAmongUs(collisions[index]))
 				index++;
 		}
 		aiTarget = new Vector2(rand.Next(112, 1168), rand.Next(112, 692));
 		state = rand.Next(1, 3);
 		t_ai.WaitTime = rand.NextDouble() * 3;
-	}
-
-	public void FadeOut()
-	{
-		fadeOut = true;
 	}
 
 	public void Kill(bool imposterKill = false)

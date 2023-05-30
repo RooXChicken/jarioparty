@@ -1,78 +1,105 @@
-[gd_scene load_steps=13 format=3 uid="uid://cb2qmpabg3g68"]
+[gd_scene load_steps=19 format=3 uid="uid://8pyxvji75c8h"]
 
 [ext_resource type="PackedScene" uid="uid://db8bcmriqbdqx" path="res://scenes/minigames/obj_minigameBase.tscn" id="1_88fdi"]
 [ext_resource type="Script" path="res://objects/rooms/minigames/lookaway/rm_minigame_lookaway.cs" id="1_cons0"]
 [ext_resource type="PackedScene" path="res://objects/characters/obj_character_lookaway.tscn" id="2_cn341"]
-[ext_resource type="Texture2D" uid="uid://4d412peo3oln" path="res://sprites/rooms/minigames/lookaway/spr_bg.png" id="4_bjvx7"]
+[ext_resource type="Texture2D" uid="uid://bur8u540bntpv" path="res://sprites/rooms/minigames/lookaway/spr_bg.png" id="4_bjvx7"]
 [ext_resource type="Shader" path="res://shaders/shd_lookawayScore.shd.gdshader" id="4_lvvae"]
-[ext_resource type="Texture2D" uid="uid://bm4vpi7535dp5" path="res://sprites/rooms/minigames/lookaway/score.png" id="7_2mpus"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_whacq"]
-atlas = ExtResource("4_bjvx7")
-region = Rect2(0, 0, 640, 360)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wj2fs"]
-atlas = ExtResource("4_bjvx7")
-region = Rect2(640, 0, 640, 360)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jtmrw"]
-atlas = ExtResource("4_bjvx7")
-region = Rect2(1280, 0, 640, 360)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3svd0"]
-atlas = ExtResource("4_bjvx7")
-region = Rect2(1920, 0, 640, 360)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_p4e42"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_whacq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_whacq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_whacq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_whacq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_whacq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_whacq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_whacq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_whacq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_whacq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wj2fs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jtmrw")
-}, {
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_3svd0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3svd0")
-}],
-"loop": false,
-"name": &"default",
-"speed": 2.24
-}]
+[ext_resource type="Texture2D" uid="uid://4d412peo3oln" path="res://sprites/rooms/minigames/lookaway/spr_countdown.png" id="4_yoayg"]
+[ext_resource type="Texture2D" uid="uid://bm4vpi7535dp5" path="res://sprites/rooms/minigames/lookaway/spr_score.png" id="5_vr5xn"]
+[ext_resource type="Texture2D" uid="uid://dv4fll4w0fj7l" path="res://sprites/rooms/minigames/lookaway/spr_GREENGUY.png" id="8_2ruww"]
+[ext_resource type="Script" path="res://objects/rooms/minigames/lookaway/obj_GREENGUY.cs" id="9_la8ek"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ce57l"]
 shader = ExtResource("4_lvvae")
 shader_parameter/remaining = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ky6jb"]
+atlas = ExtResource("4_bjvx7")
+region = Rect2(0, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqdaa"]
+atlas = ExtResource("4_bjvx7")
+region = Rect2(640, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1faei"]
+atlas = ExtResource("4_bjvx7")
+region = Rect2(1280, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hky4"]
+atlas = ExtResource("4_bjvx7")
+region = Rect2(1920, 0, 640, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmevq"]
+atlas = ExtResource("4_bjvx7")
+region = Rect2(2560, 0, 640, 360)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r1e0y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ky6jb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqdaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1faei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hky4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmevq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="Animation" id="Animation_w1k0p"]
+resource_name = "state"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spr_countdown:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5, 7, 7.5, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"Freeze"
+}, {
+"args": [],
+"method": &"Eliminate"
+}, {
+"args": [],
+"method": &"UpdateDisplay"
+}, {
+"args": [],
+"method": &"Progress"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dqyr3"]
+_data = {
+"state": SubResource("Animation_w1k0p")
+}
 
 [node name="rm_minigame_lookaway" type="Node2D"]
 script = ExtResource("1_cons0")
@@ -98,20 +125,37 @@ metadata/Player = 3
 position = Vector2(914, 596)
 metadata/Player = 4
 
-[node name="spr_bg" type="AnimatedSprite2D" parent="."]
+[node name="spr_countdown" type="Sprite2D" parent="."]
 z_index = 5
 position = Vector2(640, 360)
 scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_p4e42")
-autoplay = "default"
-frame = 12
-frame_progress = 1.0
+texture = ExtResource("4_yoayg")
+hframes = 4
+frame = 3
 metadata/_edit_lock_ = true
 
-[node name="spr_score" type="Sprite2D" parent="spr_bg"]
+[node name="spr_score" type="Sprite2D" parent="spr_countdown"]
 z_index = 1
 material = SubResource("ShaderMaterial_ce57l")
 position = Vector2(0, -18.5)
-texture = ExtResource("7_2mpus")
+texture = ExtResource("5_vr5xn")
 
-[connection signal="frame_changed" from="spr_bg" to="." method="UpdateGameState"]
+[node name="spr_bg" type="AnimatedSprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_r1e0y")
+autoplay = "default"
+frame_progress = 0.606273
+
+[node name="obj_GREENGUY" type="Sprite2D" parent="spr_bg"]
+visible = false
+position = Vector2(-263, -11)
+texture = ExtResource("8_2ruww")
+script = ExtResource("9_la8ek")
+
+[node name="anim_gameState" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dqyr3")
+}
+
+[connection signal="frame_changed" from="spr_bg" to="spr_bg/obj_GREENGUY" method="FrameChanged"]

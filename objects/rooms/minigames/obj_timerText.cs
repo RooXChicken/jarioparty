@@ -13,6 +13,11 @@ public partial class obj_timerText : RichTextLabel
 		((GameManager)GetNode("/root/GameManager")).MinigameStarted = false;
 		Variant _Minigame = GetNode<CanvasLayer>("../../").GetMeta("Minigame");
 		Time = ((GameManager)GetNode("/root/GameManager")).minigameLookup[_Minigame.As<int>()].MinigameTime + 2;
+		
+		if(Time < 0)
+		{
+			GetNode<AnimatedSprite2D>("../").Visible = false;
+		}
 	}
 
 	public void Start()
@@ -45,9 +50,9 @@ public partial class obj_timerText : RichTextLabel
 		{
 			case 0:
 				Time--;
-				if(Time < 20 && GetNode<AnimatedSprite2D>("../").Animation != "lowTime")
+				if(Time == 20 && GetNode<AnimatedSprite2D>("../").Animation != "lowTime")
 					GetNode<AnimatedSprite2D>("../").Play("lowTime");
-				if(Time <= 0)
+				if(Time == 0)
 					onEnd.Call();
 				newPos = new Vector2(x, -9.5f);
 				break;
@@ -60,7 +65,7 @@ public partial class obj_timerText : RichTextLabel
 				break;
 		}
 
-		if(Time <= 0)
+		if(Time == 0)
 		{
 			onEnd.Call(true);
 		}

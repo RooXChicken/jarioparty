@@ -45,13 +45,18 @@ public partial class obj_character_parent : RigidBody2D
 	public bool jumping = false;
 
 	private Alarm t_jumpDuration;
+	private Alarm t_startJump;
 	public Alarm t_stun;
+
+	private Random rand;
 
 	public override void _Ready()
 	{
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/player/snd_jump.wav", "plr_jump");
 		joyhaxis = 0;
 		joyvaxis = 0;
+
+		rand = new Random();
 		
 		feetArea = GetNode<Area2D>("obj_feetArea");
 		collider = GetNode<CollisionShape2D>("obj_hitbox");
@@ -93,6 +98,7 @@ public partial class obj_character_parent : RigidBody2D
 		strength *= playerData.strengthMult;
 
 		t_jumpDuration = new Alarm(0.1, true, this, new Callable(this, "StopJump"), false);
+		t_startJump = new Alarm(0.1, true, this, new Callable(this, "FireJump"), false);
 
 		if(HasMeta("MovementSpeed"))
 		{
@@ -144,10 +150,10 @@ public partial class obj_character_parent : RigidBody2D
 		{
 			if(controllerIndex == -1)
 				ProcessAI();
-			return;
+			//return;
 		}
 
-		if(!joyLock && abilities.Contains("move"))
+		if(!joyLock && controllerIndex >= 0 && abilities.Contains("move"))
 		{
 			joyhaxis = Input.GetAxis("left" + controllerIndex, "right" + controllerIndex);
 			joyvaxis = Input.GetAxis("up" + controllerIndex, "down" + controllerIndex);
@@ -156,7 +162,7 @@ public partial class obj_character_parent : RigidBody2D
 			animvaxis = joyvaxis;
 		}
 
-		if(abilities.Contains("punch") && Input.IsActionJustPressed("punch" + controllerIndex) && sprite.Animation != "punch")
+		if(abilities.Contains("punch") && controllerIndex >= 0 && Input.IsActionJustPressed("punch" + controllerIndex) && sprite.Animation != "punch")
 		{
 			joyLock = true;
 			sprite.Animation = "attack";
@@ -165,7 +171,7 @@ public partial class obj_character_parent : RigidBody2D
 			ResetJoystick();
 		}
 
-		if(abilities.Contains("jump") && Input.IsActionJustPressed("jump" + controllerIndex))
+		if(abilities.Contains("jump") && controllerIndex >= 0 && Input.IsActionJustPressed("jump" + controllerIndex))
 		{
 			jumpCountdown = 0.2f;
 		}
@@ -200,7 +206,7 @@ public partial class obj_character_parent : RigidBody2D
 				}
 		}
 
-		if(abilities.Contains("jump_phy") && !Input.IsActionPressed("jump" + controllerIndex) && LinearVelocity.Y < 0)
+		if(abilities.Contains("jump_phy") && controllerIndex >= 0 && !Input.IsActionPressed("jump" + controllerIndex) && LinearVelocity.Y < 0)
 		{
 			StopJump();
 		}
@@ -208,7 +214,7 @@ public partial class obj_character_parent : RigidBody2D
 
 	private void ProcessAnimations()
 	{
-		if(resetAnim && (controllerIndex < -1 || (animhaxis == 0 && animvaxis == 0)))
+		if(resetAnim && (controllerIndex < -2 || (animhaxis == 0 && animvaxis == 0)))
 		{
 			if(idleTimer > 5 && abilities.Contains("move"))
 			{
@@ -335,10 +341,27 @@ public partial class obj_character_parent : RigidBody2D
 				if(Math.Abs(joyvaxis) < 0.98f)
 					joyvaxis = 0;
 				break;
+			case 3:
+				if(GetNode<AnimatedSprite2D>("../../obj_fire").Frame == 5 && jumpCountdown <= 0)
+				{
+					t_startJump.WaitTime = ((rand.NextDouble()/2) * 0.1);
+					t_startJump.Start();
+				}
+				break;
 		}
 
 		animhaxis = joyhaxis;
 		animvaxis = joyvaxis;
+	}
+
+	private void FireJump()
+	{
+		jumpCountdown = 0.1f;
+		jumping = true;
+		//sprite.Animation = "jumpUp";
+		t_jumpDuration.WaitTime = Math.Clamp((1.4-GetNode<obj_fire>("../../obj_fire").speed) * 0.5f, 0.04, 1);
+		GD.Print(t_jumpDuration.WaitTime);
+		t_jumpDuration.Start();
 	}
 
 	private void SpriteChanged()

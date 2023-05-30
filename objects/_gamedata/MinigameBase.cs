@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class MinigameBase
+public partial class MinigameBase : Node
 {
 	public List<string> Abilities;
 

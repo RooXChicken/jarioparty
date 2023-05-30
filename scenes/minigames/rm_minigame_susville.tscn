@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bnljkoulamcfw"]
+[gd_scene load_steps=17 format=3 uid="uid://bnljkoulamcfw"]
 
 [ext_resource type="PackedScene" uid="uid://db8bcmriqbdqx" path="res://scenes/minigames/obj_minigameBase.tscn" id="1_oxa0r"]
 [ext_resource type="Script" path="res://objects/rooms/minigames/susville/rm_minigame_susville.cs" id="1_xympx"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://cfex84vtco5dy" path="res://objects/rooms/minigames/susville/obj_playerHand.tscn" id="6_i6hwo"]
 [ext_resource type="Script" path="res://objects/rooms/minigames/susville/obj_amongies.cs" id="7_cs4c6"]
 [ext_resource type="Script" path="res://objects/rooms/minigames/susville/obj_handManager.cs" id="7_u153j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jl1tp"]
+size = Vector2(29, 270)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c0kob"]
 friction = 0.0
@@ -47,14 +50,17 @@ tracks/1/path = NodePath("obj_amongies")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 3.3, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [],
 "method": &"SpawnAmongus"
 }, {
 "args": [],
 "method": &"StartGame"
+}, {
+"args": [],
+"method": &"EnableCollision"
 }]
 }
 tracks/2/type = "method"
@@ -88,7 +94,7 @@ metadata/_edit_horizontal_guides_ = []
 metadata/Minigame = 4
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.730941, 0.730941, 0.730941, 1)
+color = Color(0.726667, 0.726667, 0.726667, 1)
 metadata/_edit_lock_ = true
 
 [node name="obj_bg" type="StaticBody2D" parent="."]
@@ -106,7 +112,7 @@ metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="obj_bg"]
 position = Vector2(1, 2)
-polygon = PackedVector2Array(-1, 224, 14, 224, 14, 492, 107, 492, 134, 586, 253, 658, 402, 680, 620, 692, 620, 694, 660, 694, 660, 692, 878, 680, 1028, 657, 1145, 586, 1171, 492, 1264, 492, 1264, 224, 1279, 224, 1279, 718, -1, 718)
+polygon = PackedVector2Array(-1, 492, 14, 492, 107, 492, 134, 586, 253, 658, 402, 680, 620, 692, 620, 694, 660, 694, 660, 692, 878, 680, 1028, 657, 1145, 586, 1171, 492, 1264, 492, 1279, 492, 1279, 718, -1, 718)
 metadata/_edit_lock_ = true
 
 [node name="lgt_table1" type="PointLight2D" parent="obj_bg"]
@@ -135,6 +141,14 @@ blend_mode = 2
 shadow_enabled = true
 texture = ExtResource("4_pnr6v")
 metadata/_edit_lock_ = true
+
+[node name="obj_wall1" type="CollisionShape2D" parent="obj_bg"]
+position = Vector2(14, 359)
+shape = SubResource("RectangleShape2D_jl1tp")
+
+[node name="obj_wall2" type="CollisionShape2D" parent="obj_bg"]
+position = Vector2(1266, 359)
+shape = SubResource("RectangleShape2D_jl1tp")
 
 [node name="obj_tables" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_c0kob")

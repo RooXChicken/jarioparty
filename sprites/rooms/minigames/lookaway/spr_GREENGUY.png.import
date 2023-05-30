@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bur8u540bntpv"
-path="res://.godot/imported/spr_bg.png-57a8c02fdd5ac78731d9834f2ef7bfe6.ctex"
+uid="uid://dv4fll4w0fj7l"
+path="res://.godot/imported/spr_GREENGUY.png-c1adae64cdd83b260fb3ba5cbdff3006.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/rooms/minigames/lookaway/spr_bg.png"
-dest_files=["res://.godot/imported/spr_bg.png-57a8c02fdd5ac78731d9834f2ef7bfe6.ctex"]
+source_file="res://sprites/rooms/minigames/lookaway/spr_GREENGUY.png"
+dest_files=["res://.godot/imported/spr_GREENGUY.png-c1adae64cdd83b260fb3ba5cbdff3006.ctex"]
 
 [params]
 

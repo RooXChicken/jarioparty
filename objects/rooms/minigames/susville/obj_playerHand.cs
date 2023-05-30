@@ -81,6 +81,7 @@ public partial class obj_playerHand : RigidBody2D
 				{
 					imposter = true;
 					Kill(among);
+					break;
 				}
 
 			if(!imposter)
@@ -91,7 +92,7 @@ public partial class obj_playerHand : RigidBody2D
 			}
 			else
 			{
-				GetNode<obj_playerScore>("../../obj_minigameBase/Score/spr_playerScore" + (controllerIndex + 1)).AddScore(1);
+				GetNode<obj_playerScore>("../../obj_minigameBase/Score/spr_playerScore" + (playerData.playerOrder)).AddScore(1, playerData);
 			}
 		}
 	}

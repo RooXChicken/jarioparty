@@ -126,6 +126,8 @@ public partial class obj_playerSelect : Node2D
 			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(new ItemBase(((GameManager)GetNode("/root/GameManager")).itemLookup[1]));
 			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(new ItemBase(((GameManager)GetNode("/root/GameManager")).itemLookup[2]));
 
+			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].playerOrder = characterIndex + 1;
+
 			controllerIndex++;
 			characterIndex++;
 

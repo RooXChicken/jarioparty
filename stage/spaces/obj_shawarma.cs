@@ -59,7 +59,14 @@ public partial class obj_shawarma : Node2D
 				((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_map");
 		}
 		if(dialogue)
+		{
 			obj_dialogueBox.ProcessDialogue(delta);
+			if(obj_dialogueBox.dialogueIndex == 5)
+			{
+				if(diceRoll <= 0)
+					obj_dialogueBox.dialogueIndex = 6;
+			}
+		}
 	}
 
 	private int ChangeDialogue(int index, int _dialogueIndex)
@@ -96,11 +103,6 @@ public partial class obj_shawarma : Node2D
 
 				dialogueIndex = 5;
 			}
-			if(dialogueIndex == 5)
-			{
-				if(diceRoll <= 0)
-					dialogueIndex = 6;
-			}
 			if(dialogueIndex == 6)
 			{
 				((AudioController)GetNode("/root/AudioController")).StopSound("diceblockRoll");
@@ -126,6 +128,10 @@ public partial class obj_shawarma : Node2D
 				obj_dialogueBox.characterDialogue[8] = "K so " + playerData[1].characterName + " gets to go second! Good job bestie!!\n\n\n\n  Continue";
 				obj_dialogueBox.characterDialogue[9] = "K so " + playerData[2].characterName + " gets to go third! Mid roll.\n\n\n\n  Continue";
 				obj_dialogueBox.characterDialogue[10] = "K so " + playerData[3].characterName + " gets to go fourth! L LOSER GET FORTNITED ON XD!\n\n\n  Continue";
+
+				for(int i = 0; i < 4; i++)
+					playerData[i].playerOrder = i + 1;
+
 				GetNode<obj_mapGUI>("../obj_mapGUI").Initialize();
 			}
 			if(dialogueIndex >= 7 && dialogueIndex <= 10)

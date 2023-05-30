@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bur8u540bntpv"
-path="res://.godot/imported/spr_bg.png-57a8c02fdd5ac78731d9834f2ef7bfe6.ctex"
+uid="uid://bm4vpi7535dp5"
+path="res://.godot/imported/spr_score.png-70b3cb3ff3d6938c4497bfb53e46ab27.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/rooms/minigames/lookaway/spr_bg.png"
-dest_files=["res://.godot/imported/spr_bg.png-57a8c02fdd5ac78731d9834f2ef7bfe6.ctex"]
+source_file="res://sprites/rooms/minigames/lookaway/spr_score.png"
+dest_files=["res://.godot/imported/spr_score.png-70b3cb3ff3d6938c4497bfb53e46ab27.ctex"]
 
 [params]
 

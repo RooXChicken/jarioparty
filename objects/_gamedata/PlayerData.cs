@@ -6,8 +6,10 @@ public partial class PlayerData : Node
 {
 	public short controllerIndex = 1; //1 = player 1
 	public ushort characterIndex = 1; //1 = jario; 2 = wooigi; 3 = grape; 4 = josh
+	public int playerOrder = 1;
 	public string characterName = "NULL";
 	public bool ai = false;
+	public int minigameScore = 0;
 	public int diceRoll = 0;
 
 	//game data

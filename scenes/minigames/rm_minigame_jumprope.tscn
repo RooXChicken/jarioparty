@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3]
+[gd_scene load_steps=34 format=3 uid="uid://ydqwx8yufnbp"]
 
 [ext_resource type="Script" path="res://objects/rooms/minigames/jumprope/rm_minigame_jumprope.cs" id="1_ekd5s"]
 [ext_resource type="PackedScene" uid="uid://db8bcmriqbdqx" path="res://scenes/minigames/obj_minigameBase.tscn" id="1_oxa0r"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bk1bc45cxc122" path="res://sprites/rooms/minigames/jumprope/spr_fire.png" id="3_ytuyh"]
 [ext_resource type="Script" path="res://objects/rooms/minigames/jumprope/obj_fire.cs" id="4_g1olb"]
 [ext_resource type="Texture2D" uid="uid://tlcwudr5rra4" path="res://sprites/rooms/minigames/jumprope/spr_bg.png" id="4_lkjcb"]
-[ext_resource type="PackedScene" path="res://objects/characters/obj_character_parent.tscn" id="5_rhrym"]
+[ext_resource type="PackedScene" uid="uid://cfl0hvcgmxski" path="res://objects/characters/obj_character_parent.tscn" id="5_rhrym"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cyopt"]
 shader = ExtResource("3_2updo")

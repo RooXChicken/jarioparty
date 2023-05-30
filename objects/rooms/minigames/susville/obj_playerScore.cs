@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class obj_playerScore : Sprite2D
 {
@@ -16,11 +17,18 @@ public partial class obj_playerScore : Sprite2D
 	{
 	}
 
-	public void AddScore(int addition)
+	public void AddScore(int addition, PlayerData pdata)
 	{
 		score += addition;
 		Frame = score;
 
+		pdata.minigameScore = score;
+
 		((AudioController)GetNode("/root/AudioController")).PlaySound("minigame_addScore");
+
+		if(score >= 3)
+		{
+			GetNode<obj_timerText>("../../spr_timer/obj_text").onEnd.Call();
+		}
 	}
 }

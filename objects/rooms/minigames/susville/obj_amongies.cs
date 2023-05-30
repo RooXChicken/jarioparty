@@ -8,6 +8,11 @@ public partial class obj_amongies : Node2D
 	private List<RigidBody2D> amongies;
 
 	private AnimationPlayer anim_lights;
+	private CollisionShape2D obj_wall1;
+	private CollisionShape2D obj_wall2;
+
+	private int count = 29;
+	public bool fadeOut = false;
 
 	private Random rand;
 	//private bool spawning = false;
@@ -18,10 +23,12 @@ public partial class obj_amongies : Node2D
 	public override void _Ready()
 	{
 		anim_lights = GetNode<AnimationPlayer>("../anim_lights");
+		obj_wall1 = GetNode<CollisionShape2D>("../obj_bg/obj_wall1");
+		obj_wall2 = GetNode<CollisionShape2D>("../obj_bg/obj_wall2");
 		amongies = new List<RigidBody2D>();
 		rand = new Random();
 
-		imposter = rand.Next(0, 29);
+		imposter = rand.Next(0, count);
 
 		anim_lights.Play("start");
 	}
@@ -34,31 +41,29 @@ public partial class obj_amongies : Node2D
 		{
 			delay = 0.05;
 
-			if(index > 29)
+			if(index > count)
 			{
-				((obj_amongus)amongies[imposter - 1]).CanKill = true;
-				GD.Print(imposter);
+				((obj_amongus)amongies[imposter]).CanKill = true;
 				spawned = true;
 				return;
 			}
 
-			index++;
-
 			RigidBody2D amongus = GD.Load<PackedScene>("objects/rooms/minigames/susville/obj_amongus.tscn").Instantiate<RigidBody2D>();
 			if(rand.NextDouble() > 0.5)
-				amongus.Position = new Vector2(50, 400);
+				amongus.Position = new Vector2(0, 400);
 			else
-				amongus.Position = new Vector2(1230, 400);
-			
+				amongus.Position = new Vector2(1280, 400);
+
 			if(index == imposter)
 			{
-				GD.Print(index);
 				((obj_amongus)amongus).Imposter = true;
 				amongus.GetNode<Area2D>("hitDetect").Monitoring = true;
 			}
 
 			AddChild(amongus);
 			amongies.Add(amongus);
+		
+			index++;
 		}
 	}
 
@@ -69,20 +74,29 @@ public partial class obj_amongies : Node2D
 	}
 
 	public void ImposterDied()
-	{
-		foreach(RigidBody2D amogus in amongies)
-			((obj_amongus)amogus).FadeOut();
-		GD.Print("Completed");
+	{	
 		anim_lights.Seek(5);
 		anim_lights.PlayBackwards();
+
+		fadeOut = true;
 	}
 
 	public void SpawnAmongus()
 	{
+		fadeOut = false;
 		amongies.Clear();
 		spawned = false;
 		index = 0;
 
+		obj_wall1.Disabled = true;
+		obj_wall2.Disabled = true;
+
 		anim_lights.Play();
+	}
+
+	public void EnableCollision()
+	{
+		obj_wall1.Disabled = false;
+		obj_wall2.Disabled = false;
 	}
 }
