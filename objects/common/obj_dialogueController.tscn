@@ -10,6 +10,7 @@ default_font = ExtResource("2_djxwd")
 default_font_size = 10
 
 [node name="obj_dialogueController" type="Node2D"]
+z_index = 16
 script = ExtResource("1_lfiwh")
 
 [node name="spr_dialogueBox" type="Sprite2D" parent="."]

@@ -9,6 +9,7 @@ public partial class obj_winner : Node
 	private AnimationPlayer anim_wins;
 
 	private List<PlayerData> places;
+	private int mode;
 	private int[] coinVal;
 	
 	// Called when the node enters the scene tree for the first time.
@@ -23,7 +24,7 @@ public partial class obj_winner : Node
 		anim_wins = GetNode<AnimationPlayer>("anim_wins");
 	}
 
-	public void EndMiniGame(int size, int[] playersAlive, List<PlayerData> _places, int[] _coinVal)
+	public void EndMiniGame(int size, int[] playersAlive, List<PlayerData> _places, int[] _coinVal, int _mode = 0)
 	{
 		((GameManager)GetNode("/root/GameManager")).MinigameStarted = false;
 		switch(size)
@@ -53,10 +54,11 @@ public partial class obj_winner : Node
 
 		places = _places;
 		coinVal = _coinVal;
+		mode = _mode;
 	}
 
 	public void ShowResults()
 	{
-		GetNode<obj_leaderboard>("../WinGUI").StartSequence(places, coinVal);
+		GetNode<obj_leaderboard>("../WinGUI").StartSequence(places, coinVal, mode);
 	}
 }

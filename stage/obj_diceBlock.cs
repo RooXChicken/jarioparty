@@ -91,7 +91,7 @@ public partial class obj_diceBlock : Node2D
 			((AudioController)GetNode("/root/AudioController")).StopSound("diceblockRoll");
 		
 		((AudioController)GetNode("/root/AudioController")).PlaySound("diceblockHit");
-		num = ((GameManager)GetNode("/root/GameManager")).rand.Next(1, 6);
+		num = ((GameManager)GetNode("/root/GameManager")).rand.Next(1, 9);
 		spr_number.Frame = num;
 		player.playerData.diceRoll = num;
 	}

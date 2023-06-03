@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=55 format=3 uid="uid://dbmgbhtfc8tfj"]
+[gd_resource type="SpriteFrames" load_steps=62 format=3 uid="uid://dbmgbhtfc8tfj"]
 
 [ext_resource type="Texture2D" uid="uid://3hdxh6tpletr" path="res://sprites/characters/playable/josh/anim_joshBurnt.png" id="1_0tvnm"]
 [ext_resource type="Texture2D" uid="uid://bcgis22hfhspn" path="res://sprites/characters/playable/josh/anim_joshAttack.png" id="1_hpokn"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://ds5ndmpv3w3su" path="res://sprites/characters/playable/josh/anim_joshJumpRight.png" id="4_1y8x1"]
 [ext_resource type="Texture2D" uid="uid://bk3ur6dmwtoxj" path="res://sprites/characters/playable/josh/anim_joshWalkFront.png" id="4_rgsft"]
 [ext_resource type="Texture2D" uid="uid://c3euyra70g651" path="res://sprites/characters/playable/josh/anim_joshPortrait.png" id="6_0odh6"]
+[ext_resource type="Texture2D" uid="uid://drpve0mwhioai" path="res://sprites/characters/playable/josh/anim_joshPull.png" id="10_d6k2s"]
+[ext_resource type="Texture2D" uid="uid://c2c1l5gdyna6o" path="res://sprites/characters/playable/josh/anim_joshPulled.png" id="11_31sp2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l6ydu"]
 atlas = ExtResource("1_hpokn")
@@ -125,6 +127,26 @@ region = Rect2(0, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_mv5x8"]
 atlas = ExtResource("6_0odh6")
 region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqdcj"]
+atlas = ExtResource("10_d6k2s")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4tg0"]
+atlas = ExtResource("10_d6k2s")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffxtf"]
+atlas = ExtResource("10_d6k2s")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b3o6"]
+atlas = ExtResource("11_31sp2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xatwr"]
+atlas = ExtResource("11_31sp2")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4yq61"]
 atlas = ExtResource("3_7d7c5")
@@ -314,6 +336,31 @@ animations = [{
 "loop": false,
 "name": &"portrait",
 "speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqdcj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4tg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffxtf")
+}],
+"loop": true,
+"name": &"pull",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0b3o6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xatwr")
+}],
+"loop": true,
+"name": &"pulled",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,

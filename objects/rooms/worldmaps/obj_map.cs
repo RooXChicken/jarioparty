@@ -12,6 +12,7 @@ public partial class obj_map : Node2D
 	private Alarm t_zoomIn;
 
 	private double delta = 0;
+	private float speed = 3f;
 	private Vector2 zoomLevel = new Vector2(1, 1);
 	public bool cameraStarted = false;
 
@@ -55,8 +56,8 @@ public partial class obj_map : Node2D
 	{
 		Vector2 camPos;
 		camPos = playerGoing.Position;
-		obj_camera.Zoom = obj_camera.Zoom.Lerp(zoomLevel, (float)delta * 3f);
-		obj_camera.Position = obj_camera.Position.Lerp(camPos + offset, (float)delta * 3f);
+		obj_camera.Zoom = obj_camera.Zoom.Lerp(zoomLevel, (float)delta * speed);
+		obj_camera.Position = obj_camera.Position.Lerp(camPos + offset, (float)delta * speed);
 
 		cameraStarted = true;
 	}
@@ -76,6 +77,8 @@ public partial class obj_map : Node2D
 	public void SetZoomLevel(float _zoom) { zoomLevel = new Vector2(_zoom, _zoom); }
 	public void SetPosition (Vector2 _pos) { offset = _pos - playerGoing.Position; }
 	public void SetPosition () { offset = new Vector2(0, 0); }
+	public void SetSpeed(float _speed) { speed = _speed; }
+	public void SetSpeed() { speed = 3f; }
 
 	public void Snap()
 	{

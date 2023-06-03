@@ -45,6 +45,9 @@ public partial class rm_minigame_susville : Node2D
 
 		places.Reverse();
 
-		GetNode<obj_winner>("obj_minigameBase/Win").EndMiniGame(1, new int[] {places[0].characterIndex}, places, new int[] {10, 6, 4, 0});
+		GetNode<obj_winner>("obj_minigameBase/Win").EndMiniGame(1, new int[] {places[3].characterIndex}, places, new int[] {10, 6, 4, 0});
+
+		for(int i = 0; i < 4; i++)
+			((GameManager)GetNode("/root/GameManager")).playerData[i].minigameScore = 0;
 	}
 }

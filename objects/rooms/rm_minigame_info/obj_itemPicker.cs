@@ -9,10 +9,6 @@ public partial class obj_itemPicker : Node2D
 	private Sprite2D spr_arrowUp;
 	private Sprite2D spr_arrowDown;
 
-	private Vector2 item1Def;
-	private Vector2 item2Def;
-	private Vector2 item3Def;
-
 	private AnimationPlayer anim_icons;
 	private AnimationPlayer anim_whackitu;
 	private bool transitioning = false;
@@ -21,6 +17,7 @@ public partial class obj_itemPicker : Node2D
 	private int index = 0;
 
 	public bool ready = false;
+	private bool input = false;
 
 	private byte player;
 	private PlayerData playerData;
@@ -35,10 +32,15 @@ public partial class obj_itemPicker : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		// spr_noitem = GetNode<Sprite2D>("spr_mask/spr_noitem");
-		// spr_item1 = GetNode<Sprite2D>("spr_mask/spr_item1");
-		// spr_item2 = GetNode<Sprite2D>("spr_mask/spr_item2");
-		// spr_item3 = GetNode<Sprite2D>("spr_mask/spr_item3");
+		items = new List<Sprite2D>();
+
+		for(int i = 0; i < playerData.items.Count; i++)
+		{
+			Sprite2D item = new Sprite2D();
+			item.Name = "spr_item" + i+1;
+			item.Texture = playerData.items[i].Texture;
+			items.Add(item);
+		}
 
 		spr_arrowUp = GetNode<Sprite2D>("spr_arrowUp");
 		spr_arrowDown = GetNode<Sprite2D>("spr_arrowDown");
@@ -70,6 +72,9 @@ public partial class obj_itemPicker : Node2D
 	{				
 		GetControllerInput();
 
+		if(!input)
+			return;
+
 		if(!ready && joyvaxis > 0 && anim_icons.CurrentAnimation == "")
 			ChangeItemIndex(1);
 		if(!ready && joyvaxis < 0 && anim_icons.CurrentAnimation == "")
@@ -87,8 +92,12 @@ public partial class obj_itemPicker : Node2D
 		if(!anim_whackitu.IsPlaying() && Input.IsActionJustPressed("pause" + controllerIndex))
 		{
 			anim_whackitu.Play("transition");
+			input = true;
 			transitioning = true;
 		}
+		
+		if(!input)
+			return;
 
 		if(Input.IsActionJustPressed("jump" + controllerIndex))
 		{
@@ -108,10 +117,10 @@ public partial class obj_itemPicker : Node2D
 		inc = _inc;
 		itemIndex += inc;
 
-		if(itemIndex > 2)
+		if(itemIndex > items.Count)
 			itemIndex = 0;
 		if(itemIndex < 0)
-			itemIndex = 2;
+			itemIndex = items.Count;
 
 		SetIcons();
 

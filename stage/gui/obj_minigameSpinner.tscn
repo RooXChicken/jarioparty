@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=3 uid="uid://3u8n2e0ulnt8"]
+
+[ext_resource type="Script" path="res://stage/gui/obj_minigameSpinner.cs" id="1_mfw7c"]
+[ext_resource type="Texture2D" uid="uid://dfop5j2uuqsvt" path="res://stage/gui/sprites/spr_minigameSpinnerUI.png" id="1_wt3br"]
+[ext_resource type="Texture2D" uid="uid://d3ekn21agfdjr" path="res://stage/gui/sprites/spr_minigameSpinnerText.png" id="2_da3se"]
+[ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://fonts/heygorgeous.ttf" id="2_f4yl5"]
+[ext_resource type="Texture2D" uid="uid://cdgt1o0cfp2vj" path="res://sprites/rooms/rm_minigame_info/spr_arrowUp.png" id="5_0c7tk"]
+
+[sub_resource type="Theme" id="Theme_dvhnk"]
+default_font = ExtResource("2_f4yl5")
+default_font_size = 10
+
+[node name="obj_minigameSpinner" type="Node2D"]
+script = ExtResource("1_mfw7c")
+
+[node name="spr_spinner" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
+texture = ExtResource("1_wt3br")
+
+[node name="spr_text1" type="Sprite2D" parent="spr_spinner"]
+position = Vector2(0, -26)
+texture = ExtResource("2_da3se")
+
+[node name="obj_text" type="RichTextLabel" parent="spr_spinner/spr_text1"]
+modulate = Color(0, 0, 0, 1)
+z_index = 5
+offset_left = -140.0
+offset_top = -10.5
+offset_right = 220.0
+offset_bottom = 27.5
+scale = Vector2(0.75, 0.75)
+theme = SubResource("Theme_dvhnk")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]Error"
+
+[node name="spr_text2" type="Sprite2D" parent="spr_spinner"]
+position = Vector2(0, 29)
+texture = ExtResource("2_da3se")
+
+[node name="obj_text" type="RichTextLabel" parent="spr_spinner/spr_text2"]
+modulate = Color(0, 0, 0, 1)
+z_index = 5
+offset_left = -140.0
+offset_top = -10.5
+offset_right = 220.0
+offset_bottom = 27.5
+scale = Vector2(0.75, 0.75)
+theme = SubResource("Theme_dvhnk")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]Error"
+
+[node name="spr_text3" type="Sprite2D" parent="spr_spinner"]
+position = Vector2(0, 84)
+texture = ExtResource("2_da3se")
+
+[node name="obj_text" type="RichTextLabel" parent="spr_spinner/spr_text3"]
+modulate = Color(0, 0, 0, 1)
+z_index = 5
+offset_left = -140.0
+offset_top = -10.5
+offset_right = 220.0
+offset_bottom = 27.5
+scale = Vector2(0.75, 0.75)
+theme = SubResource("Theme_dvhnk")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]Error"
+
+[node name="SelectionArrows" type="Node2D" parent="."]
+
+[node name="spr_arrow1" type="Sprite2D" parent="SelectionArrows"]
+position = Vector2(358, 308)
+rotation = 1.5708
+scale = Vector2(3, 3)
+texture = ExtResource("5_0c7tk")
+
+[node name="spr_arrow2" type="Sprite2D" parent="SelectionArrows"]
+position = Vector2(922, 308)
+rotation = -1.5708
+scale = Vector2(3, 3)
+texture = ExtResource("5_0c7tk")

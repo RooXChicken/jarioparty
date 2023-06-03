@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b3dvuk2a216p2"]
+[gd_scene load_steps=20 format=3 uid="uid://b3dvuk2a216p2"]
 
 [ext_resource type="Script" path="res://stage/gui/obj_mapGUI.cs" id="1_46h3d"]
 [ext_resource type="PackedScene" uid="uid://dqumai6udoy6u" path="res://objects/rooms/rm_minigame_info/obj_cloudTransition.tscn" id="5_vcwf8"]
@@ -10,6 +10,7 @@
 [ext_resource type="Shader" path="res://shaders/shd_spr_start.gdshader" id="8_xdwlg"]
 [ext_resource type="Texture2D" uid="uid://bt2hscxeadxgp" path="res://sprites/gui/roundStart/spr_start.png" id="9_7wcct"]
 [ext_resource type="Texture2D" uid="uid://sngjuww5tnt6" path="res://sprites/characters/npc/frog/anim_frogFall.png" id="10_j2jws"]
+[ext_resource type="PackedScene" uid="uid://3u8n2e0ulnt8" path="res://stage/gui/obj_minigameSpinner.tscn" id="11_nyphd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_orrib"]
 shader = ExtResource("8_xdwlg")
@@ -63,6 +64,124 @@ tracks/1/keys = {
 "update": 0,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("obj_minigameSpinner:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("obj_minigameSpinner:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("obj_cloudTransition:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_tehpq"]
+resource_name = "spinnertoCloud"
+length = 6.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("obj_minigameSpinner:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("obj_minigameSpinner:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("obj_cloudTransition")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"PlayAnimation"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("obj_cloudTransition:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Transition")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(6.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"TransitionEnd"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("obj_minigameSpinner")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Spin"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_yf8gx"]
 resource_name = "transition"
@@ -94,6 +213,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u5ciq"]
 _data = {
 "RESET": SubResource("Animation_htgxc"),
+"spinnertoCloud": SubResource("Animation_tehpq"),
 "transition": SubResource("Animation_yf8gx")
 }
 
@@ -129,7 +249,7 @@ centered = false
 
 [node name="obj_cloudTransition" parent="." instance=ExtResource("5_vcwf8")]
 visible = false
-z_index = 10
+z_index = 20
 metadata/Backwards = false
 
 [node name="PlayerStart" type="Node2D" parent="."]
@@ -153,6 +273,10 @@ z_index = 10
 position = Vector2(634, 414)
 scale = Vector2(76, 76)
 sprite_frames = SubResource("SpriteFrames_xx2tt")
+
+[node name="obj_minigameSpinner" parent="." instance=ExtResource("11_nyphd")]
+visible = false
+modulate = Color(1, 1, 1, 0)
 
 [node name="anim_transition" type="AnimationPlayer" parent="."]
 libraries = {

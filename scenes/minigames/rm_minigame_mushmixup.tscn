@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://00w4h2u5iuj"]
 
-[ext_resource type="PackedScene" path="res://objects/characters/obj_character_parent.tscn" id="1_cvchi"]
+[ext_resource type="PackedScene" uid="uid://cfl0hvcgmxski" path="res://objects/characters/obj_character_parent.tscn" id="1_cvchi"]
 [ext_resource type="Script" path="res://objects/rooms/minigames/mushmixup/rm_minigame_mushmixup.cs" id="1_gc22k"]
 [ext_resource type="PackedScene" uid="uid://db8bcmriqbdqx" path="res://scenes/minigames/obj_minigameBase.tscn" id="2_acbce"]
 [ext_resource type="Texture2D" uid="uid://k7rpt1tk8drl" path="res://sprites/box.png" id="2_nch8o"]

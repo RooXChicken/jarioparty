@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=47 format=3 uid="uid://isxq0qdtra0y"]
+[gd_resource type="SpriteFrames" load_steps=54 format=3 uid="uid://isxq0qdtra0y"]
 
 [ext_resource type="Texture2D" uid="uid://bbhcxhpxni8p5" path="res://sprites/characters/playable/grape/anim_grapeWalkFront.png" id="1_ag36v"]
 [ext_resource type="Texture2D" uid="uid://iaky4igbiqpd" path="res://sprites/characters/playable/grape/anim_grapeBurnt.png" id="1_rcp2b"]
@@ -11,7 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://cnclvaiw6ifc0" path="res://sprites/characters/playable/grape/anim_grapeWalkRight.png" id="3_8cmlj"]
 [ext_resource type="Texture2D" uid="uid://bl5wea6y2aigg" path="res://sprites/characters/playable/grape/anim_grapeJumpRight.png" id="4_5ssfa"]
 [ext_resource type="Texture2D" uid="uid://btf1b4owh4egc" path="res://sprites/characters/playable/grape/anim_grapePortrait.png" id="6_5uwnd"]
+[ext_resource type="Texture2D" uid="uid://dp45sqc37may3" path="res://sprites/characters/playable/grape/anim_grapePull.png" id="10_0fcf7"]
 [ext_resource type="Texture2D" uid="uid://b1gdb6ryynht3" path="res://sprites/rooms/minigames/susville/spr_shoothands.png" id="10_ux7vi"]
+[ext_resource type="Texture2D" uid="uid://bpgp5l2qfphe6" path="res://sprites/characters/playable/grape/anim_grapePulled.png" id="11_y75xk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sakbe"]
 atlas = ExtResource("1_rqf0b")
@@ -120,6 +122,26 @@ region = Rect2(0, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_tx13h"]
 atlas = ExtResource("6_5uwnd")
 region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyc51"]
+atlas = ExtResource("10_0fcf7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7gm8"]
+atlas = ExtResource("10_0fcf7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32sxf"]
+atlas = ExtResource("10_0fcf7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y62fi"]
+atlas = ExtResource("11_y75xk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knbai"]
+atlas = ExtResource("11_y75xk")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lh781"]
 atlas = ExtResource("10_ux7vi")
@@ -276,6 +298,31 @@ animations = [{
 "loop": true,
 "name": &"portrait",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyc51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7gm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32sxf")
+}],
+"loop": true,
+"name": &"pull",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y62fi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knbai")
+}],
+"loop": true,
+"name": &"pulled",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,

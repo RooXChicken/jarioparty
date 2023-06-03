@@ -166,6 +166,7 @@ public partial class obj_character_parent : RigidBody2D
 		{
 			joyLock = true;
 			sprite.Animation = "attack";
+			sprite.Frame = 0;
 
 			resetAnim = false;
 			ResetJoystick();
@@ -204,6 +205,16 @@ public partial class obj_character_parent : RigidBody2D
 					jumping = true;
 					justJumped = true;
 				}
+			else if(abilities.Contains("jump_balley"))
+			{
+				if(!jumping && !justJumped)
+				{
+					((AudioController)GetNode("/root/AudioController")).PlaySound("plr_jump");
+					// velocity.Y = -jumpHeight;
+					jumping = true;
+					justJumped = true;
+				}
+			}
 		}
 
 		if(abilities.Contains("jump_phy") && controllerIndex >= 0 && !Input.IsActionPressed("jump" + controllerIndex) && LinearVelocity.Y < 0)
@@ -359,8 +370,8 @@ public partial class obj_character_parent : RigidBody2D
 		jumpCountdown = 0.1f;
 		jumping = true;
 		//sprite.Animation = "jumpUp";
-		t_jumpDuration.WaitTime = Math.Clamp((1.4-GetNode<obj_fire>("../../obj_fire").speed) * 0.5f, 0.04, 1);
-		GD.Print(t_jumpDuration.WaitTime);
+		t_jumpDuration.WaitTime = Math.Clamp((1.4-GetNode<obj_fire>("../../obj_fire").speed) * 0.6f, 0.05, 1);
+		//GD.Print(t_jumpDuration.WaitTime);
 		t_jumpDuration.Start();
 	}
 

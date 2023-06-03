@@ -61,7 +61,7 @@ public partial class obj_character_map : RigidBody2D
 		collision.Disabled = true;
 
 		if(playerData.PlayerStarted)
-			Position = new Vector2(0, -25);
+			Position = new Vector2(0, -26);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -150,8 +150,11 @@ public partial class obj_character_map : RigidBody2D
 		}
 		else
 		{
-			GetNode<obj_shawarma>("../../../../obj_shawarma").diceRoll--;
-			state = 6;
+			if(playerData.diceRoll != 0)
+			{
+				GetNode<obj_shawarma>("../../../../obj_shawarma").diceRoll--;
+				state = 6;
+			}
 		}
 	}
 

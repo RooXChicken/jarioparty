@@ -9,7 +9,7 @@ public partial class GameManager : Node
 	public short playerCount = 1;
 
 	public int controllersConnected = 0;
-	public int CurrentMinigame = 3;
+	public int CurrentMinigame = 6;
 	public bool MinigameStarted = false;
 	public Vector2 StarSpacePos = new Vector2(0, 0);
 
@@ -20,15 +20,19 @@ public partial class GameManager : Node
 		};
 	public MinigameBase[] minigameLookup = new MinigameBase[]
 		{
-			new MinigameBase(0, "testminigame", "YOU SHOULD NOT SEE THIS", new List<string>()),
-			new MinigameBase(1, "mushmixup", "There are 7 mushrooms, but be careful!\nFrog will wave his flag and you must stay on the mushroom of the same color, as the others will fall!\n     - Move (Navigate mushrooms!)\n     - Jump (Save yourself!)\n     - Attack (Push players!)",
+			new MinigameBase(0, "testminigame", "testminigame", "YOU SHOULD NOT SEE THIS", new List<string>()),
+			new MinigameBase(1, "Mushroom Mix-Up", "mushmixup", "There are 7 mushrooms, but be careful!\nFrog will wave his flag and you must stay on the mushroom of the same color, as the others will fall!\n     - Move (Navigate mushrooms!)\n     - Jump (Save yourself!)\n     - Attack (Push players!)",
 				new List<string>() {"move", "jump", "jump_bar", "punch"}, "mus_minigame_savingcourage", 60, new int[] {8, 1, 3}, new int[] {}),
-			new MinigameBase(2, "lookaway", "When the music drops, look away from the top player!\n     - Look (A different way!)",
+			new MinigameBase(2, "Look Away!", "lookaway", "When the music drops, look away from the top player!\n\n\n     - Look (A different way!)",
 				new List<string>() {"move"}, "mus_minigame_lookaway", -5, new int[] {8}),
-			new MinigameBase(3, "jumprope", "Don't get hit by the fire! The Jumprope will speed up as it progresses. The last person standing wins!\n\n     - Jump (Dodge the fire!)",
+			new MinigameBase(3, "Jumpyrope", "jumprope", "Don't get hit by the fire! The Jumprope will speed up as it progresses. The last person standing wins!\n\n     - Jump (Dodge the fire!)",
 				new List<string>() {"jump", "jump_phy", "shadow"}, "mus_minigame_jumprope", 120, new int[] {1}, new int[] {}, 4),
-			new MinigameBase(4, "susville", "The light are sabotaged by the imposter! You must find the imposter in the dark, and make sure not to let all of the crewmates die!\n     - Look (Find the imposter!)\n     - Shoot (Take your guess!)",
-				new List<string>() {"gun", "score"}, "mus_minigame_susville", -5, new int[] {8, 7}, new int[] {})
+			new MinigameBase(4, "Susville", "susville", "The light are sabotaged by the imposter! You must find the imposter in the dark, and make sure not to let all of the crewmates die!\n     - Look (Find the imposter!)\n     - Shoot (Take your guess!)",
+				new List<string>() {"gun", "score"}, "mus_minigame_susville", -5, new int[] {8, 7}, new int[] {}),
+			new MinigameBase(5, "Balley Ball", "balleyball", "It's a classic game of Balley Ball! Jump to hit the ball to the other side, and keep it from hitting the sand!\n     - Move (To the ball!)\n     - Jump (Hit the ball!)",
+				new List<string>() {"move", "jump_balley", "score"}, "mus_minigame_balleyball", -5, new int[] {8, 1}, new int[] {}),
+			new MinigameBase(6, "Tug-o-Jar", "tugojar", "It's a friendly game of tug-o-war! Just don't fall into the inescapable pit and die! Good luck!\n     - Pull (With great force!)",
+				new List<string>() {"pull"}, "mus_minigame_tugojar", 60, new int[] {1}, new int[] {})
 		};
 	public Random rand = new Random();
 
@@ -88,5 +92,25 @@ public partial class GameManager : Node
 		GetNode("/root/rm_game").AddChild(instance);
 
 		GetNode<AnimatedSprite2D>("/root/rm_game/spr_load").Visible = false;
+	}
+
+	public void LoadDefaults()
+	{
+		for(int i = 0; i < 4; i++)
+		{
+			playerData[i] = new PlayerData(-1, (ushort)i, (i >= 1));
+
+			playerData[i].items.Add(new ItemBase(itemLookup[0]));
+			playerData[i].items.Add(new ItemBase(itemLookup[1]));
+			playerData[i].items.Add(new ItemBase(itemLookup[2]));
+
+			playerData[i].playerOrder = i + 1;
+
+			//playerData[i].animationFrames.SetFrame()
+
+			playerData[i].Load();
+		}
+
+		playerData[0].controllerIndex = 1;
 	}
 }

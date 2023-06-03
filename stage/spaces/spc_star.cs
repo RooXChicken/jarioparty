@@ -147,7 +147,8 @@ public partial class spc_star : Area2D
 						if(!showingNextSpace)
 						{
 							showingNextSpace = true;
-							GetNode<Transition>("../obj_mapGUI/Transition").transitionEnd = new Callable(this, "ShowNextStar");
+							//ShowNextStar();
+							GetNode<Transition>("../obj_mapGUI/Transition").transitionEnd = new Callable(this, "MoveSpace");
 							GetNode<Transition>("../obj_mapGUI/Transition").state = 5;
 							}
 					}
@@ -156,6 +157,12 @@ public partial class spc_star : Area2D
 		}
 
 		return dialogueIndex;
+	}
+
+	public void MoveSpace()
+	{
+		RandomizeStarSpace();
+		GetNode<Transition>("../obj_mapGUI/Transition").transitionEnd = new Callable(this, "ShowNextStar");
 	}
 
 	public void ShowDialogue(PlayerData _playerData, Callable _interactionEnd)
@@ -215,11 +222,12 @@ public partial class spc_star : Area2D
 
 	public void ShowNextStar()
 	{
-		RandomizeStarSpace();
 		((AudioController)GetNode("/root/AudioController")).PlaySound("starSpot");
+		GetNode<obj_map>("../").SetZoomLevel(1f);
 		GetNode<obj_map>("../").SetPosition(new Vector2(Position.X, Position.Y + 64));
-		GetNode<obj_map>("../").SetZoomLevel(0.35f);
-		GetNode<obj_map>("../").Snap();
+		GetNode<obj_map>("../").SetSpeed(1.5f);
+		//GetNode<obj_map>("../").SetZoomLevel(0.35f);
+		//GetNode<obj_map>("../").Snap();
 
 		HideDialogue();
 		t_nextCamState.Start();
@@ -244,6 +252,7 @@ public partial class spc_star : Area2D
 		GetNode<obj_map>("../").SetPosition();
 		((AudioController)GetNode("/root/AudioController")).StopSound("starSpot");
 		((AudioController)GetNode("/root/AudioController")).MusicEffect("volume", 0);
+		GetNode<obj_map>("../").SetSpeed();
 		interactionEnd.Call(true);
 	}
 

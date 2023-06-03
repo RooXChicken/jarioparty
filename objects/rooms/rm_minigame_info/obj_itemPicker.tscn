@@ -1,13 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dtylccvxdo8j2"]
+[gd_scene load_steps=12 format=3 uid="uid://dtylccvxdo8j2"]
 
 [ext_resource type="Script" path="res://objects/rooms/rm_minigame_info/obj_itemPicker.cs" id="1_wpogd"]
 [ext_resource type="Texture2D" uid="uid://ddigwf1v0u0ss" path="res://sprites/rooms/rm_minigame_info/spr_ready.png" id="1_yvbgj"]
 [ext_resource type="Texture2D" uid="uid://cdgt1o0cfp2vj" path="res://sprites/rooms/rm_minigame_info/spr_arrowUp.png" id="3_w8i0p"]
 [ext_resource type="Texture2D" uid="uid://chakajuev5rpm" path="res://sprites/rooms/rm_minigame_info/spr_arrowDown.png" id="4_tu4d8"]
+[ext_resource type="Texture2D" uid="uid://7nbmuu62itoi" path="res://sprites/items/spr_noitem.png" id="6_f7oxv"]
 [ext_resource type="Texture2D" uid="uid://ckycs5xx3t4m" path="res://sprites/common/spr_oneblackpixel.png" id="6_m5rv8"]
-[ext_resource type="Texture2D" uid="uid://c5ggippjtfyph" path="res://sprites/items/spr_item2.png" id="7_5kojk"]
-[ext_resource type="Texture2D" uid="uid://dgfwo7cri7j7q" path="res://sprites/items/spr_item0.png" id="7_304eb"]
-[ext_resource type="Texture2D" uid="uid://ohs43jobcqni" path="res://sprites/items/spr_item1.png" id="8_t41x0"]
 
 [sub_resource type="Animation" id="Animation_03tay"]
 length = 0.001
@@ -34,54 +32,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("spr_mask/spr_item3:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-0.012, -0.817)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("spr_mask/spr_item3:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.501961)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("spr_mask/spr_item2:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-0.0121918, 0.792679)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("spr_mask/spr_item2:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.501961)]
 }
 
 [sub_resource type="Animation" id="Animation_pf6n7"]
@@ -111,54 +61,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.501961)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("spr_mask/spr_item3:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-0.012, -0.817), Vector2(-0.012, -0.036)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("spr_mask/spr_item3:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.501961), Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("spr_mask/spr_item2:position")
-tracks/4/interp = 2
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-0.0121918, 0.792679), Vector2(-0.012, 0.937), Vector2(1.025, 0.937), Vector2(1.025, -1.003), Vector2(-0.012, -1.003), Vector2(-0.012, -0.817)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("spr_mask/spr_item2:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.501961), Color(1, 1, 1, 0.501961)]
-}
 
 [sub_resource type="Animation" id="Animation_g0my1"]
 resource_name = "item1"
@@ -187,54 +89,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0.501961), Color(1, 1, 1, 0.501961)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("spr_mask/spr_item3:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-0.012, 0.012), Vector2(-0.012, 0.793)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("spr_mask/spr_item3:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.501961)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("spr_mask/spr_item2:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-0.012, -0.817), Vector2(-0.012, -0.036)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("spr_mask/spr_item2:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.501961), Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_682kd"]
 resource_name = "item1"
@@ -262,54 +116,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0.501961), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("spr_mask/spr_item3:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-0.012, 0.793), Vector2(-0.012, 0.937), Vector2(1.025, 0.937), Vector2(1.025, -1.003), Vector2(-0.012, -1.003), Vector2(-0.012, -0.817)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("spr_mask/spr_item3:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.501961), Color(1, 1, 1, 0.501961)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("spr_mask/spr_item2:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-0.012, 0.012), Vector2(-0.012, 0.793)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("spr_mask/spr_item2:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.501961)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bqubg"]
@@ -342,22 +148,10 @@ position = Vector2(-154.5, 28.5)
 scale = Vector2(41, 41)
 texture = ExtResource("6_m5rv8")
 
-[node name="spr_item3" type="Sprite2D" parent="spr_mask"]
-modulate = Color(1, 1, 1, 0.501961)
-position = Vector2(-0.012, -0.817)
-scale = Vector2(0.0243902, 0.0243902)
-texture = ExtResource("7_304eb")
-
 [node name="spr_item1" type="Sprite2D" parent="spr_mask"]
 position = Vector2(-0.0121953, 0.0121951)
 scale = Vector2(0.0243902, 0.0243902)
-texture = ExtResource("7_5kojk")
-
-[node name="spr_item2" type="Sprite2D" parent="spr_mask"]
-modulate = Color(1, 1, 1, 0.501961)
-position = Vector2(-0.0121918, 0.792679)
-scale = Vector2(0.0243902, 0.0243902)
-texture = ExtResource("8_t41x0")
+texture = ExtResource("6_f7oxv")
 
 [node name="anim_icons" type="AnimationPlayer" parent="."]
 speed_scale = 1.6

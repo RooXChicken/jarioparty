@@ -12,11 +12,13 @@ public partial class Transition : Node2D
 	private Sprite2D obj_top;
 	private Sprite2D obj_bottom;
 	private Alarm t_wait;
+	private AnimationPlayer anim_transition;
 
 	public Callable transitionEnd;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		anim_transition = GetNode<AnimationPlayer>("../anim_transition");
 		obj_top = GetNode<Sprite2D>("obj_top");
 		obj_bottom = GetNode<Sprite2D>("obj_bottom");
 
@@ -32,10 +34,7 @@ public partial class Transition : Node2D
 				if(playerGoing == 4)
 				{
 					GetNode<obj_map>("../../").SetZoomLevel(0.45f);
-					GetNode<obj_cloudTransition>("../obj_cloudTransition").Visible = true;
-					GetNode<obj_cloudTransition>("../obj_cloudTransition").PlayAnimation();
-					t_wait.WaitTime = 1.5;
-					t_wait.Start();
+					anim_transition.Play("spinnertoCloud");
 					state = 4;
 				}
 				else
@@ -81,6 +80,7 @@ public partial class Transition : Node2D
 				obj_bottom.Scale = new Vector2(obj_bottom.Scale.X, obj_bottom.Scale.Y + (float)delta * speed);
 				if(obj_top.Scale.Y <= 0)
 				{
+					transitionEnd.Call();
 					state = 4;
 				}
 				break;

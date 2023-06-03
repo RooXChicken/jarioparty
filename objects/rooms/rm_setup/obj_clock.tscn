@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://nkjbi4qp5kog"]
+
+[ext_resource type="Texture2D" uid="uid://cpfgt06sdmifg" path="res://sprites/rooms/rm_setup/spr_clock.png" id="1_f8fcm"]
+[ext_resource type="Script" path="res://objects/rooms/rm_setup/obj_clock.cs" id="1_j6wya"]
+[ext_resource type="Texture2D" uid="uid://8bvepey7o0j0" path="res://sprites/rooms/rm_setup/spr_clockArrow.png" id="2_jxk18"]
+
+[node name="obj_clock" type="Node2D"]
+script = ExtResource("1_j6wya")
+
+[node name="spr_clock" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
+texture = ExtResource("1_f8fcm")
+
+[node name="spr_clockArrow" type="Sprite2D" parent="spr_clock"]
+texture = ExtResource("2_jxk18")
+offset = Vector2(0, -15.5)

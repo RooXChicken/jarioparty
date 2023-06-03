@@ -62,7 +62,7 @@ public partial class obj_leaderboard : Node2D
 		((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_map");
 	}
 
-	public void StartSequence(List<PlayerData> players, int[] coinValues)
+	public void StartSequence(List<PlayerData> players, int[] coinValues, int mode)
 	{
 		coinVal = coinValues;
 		playerData = players;
@@ -70,8 +70,41 @@ public partial class obj_leaderboard : Node2D
 		{
 			//GD.Print(players[i].characterName);
 			portraits[i].GetNode<AnimatedSprite2D>("spr_portrait").SpriteFrames = playerData[3-i].animationFrames;
-			portraits[i].GetNode<AnimatedSprite2D>("spr_portrait").Frame = places[i];
-			portraits[i].GetNode<Sprite2D>("spr_place").Frame = i;
+			if(mode == 0)
+				portraits[i].GetNode<AnimatedSprite2D>("spr_portrait").Frame = places[i];
+			else if(mode == 1)
+				if(i == 0)
+					portraits[i].GetNode<AnimatedSprite2D>("spr_portrait").Frame = 0;
+				else
+					portraits[i].GetNode<AnimatedSprite2D>("spr_portrait").Frame = 2;
+			else if(mode == 3)
+				if(i < 3)
+					portraits[i].GetNode<AnimatedSprite2D>("spr_portrait").Frame = 0;
+				else
+					portraits[i].GetNode<AnimatedSprite2D>("spr_portrait").Frame = 2;
+			else if(mode == 2)
+				if(i < 2)
+					portraits[i].GetNode<AnimatedSprite2D>("spr_portrait").Frame = 0;
+				else
+					portraits[i].GetNode<AnimatedSprite2D>("spr_portrait").Frame = 2;
+
+			if(mode == 0)
+				portraits[i].GetNode<Sprite2D>("spr_place").Frame = i;
+			else if(mode == 1)
+				if(i == 0)
+					portraits[i].GetNode<Sprite2D>("spr_place").Frame = 0;
+				else
+					portraits[i].GetNode<Sprite2D>("spr_place").Frame = 3;
+			else if(mode == 3)
+				if(i < 3)
+					portraits[i].GetNode<Sprite2D>("spr_place").Frame = 0;
+				else
+					portraits[i].GetNode<Sprite2D>("spr_place").Frame = 3;
+			else if(mode == 2)
+				if(i < 2)
+					portraits[i].GetNode<Sprite2D>("spr_place").Frame = 0;
+				else
+					portraits[i].GetNode<Sprite2D>("spr_place").Frame = 3;
 
 			Redraw();
 

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4eny7p8786vg"]
+
+[ext_resource type="Script" path="res://objects/rooms/minigames/balleyball/obj_ball.cs" id="1_il8y4"]
+[ext_resource type="Texture2D" uid="uid://bfk0rfw1bx841" path="res://sprites/rooms/minigames/balleyball/spr_ball.png" id="1_w6181"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_japst"]
+radius = 36.3593
+
+[node name="obj_ball" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 3
+can_sleep = false
+script = ExtResource("1_il8y4")
+
+[node name="obj_collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_japst")
+
+[node name="spr_ball" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_w6181")

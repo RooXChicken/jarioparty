@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://batim536joblg" path="res://sprites/gui/roundStart/spr_jario.png" id="6_qcpmq"]
 [ext_resource type="Texture2D" uid="uid://ojfkt48wfwh" path="res://sprites/rooms/minigames/spr_miss.png" id="7_2mu2p"]
 [ext_resource type="Shader" path="res://shaders/shd_spr_start.gdshader" id="7_otbi1"]
-[ext_resource type="Texture2D" uid="uid://bqr7gmwfwotxs" path="res://sprites/rooms/minigames/spr_winner.png" id="8_pds34"]
+[ext_resource type="Texture2D" uid="uid://dl62m6awpyje7" path="res://sprites/rooms/minigames/spr_winner.png" id="8_pds34"]
 [ext_resource type="Script" path="res://objects/rooms/minigames/obj_leaderboard.cs" id="11_r7gwb"]
 [ext_resource type="PackedScene" uid="uid://c38e7potf8l16" path="res://objects/rooms/minigames/obj_portrait.tscn" id="11_uxfim"]
 [ext_resource type="Texture2D" uid="uid://b4ubbm3h1836q" path="res://sprites/rooms/minigames/spr_results.png" id="13_wwxeg"]
@@ -184,6 +184,42 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(1e-05, 1e-05)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Win/spr_characterName3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(980, 360)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Win/spr_characterName2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320, 360)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Win/spr_characterName1:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(640, 200)]
+}
 
 [sub_resource type="Animation" id="Animation_qp7e7"]
 resource_name = "miss"
@@ -225,7 +261,7 @@ tracks/0/path = NodePath("Win/spr_wins:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.5, 1, 2, 2.5),
+"times": PackedFloat32Array(0, 0.5, 2, 2.5),
 "transitions": PackedFloat32Array(1, 1e-05, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(2, 2), Vector2(2, 2), Vector2(0, 0)]
@@ -254,7 +290,19 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5, 1.9, 2.5),
 "transitions": PackedFloat32Array(1, 3.27079e-05, 1, 1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1, 1), Vector2(1e-05, 1e-05)]
+"values": [Vector2(1e-05, 1e-05), Vector2(2, 2), Vector2(2, 2), Vector2(1e-05, 1e-05)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Win/spr_characterName2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(640, 280)]
 }
 
 [sub_resource type="Animation" id="Animation_pc0kj"]
@@ -270,7 +318,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 2, 2.5),
 "transitions": PackedFloat32Array(1, 1e-05, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(2, 2), Vector2(2, 2), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -279,7 +327,7 @@ tracks/1/path = NodePath("Win/spr_wins:scale")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.5, 1, 2, 2.5),
+"times": PackedFloat32Array(0, 0.5, 2, 2.5),
 "transitions": PackedFloat32Array(1, 1e-05, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(2, 2), Vector2(2, 2), Vector2(0, 0)]
@@ -308,7 +356,31 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.5, 2, 2.5),
 "transitions": PackedFloat32Array(1, 1e-05, 1, 1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1, 1), Vector2(1e-05, 1e-05)]
+"values": [Vector2(1e-05, 1e-05), Vector2(2, 2), Vector2(2, 2), Vector2(1e-05, 1e-05)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Win/spr_characterName1:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320, 340)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Win/spr_characterName3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 340)]
 }
 
 [sub_resource type="Animation" id="Animation_bkypq"]
@@ -324,7 +396,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 2, 2.5),
 "transitions": PackedFloat32Array(1, 1e-05, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(2, 2), Vector2(2, 2), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -333,7 +405,7 @@ tracks/1/path = NodePath("Win/spr_wins:scale")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.5, 1, 2, 2.5),
+"times": PackedFloat32Array(0, 0.5, 2, 2.5),
 "transitions": PackedFloat32Array(1, 1e-05, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(2, 2), Vector2(2, 2), Vector2(0, 0)]
@@ -362,7 +434,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.5, 2, 2.5),
 "transitions": PackedFloat32Array(1, 2.01341e-05, 1, 1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
+"values": [Vector2(1e-05, 1e-05), Vector2(2, 2), Vector2(2, 2), Vector2(0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -374,7 +446,43 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.5, 2, 2.5),
 "transitions": PackedFloat32Array(1, 2.4788e-05, 1, 1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
+"values": [Vector2(1e-05, 1e-05), Vector2(2, 2), Vector2(2, 2), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Win/spr_characterName1:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(640, 200)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Win/spr_characterName2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320, 360)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Win/spr_characterName3:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(980, 360)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rlpau"]
@@ -508,26 +616,26 @@ script = ExtResource("6_ohh8m")
 
 [node name="spr_characterName1" type="Sprite2D" parent="Win"]
 z_index = 9
-position = Vector2(304, 304)
+position = Vector2(640, 200)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("6_qcpmq")
 
 [node name="spr_characterName2" type="Sprite2D" parent="Win"]
 z_index = 9
-position = Vector2(640, 304)
+position = Vector2(320, 360)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("6_qcpmq")
 
 [node name="spr_characterName3" type="Sprite2D" parent="Win"]
 z_index = 9
-position = Vector2(976, 304)
+position = Vector2(980, 360)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("6_qcpmq")
 
 [node name="spr_wins" type="Sprite2D" parent="Win"]
 z_index = 9
 material = SubResource("ShaderMaterial_n43ov")
-position = Vector2(640, 580)
+position = Vector2(640, 550)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("8_pds34")
 

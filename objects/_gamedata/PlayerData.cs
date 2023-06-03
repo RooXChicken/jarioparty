@@ -13,7 +13,7 @@ public partial class PlayerData : Node
 	public int diceRoll = 0;
 
 	//game data
-	public short coins = 0;
+	public short coins = 100;
 	public short stars = 0;
 
 	public float speedMult = 1; //speed

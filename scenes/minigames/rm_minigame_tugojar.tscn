@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://blytuomh3gumk"]
+
+[ext_resource type="Script" path="res://objects/rooms/minigames/tugojar/rm_minigame_tugofjar.cs" id="1_2vjln"]
+[ext_resource type="PackedScene" uid="uid://db8bcmriqbdqx" path="res://scenes/minigames/obj_minigameBase.tscn" id="2_f4dbh"]
+[ext_resource type="Texture2D" uid="uid://broaq5sx0ie3x" path="res://sprites/rooms/minigames/tugofwar/spr_canyonbg-front.png" id="3_d3g42"]
+[ext_resource type="Texture2D" uid="uid://cyc3wbihtuedq" path="res://sprites/rooms/minigames/tugofwar/spr_canyonbg-back.png" id="4_f0fp2"]
+[ext_resource type="Texture2D" uid="uid://bxxykg42oxs2o" path="res://sprites/rooms/minigames/tugofwar/spr_rope.png" id="5_cw0fv"]
+[ext_resource type="PackedScene" uid="uid://bch5umn46mack" path="res://objects/characters/obj_player_tugofjar.tscn" id="6_xband"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ugpt0"]
+friction = 0.5
+
+[node name="rm_minigame_tugojar" type="Node2D"]
+script = ExtResource("1_2vjln")
+
+[node name="obj_minigameBase" parent="." instance=ExtResource("2_f4dbh")]
+metadata/Minigame = 6
+
+[node name="spr_bgland" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
+texture = ExtResource("3_d3g42")
+metadata/_edit_lock_ = true
+
+[node name="spr_bg" type="Sprite2D" parent="spr_bgland"]
+z_index = 1
+texture = ExtResource("4_f0fp2")
+metadata/_edit_lock_ = true
+
+[node name="obj_rope" type="Node2D" parent="."]
+z_index = 2
+position = Vector2(620, 434)
+
+[node name="Players" type="Node2D" parent="obj_rope"]
+
+[node name="obj_player_tugofjar1" parent="obj_rope/Players" instance=ExtResource("6_xband")]
+position = Vector2(-320, 34)
+scale = Vector2(2, 2)
+metadata/Player = 1
+
+[node name="obj_player_tugofjar2" parent="obj_rope/Players" instance=ExtResource("6_xband")]
+position = Vector2(255, 16)
+scale = Vector2(-1, 1)
+metadata/Player = 2
+
+[node name="obj_player_tugofjar3" parent="obj_rope/Players" instance=ExtResource("6_xband")]
+position = Vector2(340, 16)
+scale = Vector2(-1, 1)
+metadata/Player = 3
+
+[node name="obj_player_tugofjar4" parent="obj_rope/Players" instance=ExtResource("6_xband")]
+position = Vector2(425, 16)
+scale = Vector2(-1, 1)
+metadata/Player = 4
+
+[node name="spr_rope" type="Sprite2D" parent="obj_rope"]
+z_index = 1
+texture = ExtResource("5_cw0fv")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_ugpt0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(0, -1)
+polygon = PackedVector2Array(506, 457, 448, 663, 0, 720, 1, 457)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(0, -1)
+polygon = PackedVector2Array(774, 445, 786, 513, 832, 661, 1279, 720, 1280, 445)

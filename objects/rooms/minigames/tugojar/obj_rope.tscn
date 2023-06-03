@@ -1,0 +1,203 @@
+[gd_scene load_steps=5 format=3 uid="uid://dek12hfev1de7"]
+
+[ext_resource type="PackedScene" uid="uid://bif6mh15kco4k" path="res://objects/rooms/minigames/tugojar/obj_ropeSegment.tscn" id="1_pmp74"]
+[ext_resource type="Texture2D" uid="uid://b4hg6np37mned" path="res://sprites/rooms/minigames/tugofwar/spr_ropeEnd1.png" id="2_g26oy"]
+[ext_resource type="Texture2D" uid="uid://b2yhgy5gwcvp7" path="res://sprites/rooms/minigames/tugofwar/spr_ropeEnd2.png" id="3_8f6nl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cdrjh"]
+
+[node name="obj_rope" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(211, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_cdrjh")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(811, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("CircleShape2D_cdrjh")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(971, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+shape = SubResource("CircleShape2D_cdrjh")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(891, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource("CircleShape2D_cdrjh")
+
+[node name="PinJoint2D5" type="PinJoint2D" parent="."]
+position = Vector2(211, 1)
+node_a = NodePath("../StaticBody2D")
+node_b = NodePath("../obj_ropeSegment6")
+
+[node name="obj_ropeSegment6" parent="." instance=ExtResource("1_pmp74")]
+position = Vector2(231, 1)
+
+[node name="PinJoint2D7" type="PinJoint2D" parent="."]
+position = Vector2(251, 1)
+node_a = NodePath("../obj_ropeSegment6")
+node_b = NodePath("../obj_ropeSegment7")
+
+[node name="obj_ropeSegment7" parent="." instance=ExtResource("1_pmp74")]
+position = Vector2(271, 1)
+
+[node name="PinJoint2D8" type="PinJoint2D" parent="."]
+position = Vector2(291, 1)
+node_a = NodePath("../obj_ropeSegment7")
+node_b = NodePath("../obj_ropeSegment8")
+
+[node name="obj_ropeSegment8" parent="." instance=ExtResource("1_pmp74")]
+position = Vector2(311, 1)
+
+[node name="PinJoint2D9" type="PinJoint2D" parent="."]
+position = Vector2(331, 1)
+node_a = NodePath("../obj_ropeSegment8")
+node_b = NodePath("../obj_ropeSegment9")
+
+[node name="obj_ropeSegment9" parent="." instance=ExtResource("1_pmp74")]
+position = Vector2(351, 1)
+
+[node name="PinJoint2D18" type="PinJoint2D" parent="."]
+position = Vector2(370, 1)
+node_a = NodePath("../obj_ropeSegment9")
+node_b = NodePath("../obj_ropeSegment10")
+
+[node name="obj_ropeSegment10" parent="." instance=ExtResource("1_pmp74")]
+position = Vector2(391, 1)
+
+[node name="PinJoint2D10" type="PinJoint2D" parent="."]
+position = Vector2(411, 1)
+node_a = NodePath("../obj_ropeSegment10")
+node_b = NodePath("../obj_ropeSegment11")
+
+[node name="obj_ropeSegment11" parent="." instance=ExtResource("1_pmp74")]
+position = Vector2(431, 1)
+
+[node name="PinJoint2D11" type="PinJoint2D" parent="."]
+position = Vector2(451, 1)
+node_a = NodePath("../obj_ropeSegment11")
+node_b = NodePath("../obj_ropeSegment12")
+
+[node name="obj_ropeSegment12" parent="." instance=ExtResource("1_pmp74")]
+position = Vector2(471, 1)
+
+[node name="PinJoint2D12" type="PinJoint2D" parent="."]
+position = Vector2(491, 1)
+node_a = NodePath("../obj_ropeSegment12")
+node_b = NodePath("../obj_ropeSegment13")
+
+[node name="obj_ropeSegment13" parent="." instance=ExtResource("1_pmp74")]
+position = Vector2(511, 1)
+
+[node name="PinJoint2D13" type="PinJoint2D" parent="."]
+position = Vector2(531, 1)
+node_a = NodePath("../obj_ropeSegment13")
+node_b = NodePath("../obj_ropeSegment14")
+
+[node name="obj_ropeSegment14" parent="." instance=ExtResource("1_pmp74")]
+position = Vector2(551, 1)
+
+[node name="PinJoint2D14" type="PinJoint2D" parent="."]
+position = Vector2(571, 1)
+node_a = NodePath("../obj_ropeSegment14")
+node_b = NodePath("../obj_ropeSegment15")
+
+[node name="obj_ropeSegment15" parent="." instance=ExtResource("1_pmp74")]
+position = Vector2(591, 1)
+
+[node name="PinJoint2D15" type="PinJoint2D" parent="."]
+position = Vector2(611, 1)
+node_a = NodePath("../obj_ropeSegment15")
+node_b = NodePath("../obj_ropeSegment16")
+
+[node name="obj_ropeSegment16" parent="." instance=ExtResource("1_pmp74")]
+position = Vector2(631, 1)
+
+[node name="PinJoint2D16" type="PinJoint2D" parent="."]
+position = Vector2(651, 1)
+node_a = NodePath("../obj_ropeSegment16")
+node_b = NodePath("../obj_ropeSegment17")
+
+[node name="obj_ropeSegment17" parent="." instance=ExtResource("1_pmp74")]
+position = Vector2(671, 1)
+
+[node name="PinJoint2D17" type="PinJoint2D" parent="."]
+position = Vector2(691, 1)
+node_a = NodePath("../obj_ropeSegment17")
+node_b = NodePath("../obj_ropeSegment18")
+
+[node name="obj_ropeSegment18" parent="." instance=ExtResource("1_pmp74")]
+position = Vector2(711, 1)
+
+[node name="PinJoint2D19" type="PinJoint2D" parent="."]
+position = Vector2(731, 1)
+node_a = NodePath("../obj_ropeSegment18")
+node_b = NodePath("../obj_ropeSegment19")
+
+[node name="obj_ropeSegment19" parent="." instance=ExtResource("1_pmp74")]
+position = Vector2(751, 1)
+
+[node name="PinJoint2D20" type="PinJoint2D" parent="."]
+position = Vector2(771, 1)
+node_a = NodePath("../obj_ropeSegment19")
+node_b = NodePath("../obj_ropeSegment20")
+
+[node name="obj_ropeSegment20" parent="." instance=ExtResource("1_pmp74")]
+position = Vector2(791, 1)
+
+[node name="PinJoint2D21" type="PinJoint2D" parent="."]
+position = Vector2(811, 1)
+node_a = NodePath("../obj_ropeSegment20")
+node_b = NodePath("../obj_ropeSegment21")
+
+[node name="obj_ropeSegment21" parent="." instance=ExtResource("1_pmp74")]
+position = Vector2(831, 1)
+
+[node name="PinJoint2D22" type="PinJoint2D" parent="."]
+position = Vector2(851, 1)
+node_a = NodePath("../obj_ropeSegment21")
+node_b = NodePath("../obj_ropeSegment22")
+
+[node name="obj_ropeSegment22" parent="." instance=ExtResource("1_pmp74")]
+position = Vector2(871, 1)
+
+[node name="PinJoint2D23" type="PinJoint2D" parent="."]
+position = Vector2(891, 1)
+node_a = NodePath("../obj_ropeSegment22")
+node_b = NodePath("../obj_ropeSegment23")
+
+[node name="obj_ropeSegment23" parent="." instance=ExtResource("1_pmp74")]
+position = Vector2(911, 1)
+
+[node name="PinJoint2D24" type="PinJoint2D" parent="."]
+position = Vector2(931, 1)
+node_a = NodePath("../obj_ropeSegment23")
+node_b = NodePath("../obj_ropeSegment24")
+
+[node name="obj_ropeSegment24" parent="." instance=ExtResource("1_pmp74")]
+position = Vector2(951, 1)
+
+[node name="PinJoint2D25" type="PinJoint2D" parent="."]
+position = Vector2(811, 1)
+node_a = NodePath("../StaticBody2D2")
+node_b = NodePath("../obj_ropeSegment20")
+
+[node name="PinJoint2D27" type="PinJoint2D" parent="."]
+position = Vector2(891, 1)
+node_a = NodePath("../StaticBody2D3")
+node_b = NodePath("../obj_ropeSegment22")
+
+[node name="spr_ropeEnd1" type="Sprite2D" parent="."]
+position = Vector2(162, 19)
+texture = ExtResource("2_g26oy")
+
+[node name="spr_ropeEnd2" type="Sprite2D" parent="."]
+position = Vector2(1007, 16)
+texture = ExtResource("3_8f6nl")

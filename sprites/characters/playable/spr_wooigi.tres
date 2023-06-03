@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=67 format=3 uid="uid://dxbv2eqvlcvn1"]
+[gd_resource type="SpriteFrames" load_steps=74 format=3 uid="uid://dxbv2eqvlcvn1"]
 
 [ext_resource type="Texture2D" uid="uid://df5w07yehlcue" path="res://sprites/characters/playable/wooigi/anim_wooigiKick.png" id="1_0po1w"]
 [ext_resource type="Texture2D" uid="uid://o1jtv0ljqjgh" path="res://sprites/characters/playable/wooigi/anim_wooigiWalkFront.png" id="1_ee4ii"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://d1bqcm4ju7tur" path="res://sprites/characters/playable/wooigi/anim_wooigiJumpRight.png" id="5_u2jos"]
 [ext_resource type="Texture2D" uid="uid://dq84ebtxo4qcv" path="res://sprites/characters/playable/wooigi/anim_wooigiPortrait.png" id="8_c5ha3"]
 [ext_resource type="Texture2D" uid="uid://b1gdb6ryynht3" path="res://sprites/rooms/minigames/susville/spr_shoothands.png" id="11_2kso0"]
+[ext_resource type="Texture2D" uid="uid://8xe7hf5t40rx" path="res://sprites/characters/playable/wooigi/anim_wooigiPull.png" id="11_14gp5"]
+[ext_resource type="Texture2D" uid="uid://dosoki7su4qjf" path="res://sprites/characters/playable/wooigi/anim_wooigiPulled.png" id="12_s60pb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ds3rp"]
 atlas = ExtResource("1_0po1w")
@@ -173,6 +175,26 @@ region = Rect2(0, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hsf3u"]
 atlas = ExtResource("8_c5ha3")
 region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7npy1"]
+atlas = ExtResource("11_14gp5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6guu"]
+atlas = ExtResource("11_14gp5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28g0q"]
+atlas = ExtResource("11_14gp5")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nj234"]
+atlas = ExtResource("12_s60pb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_huhvh"]
+atlas = ExtResource("12_s60pb")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8f6tg"]
 atlas = ExtResource("11_2kso0")
@@ -392,6 +414,31 @@ animations = [{
 "loop": false,
 "name": &"portrait",
 "speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7npy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6guu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28g0q")
+}],
+"loop": true,
+"name": &"pull",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nj234")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_huhvh")
+}],
+"loop": true,
+"name": &"pulled",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,

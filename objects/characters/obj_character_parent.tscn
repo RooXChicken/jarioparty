@@ -302,6 +302,8 @@ _data = {
 size = Vector2(50, 101)
 
 [node name="obj_rigidbody" type="RigidBody2D"]
+collision_layer = 5
+collision_mask = 5
 mass = 2.4
 physics_material_override = SubResource("PhysicsMaterial_km6qn")
 gravity_scale = 0.0

@@ -20,8 +20,7 @@ public partial class obj_shawarma : Node2D
 	{
 		if(((GameManager)GetNode("/root/GameManager")).playerData[0].PlayerStarted)
 		{
-			dialogue = false;
-			Visible = false;
+			QueueFree();
 			return;
 		}
 
@@ -64,7 +63,36 @@ public partial class obj_shawarma : Node2D
 			if(obj_dialogueBox.dialogueIndex == 5)
 			{
 				if(diceRoll <= 0)
-					obj_dialogueBox.dialogueIndex = 6;
+				{
+					obj_dialogueBox.ChangeDialogue(6);
+					((AudioController)GetNode("/root/AudioController")).StopSound("diceblockRoll");
+
+					//PlayerData[] sort = playerData;
+					for(int k = 0; k < 16; k++)
+					{
+						for(int i = 1; i < 4; i++)
+						{
+							if(playerData[i-1].diceRoll < playerData[i].diceRoll)
+							{
+								PlayerData p0 = playerData[i-1];
+								PlayerData p1 = playerData[i];
+
+								playerData[i-1] = p1;
+								playerData[i] = p0;
+							}
+						}
+					}
+
+					obj_dialogueBox.characterDialogue[7] = "K so " + playerData[0].characterName + " gets to go first! Yass queen!\n\n\n\n  Continue";
+					obj_dialogueBox.characterDialogue[8] = "K so " + playerData[1].characterName + " gets to go second! Good job bestie!!\n\n\n\n  Continue";
+					obj_dialogueBox.characterDialogue[9] = "K so " + playerData[2].characterName + " gets to go third! Mid roll.\n\n\n\n  Continue";
+					obj_dialogueBox.characterDialogue[10] = "K so " + playerData[3].characterName + " gets to go fourth! L LOSER GET FORTNITED ON XD!\n\n\n  Continue";
+
+					for(int i = 0; i < 4; i++)
+						playerData[i].playerOrder = i + 1;
+
+					GetNode<obj_mapGUI>("../obj_mapGUI").Initialize();
+				}
 			}
 		}
 	}
@@ -102,37 +130,6 @@ public partial class obj_shawarma : Node2D
 				}
 
 				dialogueIndex = 5;
-			}
-			if(dialogueIndex == 6)
-			{
-				((AudioController)GetNode("/root/AudioController")).StopSound("diceblockRoll");
-				dialogueIndex++;
-
-				//PlayerData[] sort = playerData;
-				for(int k = 0; k < 16; k++)
-				{
-					for(int i = 1; i < 4; i++)
-					{
-						if(playerData[i-1].diceRoll < playerData[i].diceRoll)
-						{
-							PlayerData p0 = playerData[i-1];
-							PlayerData p1 = playerData[i];
-
-							playerData[i-1] = p1;
-							playerData[i] = p0;
-						}
-					}
-				}
-
-				obj_dialogueBox.characterDialogue[7] = "K so " + playerData[0].characterName + " gets to go first! Yass queen!\n\n\n\n  Continue";
-				obj_dialogueBox.characterDialogue[8] = "K so " + playerData[1].characterName + " gets to go second! Good job bestie!!\n\n\n\n  Continue";
-				obj_dialogueBox.characterDialogue[9] = "K so " + playerData[2].characterName + " gets to go third! Mid roll.\n\n\n\n  Continue";
-				obj_dialogueBox.characterDialogue[10] = "K so " + playerData[3].characterName + " gets to go fourth! L LOSER GET FORTNITED ON XD!\n\n\n  Continue";
-
-				for(int i = 0; i < 4; i++)
-					playerData[i].playerOrder = i + 1;
-
-				GetNode<obj_mapGUI>("../obj_mapGUI").Initialize();
 			}
 			if(dialogueIndex >= 7 && dialogueIndex <= 10)
 			{

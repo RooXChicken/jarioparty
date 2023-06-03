@@ -92,7 +92,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("spr_starget:scale")
+tracks/3/path = NodePath("CanvasLayer/spr_starget:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -104,7 +104,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("spr_starget:visible")
+tracks/4/path = NodePath("CanvasLayer/spr_starget:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -188,19 +188,19 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("spr_starget:scale")
+tracks/4/path = NodePath("CanvasLayer/spr_starget:scale")
 tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(3, 3.5, 5, 5.5),
 "transitions": PackedFloat32Array(1, 1e-05, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0.5, 0.5), Vector2(0.5, 0.5), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(2, 2), Vector2(2, 2), Vector2(0, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("spr_starget:visible")
+tracks/5/path = NodePath("CanvasLayer/spr_starget:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -274,8 +274,11 @@ texture = ExtResource("8_uoyth")
 texture = ExtResource("9_577dd")
 texture_scale = 0.2
 
-[node name="spr_starget" type="Sprite2D" parent="spr_toomba"]
+[node name="CanvasLayer" type="CanvasLayer" parent="spr_toomba"]
+
+[node name="spr_starget" type="Sprite2D" parent="spr_toomba/CanvasLayer"]
 visible = false
 z_index = 12
+position = Vector2(640, 360)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("10_vn42q")

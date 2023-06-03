@@ -116,15 +116,23 @@ public partial class obj_dialogueController : Node2D
 		spr_arrow.Position = new Vector2(17.5f, -6 - (arrowIndex * -5.5f));
 	}
 
-	public void ChangeDialogue()
+	public void ChangeDialogue(int over = -1)
 	{
-		int tempDialogue = changeDialogue.Call(arrowIndex, dialogueIndex).As<int>();
-		if(tempDialogue == dialogueIndex)
-			return;
+		if(over == -1)
+		{
+			int tempDialogue = changeDialogue.Call(arrowIndex, dialogueIndex).As<int>();
+			if(tempDialogue == dialogueIndex)
+				return;
 
-		((AudioController)GetNode("/root/AudioController")).PlaySound("gui_select");
+			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_select");
+			dialogueIndex = tempDialogue;
+		}
+		else
+		{
+			dialogueIndex = over;
+			GD.Print(over);
+		}
 
-		dialogueIndex = tempDialogue;
 		arrowIndex = 0;
 		index = 0;
 		spr_characterSprite.Animation = "speak";

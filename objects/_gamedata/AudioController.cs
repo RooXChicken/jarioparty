@@ -43,7 +43,7 @@ public partial class AudioController : Node2D
 			return;
 
 		int index = 1;
-		while(pool[index].Playing)
+		while(index < MAX_SOUNDS && pool[index].Playing)
 			index++;
 
 		if(index > MAX_SOUNDS - 1)

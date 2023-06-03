@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class ItemBase : Node
+public partial class ItemBase
 {
     public int ItemIndex;
     public int Cost;
@@ -17,4 +17,8 @@ public partial class ItemBase : Node
     }
 
     public ItemBase(ItemBase _Clone) : this(_Clone.ItemIndex, _Clone.Cost) {}
+
+    public void ItemUseMap(PlayerData player) { GD.Print("This item cannot be used here. This is an error..."); }
+
+    public void ItemUseMinigame(PlayerData player, int minigame) { GD.Print("This item cannot be used here. This is an error..."); }
 }

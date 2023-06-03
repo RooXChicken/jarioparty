@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=55 format=3 uid="uid://brekq8pelfxn1"]
+[gd_resource type="SpriteFrames" load_steps=62 format=3 uid="uid://bjun3onf4brkc"]
 
 [ext_resource type="Texture2D" uid="uid://cqoy1qvvrmgik" path="res://sprites/characters/playable/jario/anim_jarioIdle.png" id="1_dfjse"]
 [ext_resource type="Texture2D" uid="uid://p2bf473fk46t" path="res://sprites/characters/playable/jario/anim_jarioFace.png" id="1_h3g7i"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://00tob5mahp2w" path="res://sprites/characters/playable/jario/anim_jarioWalkFront.png" id="5_v5qtp"]
 [ext_resource type="Texture2D" uid="uid://cayrr5aq5hnbv" path="res://sprites/characters/playable/jario/anim_jarioPortrait.png" id="7_beyce"]
 [ext_resource type="Texture2D" uid="uid://c3wh5axr7rta3" path="res://sprites/characters/playable/jario/anim_jarioPunchRight.png" id="8_ogwbp"]
+[ext_resource type="Texture2D" uid="uid://88or2vakx4sp" path="res://sprites/characters/playable/jario/anim_jarioPull.png" id="10_8yfbg"]
+[ext_resource type="Texture2D" uid="uid://c6owakklryed4" path="res://sprites/characters/playable/jario/anim_jarioPulled.png" id="11_fvl24"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wsert"]
 atlas = ExtResource("8_ogwbp")
@@ -125,6 +127,26 @@ region = Rect2(0, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ik7rn"]
 atlas = ExtResource("7_beyce")
 region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfisd"]
+atlas = ExtResource("10_8yfbg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fw3ww"]
+atlas = ExtResource("10_8yfbg")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax1c0"]
+atlas = ExtResource("10_8yfbg")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdwd5"]
+atlas = ExtResource("11_fvl24")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwdny"]
+atlas = ExtResource("11_fvl24")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lj144"]
 atlas = ExtResource("4_f7iyl")
@@ -308,6 +330,31 @@ animations = [{
 "loop": false,
 "name": &"portrait",
 "speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfisd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fw3ww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ax1c0")
+}],
+"loop": true,
+"name": &"pull",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdwd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwdny")
+}],
+"loop": true,
+"name": &"pulled",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,

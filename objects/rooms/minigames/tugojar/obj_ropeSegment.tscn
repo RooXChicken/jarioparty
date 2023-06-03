@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bif6mh15kco4k"]
+
+[ext_resource type="Texture2D" uid="uid://cap6skvkge5uh" path="res://sprites/characters/assets/spr_ropeSegment.png" id="1_jp4pr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bxcv3"]
+radius = 4.0
+height = 42.0
+
+[node name="obj_ropeSegment" type="RigidBody2D"]
+mass = 0.8
+can_sleep = false
+
+[node name="obj_collision" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bxcv3")
+
+[node name="spr_segment" type="Sprite2D" parent="."]
+texture = ExtResource("1_jp4pr")
+region_enabled = true
+region_rect = Rect2(0, 0, 40, 6)

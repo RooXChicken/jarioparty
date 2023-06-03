@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://ck33wl1r2xx30"]
+[gd_scene load_steps=61 format=3 uid="uid://ck33wl1r2xx30"]
 
 [ext_resource type="Script" path="res://stage/obj_diceBlock.cs" id="1_ismdg"]
 [ext_resource type="Shader" path="res://shaders/obj_diceBlock.gdshader" id="2_28cos"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://beaq7nen8oejj" path="res://stage/gui/sprites/numbers/spr_diceNum4.png" id="6_3mpxs"]
 [ext_resource type="Texture2D" uid="uid://b4qxr4fjhimua" path="res://stage/gui/sprites/numbers/spr_diceNum5.png" id="7_sfaik"]
 [ext_resource type="Texture2D" uid="uid://caoope3tnb848" path="res://stage/gui/sprites/numbers/spr_diceNum6.png" id="8_pqk15"]
+[ext_resource type="Texture2D" uid="uid://bflxu7ft5wr72" path="res://stage/gui/sprites/numbers/spr_diceNum7.png" id="13_wpmsb"]
+[ext_resource type="Texture2D" uid="uid://etox4o0yj351" path="res://stage/gui/sprites/numbers/spr_diceNum8.png" id="14_cg65m"]
+[ext_resource type="Texture2D" uid="uid://ig81ij021x2w" path="res://stage/gui/sprites/numbers/spr_diceNum9.png" id="15_jsjc6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uojo8"]
 atlas = ExtResource("2_humnj")
@@ -270,6 +273,18 @@ region = Rect2(0, 0, 14, 16)
 atlas = ExtResource("8_pqk15")
 region = Rect2(0, 0, 14, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_efxjg"]
+atlas = ExtResource("13_wpmsb")
+region = Rect2(0, 0, 14, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3i43"]
+atlas = ExtResource("14_cg65m")
+region = Rect2(0, 0, 14, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jinuh"]
+atlas = ExtResource("15_jsjc6")
+region = Rect2(0, 0, 14, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ecgll"]
 animations = [{
 "frames": [{
@@ -293,6 +308,15 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_glmo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efxjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3i43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jinuh")
 }],
 "loop": true,
 "name": &"default",
