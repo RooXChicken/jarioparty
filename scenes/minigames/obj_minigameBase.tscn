@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://db8bcmriqbdqx"]
+[gd_scene load_steps=38 format=3 uid="uid://db8bcmriqbdqx"]
 
 [ext_resource type="SpriteFrames" uid="uid://d1gqwdyufwd3r" path="res://sprites/gui/minigames/anim_timer.tres" id="1_fmqbb"]
 [ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://fonts/heygorgeous.ttf" id="2_m8k0u"]
@@ -13,9 +13,12 @@
 [ext_resource type="Script" path="res://objects/rooms/minigames/obj_leaderboard.cs" id="11_r7gwb"]
 [ext_resource type="PackedScene" uid="uid://c38e7potf8l16" path="res://objects/rooms/minigames/obj_portrait.tscn" id="11_uxfim"]
 [ext_resource type="Texture2D" uid="uid://b4ubbm3h1836q" path="res://sprites/rooms/minigames/spr_results.png" id="13_wwxeg"]
-[ext_resource type="Texture2D" uid="uid://b2rjdcj2jqnt5" path="res://sprites/gui/minigames/spr_playerBar.png" id="14_0ns66"]
-[ext_resource type="Shader" path="res://shaders/shd_score.gdshader" id="14_aewh4"]
+[ext_resource type="Texture2D" uid="uid://bgal6rkkjkcx2" path="res://sprites/gui/minigames/spr_playerScore3.png" id="15_5t61x"]
 [ext_resource type="Script" path="res://objects/rooms/minigames/susville/obj_playerScore.cs" id="17_imivh"]
+[ext_resource type="Texture2D" uid="uid://j3lglyb4uj1p" path="res://sprites/gui/minigames/spr_playerScore5.png" id="17_ndnmc"]
+[ext_resource type="Texture2D" uid="uid://nkpds3pbaus5" path="res://sprites/gui/minigames/spr_playerBar5.png" id="18_womgg"]
+[ext_resource type="Script" path="res://objects/rooms/minigames/obj_playerBar.cs" id="19_2vxmf"]
+[ext_resource type="Script" path="res://objects/rooms/minigames/susville/obj_playerScore2v.cs" id="19_foqeb"]
 
 [sub_resource type="Animation" id="Animation_ygq1c"]
 length = 0.001
@@ -575,9 +578,31 @@ _data = {
 "play": SubResource("Animation_p5e0v")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wdumr"]
-shader = ExtResource("14_aewh4")
-shader_parameter/newColor = Vector3(0.937, 0.894, 0.843)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fcj2t"]
+load_path = "res://.godot/imported/spr_playerBar3.png-833f6c972e29e15892180eed92e4a099.ctex"
+
+[sub_resource type="Shader" id="Shader_dbkgi"]
+code = "shader_type canvas_item;
+
+uniform vec3 newColor;
+
+void fragment()
+{
+	COLOR = texture(TEXTURE, UV);
+	
+	COLOR.r *= newColor.x;
+	COLOR.g *= newColor.y;
+	COLOR.b *= newColor.z;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8i6hx"]
+shader = SubResource("Shader_dbkgi")
+shader_parameter/newColor = Vector3(1.177, 0.674, 0.655)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p2nts"]
+shader = SubResource("Shader_dbkgi")
+shader_parameter/newColor = Vector3(0.129, 0.674, 4.079)
 
 [node name="obj_minigameBase" type="CanvasLayer"]
 metadata/Minigame = 0
@@ -685,37 +710,90 @@ libraries = {
 [node name="Score" type="Node2D" parent="."]
 visible = false
 
-[node name="spr_playerScore1" type="Sprite2D" parent="Score"]
-material = SubResource("ShaderMaterial_wdumr")
+[node name="spr_playerBar1" type="Sprite2D" parent="Score"]
+z_index = 1
 position = Vector2(92, 662)
 scale = Vector2(2, 2)
-texture = ExtResource("14_0ns66")
+texture = SubResource("CompressedTexture2D_fcj2t")
+script = ExtResource("19_2vxmf")
+metadata/Player = 1
+
+[node name="spr_playerScore" type="Sprite2D" parent="Score/spr_playerBar1"]
+z_index = -1
+texture = ExtResource("15_5t61x")
 hframes = 4
 script = ExtResource("17_imivh")
 
-[node name="spr_playerScore2" type="Sprite2D" parent="Score"]
-material = SubResource("ShaderMaterial_wdumr")
+[node name="spr_playerBar2" type="Sprite2D" parent="Score"]
+z_index = 1
 position = Vector2(402, 662)
 scale = Vector2(2, 2)
-texture = ExtResource("14_0ns66")
+texture = SubResource("CompressedTexture2D_fcj2t")
+script = ExtResource("19_2vxmf")
+metadata/Player = 2
+
+[node name="spr_playerScore" type="Sprite2D" parent="Score/spr_playerBar2"]
+z_index = -1
+texture = ExtResource("15_5t61x")
 hframes = 4
 script = ExtResource("17_imivh")
 
-[node name="spr_playerScore3" type="Sprite2D" parent="Score"]
-material = SubResource("ShaderMaterial_wdumr")
+[node name="spr_playerBar3" type="Sprite2D" parent="Score"]
+z_index = 1
 position = Vector2(878, 662)
 scale = Vector2(-2, 2)
-texture = ExtResource("14_0ns66")
+texture = SubResource("CompressedTexture2D_fcj2t")
+script = ExtResource("19_2vxmf")
+metadata/Player = 3
+
+[node name="spr_playerScore" type="Sprite2D" parent="Score/spr_playerBar3"]
+z_index = -1
+texture = ExtResource("15_5t61x")
 hframes = 4
 script = ExtResource("17_imivh")
 
-[node name="spr_playerScore4" type="Sprite2D" parent="Score"]
-material = SubResource("ShaderMaterial_wdumr")
+[node name="spr_playerBar4" type="Sprite2D" parent="Score"]
+z_index = 1
 position = Vector2(1190, 662)
 scale = Vector2(-2, 2)
-texture = ExtResource("14_0ns66")
+texture = SubResource("CompressedTexture2D_fcj2t")
+script = ExtResource("19_2vxmf")
+metadata/Player = 4
+
+[node name="spr_playerScore" type="Sprite2D" parent="Score/spr_playerBar4"]
+z_index = -1
+texture = ExtResource("15_5t61x")
 hframes = 4
 script = ExtResource("17_imivh")
+
+[node name="Score2v2" type="Node2D" parent="."]
+visible = false
+
+[node name="spr_playerBar1" type="Sprite2D" parent="Score2v2"]
+z_index = 1
+material = SubResource("ShaderMaterial_8i6hx")
+position = Vector2(107, 664)
+scale = Vector2(2, 2)
+texture = ExtResource("18_womgg")
+
+[node name="spr_playerScore" type="Sprite2D" parent="Score2v2/spr_playerBar1"]
+z_index = -1
+texture = ExtResource("17_ndnmc")
+hframes = 6
+script = ExtResource("19_foqeb")
+
+[node name="spr_playerBar2" type="Sprite2D" parent="Score2v2"]
+z_index = 1
+material = SubResource("ShaderMaterial_p2nts")
+position = Vector2(1173, 664)
+scale = Vector2(-2, 2)
+texture = ExtResource("18_womgg")
+
+[node name="spr_playerScore" type="Sprite2D" parent="Score2v2/spr_playerBar2"]
+z_index = -1
+texture = ExtResource("17_ndnmc")
+hframes = 6
+script = ExtResource("19_foqeb")
 
 [connection signal="frame_changed" from="spr_timer" to="spr_timer/obj_text" method="FrameChanged"]
 [connection signal="visibility_changed" from="spr_timer" to="spr_timer/obj_text" method="TimerStart"]

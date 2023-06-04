@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=62 format=3 uid="uid://dbmgbhtfc8tfj"]
+[gd_resource type="SpriteFrames" load_steps=70 format=3 uid="uid://dbmgbhtfc8tfj"]
 
 [ext_resource type="Texture2D" uid="uid://3hdxh6tpletr" path="res://sprites/characters/playable/josh/anim_joshBurnt.png" id="1_0tvnm"]
 [ext_resource type="Texture2D" uid="uid://bcgis22hfhspn" path="res://sprites/characters/playable/josh/anim_joshAttack.png" id="1_hpokn"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c3euyra70g651" path="res://sprites/characters/playable/josh/anim_joshPortrait.png" id="6_0odh6"]
 [ext_resource type="Texture2D" uid="uid://drpve0mwhioai" path="res://sprites/characters/playable/josh/anim_joshPull.png" id="10_d6k2s"]
 [ext_resource type="Texture2D" uid="uid://c2c1l5gdyna6o" path="res://sprites/characters/playable/josh/anim_joshPulled.png" id="11_31sp2"]
+[ext_resource type="Texture2D" uid="uid://cd74meyfituxe" path="res://sprites/characters/playable/josh/anim_joshWin.png" id="16_sesrs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l6ydu"]
 atlas = ExtResource("1_hpokn")
@@ -199,6 +200,34 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_c3k3d"]
 atlas = ExtResource("4_rgsft")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b1kd"]
+atlas = ExtResource("16_sesrs")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jauei"]
+atlas = ExtResource("16_sesrs")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_volks"]
+atlas = ExtResource("16_sesrs")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7sni"]
+atlas = ExtResource("16_sesrs")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_486tq"]
+atlas = ExtResource("16_sesrs")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxnxe"]
+atlas = ExtResource("16_sesrs")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awvji"]
+atlas = ExtResource("16_sesrs")
+region = Rect2(192, 0, 32, 32)
 
 [resource]
 animations = [{
@@ -420,4 +449,30 @@ animations = [{
 "loop": true,
 "name": &"walkUp",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0b1kd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jauei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_volks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7sni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_486tq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxnxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awvji")
+}],
+"loop": false,
+"name": &"win",
+"speed": 8.0
 }]

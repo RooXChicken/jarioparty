@@ -39,7 +39,6 @@ public partial class obj_playerHand : RigidBody2D
 		controllerIndex = playerData.controllerIndex;
 
 		spr_hand.Material = new ShaderMaterial() { Shader = (spr_hand.Material as ShaderMaterial).Shader.Duplicate() as Shader};
-		((ShaderMaterial)GetNode<obj_playerScore>("../../obj_minigameBase/Score/spr_playerScore" + (Player+1)).Material).SetShaderParameter("newColor", playerData.PlayerColor);
 
 		spr_hand.SpriteFrames = playerData.animationFrames;
 		spr_hand.Play("shoot");
@@ -92,7 +91,7 @@ public partial class obj_playerHand : RigidBody2D
 			}
 			else
 			{
-				GetNode<obj_playerScore>("../../obj_minigameBase/Score/spr_playerScore" + (playerData.playerOrder)).AddScore(1, playerData);
+				GetNode<obj_playerScore>("../../obj_minigameBase/Score/spr_playerBar" + (playerData.playerOrder) + "/spr_playerScore").AddScore(1, playerData);
 			}
 		}
 	}

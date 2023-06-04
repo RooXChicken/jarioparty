@@ -65,6 +65,7 @@ public partial class rm_minigame_tugofjar : Node2D
 	public void EndMinigame()
 	{
 		minigameEnded = true;
+		
 		GetNode<obj_winner>("obj_minigameBase/Win").EndMiniGame(0, new int[] {}, new List<PlayerData>(), new int[] {0, 0, 0, 0});
 	}
 
@@ -78,6 +79,8 @@ public partial class rm_minigame_tugofjar : Node2D
 		places.Add(players[0].playerData);
 
 		places.Reverse();
+
+		((GameManager)GetNode("/root/GameManager")).MinigameOver = true;
 		GetNode<obj_winner>("obj_minigameBase/Win").EndMiniGame(3, new int[] {players[1].CharacterIndex, players[2].CharacterIndex, players[3].CharacterIndex}, places, new int[] {4, 4, 4, 0}, 3);
 	}
 
@@ -89,6 +92,8 @@ public partial class rm_minigame_tugofjar : Node2D
 			places.Add(players[i].playerData);
 
 		places.Reverse();
+
+		((GameManager)GetNode("/root/GameManager")).MinigameOver = true;
 		GetNode<obj_winner>("obj_minigameBase/Win").EndMiniGame(1, new int[] {players[0].CharacterIndex}, places, new int[] {12, 0, 0, 0}, 1);
 	}
 

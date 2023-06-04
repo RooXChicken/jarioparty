@@ -12,6 +12,8 @@ radius = 1.0
 [node name="obj_ball" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 5
+gravity_scale = 0.4
+max_contacts_reported = 6
 contact_monitor = true
 can_sleep = false
 script = ExtResource("1_il8y4")
@@ -24,6 +26,11 @@ scale = Vector2(2, 2)
 texture = ExtResource("1_w6181")
 
 [node name="obj_sideHitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="obj_sideHitbox"]
 shape = SubResource("CircleShape2D_0qcng")
+
+[connection signal="area_entered" from="obj_sideHitbox" to="." method="AreaEntered"]
+[connection signal="area_exited" from="obj_sideHitbox" to="." method="AreaExited"]

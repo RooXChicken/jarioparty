@@ -123,6 +123,8 @@ public partial class obj_character_parent : RigidBody2D
 	{
 		if(!((GameManager)GetNode("/root/GameManager")).MinigameStarted)
 		{
+			if(((GameManager)GetNode("/root/GameManager")).MinigameOver)
+				sprite.Animation = "win";
 			return;
 		}
 			
@@ -282,7 +284,6 @@ public partial class obj_character_parent : RigidBody2D
 
 		if(jumping)
 		{
-			GD.Print("HIIII");
 			action = "jump";
 			sprite.SpeedScale = 0;
 		}
@@ -358,7 +359,6 @@ public partial class obj_character_parent : RigidBody2D
 		}
 		else if(abilities.Contains("jump_balley"))
 		{
-			GD.Print("stop");
 			GravityScale = 0;
 			LinearDamp = 25;
 			joyLock = false;

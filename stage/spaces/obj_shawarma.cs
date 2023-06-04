@@ -32,7 +32,7 @@ public partial class obj_shawarma : Node2D
 		spr_characterSprite = GetNode<AnimatedSprite2D>("spr_shawarma");
 
 		string[] shawarmaDialogue = new string[13];
-		if(((GameManager)GetNode("/root/GameManager")).playerData[0].PlayerStarted)
+		if(!((GameManager)GetNode("/root/GameManager")).playerData[0].PlayerStarted)
 		{
 			shawarmaDialogue[0] = "Hi sisters! today we r going to be hosting a LIT ASF party! It's finna be fire!\n\n\n  Continue";
 			shawarmaDialogue[1] = "NGL, I'm hella hyped. What bout' u fam?\n\n\n  Yes\n  No";

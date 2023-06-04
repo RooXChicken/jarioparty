@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=74 format=3 uid="uid://dxbv2eqvlcvn1"]
+[gd_resource type="SpriteFrames" load_steps=81 format=3 uid="uid://dxbv2eqvlcvn1"]
 
 [ext_resource type="Texture2D" uid="uid://df5w07yehlcue" path="res://sprites/characters/playable/wooigi/anim_wooigiKick.png" id="1_0po1w"]
 [ext_resource type="Texture2D" uid="uid://o1jtv0ljqjgh" path="res://sprites/characters/playable/wooigi/anim_wooigiWalkFront.png" id="1_ee4ii"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://b1gdb6ryynht3" path="res://sprites/rooms/minigames/susville/spr_shoothands.png" id="11_2kso0"]
 [ext_resource type="Texture2D" uid="uid://8xe7hf5t40rx" path="res://sprites/characters/playable/wooigi/anim_wooigiPull.png" id="11_14gp5"]
 [ext_resource type="Texture2D" uid="uid://dosoki7su4qjf" path="res://sprites/characters/playable/wooigi/anim_wooigiPulled.png" id="12_s60pb"]
+[ext_resource type="Texture2D" uid="uid://de5binvc4t6iu" path="res://sprites/characters/playable/wooigi/anim_wooigiWin.png" id="16_qfbpq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ds3rp"]
 atlas = ExtResource("1_0po1w")
@@ -247,6 +248,30 @@ region = Rect2(0, 32, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4tcyw"]
 atlas = ExtResource("1_ee4ii")
 region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovvqd"]
+atlas = ExtResource("16_qfbpq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsy87"]
+atlas = ExtResource("16_qfbpq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxo0o"]
+atlas = ExtResource("16_qfbpq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5t4l"]
+atlas = ExtResource("16_qfbpq")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ju7wj"]
+atlas = ExtResource("16_qfbpq")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_125i4"]
+atlas = ExtResource("16_qfbpq")
+region = Rect2(160, 0, 32, 32)
 
 [resource]
 animations = [{
@@ -498,4 +523,27 @@ animations = [{
 "loop": true,
 "name": &"walkUp",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovvqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsy87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxo0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5t4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ju7wj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_125i4")
+}],
+"loop": false,
+"name": &"win",
+"speed": 8.0
 }]

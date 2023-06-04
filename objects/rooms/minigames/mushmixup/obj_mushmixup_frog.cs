@@ -148,6 +148,8 @@ public partial class obj_mushmixup_frog : Node2D
 					ind++;
 				}
 			}
+			
+			((GameManager)GetNode("/root/GameManager")).MinigameOver = true;
 			((AudioController)GetNode("/root/AudioController")).StopMusic();
 			GetNode<obj_winner>("../obj_minigameBase/Win").EndMiniGame(playersAlive, aliveList, places, new int[] {10, 6, 4, 0});
 		}
