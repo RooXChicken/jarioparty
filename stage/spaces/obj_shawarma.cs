@@ -18,7 +18,7 @@ public partial class obj_shawarma : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		if(((GameManager)GetNode("/root/GameManager")).playerData[0].PlayerStarted)
+		if(((GameManager)GetNode("/root/GameManager")).playerData[0].PlayerStarted && ((GameManager)GetNode("/root/GameManager")).TurnsLeft != 5)
 		{
 			QueueFree();
 			return;
@@ -32,15 +32,27 @@ public partial class obj_shawarma : Node2D
 		spr_characterSprite = GetNode<AnimatedSprite2D>("spr_shawarma");
 
 		string[] shawarmaDialogue = new string[13];
-		shawarmaDialogue[0] = "Hi sisters! today we r going to be hosting a LIT ASF party! It's finna be fire!\n\n\n  Continue";
-		shawarmaDialogue[1] = "NGL, I'm hella hyped. What bout' u fam?\n\n\n  Yes\n  No";
-		shawarmaDialogue[2] = "JK IDC what u think cuz low-key ur just salty.\n\n\n\n  Continue";
-		shawarmaDialogue[3] = "K it do be dat time. the time to YEET some dice up and see who is based or nah. u ready fam?\n\n  Continue";
-		shawarmaDialogue[4] = "hi";
-		shawarmaDialogue[5] = "Smash da A button on ur dope asf controller, let's roll some MFing DIIIIIIIIICE!\n\n\n  <Press A to roll>";
-		shawarmaDialogue[6] = "Oooh baby smack those dice!\n\n\n\n  Continue";
-		shawarmaDialogue[11] = "Since I am ballin, I finna give u all 10 coins to start.\n\n\n\n  Continue";
-		shawarmaDialogue[12] = "OKIII enjoy the dope party. Bye felicia!\n\n\n\n  Exit";
+		if(((GameManager)GetNode("/root/GameManager")).playerData[0].PlayerStarted)
+		{
+			shawarmaDialogue[0] = "Hi sisters! today we r going to be hosting a LIT ASF party! It's finna be fire!\n\n\n  Continue";
+			shawarmaDialogue[1] = "NGL, I'm hella hyped. What bout' u fam?\n\n\n  Yes\n  No";
+			shawarmaDialogue[2] = "JK IDC what u think cuz low-key ur just salty.\n\n\n\n  Continue";
+			shawarmaDialogue[3] = "K it do be dat time. the time to YEET some dice up and see who is based or nah. u ready fam?\n\n  Continue";
+			shawarmaDialogue[4] = "hi";
+			shawarmaDialogue[5] = "Smash da A button on ur dope asf controller, let's roll some MFing DIIIIIIIIICE!\n\n\n  <Press A to roll>";
+			shawarmaDialogue[6] = "Oooh baby smack those dice!\n\n\n\n  Continue";
+			shawarmaDialogue[11] = "Since I am ballin, I finna give u all 10 coins to start.\n\n\n\n  Continue";
+			shawarmaDialogue[12] = "OKIII enjoy the dope party. Bye felicia!\n\n\n\n  Exit";
+		}
+		else if(((GameManager)GetNode("/root/GameManager")).TurnsLeft == 5)
+		{
+			shawarmaDialogue[0] = "Hi sisters! the game is almost over!!!!\n\n\n  Continue";
+			shawarmaDialogue[1] = "hav you been enjoying the epic game?\n\n\n  Yes\n  No";
+			shawarmaDialogue[2] = "that's lit yo. with 5 turns left i finna give the last player some goodies\n\n\n  Continue";
+			shawarmaDialogue[3] = "this should make you feel better about yourself!\n\n\n  Continue";
+			shawarmaDialogue[4] = "hi";
+			shawarmaDialogue[5] = "enjoy the rest of the party!!!!!\n\n\n  Exit";
+		}
 
 		obj_dialogueBox.Init(shawarmaDialogue, new List<int>() {0, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12}, new Callable(this, "ChangeDialogue"), spr_characterSprite);
 		ShowDialogue();

@@ -7,9 +7,10 @@ public partial class GameManager : Node
 {
 	public short gameState = 0;
 	public short playerCount = 1;
+	public int TurnsLeft = 20;
 
 	public int controllersConnected = 0;
-	public int CurrentMinigame = 6;
+	public int CurrentMinigame = 5;
 	public bool MinigameStarted = false;
 	public Vector2 StarSpacePos = new Vector2(0, 0);
 
@@ -30,7 +31,7 @@ public partial class GameManager : Node
 			new MinigameBase(4, "Susville", "susville", "The light are sabotaged by the imposter! You must find the imposter in the dark, and make sure not to let all of the crewmates die!\n     - Look (Find the imposter!)\n     - Shoot (Take your guess!)",
 				new List<string>() {"gun", "score"}, "mus_minigame_susville", -5, new int[] {8, 7}, new int[] {}),
 			new MinigameBase(5, "Balley Ball", "balleyball", "It's a classic game of Balley Ball! Jump to hit the ball to the other side, and keep it from hitting the sand!\n     - Move (To the ball!)\n     - Jump (Hit the ball!)",
-				new List<string>() {"move", "jump_balley", "score"}, "mus_minigame_balleyball", -5, new int[] {8, 1}, new int[] {}),
+				new List<string>() {"move", "jump", "jump_balley", "score"}, "mus_minigame_balleyball", -5, new int[] {8, 1}, new int[] {}),
 			new MinigameBase(6, "Tug-o-Jar", "tugojar", "It's a friendly game of tug-o-war! Just don't fall into the inescapable pit and die! Good luck!\n     - Pull (With great force!)",
 				new List<string>() {"pull"}, "mus_minigame_tugojar", 60, new int[] {1}, new int[] {})
 		};

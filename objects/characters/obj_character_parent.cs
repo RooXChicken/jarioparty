@@ -38,11 +38,12 @@ public partial class obj_character_parent : RigidBody2D
 	private bool resetAnim = true;
 
 	private Vector2 velocity = new Vector2(0, 0);
-	private float jumpHeight = 700;
+	private float jumpHeight = 1400;
 	private float jumpCountdown = 0;
 	private float idleTimer = 0;
 	private short flip = 1;
 	public bool jumping = false;
+	private float groundY = 0;
 
 	private Alarm t_jumpDuration;
 	private Alarm t_startJump;
@@ -134,9 +135,26 @@ public partial class obj_character_parent : RigidBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		ApplyCentralImpulse(new Vector2(joyhaxis * movementSpeed, joyvaxis * movementSpeed) + velocity);
+		if(justJumped)
+		{
+			//ApplyCentralImpulse(-LinearVelocity);
+			ApplyCentralImpulse(new Vector2(0, -jumpHeight - (LinearVelocity.Y*2)));
+			//GD.Print("+LINVEL: " + LinearVelocity + " -LINVEL: " + -LinearVelocity);
+		}
+		else
+			ApplyCentralImpulse(new Vector2(joyhaxis * movementSpeed, joyvaxis * movementSpeed) + velocity);
+
+		// if(controllerIndex == 1)
+		// 	GD.Print(joyhaxis * movementSpeed + " | " + joyvaxis * movementSpeed + " || " + velocity);
+		
 		velocity = new Vector2(0, 0);
 		justJumped = false;
+
+		if(jumping && abilities.Contains("jump_balley") && Position.Y > groundY)
+		{
+			//GD.Print(Position.Y + " > " + groundY);
+			StopJump();
+		}
 	}
 
 	private void GetControllerInput()
@@ -177,7 +195,7 @@ public partial class obj_character_parent : RigidBody2D
 			jumpCountdown = 0.2f;
 		}
 
-		if(Position.Y > 458 && LinearVelocity.Y > 0)
+		if(!abilities.Contains("jump_balley") && Position.Y > 458 && LinearVelocity.Y > 0)
 		{
 			jumping = false;
 		}
@@ -198,6 +216,7 @@ public partial class obj_character_parent : RigidBody2D
 				}
 			}
 			else if(abilities.Contains("jump_phy"))
+			{
 				if(LinearVelocity.Y == 0 && !justJumped)
 				{
 					((AudioController)GetNode("/root/AudioController")).PlaySound("plr_jump");
@@ -205,14 +224,25 @@ public partial class obj_character_parent : RigidBody2D
 					jumping = true;
 					justJumped = true;
 				}
+			}
 			else if(abilities.Contains("jump_balley"))
 			{
 				if(!jumping && !justJumped)
 				{
 					((AudioController)GetNode("/root/AudioController")).PlaySound("plr_jump");
-					// velocity.Y = -jumpHeight;
+					GravityScale = 1.3f;
+					LinearDamp = 0;
+					joyLock = true;
+					ResetJoystick(false);
+					groundY = Position.Y+1;
+					// velocity.X = 0;
+					// velocity.Y = 0;
+					//ApplyCentralImpulse(new Vector2(-LinearVelocity.X, -LinearVelocity.Y - jumpHeight));
 					jumping = true;
 					justJumped = true;
+					jumpCountdown = -1;
+					SetCollisionMaskValue(2, false);
+					resetAnim = false;
 				}
 			}
 		}
@@ -252,6 +282,7 @@ public partial class obj_character_parent : RigidBody2D
 
 		if(jumping)
 		{
+			GD.Print("HIIII");
 			action = "jump";
 			sprite.SpeedScale = 0;
 		}
@@ -324,6 +355,17 @@ public partial class obj_character_parent : RigidBody2D
 		else if(abilities.Contains("jump_phy"))
 		{
 			velocity.Y = -LinearVelocity.Y * 0.3f;
+		}
+		else if(abilities.Contains("jump_balley"))
+		{
+			GD.Print("stop");
+			GravityScale = 0;
+			LinearDamp = 25;
+			joyLock = false;
+			resetAnim = true;
+			// velocity.Y = -jumpHeight;
+			jumping = false;
+			SetCollisionMaskValue(2, true);
 		}
 	}
 
@@ -431,12 +473,15 @@ public partial class obj_character_parent : RigidBody2D
 		animation.Play(anim);
 	}
 
-	public void ResetJoystick()
+	public void ResetJoystick(bool anim = true)
 	{
 		joyhaxis = 0;
 		joyvaxis = 0;
 
-		animhaxis = joyhaxis;
-		animvaxis = joyvaxis;
+		if(anim)
+		{
+			animhaxis = joyhaxis;
+			animvaxis = joyvaxis;
+		}
 	}
 }

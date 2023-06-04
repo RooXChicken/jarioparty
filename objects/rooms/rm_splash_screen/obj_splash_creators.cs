@@ -41,7 +41,7 @@ public partial class obj_splash_creators : Sprite2D
 	{
 		GetNode<AnimatedSprite2D>("/root/rm_game/spr_load").Play();
 		((GameManager)GetNode("/root/GameManager")).LoadDefaults();
-		((GameManager)GetNode("/root/GameManager")).SwitchScene("minigames/rm_minigame_tugojar");
+		((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_minigame_info");
 		//((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_title_screen");
 	}
 }

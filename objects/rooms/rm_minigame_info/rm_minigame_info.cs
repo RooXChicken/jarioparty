@@ -50,13 +50,18 @@ public partial class rm_minigame_info : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if(!itemWindowShown && Input.IsActionJustPressed("pause1"))
-			ShowItemWindow();
-		if(itemWindowShown && Input.IsActionJustPressed("pause1") && !GetNode<AnimationPlayer>("anim_whackitu").IsPlaying())
+		if(Input.IsActionJustPressed("pause1") && !GetNode<AnimationPlayer>("anim_whackitu").IsPlaying())
 		{
 			((AudioController)GetNode("/root/AudioController")).PlaySound("transition");
 			GetNode<AnimationPlayer>("anim_whackitu").Play("transition");
 		}
+		// if(!itemWindowShown && Input.IsActionJustPressed("pause1"))
+		// 	ShowItemWindow();
+		// if(itemWindowShown && Input.IsActionJustPressed("pause1") && !GetNode<AnimationPlayer>("anim_whackitu").IsPlaying())
+		// {
+		// 	((AudioController)GetNode("/root/AudioController")).PlaySound("transition");
+		// 	GetNode<AnimationPlayer>("anim_whackitu").Play("transition");
+		// }
 	}
 
 	private void ShowItemWindow()

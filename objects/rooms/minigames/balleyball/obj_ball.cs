@@ -20,9 +20,9 @@ public partial class obj_ball : RigidBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		GD.Print(LinearVelocity.Y);
+		//GD.Print(LinearVelocity.Y);
 		if(!Freeze)
-			scale = 3 - (LinearVelocity.Y/720);
+			scale = 3 - (LinearVelocity.Y/420);
 
 		if(scale < 2)
 			Freeze = true;
@@ -40,5 +40,10 @@ public partial class obj_ball : RigidBody2D
 	public void Hit(Vector2 velocity)
 	{
 		hitVelocity = velocity;
+	}
+
+	public void Unfreeze()
+	{
+		Freeze = false;
 	}
 }

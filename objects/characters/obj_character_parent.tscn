@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://cfl0hvcgmxski"]
 
 [ext_resource type="Script" path="res://objects/characters/obj_character_parent.cs" id="1_y278h"]
-[ext_resource type="SpriteFrames" uid="uid://brekq8pelfxn1" path="res://sprites/characters/playable/spr_jario.tres" id="2_ldhjv"]
+[ext_resource type="SpriteFrames" uid="uid://bjun3onf4brkc" path="res://sprites/characters/playable/spr_jario.tres" id="2_ldhjv"]
 [ext_resource type="PackedScene" path="res://obj_shadow.tscn" id="3_cv4x7"]
 [ext_resource type="Texture2D" uid="uid://jlcluxnqxto3" path="res://sprites/characters/playable/jario/jarioidle.png" id="4_ybyto"]
 [ext_resource type="SpriteFrames" uid="uid://cdiou2x4q8pja" path="res://sprites/characters/assets/anim_out.tres" id="5_sxmvd"]
@@ -308,6 +308,8 @@ mass = 2.4
 physics_material_override = SubResource("PhysicsMaterial_km6qn")
 gravity_scale = 0.0
 continuous_cd = 2
+max_contacts_reported = 8
+contact_monitor = true
 can_sleep = false
 lock_rotation = true
 linear_damp = 25.0
