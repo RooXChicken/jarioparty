@@ -244,6 +244,10 @@ public partial class obj_character_parent : RigidBody2D
 					justJumped = true;
 					jumpCountdown = -1;
 					SetCollisionMaskValue(2, false);
+
+					SetCollisionMaskValue(3, true);
+					SetCollisionLayerValue(1, false);
+					SetCollisionLayerValue(3, true);
 					resetAnim = false;
 				}
 			}
@@ -366,6 +370,10 @@ public partial class obj_character_parent : RigidBody2D
 			// velocity.Y = -jumpHeight;
 			jumping = false;
 			SetCollisionMaskValue(2, true);
+
+			SetCollisionMaskValue(3, false);
+			SetCollisionLayerValue(3, false);
+			SetCollisionLayerValue(1, false);
 		}
 	}
 

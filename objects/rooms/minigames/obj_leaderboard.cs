@@ -94,17 +94,17 @@ public partial class obj_leaderboard : Node2D
 				if(i == 0)
 					portraits[i].GetNode<Sprite2D>("spr_place").Frame = 0;
 				else
-					portraits[i].GetNode<Sprite2D>("spr_place").Frame = 3;
+					portraits[i].GetNode<Sprite2D>("spr_place").Frame = 1;
 			else if(mode == 3)
 				if(i < 3)
 					portraits[i].GetNode<Sprite2D>("spr_place").Frame = 0;
 				else
-					portraits[i].GetNode<Sprite2D>("spr_place").Frame = 3;
+					portraits[i].GetNode<Sprite2D>("spr_place").Frame = 1;
 			else if(mode == 2)
 				if(i < 2)
 					portraits[i].GetNode<Sprite2D>("spr_place").Frame = 0;
 				else
-					portraits[i].GetNode<Sprite2D>("spr_place").Frame = 3;
+					portraits[i].GetNode<Sprite2D>("spr_place").Frame = 1;
 
 			Redraw();
 

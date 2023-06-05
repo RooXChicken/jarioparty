@@ -27,6 +27,7 @@ public partial class obj_winner : Node
 	public void EndMiniGame(int size, int[] playersAlive, List<PlayerData> _places, int[] _coinVal, int _mode = 0)
 	{
 		((GameManager)GetNode("/root/GameManager")).MinigameStarted = false;
+		((GameManager)GetNode("/root/GameManager")).MinigameOver = true;
 		switch(size)
 		{
 			case 0:

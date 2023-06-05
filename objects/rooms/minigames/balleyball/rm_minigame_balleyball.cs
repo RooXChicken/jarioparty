@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class rm_minigame_balleyball : Node2D
 {
@@ -23,6 +24,29 @@ public partial class rm_minigame_balleyball : Node2D
 
 	public void EndMinigame()
 	{
+		GetNode<obj_ball>("obj_ball").Freeze = true;
+		List<PlayerData> places = new List<PlayerData>();
 
+		if(((GameManager)GetNode("/root/GameManager")).playerData[0].minigameScore > ((GameManager)GetNode("/root/GameManager")).playerData[3].minigameScore)
+		{
+			places.Add(((GameManager)GetNode("/root/GameManager")).playerData[0]);
+			places.Add(((GameManager)GetNode("/root/GameManager")).playerData[1]);
+			places.Add(((GameManager)GetNode("/root/GameManager")).playerData[2]);
+			places.Add(((GameManager)GetNode("/root/GameManager")).playerData[3]);
+		}
+		else
+		{
+			places.Add(((GameManager)GetNode("/root/GameManager")).playerData[2]);
+			places.Add(((GameManager)GetNode("/root/GameManager")).playerData[3]);
+			places.Add(((GameManager)GetNode("/root/GameManager")).playerData[0]);
+			places.Add(((GameManager)GetNode("/root/GameManager")).playerData[1]);
+		}
+
+		places.Reverse();
+
+		GetNode<obj_winner>("obj_minigameBase/Win").EndMiniGame(2, new int[] {places[2].characterIndex, places[3].characterIndex}, places, new int[] {6, 6, 0, 0}, 2);
+
+		for(int i = 0; i < 4; i++)
+			((GameManager)GetNode("/root/GameManager")).playerData[i].minigameScore = 0;
 	}
 }

@@ -579,7 +579,6 @@ _data = {
 }
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fcj2t"]
-load_path = "res://.godot/imported/spr_playerBar3.png-833f6c972e29e15892180eed92e4a099.ctex"
 
 [sub_resource type="Shader" id="Shader_dbkgi"]
 code = "shader_type canvas_item;

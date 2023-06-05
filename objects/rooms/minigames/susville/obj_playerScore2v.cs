@@ -27,7 +27,7 @@ public partial class obj_playerScore2v : Sprite2D
 
 		if(score >= 5)
 		{
-			GetNode<obj_timerText>("../../spr_timer/obj_text").onEnd.Call();
+			GetNode<obj_timerText>("../../../spr_timer/obj_text").onEnd.Call();
 		}
 	}
 }

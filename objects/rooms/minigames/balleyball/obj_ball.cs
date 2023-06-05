@@ -36,6 +36,8 @@ public partial class obj_ball : RigidBody2D
 		//GD.Print(LinearVelocity.Y);
 		if(!Freeze)
 			scale = 3 - (LinearVelocity.Y/420);
+		else
+			return;
 
 		bool colliding = false;
 		foreach(Node2D body in GetCollidingBodies())
@@ -43,6 +45,8 @@ public partial class obj_ball : RigidBody2D
 			if(body.Name == "BOUND_ALL")
 				colliding = true;
 		}
+
+		spr_ball.Rotation += LinearVelocity.X*0.0002f;
 
 		if(!scoring && (scale < 2 || colliding))
 		{
