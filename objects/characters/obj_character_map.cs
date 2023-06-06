@@ -22,13 +22,18 @@ public partial class obj_character_map : RigidBody2D
 	private short flip = 1;
 	private bool movesCount = false;
 	private bool grace = true;
+	private bool setPath = false;
+	private bool pathReset = false;
 
 	private Area2D lastCollision;
 	private CollisionShape2D collision;
 
 	private Alarm t_moveOnBoard;
 	private bool jumping = false;
-	private bool canMove = true;
+	public bool canMove = true;
+
+	private obj_arrow obj_arrowRD;
+	private obj_arrow obj_arrowLD;
 
 	private float velocityX;
 	private float velocityY;
@@ -51,12 +56,19 @@ public partial class obj_character_map : RigidBody2D
 		sprite = GetNode<AnimatedSprite2D>("obj_sprite");
 		follower = GetNode<PathFollow2D>("../../pf_0" + (Player + 1));
 		collision = GetNode<CollisionShape2D>("obj_collision");
-		follower.ProgressRatio = playerData.progress;
+
+		obj_arrowRD = GetNode<obj_arrow>("obj_arrowRD");
+		obj_arrowLD = GetNode<obj_arrow>("obj_arrowLD");
+
+		follower.Progress = playerData.progress;
 		sprite.SpriteFrames = playerData.animationFrames;
 		
 		controllerIndex = playerData.controllerIndex;
-		// if(controllerIndex == -1)
-		// 	controllerIndex = 1;
+		
+		obj_arrowRD.controllerIndex = controllerIndex;
+		obj_arrowLD.controllerIndex = controllerIndex;
+
+		obj_arrowRD.ConfirmChoice(playerData.pathID, playerData.progress);
 
 		collision.Disabled = true;
 
@@ -68,7 +80,7 @@ public partial class obj_character_map : RigidBody2D
 	public override void _Process(double delta)
 	{
 		ProcessAnimations();
-		
+
 		if(!isTurn)
 			return;
 
@@ -101,6 +113,8 @@ public partial class obj_character_map : RigidBody2D
 	{
 		GetNode<Node2D>("../../../../obj_diceBlock").Position = new Vector2(follower.Position.X, follower.Position.Y - 138);
 		GetNode<obj_diceBlock>("../../../../obj_diceBlock").a_spinStart(this);
+		ZIndex++;
+
 		EnableCollision();
 		state = 1;
 	}
@@ -165,7 +179,8 @@ public partial class obj_character_map : RigidBody2D
 			if(!canMove)
 				return;
 			GetNode<Node2D>("../../../../obj_diceBlock").Position = new Vector2(follower.Position.X, follower.Position.Y - 138);
-			follower.ProgressRatio += delta * 0.04f;
+			//follower.ProgressRatio += delta * 0.04f;
+			follower.Progress += 332 * delta;
 		}
 		else
 		{
@@ -179,6 +194,7 @@ public partial class obj_character_map : RigidBody2D
 		if(locked)
 			return;
 		//GD.Print(lastCollision.Name);
+		playerData.spaceColor = -1;
 		byte walletID = (byte)(Player + 1);
 		((ShaderMaterial)GetNode<Sprite2D>("../../../../obj_mapGUI/obj_wallet" + walletID + "/spr_wallet/spr_walletColor").Material).SetShaderParameter("walletColor", new Vector3(0.2f, 1, 0.2f));
 		if(!locked && !starSpace)
@@ -188,14 +204,14 @@ public partial class obj_character_map : RigidBody2D
 				HandleStar();
 				locked = true;
 				return;
-
-				break;
 			case "spc_bl":
+				playerData.spaceColor = 0;
 				((GameManager)GetNode("/root/GameManager")).playerData[Player].coins += 3;
 				GetNode<obj_coinIndicator>("obj_coinIndicator/Indicator").PlayAnimation(3);
 				((ShaderMaterial)GetNode<Sprite2D>("../../../../obj_mapGUI/obj_wallet" + walletID + "/spr_wallet/spr_walletColor").Material).SetShaderParameter("walletColor", new Vector3(0.2f, 0.2f, 1));
 				break;
 			case "spc_re":
+				playerData.spaceColor = 1;
 				((GameManager)GetNode("/root/GameManager")).playerData[Player].coins -= 3;
 				GetNode<obj_coinIndicator>("obj_coinIndicator/Indicator").PlayAnimation(-3);
 				((ShaderMaterial)GetNode<Sprite2D>("../../../../obj_mapGUI/obj_wallet" + walletID + "/spr_wallet/spr_walletColor").Material).SetShaderParameter("walletColor", new Vector3(1f, 0.2f, 0.2f));
@@ -212,9 +228,6 @@ public partial class obj_character_map : RigidBody2D
 			case "spc_it":
 				
 				break;
-			case "spc_ar":
-				
-				break;
 		}
 
 		((GameManager)GetNode("/root/GameManager")).playerData[Player].coins = Math.Clamp(((GameManager)GetNode("/root/GameManager")).playerData[Player].coins, (short)0, (short)9999);
@@ -228,9 +241,10 @@ public partial class obj_character_map : RigidBody2D
 			return;
 		GetNode<Transition>("../../../../obj_mapGUI/Transition").playerGoing = Player + 1;
 		GetNode<Transition>("../../../../obj_mapGUI/Transition").state = 1;
-		playerData.progress = follower.ProgressRatio;
+		playerData.progress = follower.Progress;
 		collision.Disabled = true;
 		state = 6;
+		ZIndex--;
 	}
 
 	private void ProcessAnimations()
@@ -303,15 +317,58 @@ public partial class obj_character_map : RigidBody2D
 			return;
 		}
 
-		moves--;
-		GetNode<obj_diceBlock>("../../../../obj_diceBlock").num--;
-		if(canMove)
+		if(area.Name.ToString().Substring(0, 6) == "spc_pa")
+		{
+			if(!pathReset)
+			{
+				pathReset = true;
+				if(playerData.pathID == 1)
+					return;
+				
+				playerData.pathID = 1;
+				moves++;
+				GetNode<obj_diceBlock>("../../../../obj_diceBlock").num++;
+				obj_arrowRD.ConfirmChoice(1, area.GetMeta("Progress").As<float>());
+			}
+			return;
+		}
+
+		GD.Print(area.Name);
+
+		if(area.Name != "spc_star" && area.Name.ToString().Substring(0, 6) != "spc_ar")
+		{
+			moves--;
+			GetNode<obj_diceBlock>("../../../../obj_diceBlock").num--;
+			if(canMove)
+				lastCollision = area;
+		}
+
+		if(area.Name.ToString().Substring(0, 6) == "spc_ar" && lastCollision != area)
+		{
+			canMove = false;
 			lastCollision = area;
+			ArrowMenu(area.Name);
+		}
 
 		if(area.Name == "spc_star")
 		{
 			lastCollision = area;
 			HandleStar();
+		}
+	}
+
+	private void ArrowMenu(string name)
+	{
+		switch(name)
+		{
+			case "spc_arrowRD":
+				obj_arrowRD.Visible = true;
+				state = 8;
+				break;
+			case "spc_arrowLD":
+				obj_arrowLD.Visible = true;
+				state = 8;
+				break;
 		}
 	}
 

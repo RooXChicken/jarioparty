@@ -11,6 +11,7 @@ public partial class PlayerData : Node
 	public bool ai = false;
 	public int minigameScore = 0;
 	public int diceRoll = 0;
+	public int pathID = 1;
 
 	//game data
 	public short coins = 100;
@@ -20,8 +21,9 @@ public partial class PlayerData : Node
 	public float weightMult = 1; //density
 	public float strengthMult = 1; //punch strength
 
-	public float progress = 0.1765f;
+	public float progress = 5507.820276f; //1464.934115f;
 	public bool PlayerStarted = false;
+	public int spaceColor = -1;
 	public Color PlayerColor;
 
 	public List<ItemBase> items;

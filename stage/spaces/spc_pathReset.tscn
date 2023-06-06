@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://brs5e15onnn0w"]
+
+[ext_resource type="Shape2D" uid="uid://bob0la6buryho" path="res://stage/spaces/spc_hitbox.tres" id="2_455lq"]
+
+[node name="spc_pathReset" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
+input_pickable = false
+priority = 1.0
+metadata/Progress = 0.0
+
+[node name="obj_collision" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(0, -1)
+rotation = 1.5708
+shape = ExtResource("2_455lq")

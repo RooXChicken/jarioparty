@@ -30,6 +30,7 @@ public partial class obj_frog : AnimatedSprite2D
 		dialogue[8] = "third person";
 		dialogue[9] = "fourth peoples";
 		dialogue[10] = "now let the sufferage start";
+		dialogue[11] = "This message should not appear.";
 
 		obj_dialoguebox = GetNode<Node2D>("../obj_dialoguebox");
 		obj_bg = (cm_bg)GetNode<Sprite2D>("../obj_bg");

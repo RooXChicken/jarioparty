@@ -48,7 +48,7 @@ public partial class obj_shawarma : Node2D
 		{
 			shawarmaDialogue[0] = "Hi sisters! the game is almost over!!!!\n\n\n  Continue";
 			shawarmaDialogue[1] = "hav you been enjoying the epic game?\n\n\n  Yes\n  No";
-			shawarmaDialogue[2] = "that's lit yo. with 5 turns left i finna give the last player some goodies\n\n\n  Continue";
+			shawarmaDialogue[2] = "that's lit yo. with 5 turns left i'm finna give the last player some goodies\n\n\n  Continue";
 			shawarmaDialogue[3] = "this should make you feel better about yourself!\n\n\n  Continue";
 			shawarmaDialogue[4] = "hi";
 			shawarmaDialogue[5] = "enjoy the rest of the party!!!!!\n\n\n  Exit";

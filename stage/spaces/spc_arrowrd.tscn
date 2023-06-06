@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b7fw2j8oklopn" path="res://stage/gui/sprites/spaces/spc_arrowRightDown.png" id="1_ft2t7"]
 [ext_resource type="Shape2D" uid="uid://bob0la6buryho" path="res://stage/spaces/spc_hitbox.tres" id="2_spyli"]
 
-[node name="spc_arrow" type="Area2D"]
+[node name="spc_arrowRD" type="Area2D"]
 collision_layer = 4
 collision_mask = 4
 input_pickable = false

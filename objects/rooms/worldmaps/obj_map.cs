@@ -66,7 +66,7 @@ public partial class obj_map : Node2D
 	{
 		playerGoing.GetNode<obj_character_map>("obj_character_map").isTurn = false;
 		PlayerGoing = _player;
-		playerGoing = GetNode<PathFollow2D>("Paths/pt_01/pf_0" + PlayerGoing);
+		playerGoing = GetNode<PathFollow2D>("Paths/pt_0" + ((GameManager)GetNode("/root/GameManager")).playerData[PlayerGoing-1].pathID + "/pf_0" + PlayerGoing);
 		playerGoing.GetNode<obj_character_map>("obj_character_map").isTurn = true;
 		if(((GameManager)GetNode("/root/GameManager")).playerData[0].PlayerStarted)
 			GetNode<obj_playerStart>("obj_mapGUI/PlayerStart").StartAnimation(playerGoing.GetNode<obj_character_map>("obj_character_map").CharacterIndex + 1, playerGoing.GetNode<obj_character_map>("obj_character_map"));

@@ -19,6 +19,13 @@ public partial class obj_diceBlock : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		if(ZIndex == 2)
+			if(((GameManager)GetNode("/root/GameManager")).playerData[0].PlayerStarted)
+			{
+				QueueFree();
+				return;
+			}
+		
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://stage/sound/snd_diceblockRoll.wav", "diceblockRoll");
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://stage/sound/snd_diceblockHit.wav", "diceblockHit");
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://stage/sound/snd_diceblockNumber.wav", "diceblockNumber");
@@ -62,6 +69,7 @@ public partial class obj_diceBlock : Node2D
 		GetNode<obj_diceRB>("obj_rb").shouldSnap = true;
 		GetNode<RigidBody2D>("obj_rb").Freeze = false;
 		GetNode<RigidBody2D>("obj_rb").Sleeping = false;
+		
 		if(playSound)
 			((AudioController)GetNode("/root/AudioController")).PlaySound("diceblockRoll");
 		spr_diceblock.Play("spinStart");

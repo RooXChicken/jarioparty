@@ -1,20 +1,23 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://dl1lnlue3anbu"]
 
 [ext_resource type="Script" path="res://objects/characters/obj_character_map.cs" id="1_csh0g"]
-[ext_resource type="SpriteFrames" uid="uid://brekq8pelfxn1" path="res://sprites/characters/playable/spr_jario.tres" id="2_xm5c2"]
+[ext_resource type="SpriteFrames" uid="uid://bjun3onf4brkc" path="res://sprites/characters/playable/spr_jario.tres" id="2_xm5c2"]
 [ext_resource type="PackedScene" uid="uid://kgulsgabeiqm" path="res://stage/gui/obj_coinIndicator.tscn" id="3_om5hn"]
+[ext_resource type="Script" path="res://objects/characters/obj_arrow.cs" id="4_o5l6v"]
+[ext_resource type="Texture2D" uid="uid://d4gkmgtjtcy4c" path="res://stage/gui/sprites/spr_arrowDown.png" id="5_os4sw"]
+[ext_resource type="Texture2D" uid="uid://deq3umj6ceavk" path="res://stage/gui/sprites/spr_arrowLeft.png" id="6_wtbyt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqjky"]
 size = Vector2(54, 84)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myi16"]
-size = Vector2(0.5, 11)
+size = Vector2(2, 11)
 
 [node name="obj_character_map" type="RigidBody2D"]
 position = Vector2(0, -25)
 collision_layer = 8
 gravity_scale = 0.0
-max_contacts_reported = 2
+max_contacts_reported = 6
 contact_monitor = true
 can_sleep = false
 lock_rotation = true
@@ -41,6 +44,38 @@ debug_color = Color(0.980392, 0, 0.392157, 0.419608)
 
 [node name="obj_coinIndicator" parent="." instance=ExtResource("3_om5hn")]
 position = Vector2(42, -42)
+
+[node name="obj_arrowRD" type="Node2D" parent="."]
+visible = false
+z_index = 10
+script = ExtResource("4_o5l6v")
+metadata/Direction = 0
+
+[node name="spr_arrow1" type="Sprite2D" parent="obj_arrowRD"]
+position = Vector2(0, 76)
+scale = Vector2(2, 2)
+texture = ExtResource("5_os4sw")
+
+[node name="spr_arrow2" type="Sprite2D" parent="obj_arrowRD"]
+position = Vector2(76, 0)
+scale = Vector2(-2, 2)
+texture = ExtResource("6_wtbyt")
+
+[node name="obj_arrowLD" type="Node2D" parent="."]
+visible = false
+z_index = 10
+script = ExtResource("4_o5l6v")
+metadata/Direction = 1
+
+[node name="spr_arrow1" type="Sprite2D" parent="obj_arrowLD"]
+position = Vector2(0, 76)
+scale = Vector2(2, 2)
+texture = ExtResource("5_os4sw")
+
+[node name="spr_arrow2" type="Sprite2D" parent="obj_arrowLD"]
+position = Vector2(-76, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("6_wtbyt")
 
 [connection signal="body_shape_entered" from="." to="." method="BodyShapeEntered"]
 [connection signal="area_entered" from="spacehitbox" to="." method="SpaceEnter"]

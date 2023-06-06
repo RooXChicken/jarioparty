@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcnkqhnxei22j"]
+
+[ext_resource type="Texture2D" uid="uid://bb050ktur2tky" path="res://stage/gui/sprites/spaces/spc_arrowLeftDown.png" id="1_o0igt"]
+[ext_resource type="Shape2D" uid="uid://bob0la6buryho" path="res://stage/spaces/spc_hitbox.tres" id="2_trmo3"]
+
+[node name="spc_arrowLD" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
+input_pickable = false
+priority = 1.0
+
+[node name="spr_space" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_o0igt")
+
+[node name="obj_collision" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(0, -1)
+rotation = 1.5708
+shape = ExtResource("2_trmo3")

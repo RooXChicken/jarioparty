@@ -28,6 +28,24 @@ public partial class obj_minigameSpinner : Node2D
 		rand = new Random();
 		List<MinigameBase> minigames = new List<MinigameBase>();
 
+		int redColors = 0;
+		int blueColors = 0;
+
+		for(int i = 0; i < 4; i++)
+		{
+			if(((GameManager)GetNode("/root/GameManager")).playerData[i].spaceColor == 0)
+				blueColors++;
+			else if(((GameManager)GetNode("/root/GameManager")).playerData[i].spaceColor == 1)
+				redColors++;
+			else
+			{
+				if(rand.Next(0, 2) == 0)
+					blueColors++;
+				else
+					redColors++;
+			}
+		}
+
 		foreach(MinigameBase minigame in ((GameManager)GetNode("/root/GameManager")).minigameLookup)
 		{
 			if(minigame.MinigameName != "testminigame")

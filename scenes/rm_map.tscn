@@ -1,9 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://bswcrbdgjif17"]
+[gd_scene load_steps=31 format=3 uid="uid://u1vt5ps02nth"]
 
 [ext_resource type="Script" path="res://objects/rooms/worldmaps/obj_map.cs" id="1_hdo0i"]
 [ext_resource type="PackedScene" uid="uid://b3dvuk2a216p2" path="res://stage/gui/obj_mapGUI.tscn" id="2_alycv"]
 [ext_resource type="Texture2D" uid="uid://b1tad8cjl18vw" path="res://stage/maps/mp_sushroom.png" id="2_qe5p7"]
-[ext_resource type="PackedScene" path="res://objects/characters/obj_character_map.tscn" id="3_d6dkg"]
+[ext_resource type="PackedScene" uid="uid://dl1lnlue3anbu" path="res://objects/characters/obj_character_map.tscn" id="3_d6dkg"]
 [ext_resource type="Texture2D" uid="uid://xr5td1ux4eqx" path="res://stage/maps/spr_sky.png" id="3_ifiwr"]
 [ext_resource type="Texture2D" uid="uid://is6orawyddw2" path="res://stage/maps/spr_clouds.png" id="4_guai6"]
 [ext_resource type="PackedScene" uid="uid://p326cvlwh631" path="res://stage/spaces/spc_blue.tscn" id="5_4js1t"]
@@ -15,9 +15,12 @@
 [ext_resource type="PackedScene" uid="uid://doo8uq3xs3y3" path="res://stage/spaces/spc_red.tscn" id="10_y1o5j"]
 [ext_resource type="PackedScene" uid="uid://ck33wl1r2xx30" path="res://stage/obj_diceBlock.tscn" id="14_c7dl6"]
 [ext_resource type="PackedScene" uid="uid://sya1whdofhnh" path="res://stage/spaces/spc_star.tscn" id="14_dd5qy"]
-[ext_resource type="PackedScene" uid="uid://c2setw7ammq8u" path="res://stage/spaces/spc_arrow.tscn" id="15_b7gon"]
+[ext_resource type="PackedScene" uid="uid://dn7vq6njrm33s" path="res://stage/spaces/obj_flower.tscn" id="14_jvxdx"]
+[ext_resource type="PackedScene" uid="uid://c2setw7ammq8u" path="res://stage/spaces/spc_arrowrd.tscn" id="15_b7gon"]
+[ext_resource type="PackedScene" uid="uid://bcnkqhnxei22j" path="res://stage/spaces/spc_arrowld.tscn" id="17_18aba"]
 [ext_resource type="Script" path="res://scenes/obj_setup.cs" id="17_nrxdv"]
 [ext_resource type="PackedScene" uid="uid://dilqto181kfni" path="res://stage/spaces/obj_shawarma.tscn" id="18_cbqk6"]
+[ext_resource type="PackedScene" uid="uid://brs5e15onnn0w" path="res://stage/spaces/spc_pathReset.tscn" id="18_jimbb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hf5q7"]
 atlas = ExtResource("2_qe5p7")
@@ -64,9 +67,21 @@ animations = [{
 
 [sub_resource type="Curve2D" id="Curve2D_3rwww"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 594, 844, 0, 0, 0, 0, 460, 844, 0, 0, 0, 0, 327, 836, 0, 0, 0, 0, 199, 827, 0, 0, 0, 0, 63, 804, 0, 0, 0, 0, -65, 786, 0, 0, 0, 0, -201, 772, 0, 0, 0, 0, -332, 757, 0, 0, 0, 0, -470, 750, 0, 0, 0, 0, -600, 754, 0, 0, 0, 0, -737, 752, 0, 0, 0, 0, -865, 755, 0, 0, 0, 0, -1006, 761, 0, 0, 0, 0, -1130, 776, 0, 0, 0, 0, -1252, 806, 0, 0, 0, 0, -1379, 835, 0, 0, 0, 0, -1500, 856, 0, 0, 0, 0, -1637, 875, 0, 0, 0, 0, -1777, 887, 0, 0, 0, 0, -1912, 886, 0, 0, 0, 0, -2012, 827, 0, 0, 0, 0, -2037, 740, 0, 0, 0, 0, -2049, 649, 0, 0, 0, 0, -2034, 559, 0, 0, 0, 0, -1998, 490, -5.99323, 50.1933, 5.99323, -50.1933, -1978, 431, -0.453611, 30.7153, 0.453611, -30.7153, -1982, 58, 0, 0, 0, 0, -2003, 22, 0, 0, 0, 0, -2106, -62, 0, 0, 0, 0, -1981, -116, 0, 0, 0, 0, -1847, -147, 0, 0, 0, 0, -1721, -157, 0, 0, 0, 0, -1585, -153, 0, 0, 0, 0, -1444, -157, 0, 0, 0, 0, -1311, -156, 0, 0, 0, 0, -1170, -149, 0, 0, 0, 0, -1018, -144, 0, 0, 0, 0, -923.227, -127.172, -0.890899, -32.0724, 0.890899, 32.0724, -885, -88, -33.8541, -30.2906, 33.8541, 30.2906, -815, 174, 0, 0, 0, 0, -726, 204, 0, 0, 0, 0, -582, 209, 0, 0, 0, 0, -446, 211, 0, 0, 0, 0, -282, 209, 0, 0, 0, 0, -133, 214, 0, 0, 0, 0, -22, 216, 0, 0, 0, 0, 91, 220, 0, 0, 0, 0, 203, 223, 0, 0, 0, 0, 305, 228, 0, 0, 0, 0, 413, 243, 0, 0, 0, 0, 543, 263, 0, 0, 0, 0, 837, 267, 0, 0, 0, 0, 994, 282, 0, 0, 0, 0, 1141, 322, 0, 0, 0, 0, 1111, 439, 0, 0, 0, 0, 1001, 548, 0, 0, 0, 0, 1180, 775, 0, 0, 0, 0, 1093, 860, 0, 0, 0, 0, 945, 870, 0, 0, 0, 0, 804, 868, 0, 0, 0, 0, 594, 844)
+"points": PackedVector2Array(0, 0, 0, 0, 594, 844, 0, 0, 0, 0, 460, 844, 0, 0, 0, 0, 327, 836, 0, 0, 0, 0, 199, 827, 0, 0, 0, 0, 63, 804, 0, 0, 0, 0, -65, 786, 0, 0, 0, 0, -201, 772, 0, 0, 0, 0, -332, 757, 0, 0, 0, 0, -470, 750, 0, 0, 0, 0, -600, 754, 0, 0, 0, 0, -737, 752, 0, 0, 0, 0, -865, 755, 0, 0, 0, 0, -1006, 761, 0, 0, 0, 0, -1130, 776, 0, 0, 0, 0, -1252, 806, 0, 0, 0, 0, -1379, 835, 0, 0, 0, 0, -1500, 856, 0, 0, 0, 0, -1637, 875, 0, 0, 0, 0, -1777, 887, 0, 0, 0, 0, -1912, 886, 0, 0, 0, 0, -2012, 827, 0, 0, 0, 0, -2037, 740, 0, 0, 0, 0, -2049, 649, 0, 0, 0, 0, -2034, 559, 0, 0, 0, 0, -1998, 490, -5.99323, 50.1933, 5.99323, -50.1933, -1978, 431, -0.453611, 30.7153, 0.453611, -30.7153, -1982, 58, 0, 0, 0, 0, -2003, 22, 0, 0, 0, 0, -2106, -62, 0, 0, 0, 0, -1981, -116, 0, 0, 0, 0, -1847, -147, 0, 0, 0, 0, -1721, -157, 0, 0, 0, 0, -1585, -153, 0, 0, 0, 0, -1444, -157, 0, 0, 0, 0, -1311, -156, 0, 0, 0, 0, -1170, -149, 0, 0, 0, 0, -1018, -144, 0, 0, 0, 0, -923.227, -127.172, -0.890899, -32.0724, 0.890899, 32.0724, -885, -88, -33.8541, -30.2906, 33.8541, 30.2906, -815, 174, 0, 0, 0, 0, -726, 204, 0, 0, 0, 0, -582, 209, 0, 0, 0, 0, -446, 211, 0, 0, 0, 0, -282, 209, 0, 0, 0, 0, -133, 214, 0, 0, 0, 0, -22, 216, 0, 0, 0, 0, 91, 220, 0, 0, 0, 0, 203, 223, 0, 0, 0, 0, 305, 228, 0, 0, 0, 0, 413, 243, 0, 0, 0, 0, 543, 263, 0, 0, 0, 0, 837, 267, 0, 0, 0, 0, 994, 282, 0, 0, 0, 0, 1141, 322, 0, 0, 0, 0, 1111, 439, 0, 0, 0, 0, 1031, 497, 0, 0, 0, 0, 1001, 548, 0, 0, 0, 0, 1077, 651, 0, 0, 0, 0, 1180, 775, 0, 0, 0, 0, 1141, 821, 0, 0, 0, 0, 1093, 860, 0, 0, 0, 0, 945, 870, 0, 0, 0, 0, 804, 868, 0, 0, 0, 0, 594, 844)
 }
-point_count = 61
+point_count = 64
+
+[sub_resource type="Curve2D" id="Curve2D_5sro3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -261, 216, 0, 0, 0, 0, -271, 302, 0, 0, 0, 0, -278, 393, 0, 0, 0, 0, -307, 479, 0, 0, 0, 0, -348, 558, 0, 0, 0, 0, -421, 641, 0, 0, 0, 0, -495, 700, 0, 0, 0, 0, -600, 753)
+}
+point_count = 8
+
+[sub_resource type="Curve2D" id="Curve2D_4pwpr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1002, 549, 0, 0, 0, 0, 715, 522, 0, 0, 0, 0, 572, 517, 0, 0, 0, 0, 498, 517, 0, 0, 0, 0, 418, 532, 0, 0, 0, 0, 347, 554, 0, 0, 0, 0, 299, 584, 0, 0, 0, 0, 229, 691, 0, 0, 0, 0, 214, 734, 0, 0, 0, 0, 200, 828)
+}
+point_count = 10
 
 [node name="rm_map" type="Node2D"]
 script = ExtResource("1_hdo0i")
@@ -111,10 +126,9 @@ curve = SubResource("Curve2D_3rwww")
 
 [node name="pf_01" type="PathFollow2D" parent="Paths/pt_01"]
 z_index = 2
-position = Vector2(-864.705, 754.991)
-progress = 1464.27
+position = Vector2(-451.287, 210.922)
+progress = 5507.82
 rotates = false
-loop = false
 
 [node name="obj_character_map" parent="Paths/pt_01/pf_01" instance=ExtResource("3_d6dkg")]
 position = Vector2(-235.296, -226.991)
@@ -126,7 +140,6 @@ z_index = 2
 position = Vector2(-864.705, 754.991)
 progress = 1464.27
 rotates = false
-loop = false
 
 [node name="obj_character_map" parent="Paths/pt_01/pf_02" instance=ExtResource("3_d6dkg")]
 position = Vector2(-105.296, -226.991)
@@ -138,7 +151,6 @@ z_index = 2
 position = Vector2(-864.705, 754.991)
 progress = 1464.27
 rotates = false
-loop = false
 
 [node name="obj_character_map" parent="Paths/pt_01/pf_03" instance=ExtResource("3_d6dkg")]
 position = Vector2(98.7052, -226.991)
@@ -150,12 +162,17 @@ z_index = 2
 position = Vector2(-864.705, 754.991)
 progress = 1464.27
 rotates = false
-loop = false
 
 [node name="obj_character_map" parent="Paths/pt_01/pf_04" instance=ExtResource("3_d6dkg")]
 position = Vector2(228.704, -226.991)
 metadata/Player = 4
 metadata/IsTurn = false
+
+[node name="pt_02" type="Path2D" parent="Paths"]
+curve = SubResource("Curve2D_5sro3")
+
+[node name="pt_03" type="Path2D" parent="Paths"]
+curve = SubResource("Curve2D_4pwpr")
 
 [node name="Spaces" type="Node" parent="."]
 
@@ -415,6 +432,126 @@ scale = Vector2(1.448, 1.448)
 position = Vector2(-1501, 856)
 scale = Vector2(1.448, 1.448)
 
+[node name="Flowers" type="Node" parent="Spaces"]
+
+[node name="obj_flower1" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-1235, 420)
+
+[node name="obj_flower2" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-631, 631)
+metadata/Flower = 1
+
+[node name="obj_flower3" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-979, 323)
+metadata/Flower = 1
+
+[node name="obj_flower4" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-548, 323)
+
+[node name="obj_flower5" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-557, 117)
+
+[node name="obj_flower6" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-1378, 1003)
+metadata/Flower = 1
+
+[node name="obj_flower16" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-1683, 1005)
+metadata/Flower = 1
+
+[node name="obj_flower17" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-1095, 947)
+metadata/Flower = 1
+
+[node name="obj_flower18" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-1791, 711)
+metadata/Flower = 1
+
+[node name="obj_flower19" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-1542, 621)
+metadata/Flower = 1
+
+[node name="obj_flower20" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-1315, 612)
+metadata/Flower = 1
+
+[node name="obj_flower21" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-1643, 735)
+metadata/Flower = 1
+
+[node name="obj_flower22" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-1430, 710)
+metadata/Flower = 1
+
+[node name="obj_flower23" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-1733, -51)
+metadata/Flower = 1
+
+[node name="obj_flower31" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-1450, -72)
+metadata/Flower = 1
+
+[node name="obj_flower7" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-925, 977)
+
+[node name="obj_flower8" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-747, 912)
+metadata/Flower = 1
+
+[node name="obj_flower24" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-592, 896)
+metadata/Flower = 1
+
+[node name="obj_flower25" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-464, 990)
+metadata/Flower = 1
+
+[node name="obj_flower26" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-668, 986)
+metadata/Flower = 1
+
+[node name="obj_flower27" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-39, 999)
+metadata/Flower = 1
+
+[node name="obj_flower28" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-279, 1035)
+metadata/Flower = 1
+
+[node name="obj_flower29" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(545, 954)
+metadata/Flower = 1
+
+[node name="obj_flower30" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(496, 1012)
+metadata/Flower = 1
+
+[node name="obj_flower9" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(580, 1012)
+metadata/Flower = 1
+
+[node name="obj_flower10" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-180, 943)
+metadata/Flower = 1
+
+[node name="obj_flower11" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(472, 696)
+
+[node name="obj_flower12" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-29, 513)
+metadata/Flower = 1
+
+[node name="obj_flower13" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-153, 576)
+metadata/Flower = 1
+
+[node name="obj_flower14" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(81, 456)
+
+[node name="obj_flower15" parent="Spaces/Flowers" instance=ExtResource("14_jvxdx")]
+position = Vector2(-68, 373)
+metadata/Flower = 1
+
 [node name="obj_diceBlock" parent="." instance=ExtResource("14_c7dl6")]
 visible = false
 z_index = 1
@@ -422,10 +559,24 @@ position = Vector2(-1637, 744)
 
 [node name="Other" type="Node" parent="."]
 
-[node name="spc_arrow" parent="Other" instance=ExtResource("15_b7gon")]
+[node name="spc_arrowRD" parent="Other" instance=ExtResource("15_b7gon")]
 position = Vector2(-261, 217)
 rotation = 0.0176658
 scale = Vector2(2, 2)
+metadata/Direction = 0
+
+[node name="spc_arrowLD" parent="Other" instance=ExtResource("17_18aba")]
+position = Vector2(1002, 549)
+scale = Vector2(1.5, 1.5)
+metadata/Direction = 1
+
+[node name="spc_pathReset" parent="Other" instance=ExtResource("18_jimbb")]
+position = Vector2(-599, 754)
+metadata/Progress = 1196.3
+
+[node name="spc_pathReset2" parent="Other" instance=ExtResource("18_jimbb")]
+position = Vector2(200, 826)
+metadata/Progress = 394.07
 
 [node name="spc_star" parent="." instance=ExtResource("14_dd5qy")]
 z_index = 1
@@ -436,19 +587,19 @@ scale = Vector2(1.5, 1.5)
 script = ExtResource("17_nrxdv")
 
 [node name="obj_diceBlock1" parent="Setup" instance=ExtResource("14_c7dl6")]
-z_index = 1
+z_index = 2
 position = Vector2(-1100, 414)
 
 [node name="obj_diceBlock2" parent="Setup" instance=ExtResource("14_c7dl6")]
-z_index = 1
+z_index = 2
 position = Vector2(-970, 414)
 
 [node name="obj_diceBlock3" parent="Setup" instance=ExtResource("14_c7dl6")]
-z_index = 1
+z_index = 2
 position = Vector2(-766, 414)
 
 [node name="obj_diceBlock4" parent="Setup" instance=ExtResource("14_c7dl6")]
-z_index = 1
+z_index = 2
 position = Vector2(-636, 414)
 
 [node name="obj_shawarma" parent="." instance=ExtResource("18_cbqk6")]

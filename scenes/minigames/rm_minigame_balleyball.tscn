@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://c74cmavqm10xw"]
+[gd_scene load_steps=64 format=3 uid="uid://c74cmavqm10xw"]
 
 [ext_resource type="Script" path="res://objects/rooms/minigames/balleyball/rm_minigame_balleyball.cs" id="1_j7omk"]
 [ext_resource type="PackedScene" uid="uid://db8bcmriqbdqx" path="res://scenes/minigames/obj_minigameBase.tscn" id="2_iqkrd"]
@@ -19,6 +19,9 @@ size = Vector2(72.75, 242.625)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dojpd"]
 size = Vector2(640, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vs01n"]
+size = Vector2(15, 56.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhmnc"]
 size = Vector2(14.5, 295.5)
@@ -378,6 +381,10 @@ shape = SubResource("RectangleShape2D_fftg3")
 position = Vector2(0, 201.25)
 shape = SubResource("RectangleShape2D_dojpd")
 
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="spr_bg/BOUND_ALL"]
+position = Vector2(-1, 148)
+shape = SubResource("RectangleShape2D_vs01n")
+
 [node name="BOUND_PLR" type="StaticBody2D" parent="spr_bg"]
 collision_layer = 2
 collision_mask = 2
@@ -468,14 +475,14 @@ z_index = 5
 position = Vector2(216, 465)
 collision_layer = 10
 collision_mask = 11
-metadata/Player = 2
+metadata/Player = 3
 
 [node name="obj_character_parent3" parent="Players" instance=ExtResource("7_5b6xe")]
 z_index = 5
 position = Vector2(833, 605)
 collision_layer = 10
 collision_mask = 11
-metadata/Player = 3
+metadata/Player = 2
 
 [node name="obj_character_parent4" parent="Players" instance=ExtResource("7_5b6xe")]
 z_index = 5
@@ -485,6 +492,7 @@ collision_mask = 11
 metadata/Player = 4
 
 [node name="obj_ball" parent="." instance=ExtResource("5_b2chd")]
+z_index = 10
 position = Vector2(516, 276)
 mass = 0.8
 freeze = true
