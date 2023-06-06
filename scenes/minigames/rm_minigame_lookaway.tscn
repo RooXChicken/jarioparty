@@ -60,6 +60,7 @@ animations = [{
 [sub_resource type="Animation" id="Animation_w1k0p"]
 resource_name = "state"
 length = 8.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

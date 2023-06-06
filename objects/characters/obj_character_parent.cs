@@ -38,7 +38,7 @@ public partial class obj_character_parent : RigidBody2D
 	private bool resetAnim = true;
 
 	private Vector2 velocity = new Vector2(0, 0);
-	private float jumpHeight = 1400;
+	private float jumpHeight = 700;
 	private float jumpCountdown = 0;
 	private float idleTimer = 0;
 	private short flip = 1;
@@ -114,6 +114,9 @@ public partial class obj_character_parent : RigidBody2D
 
 			shadow.Scale = new Vector2(3 * scale, 3 * scale);
 		}
+
+		if(abilities.Contains("jump_balley"))
+			jumpHeight *= 2;
 
 		SpriteChanged();
 	}

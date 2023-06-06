@@ -13,7 +13,7 @@ public partial class obj_player_tugofjar : Node2D
 	private Sprite2D arm;
 	private Random rand;
 
-	public int strength = 1;
+	public int strength = 2;
 	private double time;
 	private Alarm t_anim;
 	

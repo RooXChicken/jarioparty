@@ -29,7 +29,7 @@ public partial class rm_minigame_tugofjar : Node2D
 		for(int i = 1; i <= 4; i++)
 			players[i-1] = GetNode<obj_player_tugofjar>("obj_rope/Players/obj_player_tugofjar"+i);
 
-		players[0].strength = -4;
+		players[0].strength = -6;
 
 		GetNode<obj_timerText>("obj_minigameBase/spr_timer/obj_text").Start();
 

@@ -14,14 +14,14 @@ public partial class PlayerData : Node
 	public int pathID = 1;
 
 	//game data
-	public short coins = 100;
+	public short coins = 0;
 	public short stars = 0;
 
 	public float speedMult = 1; //speed
 	public float weightMult = 1; //density
 	public float strengthMult = 1; //punch strength
 
-	public float progress = 5507.820276f; //1464.934115f;
+	public float progress = 1464.934115f;
 	public bool PlayerStarted = false;
 	public int spaceColor = -1;
 	public Color PlayerColor;
