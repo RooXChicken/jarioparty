@@ -41,4 +41,10 @@ public partial class spr_bagPaper : Sprite2D
 		GetNode<Node2D>("../../").Modulate = new Color(1, 1, 1, alpha);
 		((ShaderMaterial)GetNode<Sprite2D>("../../spr_wallet/spr_walletColor").Material).SetShaderParameter("alpha", alpha);
 	}
+
+	public void ChangeItems(PlayerData playerData)
+	{
+		for(int i = 0; i < playerData.items.Count; i++)
+			GetNode<Sprite2D>("Items/spr_item" + (i+1)).Texture = playerData.items[i].Texture;
+	}
 }

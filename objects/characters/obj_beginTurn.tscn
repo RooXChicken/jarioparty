@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://wy38jkfxau55"]
+
+[ext_resource type="Texture2D" uid="uid://clxt7kyk5nxul" path="res://stage/gui/sprites/spr_beginTurn.png" id="1_j261l"]
+[ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://fonts/heygorgeous.ttf" id="2_3jrbl"]
+[ext_resource type="SpriteFrames" uid="uid://c36np4yopqhan" path="res://sprites/gui/controls/anim_buttons1.tres" id="3_uaih8"]
+[ext_resource type="SpriteFrames" uid="uid://ilvqkvi3jrnm" path="res://sprites/gui/controls/anim_buttons3.tres" id="4_bx0m6"]
+
+[sub_resource type="Theme" id="Theme_r4od4"]
+default_font = ExtResource("2_3jrbl")
+default_font_size = 10
+
+[node name="obj_beginTurn" type="Node2D"]
+
+[node name="spr_beginTurn" type="Sprite2D" parent="."]
+texture = ExtResource("1_j261l")
+
+[node name="obj_text" type="RichTextLabel" parent="."]
+z_index = 3
+offset_left = -87.0
+offset_top = -46.0
+offset_right = 293.0
+offset_bottom = 129.0
+theme = SubResource("Theme_r4od4")
+theme_override_font_sizes/normal_font_size = 16
+text = "   Roll Dice
+   Use Item"
+
+[node name="spr_buttonA" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(-74, -32)
+scale = Vector2(0.15, 0.15)
+sprite_frames = ExtResource("3_uaih8")
+
+[node name="spr_buttonA2" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(-74, -6)
+scale = Vector2(0.15, 0.15)
+sprite_frames = ExtResource("4_bx0m6")

@@ -46,10 +46,29 @@ public partial class obj_minigameSpinner : Node2D
 			}
 		}
 
+		GD.Print("Blue:" + blueColors + " Red: " + redColors);
+
+		int added = 0;
+
 		foreach(MinigameBase minigame in ((GameManager)GetNode("/root/GameManager")).minigameLookup)
 		{
-			if(minigame.MinigameName != "testminigame")
+			if((minigame.MinigameType == blueColors || minigame.MinigameType == redColors) && minigame.MinigameName != "testminigame")
+			{
+				added++;
 				minigames.Add(minigame);
+			}
+		}
+
+		foreach(MinigameBase minigame in ((GameManager)GetNode("/root/GameManager")).minigameLookup)
+		{
+			if(added >= 3)
+				break;
+			
+			if(!minigames.Contains(minigame) && minigame.MinigameType == 4 && minigame.MinigameName != "testminigame")
+			{
+				added++;
+				minigames.Add(minigame);
+			}
 		}
 
 		for(int i = 1; i <= 3; i++)

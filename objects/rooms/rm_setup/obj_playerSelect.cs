@@ -15,6 +15,7 @@ public partial class obj_playerSelect : Node2D
 
 	private AnimatedSprite2D spr_hand;
 	private Sprite2D[] clouds;
+	private Node2D obj_clock;
 	private AnimatedSprite2D[] players;
 	private AnimationPlayer anim_transition;
 	private Sprite2D[] portraits;
@@ -78,7 +79,7 @@ public partial class obj_playerSelect : Node2D
 				CharacterSelect(delta);
 				break;
 			case 3:
-				MapSelect();
+				TimeSelect();
 				break;
 		}
 	}
@@ -136,25 +137,33 @@ public partial class obj_playerSelect : Node2D
 			if(characterIndex == 4)
 			{
 				//GetNode<AnimatedSprite2D>("/root/rm_game/LoadingScreen").Visible = true;
-				MapSelect();
+				obj_clock.Visible = true;
+				state = 3;
 			}
 		}
 	}
 
-	private void MapSelect()
+	private void TimeSelect()
+	{
+		
+
+		if(Input.IsActionJustPressed("jump" + 1))
+			LoadGame();
+
+		//((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_map");
+		//((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_minigame_info");
+	}
+
+	private void LoadGame()
 	{
 		for(int i = 0; i < 4; i++)
 		{
 			((GameManager)GetNode("/root/GameManager")).playerData[i].Load();
-			//GD.Print(i + " loaded");
 		}
 
 		((AudioController)GetNode("/root/AudioController")).PlaySound("frogscream");
 		anim_transition.Play("transition");
 		state = 4;
-
-		//((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_map");
-		//((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_minigame_info");
 	}
 
 	private void ChangeIndex(short val)

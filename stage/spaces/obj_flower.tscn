@@ -41,7 +41,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"flower1",
-"speed": 5.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -60,3 +60,4 @@ metadata/Flower = 0
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_8oyru")
 animation = &"flower1"
+frame_progress = 0.406934

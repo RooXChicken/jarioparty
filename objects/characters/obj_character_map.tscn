@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dl1lnlue3anbu"]
+[gd_scene load_steps=11 format=3 uid="uid://dl1lnlue3anbu"]
 
 [ext_resource type="Script" path="res://objects/characters/obj_character_map.cs" id="1_csh0g"]
 [ext_resource type="SpriteFrames" uid="uid://bjun3onf4brkc" path="res://sprites/characters/playable/spr_jario.tres" id="2_xm5c2"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://objects/characters/obj_arrow.cs" id="4_o5l6v"]
 [ext_resource type="Texture2D" uid="uid://d4gkmgtjtcy4c" path="res://stage/gui/sprites/spr_arrowDown.png" id="5_os4sw"]
 [ext_resource type="Texture2D" uid="uid://deq3umj6ceavk" path="res://stage/gui/sprites/spr_arrowLeft.png" id="6_wtbyt"]
+[ext_resource type="PackedScene" uid="uid://wy38jkfxau55" path="res://objects/characters/obj_beginTurn.tscn" id="7_g34f0"]
+[ext_resource type="PackedScene" uid="uid://dimq05i7vtkhw" path="res://stage/obj_itemPicker.tscn" id="8_emj2k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqjky"]
 size = Vector2(54, 84)
@@ -76,6 +78,14 @@ texture = ExtResource("5_os4sw")
 position = Vector2(-76, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("6_wtbyt")
+
+[node name="obj_beginTurn" parent="." instance=ExtResource("7_g34f0")]
+visible = false
+position = Vector2(0, -112)
+
+[node name="obj_itemPicker" parent="." instance=ExtResource("8_emj2k")]
+position = Vector2(0, -148)
+scale = Vector2(3, 3)
 
 [connection signal="body_shape_entered" from="." to="." method="BodyShapeEntered"]
 [connection signal="area_entered" from="spacehitbox" to="." method="SpaceEnter"]

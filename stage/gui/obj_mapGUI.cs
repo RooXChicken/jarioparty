@@ -11,6 +11,8 @@ public partial class obj_mapGUI : CanvasLayer
 		Initialize();
 
 		wallets[0].GetNode<spr_bagPaper>("spr_bagPaperClip/spr_bagPaper").state = 1;
+
+		GetNode<RichTextLabel>("TurnsLeft/obj_text").Text = "[center]" + ((GameManager)GetNode("/root/GameManager")).TurnsLeft;
 	}
 
 	public void Initialize()
@@ -19,6 +21,7 @@ public partial class obj_mapGUI : CanvasLayer
 		for(int i = 0; i < 4; i++)
 		{
 			wallets[i] = GetNode<Node>("obj_wallet" + (i + 1));
+			wallets[i].GetNode<spr_bagPaper>("spr_bagPaperClip/spr_bagPaper").ChangeItems(((GameManager)GetNode("/root/GameManager")).playerData[i]);
 			wallets[i].GetNode<Sprite2D>("spr_icon").Texture = GD.Load<CompressedTexture2D>("res://stage/gui/sprites/ids/spr_" + ((GameManager)GetNode("/root/GameManager")).playerData[i].characterName.ToLower() + "ID.png");
 		}
 	}

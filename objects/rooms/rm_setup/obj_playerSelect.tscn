@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://d36gbi32uwdwa"]
+[gd_scene load_steps=51 format=3 uid="uid://d36gbi32uwdwa"]
 
 [ext_resource type="Script" path="res://objects/rooms/rm_setup/obj_playerSelect.cs" id="1_ncrli"]
 [ext_resource type="Texture2D" uid="uid://cebqc24skftad" path="res://sprites/rooms/rm_setup/spr_cloud1p.png" id="2_xlbee"]
@@ -292,10 +292,26 @@ tracks/1/keys = {
 "values": [Vector2(0, 0), Vector2(0, 220)]
 }
 
+[sub_resource type="Animation" id="Animation_eor52"]
+resource_name = "porttoclock"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 220), Vector2(0, 600)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4lcu4"]
 _data = {
 "RESET": SubResource("Animation_hr21l"),
-"cloudtoport": SubResource("Animation_y8054")
+"cloudtoport": SubResource("Animation_y8054"),
+"porttoclock": SubResource("Animation_eor52")
 }
 
 [node name="obj_playerSelect" type="Node2D"]

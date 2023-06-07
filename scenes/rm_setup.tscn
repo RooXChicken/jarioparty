@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cevjlhgprryav"]
+[gd_scene load_steps=14 format=3 uid="uid://cevjlhgprryav"]
 
 [ext_resource type="PackedScene" uid="uid://d1j2nfn5erdj8" path="res://objects/rooms/rm_setup/obj_dialoguebox.tscn" id="1_aga6h"]
 [ext_resource type="Script" path="res://objects/rooms/rm_setup/obj_frog.cs" id="1_jeo2x"]
+[ext_resource type="PackedScene" uid="uid://nkjbi4qp5kog" path="res://objects/rooms/rm_setup/obj_clock.tscn" id="3_nxk67"]
 [ext_resource type="Script" path="res://objects/common/cm_bg.cs" id="3_tacu8"]
 [ext_resource type="Texture2D" uid="uid://sngjuww5tnt6" path="res://sprites/characters/npc/frog/anim_frogFall.png" id="3_wx207"]
 [ext_resource type="Texture2D" uid="uid://bn8yqkdwc5sxo" path="res://sprites/rooms/rm_setup/bg_setup.png" id="5_djedi"]
@@ -165,6 +166,7 @@ _data = {
 [node name="rm_setup" type="Node2D"]
 
 [node name="obj_playerSelect" parent="." instance=ExtResource("6_41bc8")]
+visible = false
 z_index = 2
 position = Vector2(330, 300)
 scale = Vector2(2, 2)
@@ -172,6 +174,10 @@ scale = Vector2(2, 2)
 [node name="obj_dialoguebox" parent="." instance=ExtResource("1_aga6h")]
 z_index = 2
 position = Vector2(600, 560)
+
+[node name="obj_clock" parent="." instance=ExtResource("3_nxk67")]
+z_index = 5
+position = Vector2(0, -124)
 
 [node name="obj_frog" type="AnimatedSprite2D" parent="."]
 z_index = 10

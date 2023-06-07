@@ -126,8 +126,8 @@ curve = SubResource("Curve2D_3rwww")
 
 [node name="pf_01" type="PathFollow2D" parent="Paths/pt_01"]
 z_index = 2
-position = Vector2(-451.287, 210.922)
-progress = 5507.82
+position = Vector2(-864.587, 754.988)
+progress = 1464.1
 rotates = false
 
 [node name="obj_character_map" parent="Paths/pt_01/pf_01" instance=ExtResource("3_d6dkg")]

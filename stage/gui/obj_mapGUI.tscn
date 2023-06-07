@@ -1,9 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://b3dvuk2a216p2"]
+[gd_scene load_steps=23 format=3 uid="uid://b3dvuk2a216p2"]
 
 [ext_resource type="Script" path="res://stage/gui/obj_mapGUI.cs" id="1_46h3d"]
 [ext_resource type="PackedScene" uid="uid://dqumai6udoy6u" path="res://objects/rooms/rm_minigame_info/obj_cloudTransition.tscn" id="5_vcwf8"]
+[ext_resource type="Texture2D" uid="uid://cnd8fx25jyp2g" path="res://stage/gui/sprites/spr_turnIndicator.png" id="6_1jbfr"]
 [ext_resource type="Script" path="res://stage/gui/Transition.cs" id="6_dvfvr"]
 [ext_resource type="Script" path="res://stage/gui/obj_playerStart.cs" id="6_rmu7n"]
+[ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://fonts/heygorgeous.ttf" id="6_rx5sn"]
 [ext_resource type="Texture2D" uid="uid://ckycs5xx3t4m" path="res://sprites/common/spr_oneblackpixel.png" id="6_x2scx"]
 [ext_resource type="Texture2D" uid="uid://batim536joblg" path="res://sprites/gui/roundStart/spr_jario.png" id="7_w8btv"]
 [ext_resource type="PackedScene" uid="uid://daeu84euga8jt" path="res://stage/gui/obj_wallet.tscn" id="8_7tnb4"]
@@ -11,6 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://bt2hscxeadxgp" path="res://sprites/gui/roundStart/spr_start.png" id="9_7wcct"]
 [ext_resource type="Texture2D" uid="uid://sngjuww5tnt6" path="res://sprites/characters/npc/frog/anim_frogFall.png" id="10_j2jws"]
 [ext_resource type="PackedScene" uid="uid://3u8n2e0ulnt8" path="res://stage/gui/obj_minigameSpinner.tscn" id="11_nyphd"]
+
+[sub_resource type="Theme" id="Theme_04w88"]
+default_font = ExtResource("6_rx5sn")
+default_font_size = 10
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_orrib"]
 shader = ExtResource("8_xdwlg")
@@ -251,6 +257,24 @@ centered = false
 visible = false
 z_index = 20
 metadata/Backwards = false
+
+[node name="TurnsLeft" type="Node2D" parent="."]
+
+[node name="spr_text" type="Sprite2D" parent="TurnsLeft"]
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
+texture = ExtResource("6_1jbfr")
+
+[node name="obj_text" type="RichTextLabel" parent="TurnsLeft"]
+modulate = Color(0, 0, 0, 1)
+z_index = 3
+offset_left = 528.0
+offset_right = 752.0
+offset_bottom = 74.0
+theme = SubResource("Theme_04w88")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]20"
 
 [node name="PlayerStart" type="Node2D" parent="."]
 script = ExtResource("6_rmu7n")

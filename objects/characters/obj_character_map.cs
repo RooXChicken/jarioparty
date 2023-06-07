@@ -27,6 +27,8 @@ public partial class obj_character_map : RigidBody2D
 
 	private Area2D lastCollision;
 	private CollisionShape2D collision;
+	private Node2D obj_beginTurn;
+	private Node2D obj_itemPicker;
 
 	private Alarm t_moveOnBoard;
 	private bool jumping = false;
@@ -35,11 +37,23 @@ public partial class obj_character_map : RigidBody2D
 	private obj_arrow obj_arrowRD;
 	private obj_arrow obj_arrowLD;
 
+	private int itemIndex = 1;
+	private bool itemIndexMoved = false;
+	private float[] randomBagPosX;
+	private float[] randomBagPosY;
+
+	private Vector2[] itemSelectPos2;
+	private Vector2[] itemSelectPos3;
+
+	private float joyhaxis;
+	private float joyhaxisOld;
 	private float velocityX;
 	private float velocityY;
 	private Vector2 posOld;
 	private double delay;
 	private bool locked = false;
+
+	private double animDelay = 0;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -52,6 +66,8 @@ public partial class obj_character_map : RigidBody2D
 
 		playerData = ((GameManager)GetNode("/root/GameManager")).playerData[Player];
 		delay = ((GameManager)GetNode("/root/GameManager")).rand.NextDouble() * 2;
+		obj_beginTurn = GetNode<Node2D>("obj_beginTurn");
+		obj_itemPicker = GetNode<Node2D>("obj_itemPicker");
 
 		sprite = GetNode<AnimatedSprite2D>("obj_sprite");
 		follower = GetNode<PathFollow2D>("../../pf_0" + (Player + 1));
@@ -59,6 +75,23 @@ public partial class obj_character_map : RigidBody2D
 
 		obj_arrowRD = GetNode<obj_arrow>("obj_arrowRD");
 		obj_arrowLD = GetNode<obj_arrow>("obj_arrowLD");
+
+		itemSelectPos2 = new Vector2[] {
+			new Vector2(-20, -20), new Vector2(20, -20)
+		};
+
+		itemSelectPos3 = new Vector2[] {
+			new Vector2(-36, -20), new Vector2(0, -20), new Vector2(36, -20)
+		};
+
+		randomBagPosX = new float[6];
+		randomBagPosY = new float[6];
+
+		for(int i = 0; i < 6; i++)
+		{
+			randomBagPosX[i] = (i - 3) * 2 + obj_itemPicker.Position.X;
+			randomBagPosY[i] = (i - 3) * 2 + obj_itemPicker.Position.Y;
+		}
 
 		follower.Progress = playerData.progress;
 		sprite.SpriteFrames = playerData.animationFrames;
@@ -85,6 +118,7 @@ public partial class obj_character_map : RigidBody2D
 			return;
 
 		idleTimer += (float)delta;
+		animDelay -= delta;
 
 		switch(state)
 		{
@@ -106,22 +140,119 @@ public partial class obj_character_map : RigidBody2D
 			case 5:
 				EndTurn();
 				break;
+			case 9:
+				TurnMenu();
+				break;
+			case 10:
+				OpenItemMenu();
+				break;
+			case 11:
+				HandleItemMenu();
+				break;
 		}
 	}
 
 	private void BeginTurn()
 	{
 		GetNode<Node2D>("../../../../obj_diceBlock").Position = new Vector2(follower.Position.X, follower.Position.Y - 138);
-		GetNode<obj_diceBlock>("../../../../obj_diceBlock").a_spinStart(this);
 		ZIndex++;
 
+		obj_beginTurn.Visible = true;
+		state = 9;
+	}
+
+	private void BeginDiceSpin()
+	{
+		GetNode<obj_diceBlock>("../../../../obj_diceBlock").a_spinStart(this);
 		EnableCollision();
-		state = 1;
+	}
+
+	private void OpenItemMenu()
+	{
+		if(animDelay <= 0)
+		{
+			animDelay = 0.04;
+			obj_itemPicker.Position = new Vector2(randomBagPosX[((GameManager)GetNode("/root/GameManager")).rand.Next(0,5)], randomBagPosY[((GameManager)GetNode("/root/GameManager")).rand.Next(0,5)]);
+		}
+		if(!obj_itemPicker.GetNode<AnimationPlayer>("anim_itemPicker").IsPlaying())
+		{
+			obj_itemPicker.GetNode<AnimationPlayer>("anim_itemPicker").Play("item" + playerData.items.Count);
+			for(int i = 0; i < playerData.items.Count; i++)
+				obj_itemPicker.GetNode<Sprite2D>("Items/spr_item" + (i+1)).Texture = playerData.items[i].Texture;
+			state = 11;
+		}
+	}
+
+	private void HandleItemMenu()
+	{
+		joyhaxis = Input.GetAxis("left" + controllerIndex, "right" + controllerIndex);
+
+		if(!itemIndexMoved)
+		{
+			itemIndexMoved = true;
+
+			if(joyhaxis > 0)
+				itemIndex++;
+			else if(joyhaxis < 0)
+				itemIndex--;
+		}
+
+		if(joyhaxis == 0)
+			itemIndexMoved = false;
+
+		if(itemIndex > playerData.items.Count-1)
+			itemIndex = 0;
+		else if(itemIndex < 0)
+			itemIndex = playerData.items.Count-1;
+
+		if(playerData.items.Count == 1)
+			itemIndex = 1;
+
+		if(playerData.items.Count == 1 || playerData.items.Count == 3)
+		{
+			obj_itemPicker.GetNode<Sprite2D>("Items/spr_itemSelect").Position = itemSelectPos3[itemIndex];
+		}
+		else
+		{
+			obj_itemPicker.GetNode<Sprite2D>("Items/spr_itemSelect").Position = itemSelectPos2[itemIndex];
+		}
+
+		if(Input.IsActionJustPressed("jump" + controllerIndex))
+		{
+			state = 12;
+			obj_itemPicker.GetNode<Sprite2D>("Items/spr_item1").Visible = false;
+			obj_itemPicker.GetNode<Sprite2D>("Items/spr_item2").Visible = false;
+			obj_itemPicker.GetNode<Sprite2D>("Items/spr_item3").Visible = false;
+
+			obj_itemPicker.GetNode<Sprite2D>("Items/spr_item" + (itemIndex+1)).Visible = true;
+			playerData.items[itemIndex].ItemUseMap(playerData);
+		}
 	}
 
 	public void EnableCollision()
 	{
 		collision.Disabled = false;
+	}
+
+	private void TurnMenu()
+	{
+		if(Input.IsActionJustPressed("jump" + controllerIndex))
+		{
+			state = 1;
+			BeginDiceSpin();
+
+			obj_beginTurn.Visible = false;
+		}
+		else if(Input.IsActionJustPressed("punch" + controllerIndex))
+		{
+			if(playerData.items.Count <= 0)
+				return;
+			state = 10;
+			obj_itemPicker.Visible = true;
+			obj_itemPicker.GetNode<AnimationPlayer>("anim_itemPicker").Play("bagOpening");
+
+			obj_beginTurn.Visible = false;
+		}
 	}
 
 	private void RollDice(double delta)

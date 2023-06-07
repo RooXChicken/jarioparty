@@ -21,16 +21,20 @@ public partial class obj_frog : AnimatedSprite2D
 		dialogue = new string[16];
 		dialogue[0] = "before your adventure begins, I am going to need to know some basic information";
 		dialogue[1] = "how many people are playing on this fine evening";
-		dialogue[2] = "1-player game\n1 Player vs. 3 CPU";
-		dialogue[3] = "2-player game\n2 Players vs. 2 CPU";
-		dialogue[4] = "3-player game\n3 Players vs. 1 CPU";
+		dialogue[2] = "1-player game\n1 Player | 3 CPUs";
+		dialogue[3] = "2-player game\n2 Players | 2 CPUs";
+		dialogue[4] = "3-player game\n3 Players | 1 CPU";
 		dialogue[5] = "4-player game \n4 Players";
 		dialogue[6] = "who are you chosing to suffer as";
 		dialogue[7] = "second player";
 		dialogue[8] = "third person";
 		dialogue[9] = "fourth peoples";
-		dialogue[10] = "now let the sufferage start";
-		dialogue[11] = "This message should not appear.";
+		dialogue[10] = "how long will you suffer for";
+		dialogue[11] = "why not suffer longer?";
+		dialogue[12] = "I see no problems with how long you will suffer";
+		dialogue[13] = "Woah. That's a long time.";
+		dialogue[14] = "now let the sufferage start";
+		dialogue[15] = "This message should not appear.";
 
 		obj_dialoguebox = GetNode<Node2D>("../obj_dialoguebox");
 		obj_bg = (cm_bg)GetNode<Sprite2D>("../obj_bg");
