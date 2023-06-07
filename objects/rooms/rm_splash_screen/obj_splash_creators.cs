@@ -14,7 +14,9 @@ public partial class obj_splash_creators : Sprite2D
 		t_transition = new Alarm(2.4, true, this, new Callable(this, "GoToTitleScreen"));
 
 		GetNode<AnimationPlayer>("../anim_splash").CurrentAnimation = "anim_splash";
+		
 		GetNode<AnimationPlayer>("../anim_splash").Play();
+		((AudioController)GetNode("/root/AudioController")).PlaySound("minigame_coin");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,6 +44,7 @@ public partial class obj_splash_creators : Sprite2D
 		GetNode<AnimatedSprite2D>("/root/rm_game/spr_load").Play();
 		//((GameManager)GetNode("/root/GameManager")).LoadDefaults();
 		//((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_minigame_info");
-		((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_title_screen");
+		((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_credits");
+		//((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_title_screen");
 	}
 }

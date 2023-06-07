@@ -1,9 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcmwesgtew4ku"]
+[gd_scene load_steps=20 format=3 uid="uid://bcmwesgtew4ku"]
 
 [ext_resource type="Script" path="res://objects/rooms/rm_credits.cs" id="1_ho80c"]
 [ext_resource type="Texture2D" uid="uid://ckycs5xx3t4m" path="res://sprites/common/spr_oneblackpixel.png" id="2_c5h3k"]
 [ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://fonts/heygorgeous.ttf" id="2_irtmn"]
 [ext_resource type="Texture2D" uid="uid://ddrb40qlnbdot" path="res://sprites/rooms/rm_title_screen/spr_title_jariopartylogo.png" id="3_d6lj3"]
+[ext_resource type="Texture2D" uid="uid://bd2ivufnqukn5" path="res://sprites/rooms/rm_credits/sus.png" id="5_d4jnf"]
+[ext_resource type="Texture2D" uid="uid://difrwf71dc1cp" path="res://sprites/rooms/rm_credits/timetotakeaquiz.png" id="6_k0ylh"]
+[ext_resource type="Texture2D" uid="uid://cws6wtqfo20pu" path="res://sprites/rooms/rm_credits/jratosTotallyNOTstretched.png" id="7_odc6c"]
+[ext_resource type="Texture2D" uid="uid://cr4myehuaem6j" path="res://sprites/rooms/rm_credits/jarioworld2.png" id="8_165ik"]
+[ext_resource type="Texture2D" uid="uid://ckhutqefmbhfn" path="res://sprites/rooms/rm_credits/atcjarioparty.png" id="9_e870b"]
+[ext_resource type="Texture2D" uid="uid://cnc7h267sfwbw" path="res://sprites/rooms/rm_credits/jario3.png" id="10_w413b"]
+[ext_resource type="Texture2D" uid="uid://tvsu2tqx70gt" path="res://sprites/rooms/rm_credits/jariosaiyan.png" id="11_bbfs1"]
+[ext_resource type="Texture2D" uid="uid://c3dwfqvvyu0d1" path="res://sprites/rooms/rm_credits/ohgod.png" id="12_17yqx"]
+[ext_resource type="Texture2D" uid="uid://c4ngflsqehwh6" path="res://sprites/rooms/rm_credits/victoryscreen.png" id="13_f84vv"]
+[ext_resource type="Texture2D" uid="uid://kkv6j85lbo48" path="res://sprites/rooms/rm_credits/fetchimage.png" id="14_xrrlh"]
+[ext_resource type="Texture2D" uid="uid://dvnbrfwp8eybb" path="res://sprites/rooms/rm_credits/jariobattleroyale.png" id="15_tjf8m"]
+[ext_resource type="Texture2D" uid="uid://dqslc1qu7flda" path="res://sprites/rooms/rm_credits/jarioparty.png" id="16_tqhs5"]
+[ext_resource type="Texture2D" uid="uid://bj7r2yrys4ty2" path="res://sprites/rooms/rm_credits/jeamfortress2.png" id="17_fn8aq"]
+[ext_resource type="Texture2D" uid="uid://csi5xyaaootvg" path="res://sprites/rooms/rm_credits/finallockscreen.png" id="18_ull8p"]
 
 [sub_resource type="Theme" id="Theme_a8yvp"]
 default_font = ExtResource("2_irtmn")
@@ -21,13 +35,14 @@ texture = ExtResource("2_c5h3k")
 [node name="Scroll" type="Node2D" parent="."]
 
 [node name="spr_jarioParty" type="Sprite2D" parent="Scroll"]
-position = Vector2(640, 100)
+position = Vector2(640, 899)
 texture = ExtResource("3_d6lj3")
 
 [node name="obj_text" type="RichTextLabel" parent="Scroll"]
 z_index = 4
+offset_top = 797.0
 offset_right = 1280.0
-offset_bottom = 2837.0
+offset_bottom = 7013.0
 theme = SubResource("Theme_a8yvp")
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
@@ -36,7 +51,215 @@ text = "
 
 
 
-[center]Credits Roll
+[center]STAFF ROLL
 
 
-"
+
+
+
+
+
+
+
+
+
+[u]Cast[/u]
+Jario
+Wooigi
+Princess Grapejuice
+Josh
+Shawarma
+Toomba
+Frog
+Bink
+The Squid Sisters
+Chronic the Hoghedge
+Fall Guy
+Fart Simpsan
+Peter Griffin
+Spamton G. Spamton
+The Man Behind the Jlaughter
+Legally Questionable Wooigi
+Princess Applejuice
+
+
+[u]Lead Programmer[/u]
+William Stofka
+
+
+[u]Sprite & UI Designer[/u]
+Daxton Delecluse
+
+
+[u]Music Used[/u]
+Main Theme - Mario Party
+Traveling the Warp Pipe - Mario Party
+Toad's Midway Madness - Mario Party 4
+Play Minigames - Mario Party 4
+Saving Courage - Mario Party
+Let's Go Lightly - Mario Party
+Keepin' on the Path - Mario Party 2
+Dungeon 6 at 150% speed (Susville) - RPG Maker VX Ace
+Not Gonna Lose - Mario Party 2
+Tomorrow's Nostalgia Today - Splatoon 3
+Today's Story - Super Paper Mario
+
+[u]Gave us money for some reason[/u]
+Evan Goenner
+Austin Garcia
+
+
+[u]Jario Lorekeepers[/u]
+Drew Skinner
+Christian Caro
+Maxie Payne
+
+
+[u]The ATC Jario Party[/u]
+Daxton Delecluse
+William Stofka
+Drew Skinner
+Michael Hajasz
+Austin Garcia
+
+
+[u]Not So Honorable Mention[/u]
+gamemaker studio 1 for sucking so much lol why does it so bad??? makes no sense
+I wonder if Mr. Weber found the hidden Jario rooms in our GameMaker projects
+
+
+[u]Special Thanks[/u]
+Cheese Champs
+Big Billy Bob
+\"Liquid Sunshine\" from Splatoon 3 for carrying William's workflow
+and also \"Yoshi Star Galaxy\" from Mario Galaxy 2 for ruining it
+
+at this point we're just stretching the credits so the song can finish so here's the TOP 5 BEST QUOTES THAT WE CAN DISPLAY ON THE SCREEN
+
+5. \"That's me on the weekends\" - William Stofka
+4. \"Stop writing reviews for Morbius on my school account!\" - Daxton Delecluse
+3. \"Top 10 poopiest candies--Number 10: Feces Pieces\" - Michael Hajasz
+2. \"What is 'Juicy Bob's'?\" - Drew Skinner
+1. \"This would get you thrown off the building--and I would go down, pick you up and throw you off again.\" - Mr. Weber
+
+
+
+
+
+
+
+
+[u]Actually Special Thanks[/u]
+Katie Allen
+Ashlynn Anseth
+Christian Caro
+Thomas Daly
+Alex Edralin
+Jessica Fischer
+Austin Garcia
+Evan Goenner
+Michael Hajasz
+Maxie Payne
+Hans Peterson
+Drew Skinner
+Amelia Steinemer
+Will Tabor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ATC Software & Game Development
+2021-2023"
+
+[node name="Sus" type="Sprite2D" parent="Scroll"]
+position = Vector2(208, 1635)
+scale = Vector2(0.475155, 0.475155)
+texture = ExtResource("5_d4jnf")
+
+[node name="Timetotakeaquiz" type="Sprite2D" parent="Scroll"]
+position = Vector2(265, 4163)
+scale = Vector2(0.845361, 0.845361)
+texture = ExtResource("6_k0ylh")
+
+[node name="JratosTotallyNoTstretched" type="Sprite2D" parent="Scroll"]
+position = Vector2(1055, 3400)
+scale = Vector2(0.178703, 0.178703)
+texture = ExtResource("7_odc6c")
+
+[node name="Jarioworld2" type="Sprite2D" parent="Scroll"]
+position = Vector2(1027, 1583)
+scale = Vector2(0.223611, 0.223611)
+texture = ExtResource("8_165ik")
+
+[node name="Atcjarioparty" type="Sprite2D" parent="Scroll"]
+position = Vector2(242, 3727)
+scale = Vector2(0.290123, 0.290123)
+texture = ExtResource("9_e870b")
+
+[node name="Jario3" type="Sprite2D" parent="Scroll"]
+position = Vector2(1074, 4158)
+scale = Vector2(0.108148, 0.108148)
+texture = ExtResource("10_w413b")
+
+[node name="Jariosaiyan" type="Sprite2D" parent="Scroll"]
+position = Vector2(212, 1939)
+scale = Vector2(0.23125, 0.23125)
+texture = ExtResource("11_bbfs1")
+
+[node name="Ohgod" type="Sprite2D" parent="Scroll"]
+position = Vector2(1061, 2429)
+scale = Vector2(0.31198, 0.31198)
+texture = ExtResource("12_17yqx")
+
+[node name="Victoryscreen" type="Sprite2D" parent="Scroll"]
+position = Vector2(221, 2480)
+scale = Vector2(0.191667, 0.191667)
+texture = ExtResource("13_f84vv")
+
+[node name="Fetchimage" type="Sprite2D" parent="Scroll"]
+position = Vector2(223, 3384)
+scale = Vector2(0.435294, 0.435294)
+texture = ExtResource("14_xrrlh")
+
+[node name="Jariobattleroyale" type="Sprite2D" parent="Scroll"]
+position = Vector2(880, 5035)
+scale = Vector2(0.226388, 0.226388)
+texture = ExtResource("15_tjf8m")
+
+[node name="Jarioparty" type="Sprite2D" parent="Scroll"]
+position = Vector2(1057, 1901)
+scale = Vector2(0.409253, 0.409253)
+texture = ExtResource("16_tqhs5")
+
+[node name="Jeamfortress2" type="Sprite2D" parent="Scroll"]
+position = Vector2(457.5, 5035)
+scale = Vector2(0.305, 0.305)
+texture = ExtResource("17_fn8aq")
+
+[node name="Finallockscreen" type="Sprite2D" parent="Scroll"]
+position = Vector2(640, 6248)
+scale = Vector2(0.923611, 0.923611)
+texture = ExtResource("18_ull8p")
