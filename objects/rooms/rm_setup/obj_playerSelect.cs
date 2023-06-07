@@ -31,6 +31,7 @@ public partial class obj_playerSelect : Node2D
 		animation = GetNode<AnimationPlayer>("anim_player");
 		spr_hand = GetNode<AnimatedSprite2D>("spr_hand");
 		anim_transition = GetNode<AnimationPlayer>("../anim_transition");
+		obj_clock = GetNode<Node2D>("../obj_clock");
 		Visible = false;
 
 		spr_hand.Play("default");
@@ -81,6 +82,9 @@ public partial class obj_playerSelect : Node2D
 			case 3:
 				TimeSelect();
 				break;
+			case 4:
+				FinalStage();
+				break;
 		}
 	}
 
@@ -123,11 +127,17 @@ public partial class obj_playerSelect : Node2D
 			players[index].Play("dance");
 			players[index].Visible = true;
 
-			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(new ItemBase(((GameManager)GetNode("/root/GameManager")).itemLookup[0]));
-			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(new ItemBase(((GameManager)GetNode("/root/GameManager")).itemLookup[1]));
-			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(new ItemBase(((GameManager)GetNode("/root/GameManager")).itemLookup[2]));
+			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(((GameManager)GetNode("/root/GameManager")).itemLookup[0]);
+			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(((GameManager)GetNode("/root/GameManager")).itemLookup[1]);
+			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(((GameManager)GetNode("/root/GameManager")).itemLookup[2]);
 
 			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].playerOrder = characterIndex + 1;
+
+			if(Input.IsActionPressed("costume" + controllerIndex))
+			{
+				((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].Costume = true;
+				players[index].Play("danceC");
+			}
 
 			controllerIndex++;
 			characterIndex++;
@@ -137,7 +147,10 @@ public partial class obj_playerSelect : Node2D
 			if(characterIndex == 4)
 			{
 				//GetNode<AnimatedSprite2D>("/root/rm_game/LoadingScreen").Visible = true;
+				animation.Play("porttoclock");
 				obj_clock.Visible = true;
+				SetFrogText((short)(10));
+				spr_hand.Visible = false;
 				state = 3;
 			}
 		}
@@ -145,13 +158,32 @@ public partial class obj_playerSelect : Node2D
 
 	private void TimeSelect()
 	{
-		
-
+		int turns = ((obj_clock)obj_clock).Turns;
+		if(turns != -1)
+		{
+			if(turns <= 10)
+				SetFrogText((short)(11));
+			else if(turns <= 40)
+				SetFrogText((short)(12));
+			else
+				SetFrogText((short)(13));
+		}
 		if(Input.IsActionJustPressed("jump" + 1))
-			LoadGame();
+		{
+			((GameManager)GetNode("/root/GameManager")).TurnsMax = turns;
+			SetFrogText((short)(14));
+			((obj_clock)obj_clock).Lock = true;
+			state = 4;
+		}
 
 		//((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_map");
 		//((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_minigame_info");
+	}
+
+	private void FinalStage()
+	{
+		if(Input.IsActionJustPressed("jump" + 1))
+			LoadGame();
 	}
 
 	private void LoadGame()
@@ -189,7 +221,8 @@ public partial class obj_playerSelect : Node2D
 					break;
 		}
 
-		((AudioController)GetNode("/root/AudioController")).PlaySound("gui_selectionMove");
+		if(state < 3)
+			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_selectionMove");
 
 		switch(index)
 		{

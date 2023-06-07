@@ -149,6 +149,12 @@ public partial class obj_character_map : RigidBody2D
 			case 11:
 				HandleItemMenu();
 				break;
+			case 12:
+				ExitZoom();
+				break;
+			case 13:
+				ItemsMove(delta);
+				break;
 		}
 	}
 
@@ -158,6 +164,9 @@ public partial class obj_character_map : RigidBody2D
 		ZIndex++;
 
 		obj_beginTurn.Visible = true;
+
+		if(playerData.items.Count <= 0)
+			obj_beginTurn.GetNode<Sprite2D>("ItemDisable").Visible = true;
 		state = 9;
 	}
 
@@ -192,9 +201,15 @@ public partial class obj_character_map : RigidBody2D
 			itemIndexMoved = true;
 
 			if(joyhaxis > 0)
+			{
+				((AudioController)GetNode("/root/AudioController")).PlaySound("gui_selectionMove");
 				itemIndex++;
+			}
 			else if(joyhaxis < 0)
+			{
+				((AudioController)GetNode("/root/AudioController")).PlaySound("gui_selectionMove");
 				itemIndex--;
+			}
 		}
 
 		if(joyhaxis == 0)
@@ -219,13 +234,26 @@ public partial class obj_character_map : RigidBody2D
 
 		if(Input.IsActionJustPressed("jump" + controllerIndex))
 		{
-			state = 12;
+			state = 13;
+			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_select");
 			obj_itemPicker.GetNode<Sprite2D>("Items/spr_item1").Visible = false;
 			obj_itemPicker.GetNode<Sprite2D>("Items/spr_item2").Visible = false;
 			obj_itemPicker.GetNode<Sprite2D>("Items/spr_item3").Visible = false;
 
 			obj_itemPicker.GetNode<Sprite2D>("Items/spr_item" + (itemIndex+1)).Visible = true;
+			GD.Print(playerData.items[itemIndex].ItemIndex);
 			playerData.items[itemIndex].ItemUseMap(playerData);
+		}
+	}
+
+	private void ItemsMove(double delta)
+	{
+		obj_itemPicker.GetNode<Sprite2D>("Items/spr_item" + (itemIndex+1)).Position = obj_itemPicker.GetNode<Sprite2D>("Items/spr_item" + (itemIndex+1)).Position.Lerp(itemSelectPos3[1], (float)delta*5);
+		if(obj_itemPicker.GetNode<Sprite2D>("Items/spr_item" + (itemIndex+1)).Position.X < 1 && obj_itemPicker.GetNode<Sprite2D>("Items/spr_item" + (itemIndex+1)).Position.X > -1)
+		{
+			obj_itemPicker.Visible = false;
+			obj_beginTurn.Visible = true;
+			state = 9;
 		}
 	}
 
@@ -243,15 +271,39 @@ public partial class obj_character_map : RigidBody2D
 
 			obj_beginTurn.Visible = false;
 		}
-		else if(Input.IsActionJustPressed("punch" + controllerIndex))
+		else if(!obj_beginTurn.GetNode<Sprite2D>("ItemDisable").Visible && Input.IsActionJustPressed("punch" + controllerIndex))
 		{
 			if(playerData.items.Count <= 0)
 				return;
 			state = 10;
 			obj_itemPicker.Visible = true;
 			obj_itemPicker.GetNode<AnimationPlayer>("anim_itemPicker").Play("bagOpening");
+			obj_beginTurn.GetNode<Sprite2D>("ItemDisable").Visible = true;
 
 			obj_beginTurn.Visible = false;
+		}
+		else if(Input.IsActionJustPressed("viewMap" + controllerIndex))
+		{
+			state = 12;
+			obj_beginTurn.Visible = false;
+			((AudioController)GetNode("/root/AudioController")).MusicEffect("volume", -8);
+			GetNode<CanvasLayer>("ExitZoomLayer").Visible = true;
+			GetNode<obj_map>("../../../../").SetZoomLevel(0.35f);
+			GetNode<obj_map>("../../../../").SetPosition(new Vector2(-350, 0));
+		}
+	}
+
+	private void ExitZoom()
+	{
+		if(Input.IsActionJustPressed("viewMap" + controllerIndex))
+		{
+			obj_beginTurn.Visible = true;
+			GetNode<CanvasLayer>("ExitZoomLayer").Visible = false;
+			state = 9;
+			GetNode<obj_map>("../../../../").SetZoomLevel(1);
+			GetNode<obj_map>("../../../../").SetPosition();
+
+			((AudioController)GetNode("/root/AudioController")).MusicEffect("volume", 0);
 		}
 	}
 
@@ -286,7 +338,7 @@ public partial class obj_character_map : RigidBody2D
 		{
 			if(((obj_diceBlock)GetNode<Node2D>("../../../../obj_diceBlock")).numState == 2)
 			{
-				moves = ((obj_diceBlock)GetNode<Node2D>("../../../../obj_diceBlock")).num + 1;
+				moves = ((obj_diceBlock)GetNode<Node2D>("../../../../obj_diceBlock")).num;
 				GetNode<CollisionShape2D>("spacehitbox/obj_collision").Disabled = false;
 				Freeze = true;
 				movesCount = true;
@@ -464,12 +516,9 @@ public partial class obj_character_map : RigidBody2D
 			return;
 		}
 
-		GD.Print(area.Name);
-
 		if(area.Name != "spc_star" && area.Name.ToString().Substring(0, 6) != "spc_ar")
 		{
-			moves--;
-			GetNode<obj_diceBlock>("../../../../obj_diceBlock").num--;
+			moves += GetNode<obj_diceBlock>("../../../../obj_diceBlock").DecrementDice();
 			if(canMove)
 				lastCollision = area;
 		}

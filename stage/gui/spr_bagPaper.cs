@@ -44,6 +44,8 @@ public partial class spr_bagPaper : Sprite2D
 
 	public void ChangeItems(PlayerData playerData)
 	{
+		if(playerData.items.Count <= 0)
+			state = 1;
 		for(int i = 0; i < playerData.items.Count; i++)
 			GetNode<Sprite2D>("Items/spr_item" + (i+1)).Texture = playerData.items[i].Texture;
 	}

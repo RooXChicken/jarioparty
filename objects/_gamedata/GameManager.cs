@@ -7,7 +7,8 @@ public partial class GameManager : Node
 {
 	public short gameState = 0;
 	public short playerCount = 1;
-	public int TurnsLeft = 20;
+	public int TurnNumber = 1;
+	public int TurnsMax = 20;
 
 	public int controllersConnected = 0;
 	public int CurrentMinigame = 5;
@@ -18,7 +19,7 @@ public partial class GameManager : Node
 	public PlayerData[] playerData = new PlayerData[4];
 	public ItemBase[] itemLookup = new ItemBase[]
 		{
-			new ItemBase(0, 7), new ItemBase(1, 4), new ItemBase(2, 9), new ItemBase(3, 3)
+			new Cola(0, 7), new DoubleDice(1, 4), new ZombieKey(2, 9), new PocketDimension(3, 3)
 		};
 	public MinigameBase[] minigameLookup = new MinigameBase[]
 		{
@@ -102,9 +103,9 @@ public partial class GameManager : Node
 		{
 			playerData[i] = new PlayerData(-1, (ushort)i, (i >= 1));
 
-			playerData[i].items.Add(new ItemBase(itemLookup[0]));
-			playerData[i].items.Add(new ItemBase(itemLookup[1]));
-			playerData[i].items.Add(new ItemBase(itemLookup[2]));
+			playerData[i].items.Add(itemLookup[0]);
+			playerData[i].items.Add(itemLookup[1]);
+			playerData[i].items.Add(itemLookup[2]);
 
 			playerData[i].playerOrder = i + 1;
 

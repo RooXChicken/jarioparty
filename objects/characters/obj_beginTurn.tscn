@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://wy38jkfxau55"]
+[gd_scene load_steps=8 format=3 uid="uid://wy38jkfxau55"]
 
 [ext_resource type="Texture2D" uid="uid://clxt7kyk5nxul" path="res://stage/gui/sprites/spr_beginTurn.png" id="1_j261l"]
 [ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://fonts/heygorgeous.ttf" id="2_3jrbl"]
 [ext_resource type="SpriteFrames" uid="uid://c36np4yopqhan" path="res://sprites/gui/controls/anim_buttons1.tres" id="3_uaih8"]
 [ext_resource type="SpriteFrames" uid="uid://ilvqkvi3jrnm" path="res://sprites/gui/controls/anim_buttons3.tres" id="4_bx0m6"]
+[ext_resource type="SpriteFrames" uid="uid://bhffymqfnemm5" path="res://sprites/gui/controls/anim_buttons4.tres" id="5_cij42"]
+[ext_resource type="Texture2D" uid="uid://ckycs5xx3t4m" path="res://sprites/common/spr_oneblackpixel.png" id="6_bqehn"]
 
 [sub_resource type="Theme" id="Theme_r4od4"]
 default_font = ExtResource("2_3jrbl")
@@ -17,22 +19,40 @@ texture = ExtResource("1_j261l")
 [node name="obj_text" type="RichTextLabel" parent="."]
 z_index = 3
 offset_left = -87.0
-offset_top = -46.0
-offset_right = 293.0
-offset_bottom = 129.0
+offset_top = -42.0
+offset_right = 85.0
+offset_bottom = 44.0
 theme = SubResource("Theme_r4od4")
 theme_override_font_sizes/normal_font_size = 16
 text = "   Roll Dice
-   Use Item"
+   Use Item
+   View Map"
 
 [node name="spr_buttonA" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(-74, -32)
+position = Vector2(-74, -28)
 scale = Vector2(0.15, 0.15)
 sprite_frames = ExtResource("3_uaih8")
+autoplay = "default"
 
 [node name="spr_buttonA2" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(-74, -6)
+position = Vector2(-74, -2)
 scale = Vector2(0.15, 0.15)
 sprite_frames = ExtResource("4_bx0m6")
+autoplay = "default"
+
+[node name="spr_buttonA3" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(-74, 24)
+scale = Vector2(0.15, 0.15)
+sprite_frames = ExtResource("5_cij42")
+autoplay = "default"
+
+[node name="ItemDisable" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.752941)
+z_index = 3
+position = Vector2(0, -1.29925)
+scale = Vector2(179, 26.5985)
+texture = ExtResource("6_bqehn")

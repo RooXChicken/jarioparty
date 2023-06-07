@@ -12,6 +12,8 @@ public partial class PlayerData : Node
 	public int minigameScore = 0;
 	public int diceRoll = 0;
 	public int pathID = 1;
+	public bool Costume = false;
+	public int PowerupState = -1;
 
 	//game data
 	public short coins = 0;
@@ -28,6 +30,7 @@ public partial class PlayerData : Node
 
 	public List<ItemBase> items;
 	public SpriteFrames animationFrames;
+	public Texture armTexture;
 
 	public PlayerData(short _controllerIndex, ushort _characterIndex, bool _ai = false)
 	{
@@ -70,7 +73,10 @@ public partial class PlayerData : Node
 	private SpriteFrames _GetSpriteFrames()
 	{
 		SpriteFrames spr = null;
-		spr = GD.Load<SpriteFrames>("res://sprites/characters/playable/spr_" + characterName.ToLower() + ".tres");
+		if(!Costume)
+			spr = GD.Load<SpriteFrames>("res://sprites/characters/playable/spr_" + characterName.ToLower() + ".tres");
+		else
+			spr = GD.Load<SpriteFrames>("res://sprites/characters/playable/costumes/spr_" + characterName.ToLower() + ".tres");
 
 		return spr;
 	}

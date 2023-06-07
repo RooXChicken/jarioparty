@@ -18,7 +18,7 @@ public partial class obj_shawarma : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		if(((GameManager)GetNode("/root/GameManager")).playerData[0].PlayerStarted && ((GameManager)GetNode("/root/GameManager")).TurnsLeft != 5)
+		if(((GameManager)GetNode("/root/GameManager")).playerData[0].PlayerStarted && ((GameManager)GetNode("/root/GameManager")).TurnsMax-((GameManager)GetNode("/root/GameManager")).TurnNumber != 5)
 		{
 			QueueFree();
 			return;
@@ -44,7 +44,7 @@ public partial class obj_shawarma : Node2D
 			shawarmaDialogue[11] = "Since I am ballin, I finna give u all 10 coins to start.\n\n\n\n  Continue";
 			shawarmaDialogue[12] = "OKIII enjoy the dope party. Bye felicia!\n\n\n\n  Exit";
 		}
-		else if(((GameManager)GetNode("/root/GameManager")).TurnsLeft == 5)
+		else if(((GameManager)GetNode("/root/GameManager")).TurnsMax-((GameManager)GetNode("/root/GameManager")).TurnNumber == 5)
 		{
 			shawarmaDialogue[0] = "Hi sisters! the game is almost over!!!!\n\n\n  Continue";
 			shawarmaDialogue[1] = "hav you been enjoying the epic game?\n\n\n  Yes\n  No";

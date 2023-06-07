@@ -10,6 +10,7 @@ default_font = ExtResource("4_swwt1")
 default_font_size = 10
 
 [node name="obj_clock" type="Node2D"]
+position = Vector2(1, 0)
 script = ExtResource("1_j6wya")
 
 [node name="spr_clock" type="Sprite2D" parent="."]

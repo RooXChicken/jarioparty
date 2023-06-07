@@ -42,5 +42,7 @@ public partial class obj_playerStart : Node2D
 		Modulate = new Color(1, 1, 1, 0);
 		Visible = false;
 		player.state = 0;
+
+		GetNode<Node2D>("../TurnsLeft").Modulate = new Color(1, 1, 1, 0.5f);
 	}
 }

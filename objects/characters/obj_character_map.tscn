@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dl1lnlue3anbu"]
+[gd_scene load_steps=14 format=3 uid="uid://dl1lnlue3anbu"]
 
 [ext_resource type="Script" path="res://objects/characters/obj_character_map.cs" id="1_csh0g"]
 [ext_resource type="SpriteFrames" uid="uid://bjun3onf4brkc" path="res://sprites/characters/playable/spr_jario.tres" id="2_xm5c2"]
@@ -8,12 +8,18 @@
 [ext_resource type="Texture2D" uid="uid://deq3umj6ceavk" path="res://stage/gui/sprites/spr_arrowLeft.png" id="6_wtbyt"]
 [ext_resource type="PackedScene" uid="uid://wy38jkfxau55" path="res://objects/characters/obj_beginTurn.tscn" id="7_g34f0"]
 [ext_resource type="PackedScene" uid="uid://dimq05i7vtkhw" path="res://stage/obj_itemPicker.tscn" id="8_emj2k"]
+[ext_resource type="SpriteFrames" uid="uid://bhffymqfnemm5" path="res://sprites/gui/controls/anim_buttons4.tres" id="9_ugt8m"]
+[ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://fonts/heygorgeous.ttf" id="10_qbxfk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqjky"]
 size = Vector2(54, 84)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myi16"]
 size = Vector2(2, 11)
+
+[sub_resource type="Theme" id="Theme_k6u1o"]
+default_font = ExtResource("10_qbxfk")
+default_font_size = 10
 
 [node name="obj_character_map" type="RigidBody2D"]
 position = Vector2(0, -25)
@@ -86,6 +92,32 @@ position = Vector2(0, -112)
 [node name="obj_itemPicker" parent="." instance=ExtResource("8_emj2k")]
 position = Vector2(0, -148)
 scale = Vector2(3, 3)
+
+[node name="ExitZoomLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ExitZoom" type="Node2D" parent="ExitZoomLayer"]
+position = Vector2(263, 144)
+scale = Vector2(0.8, 0.8)
+
+[node name="spr_button" type="AnimatedSprite2D" parent="ExitZoomLayer/ExitZoom"]
+position = Vector2(830, 670)
+scale = Vector2(0.4, 0.4)
+sprite_frames = ExtResource("9_ugt8m")
+autoplay = "default"
+frame_progress = 0.509061
+
+[node name="obj_text" type="RichTextLabel" parent="ExitZoomLayer/ExitZoom"]
+modulate = Color(0, 0, 0, 1)
+z_index = 3
+offset_left = 873.0
+offset_top = 627.0
+offset_right = 1507.0
+offset_bottom = 755.0
+scale = Vector2(0.707, 0.707)
+theme = SubResource("Theme_k6u1o")
+theme_override_font_sizes/normal_font_size = 76
+text = "Exit Map"
 
 [connection signal="body_shape_entered" from="." to="." method="BodyShapeEntered"]
 [connection signal="area_entered" from="spacehitbox" to="." method="SpaceEnter"]

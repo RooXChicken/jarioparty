@@ -8,7 +8,9 @@ public partial class obj_diceBlock : Node2D
 	private AnimatedSprite2D spr_number;
 	private Alarm t_spinCycle;
 	private obj_character_map player;
+	private AnimationPlayer anim_items;
 	public int num = -1;
+	private int extra = 0;
 
 	private bool diceHit = false;
 	private bool numberAnimation = false;
@@ -30,6 +32,7 @@ public partial class obj_diceBlock : Node2D
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://stage/sound/snd_diceblockHit.wav", "diceblockHit");
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://stage/sound/snd_diceblockNumber.wav", "diceblockNumber");
 		spr_diceblock = GetNode<AnimatedSprite2D>("obj_rb/spr_diceblock");
+		anim_items = GetNode<AnimationPlayer>("anim_items");
 		spr_diceblock.Material = new ShaderMaterial() { Shader = (spr_diceblock.Material as ShaderMaterial).Shader.Duplicate() as Shader};
 		spr_diceHit = GetNode<AnimatedSprite2D>("spr_diceHit");
 		spr_number = GetNode<AnimatedSprite2D>("obj_rb/spr_number");
@@ -48,6 +51,7 @@ public partial class obj_diceBlock : Node2D
 		GetNode<RigidBody2D>("obj_rb").Sleeping = true;
 
 		num = -1;
+		extra = 0;
 		diceHit = false;
 		numberAnimation = false;
 		numState = 0;
@@ -75,6 +79,12 @@ public partial class obj_diceBlock : Node2D
 		spr_diceblock.Play("spinStart");
 		t_spinCycle.WaitTime = 0.2 * 3;
 		t_spinCycle.Start();
+
+		if(player.playerData.PowerupState == 1)
+		{
+			GetNode<Node2D>("Plus3").Visible = true;
+			extra = 3;
+		}
 	}
 
 	public void Show()
@@ -120,7 +130,6 @@ public partial class obj_diceBlock : Node2D
 				if(spr_number.Scale.X < 3.2f)
 				{
 					numState = 2;
-
 				}
 				break;
 			case 2:
@@ -133,8 +142,6 @@ public partial class obj_diceBlock : Node2D
 				}
 				break;
 		}
-
-		spr_number.Frame = num + 1;
 	}
 
 	private void bodyEntered(Rid body_rid, Node body, long body_shape_index, long local_shape_index)
@@ -150,4 +157,24 @@ public partial class obj_diceBlock : Node2D
 		}
 	}
 
+	public int DecrementDice()
+	{
+		if(extra > 0)
+		{
+			extra--;
+			GetNode<AnimatedSprite2D>("Plus3/spr_number").Frame--;
+
+			return 0;
+		}
+		else
+		{
+			GetNode<Node2D>("Plus3").Visible = false;
+			player.playerData.PowerupState = 0;
+		}
+
+		num--;
+		spr_number.Frame = num;
+		
+		return -1;
+	}
 }

@@ -58,7 +58,7 @@ public partial class obj_itemPicker : Node2D
 		
 		items = new List<ItemBase>();
 
-		items.Add(new NoItem());
+		//items.Add(new NoItem());
 
 		for(int i = 0; i < playerData.items.Count; i++)
 		{

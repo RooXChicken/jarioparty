@@ -176,6 +176,7 @@ z_index = 2
 position = Vector2(600, 560)
 
 [node name="obj_clock" parent="." instance=ExtResource("3_nxk67")]
+visible = false
 z_index = 5
 position = Vector2(0, -124)
 
