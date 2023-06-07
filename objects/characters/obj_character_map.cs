@@ -141,7 +141,7 @@ public partial class obj_character_map : RigidBody2D
 				EndTurn();
 				break;
 			case 9:
-				TurnMenu();
+				TurnMenu(delta);
 				break;
 			case 10:
 				OpenItemMenu();
@@ -262,8 +262,20 @@ public partial class obj_character_map : RigidBody2D
 		collision.Disabled = false;
 	}
 
-	private void TurnMenu()
+	private void TurnMenu(double delta)
 	{
+		if(controllerIndex == -1)
+		{
+			delay -= delta;
+			if(delay <= 0)
+			{
+				state = 1;
+				BeginDiceSpin();
+
+				obj_beginTurn.Visible = false;
+			}
+			return;
+		}
 		if(Input.IsActionJustPressed("jump" + controllerIndex))
 		{
 			state = 1;
