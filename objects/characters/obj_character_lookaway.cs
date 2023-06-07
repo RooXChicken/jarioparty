@@ -15,6 +15,7 @@ public partial class obj_character_lookaway : Node2D
 	public int DirectionFacing {get {return facing;}}
 	private AnimationPlayer anim_face;
 	private AnimatedSprite2D sprite;
+	private Sprite2D spr_pScore;
 
 	private float joyhaxis = 0;
 	private float joyvaxis = 0;
@@ -27,11 +28,13 @@ public partial class obj_character_lookaway : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		Variant _Player = GetMeta("Player");
-		Player = _Player.As<int>() - 1;
+		Player = ((GameManager)GetNode("/root/GameManager")).numsLeft[((GameManager)GetNode("/root/GameManager")).rand.Next(0, ((GameManager)GetNode("/root/GameManager")).numsLeft.Count)];
+		((GameManager)GetNode("/root/GameManager")).numsLeft.Remove(Player);
+		Player--;
 
 		anim_face = GetNode<AnimationPlayer>("anim_face");
 		sprite = GetNode<AnimatedSprite2D>("spr_face");
+		spr_pScore = GetNode<Sprite2D>("spr_pScore");
 		playerData = ((GameManager)GetNode("/root/GameManager")).playerData[Player];
 		abilities = ((GameManager)GetNode("/root/GameManager")).minigameLookup[((GameManager)GetNode("/root/GameManager")).CurrentMinigame].Abilities;
 		sprite.SpriteFrames = playerData.animationFrames;
@@ -58,6 +61,7 @@ public partial class obj_character_lookaway : Node2D
 
 	public void StartAnimation()
 	{
+		spr_pScore.Visible = false;
 		anim_face.Play("rotation");
 	}
 
@@ -79,9 +83,17 @@ public partial class obj_character_lookaway : Node2D
 	{
 		if(!Out)
 		{
+			spr_pScore.Visible = true;
+			spr_pScore.Frame = 1;
 			Out = true;
 			anim_face.Play("shrink");
 		}
+	}
+
+	public void Pass()
+	{
+		spr_pScore.Visible = true;
+		spr_pScore.Frame = 0;
 	}
 
 	private void ProcessAnimations()

@@ -48,9 +48,9 @@ public partial class obj_arrow : Node2D
 					direction = 1;
 				break;
 			case 1:
-				if(joyhaxis > -joyvaxis)
+				if(-joyhaxis > joyvaxis)
 					direction = 2;
-				else if(-joyvaxis > joyhaxis)
+				else if(joyvaxis > -joyhaxis)
 					direction = 1;
 				break;
 		}

@@ -8,6 +8,6 @@ public partial class DoubleDice : ItemBase
 
     public override void ItemUseMap(PlayerData player)
     {
-        
+        player.PowerupState = 2;
     }
 }

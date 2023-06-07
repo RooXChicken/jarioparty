@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://db8bcmriqbdqx" path="res://scenes/minigames/obj_minigameBase.tscn" id="1_88fdi"]
 [ext_resource type="Script" path="res://objects/rooms/minigames/lookaway/rm_minigame_lookaway.cs" id="1_cons0"]
-[ext_resource type="PackedScene" path="res://objects/characters/obj_character_lookaway.tscn" id="2_cn341"]
+[ext_resource type="PackedScene" uid="uid://dngbihoaytb0f" path="res://objects/characters/obj_character_lookaway.tscn" id="2_cn341"]
 [ext_resource type="Texture2D" uid="uid://bur8u540bntpv" path="res://sprites/rooms/minigames/lookaway/spr_bg.png" id="4_bjvx7"]
 [ext_resource type="Shader" path="res://shaders/shd_lookawayScore.shd.gdshader" id="4_lvvae"]
 [ext_resource type="Texture2D" uid="uid://4d412peo3oln" path="res://sprites/rooms/minigames/lookaway/spr_countdown.png" id="4_yoayg"]

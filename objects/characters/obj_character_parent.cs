@@ -65,8 +65,9 @@ public partial class obj_character_parent : RigidBody2D
 		animation = GetNode<AnimationPlayer>("animations");
 		obj_interact = GetNode<obj_interaction>("obj_interaction");
 
-		Variant _Player = GetMeta("Player");
-		Player = _Player.As<int>() - 1;
+		Player = ((GameManager)GetNode("/root/GameManager")).numsLeft[((GameManager)GetNode("/root/GameManager")).rand.Next(0, ((GameManager)GetNode("/root/GameManager")).numsLeft.Count)];
+		((GameManager)GetNode("/root/GameManager")).numsLeft.Remove(Player);
+		Player--;
 
 		playerData = ((GameManager)GetNode("/root/GameManager")).playerData[Player];
 		abilities = ((GameManager)GetNode("/root/GameManager")).minigameLookup[((GameManager)GetNode("/root/GameManager")).CurrentMinigame].Abilities;
@@ -140,11 +141,16 @@ public partial class obj_character_parent : RigidBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if(justJumped)
+		if(abilities.Contains("jump_balley"))
 		{
-			//ApplyCentralImpulse(-LinearVelocity);
-			ApplyCentralImpulse(new Vector2(0, -jumpHeight - (LinearVelocity.Y*2)));
-			//GD.Print("+LINVEL: " + LinearVelocity + " -LINVEL: " + -LinearVelocity);
+			if(justJumped)
+			{
+				//ApplyCentralImpulse(-LinearVelocity);
+				ApplyCentralImpulse(new Vector2(0, -jumpHeight - (LinearVelocity.Y*2)));
+				//GD.Print("+LINVEL: " + LinearVelocity + " -LINVEL: " + -LinearVelocity);
+			}
+			else
+				ApplyCentralImpulse(new Vector2(joyhaxis * movementSpeed, joyvaxis * movementSpeed) + velocity);
 		}
 		else
 			ApplyCentralImpulse(new Vector2(joyhaxis * movementSpeed, joyvaxis * movementSpeed) + velocity);

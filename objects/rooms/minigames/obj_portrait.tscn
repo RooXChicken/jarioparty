@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c38e7potf8l16"]
 
-[ext_resource type="SpriteFrames" uid="uid://brekq8pelfxn1" path="res://sprites/characters/playable/spr_jario.tres" id="1_86tmd"]
+[ext_resource type="SpriteFrames" uid="uid://bjun3onf4brkc" path="res://sprites/characters/playable/spr_jario.tres" id="1_86tmd"]
 [ext_resource type="Texture2D" uid="uid://duyhevb3offnv" path="res://sprites/characters/assets/placements.png" id="2_y33jh"]
 [ext_resource type="SpriteFrames" uid="uid://dmwtjs78d1gl0" path="res://stage/gui/anim_walletNumbers.tres" id="3_rvxr2"]
 [ext_resource type="Texture2D" uid="uid://bgyuat2i50jqq" path="res://stage/gui/sprites/spr_coin.png" id="4_vc85p"]

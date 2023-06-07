@@ -85,6 +85,12 @@ public partial class obj_diceBlock : Node2D
 			GetNode<Node2D>("Plus3").Visible = true;
 			extra = 3;
 		}
+
+		if(player.playerData.PowerupState == 2)
+		{
+			GetNode<Node2D>("Plus6").Visible = true;
+			extra = 6;
+		}
 	}
 
 	public void Show()
@@ -162,13 +168,17 @@ public partial class obj_diceBlock : Node2D
 		if(extra > 0)
 		{
 			extra--;
-			GetNode<AnimatedSprite2D>("Plus3/spr_number").Frame--;
+			if(player.playerData.PowerupState == 1)
+				GetNode<AnimatedSprite2D>("Plus3/spr_number").Frame--;
+			else
+				GetNode<AnimatedSprite2D>("Plus6/spr_number").Frame--;
 
 			return 0;
 		}
 		else
 		{
 			GetNode<Node2D>("Plus3").Visible = false;
+			GetNode<Node2D>("Plus6").Visible = false;
 			player.playerData.PowerupState = 0;
 		}
 

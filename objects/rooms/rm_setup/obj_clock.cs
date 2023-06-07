@@ -32,16 +32,14 @@ public partial class obj_clock : Node2D
 		
 		GetControllerInput();
 
-		GD.Print(spr_clockArrow.Rotation);
-
 		if(joyhaxis > 0 && spr_clockArrow.Rotation < 6.22f)
 		{
-			((AudioController)GetNode("/root/AudioController")).PlaySound("tick");
+			//((AudioController)GetNode("/root/AudioController")).PlaySound("tick");
 			spr_clockArrow.Rotation += joyhaxis*0.5f;
 		}
 		if(joyhaxis < 0 && spr_clockArrow.Rotation > 0.01f)
 		{
-			((AudioController)GetNode("/root/AudioController")).PlaySound("tick");
+			//((AudioController)GetNode("/root/AudioController")).PlaySound("tick");
 			spr_clockArrow.Rotation += joyhaxis*0.5f;
 		}
 

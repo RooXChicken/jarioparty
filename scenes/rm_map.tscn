@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://u1vt5ps02nth"]
+[gd_scene load_steps=32 format=3 uid="uid://u1vt5ps02nth"]
 
 [ext_resource type="Script" path="res://objects/rooms/worldmaps/obj_map.cs" id="1_hdo0i"]
 [ext_resource type="PackedScene" uid="uid://b3dvuk2a216p2" path="res://stage/gui/obj_mapGUI.tscn" id="2_alycv"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://scenes/obj_setup.cs" id="17_nrxdv"]
 [ext_resource type="PackedScene" uid="uid://dilqto181kfni" path="res://stage/spaces/obj_shawarma.tscn" id="18_cbqk6"]
 [ext_resource type="PackedScene" uid="uid://brs5e15onnn0w" path="res://stage/spaces/spc_pathReset.tscn" id="18_jimbb"]
+[ext_resource type="PackedScene" uid="uid://4i0gumcgqvx1" path="res://stage/spaces/spc_shop.tscn" id="19_wq666"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hf5q7"]
 atlas = ExtResource("2_qe5p7")
@@ -126,11 +127,12 @@ curve = SubResource("Curve2D_3rwww")
 
 [node name="pf_01" type="PathFollow2D" parent="Paths/pt_01"]
 z_index = 2
-position = Vector2(-864.585, 754.988)
-progress = 1464.1
+position = Vector2(550.15, 263.097)
+progress = 6512.11
 rotates = false
 
 [node name="obj_character_map" parent="Paths/pt_01/pf_01" instance=ExtResource("3_d6dkg")]
+z_index = 1
 position = Vector2(-235.296, -226.991)
 metadata/Player = 1
 metadata/IsTurn = true
@@ -339,10 +341,6 @@ scale = Vector2(1.02568, 1.02568)
 [node name="spc_event3" parent="Spaces" instance=ExtResource("8_mtxx8")]
 position = Vector2(-1847, -146)
 scale = Vector2(1.21629, 1.21629)
-
-[node name="spc_event2" parent="Spaces" instance=ExtResource("8_mtxx8")]
-position = Vector2(1111, 438)
-scale = Vector2(1.87734, 1.87734)
 
 [node name="spc_item" parent="Spaces" instance=ExtResource("9_kvsjk")]
 position = Vector2(62, 805)
@@ -577,6 +575,10 @@ metadata/Progress = 1196.3
 [node name="spc_pathReset2" parent="Other" instance=ExtResource("18_jimbb")]
 position = Vector2(200, 826)
 metadata/Progress = 394.07
+
+[node name="spc_shop" parent="Other" instance=ExtResource("19_wq666")]
+position = Vector2(1066, 472)
+scale = Vector2(1.305, 1.305)
 
 [node name="spc_star" parent="." instance=ExtResource("14_dd5qy")]
 z_index = 1

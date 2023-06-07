@@ -318,6 +318,8 @@ animations = [{
 
 [node name="AudioPool" type="Node" parent="."]
 
+[node name="Items" type="Node" parent="."]
+
 [node name="spr_load" type="AnimatedSprite2D" parent="."]
 process_mode = 3
 process_priority = 1

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn5rhyiovxjp0"
-path="res://.godot/imported/spr_elim.png-7c5b46850cfe04997fc6d171916e86b8.ctex"
+uid="uid://ccbwjrpac2lcd"
+path="res://.godot/imported/spc_whackitu.png-394744bad6fadb305c55be8e902a87a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/rooms/minigames/lookaway/spr_elim.png"
-dest_files=["res://.godot/imported/spr_elim.png-7c5b46850cfe04997fc6d171916e86b8.ctex"]
+source_file="res://sprites/characters/npc/whackitu/spc_whackitu.png"
+dest_files=["res://.godot/imported/spc_whackitu.png-394744bad6fadb305c55be8e902a87a9.ctex"]
 
 [params]
 

@@ -106,6 +106,9 @@ public partial class obj_leaderboard : Node2D
 				else
 					portraits[i].GetNode<Sprite2D>("spr_place").Frame = 1;
 
+			if(portraits[i].GetNode<Sprite2D>("spr_place").Frame == 0)
+				playerData[3-i].minigamesWon++;
+
 			Redraw();
 
 		}

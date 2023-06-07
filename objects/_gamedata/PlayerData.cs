@@ -14,6 +14,8 @@ public partial class PlayerData : Node
 	public int pathID = 1;
 	public bool Costume = false;
 	public int PowerupState = -1;
+	public int spacesTraveled = 0;
+	public int minigamesWon = 0;
 
 	//game data
 	public short coins = 0;

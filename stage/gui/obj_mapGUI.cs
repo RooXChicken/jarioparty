@@ -12,6 +12,9 @@ public partial class obj_mapGUI : CanvasLayer
 
 		wallets[0].GetNode<spr_bagPaper>("spr_bagPaperClip/spr_bagPaper").state = 1;
 
+		if(((GameManager)GetNode("/root/GameManager")).TurnsMax + 1 == ((GameManager)GetNode("/root/GameManager")).TurnNumber)
+			GetNode<Node2D>("TurnsLeft").Visible = false;
+
 		GetNode<RichTextLabel>("TurnsLeft/obj_text").Text = "[center]" + ((GameManager)GetNode("/root/GameManager")).TurnNumber + "/" + ((GameManager)GetNode("/root/GameManager")).TurnsMax;
 	}
 

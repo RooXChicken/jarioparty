@@ -127,9 +127,9 @@ public partial class obj_playerSelect : Node2D
 			players[index].Play("dance");
 			players[index].Visible = true;
 
-			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(((GameManager)GetNode("/root/GameManager")).itemLookup[0]);
-			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(((GameManager)GetNode("/root/GameManager")).itemLookup[1]);
-			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(((GameManager)GetNode("/root/GameManager")).itemLookup[2]);
+			// ((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(((GameManager)GetNode("/root/GameManager")).itemLookup[0]);
+			// ((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(((GameManager)GetNode("/root/GameManager")).itemLookup[1]);
+			// ((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(((GameManager)GetNode("/root/GameManager")).itemLookup[3]);
 
 			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].playerOrder = characterIndex + 1;
 
@@ -170,6 +170,9 @@ public partial class obj_playerSelect : Node2D
 		}
 		if(Input.IsActionJustPressed("jump" + 1))
 		{
+			if(turns == -1)
+				turns = 20;
+			
 			((GameManager)GetNode("/root/GameManager")).TurnsMax = turns;
 			SetFrogText((short)(14));
 			((obj_clock)obj_clock).Lock = true;

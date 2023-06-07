@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://ck33wl1r2xx30"]
+[gd_scene load_steps=68 format=3 uid="uid://ck33wl1r2xx30"]
 
 [ext_resource type="Script" path="res://stage/obj_diceBlock.cs" id="1_ismdg"]
 [ext_resource type="Shader" path="res://shaders/obj_diceBlock.gdshader" id="2_28cos"]
@@ -353,6 +353,35 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_sic6f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kfp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1obw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1px6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afk0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vx7lg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_282oh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5fhi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="Animation" id="Animation_2l18x"]
 resource_name = "plus3"
 length = 0.5
@@ -367,20 +396,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0, 0)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"AddThree"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_e8m6l"]
@@ -397,11 +412,40 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Plus6:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_53wtk"]
+resource_name = "plus6"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Plus6:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3fb6n"]
 _data = {
 "RESET": SubResource("Animation_e8m6l"),
-"plus3": SubResource("Animation_2l18x")
+"plus3": SubResource("Animation_2l18x"),
+"plus6": SubResource("Animation_53wtk")
 }
 
 [node name="obj_diceBlock" type="Node2D"]
@@ -476,11 +520,27 @@ texture = ExtResource("16_68hdl")
 
 [node name="spr_number" type="AnimatedSprite2D" parent="Plus3"]
 z_index = 2
-position = Vector2(130, 6)
+position = Vector2(132, 6)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_642sp")
 frame = 3
 frame_progress = 0.452331
+
+[node name="Plus6" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, -14)
+
+[node name="spr_plus" type="Sprite2D" parent="Plus6"]
+position = Vector2(76, 6)
+scale = Vector2(3, 3)
+texture = ExtResource("16_68hdl")
+
+[node name="spr_number" type="AnimatedSprite2D" parent="Plus6"]
+position = Vector2(132, 0)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_sic6f")
+frame = 6
+frame_progress = 0.477015
 
 [node name="anim_items" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Plus3")

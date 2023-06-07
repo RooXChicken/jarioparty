@@ -58,6 +58,8 @@ public partial class rm_minigame_lookaway : Node2D
 					killedPlayers++;
 					places.Insert(0, players[i].playerData);
 				}
+				else
+					players[i].Pass();
 			}
 		}
 	}

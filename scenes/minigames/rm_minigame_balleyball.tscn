@@ -475,14 +475,14 @@ z_index = 5
 position = Vector2(216, 465)
 collision_layer = 10
 collision_mask = 11
-metadata/Player = 3
+metadata/Player = 2
 
 [node name="obj_character_parent3" parent="Players" instance=ExtResource("7_5b6xe")]
 z_index = 5
 position = Vector2(833, 605)
 collision_layer = 10
 collision_mask = 11
-metadata/Player = 2
+metadata/Player = 3
 
 [node name="obj_character_parent4" parent="Players" instance=ExtResource("7_5b6xe")]
 z_index = 5

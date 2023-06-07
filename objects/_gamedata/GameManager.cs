@@ -15,6 +15,7 @@ public partial class GameManager : Node
 	public bool MinigameStarted = false;
 	public bool MinigameOver = false;
 	public Vector2 StarSpacePos = new Vector2(0, 0);
+	public List<int> numsLeft;
 
 	public PlayerData[] playerData = new PlayerData[4];
 	public ItemBase[] itemLookup = new ItemBase[]
@@ -55,6 +56,11 @@ public partial class GameManager : Node
 		//GetNode<AnimatedSprite2D>("/root/rm_game/LoadingScreen").Play("default");
 		//DisplayServer.WindowSetPosition(new Vector2I((DisplayServer.ScreenGetSize().X - 1280) / 2, (DisplayServer.ScreenGetSize().Y - 720) / 2));
 		//DisplayServer.WindowSetSize(new Vector2I(1280, 720));
+
+		foreach(ItemBase item in itemLookup)
+		{
+			GetNode<Node>("/root/rm_game/Items").AddChild(item);
+		}
 	}
 
 	public override void _Process(double delta)
@@ -95,6 +101,12 @@ public partial class GameManager : Node
 		GetNode("/root/rm_game").AddChild(instance);
 
 		GetNode<AnimatedSprite2D>("/root/rm_game/spr_load").Visible = false;
+
+		numsLeft = new List<int>();
+		numsLeft.Add(1);
+		numsLeft.Add(2);
+		numsLeft.Add(3);
+		numsLeft.Add(4);
 	}
 
 	public void LoadDefaults()

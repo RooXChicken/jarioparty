@@ -1,0 +1,104 @@
+[gd_scene load_steps=13 format=3 uid="uid://4i0gumcgqvx1"]
+
+[ext_resource type="Script" path="res://stage/spaces/spc_shop.cs" id="1_460hx"]
+[ext_resource type="Texture2D" uid="uid://qpd37x2k0e2r" path="res://stage/gui/sprites/spaces/spr_eventspace.png" id="2_o1hr4"]
+[ext_resource type="Shape2D" uid="uid://bob0la6buryho" path="res://stage/spaces/spc_hitbox.tres" id="3_a3eap"]
+[ext_resource type="Texture2D" uid="uid://ccbwjrpac2lcd" path="res://sprites/characters/npc/whackitu/spc_whackitu.png" id="4_bxxsu"]
+[ext_resource type="Texture2D" uid="uid://daqqrul7bknp6" path="res://stage/gui/sprites/spr_shopUI.png" id="5_8vbtt"]
+[ext_resource type="Texture2D" uid="uid://chakajuev5rpm" path="res://sprites/rooms/rm_minigame_info/spr_arrowDown.png" id="5_nvkqr"]
+[ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://fonts/heygorgeous.ttf" id="6_egnj6"]
+[ext_resource type="Texture2D" uid="uid://bgyuat2i50jqq" path="res://stage/gui/sprites/spr_coin.png" id="7_swb7j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ntds"]
+atlas = ExtResource("4_bxxsu")
+region = Rect2(0, 0, 39, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rod4h"]
+atlas = ExtResource("4_bxxsu")
+region = Rect2(39, 0, 39, 44)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lxqqy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ntds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rod4h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Theme" id="Theme_25i7y"]
+default_font = ExtResource("6_egnj6")
+default_font_size = 10
+
+[node name="spc_shop" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
+input_pickable = false
+script = ExtResource("1_460hx")
+
+[node name="spr_space" type="Sprite2D" parent="."]
+position = Vector2(1, -1)
+scale = Vector2(2, 2)
+texture = ExtResource("2_o1hr4")
+
+[node name="obj_collision" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(0, -1)
+rotation = 1.5708
+shape = ExtResource("3_a3eap")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(42, -55)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_lxqqy")
+frame_progress = 0.612618
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="spr_arrow" type="Sprite2D" parent="CanvasLayer"]
+z_index = 1
+position = Vector2(149, 228)
+rotation = -1.5708
+texture = ExtResource("5_nvkqr")
+
+[node name="spr_bg" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(640, 360)
+scale = Vector2(2, 2)
+texture = ExtResource("5_8vbtt")
+metadata/_edit_lock_ = true
+
+[node name="obj_text" type="RichTextLabel" parent="CanvasLayer"]
+modulate = Color(0, 0, 0, 1)
+z_index = 3
+offset_left = 113.0
+offset_top = 217.0
+offset_right = 542.0
+offset_bottom = 726.0
+scale = Vector2(0.707, 0.707)
+theme = SubResource("Theme_25i7y")
+theme_override_font_sizes/normal_font_size = 18
+text = "     Double Dice 7
+     Cola 4
+     Pocket Wormhole 6"
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(309, 228)
+scale = Vector2(2, 2)
+texture = ExtResource("7_swb7j")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(236, 248)
+scale = Vector2(2, 2)
+texture = ExtResource("7_swb7j")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(369, 271)
+scale = Vector2(2, 2)
+texture = ExtResource("7_swb7j")

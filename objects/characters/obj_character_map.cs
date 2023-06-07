@@ -114,6 +114,12 @@ public partial class obj_character_map : RigidBody2D
 	{
 		ProcessAnimations();
 
+		if(playerData.PowerupState == 4)
+		{
+			obj_arrowRD.ConfirmChoice(playerData.pathID, playerData.progress);
+			playerData.PowerupState = -1;
+		}
+
 		if(!isTurn)
 			return;
 
@@ -160,7 +166,6 @@ public partial class obj_character_map : RigidBody2D
 
 	private void BeginTurn()
 	{
-		GetNode<Node2D>("../../../../obj_diceBlock").Position = new Vector2(follower.Position.X, follower.Position.Y - 138);
 		ZIndex++;
 
 		obj_beginTurn.Visible = true;
@@ -172,6 +177,7 @@ public partial class obj_character_map : RigidBody2D
 
 	private void BeginDiceSpin()
 	{
+		GetNode<Node2D>("../../../../obj_diceBlock").Position = new Vector2(follower.Position.X, follower.Position.Y - 138);
 		GetNode<obj_diceBlock>("../../../../obj_diceBlock").a_spinStart(this);
 		EnableCollision();
 	}
@@ -235,14 +241,15 @@ public partial class obj_character_map : RigidBody2D
 		if(Input.IsActionJustPressed("jump" + controllerIndex))
 		{
 			state = 13;
+			if(playerData.items.Count == 1)
+				itemIndex = 0;
 			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_select");
 			obj_itemPicker.GetNode<Sprite2D>("Items/spr_item1").Visible = false;
 			obj_itemPicker.GetNode<Sprite2D>("Items/spr_item2").Visible = false;
 			obj_itemPicker.GetNode<Sprite2D>("Items/spr_item3").Visible = false;
 
 			obj_itemPicker.GetNode<Sprite2D>("Items/spr_item" + (itemIndex+1)).Visible = true;
-			GD.Print(playerData.items[itemIndex].ItemIndex);
-			playerData.items[itemIndex].ItemUseMap(playerData);
+			obj_itemPicker.GetNode<Sprite2D>("Items/spr_itemSelect").Visible = false;
 		}
 	}
 
@@ -251,9 +258,11 @@ public partial class obj_character_map : RigidBody2D
 		obj_itemPicker.GetNode<Sprite2D>("Items/spr_item" + (itemIndex+1)).Position = obj_itemPicker.GetNode<Sprite2D>("Items/spr_item" + (itemIndex+1)).Position.Lerp(itemSelectPos3[1], (float)delta*5);
 		if(obj_itemPicker.GetNode<Sprite2D>("Items/spr_item" + (itemIndex+1)).Position.X < 1 && obj_itemPicker.GetNode<Sprite2D>("Items/spr_item" + (itemIndex+1)).Position.X > -1)
 		{
+			state = 9;
 			obj_itemPicker.Visible = false;
 			obj_beginTurn.Visible = true;
-			state = 9;
+			playerData.items[itemIndex].ItemUseMap(playerData);
+			playerData.items.Remove(playerData.items[itemIndex]);
 		}
 	}
 
@@ -531,6 +540,7 @@ public partial class obj_character_map : RigidBody2D
 		if(area.Name != "spc_star" && area.Name.ToString().Substring(0, 6) != "spc_ar")
 		{
 			moves += GetNode<obj_diceBlock>("../../../../obj_diceBlock").DecrementDice();
+			playerData.spacesTraveled++;
 			if(canMove)
 				lastCollision = area;
 		}
@@ -540,6 +550,14 @@ public partial class obj_character_map : RigidBody2D
 			canMove = false;
 			lastCollision = area;
 			ArrowMenu(area.Name);
+		}
+
+		if(area.Name == "spc_shop")
+		{
+			canMove = false;
+			locked = true;
+
+			GetNode<spc_shop>("../../../../Other/spc_shop").WakeUp(playerData, new Callable(this, "Unlock"));
 		}
 
 		if(area.Name == "spc_star")
