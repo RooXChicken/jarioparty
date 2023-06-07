@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=69 format=3 uid="uid://c8pgilejlcclq"]
+[gd_resource type="SpriteFrames" load_steps=69 format=3 uid="uid://d01hx8bn2fcc5"]
 
 [ext_resource type="Texture2D" uid="uid://bo523d12nnavi" path="res://sprites/characters/playable/costumes/luigi/anim_wooigiKick.png" id="1_th8gg"]
 [ext_resource type="Texture2D" uid="uid://dkgyyrfma5n6r" path="res://sprites/characters/playable/wooigi/anim_wooigiBurnt.png" id="2_fxibt"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://d36gbi32uwdwa"]
+[gd_scene load_steps=79 format=3 uid="uid://d36gbi32uwdwa"]
 
 [ext_resource type="Script" path="res://objects/rooms/rm_setup/obj_playerSelect.cs" id="1_ncrli"]
 [ext_resource type="Texture2D" uid="uid://cebqc24skftad" path="res://sprites/rooms/rm_setup/spr_cloud1p.png" id="2_xlbee"]
@@ -7,12 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://dylvkjwit8qcp" path="res://sprites/rooms/rm_setup/spr_cloud4p.png" id="5_7tfs7"]
 [ext_resource type="Texture2D" uid="uid://nhdn3jdrgunw" path="res://sprites/rooms/rm_setup/spr_gui_hand_select.png" id="6_ueme0"]
 [ext_resource type="Texture2D" uid="uid://ooammgcvonrc" path="res://sprites/characters/playable/jario/anim_jarioRunRight.png" id="7_onxgo"]
+[ext_resource type="Texture2D" uid="uid://dybsomugy5s38" path="res://sprites/characters/playable/costumes/tmbtj/anim_jarioEmote01.png" id="8_de7id"]
 [ext_resource type="Texture2D" uid="uid://dtsb2arume5jg" path="res://sprites/characters/playable/josh/anim_joshEmote01.png" id="9_570v7"]
 [ext_resource type="Texture2D" uid="uid://blsg05vpp5oft" path="res://sprites/characters/playable/wooigi/anim_wooigiEmote01.png" id="9_lyovm"]
 [ext_resource type="Texture2D" uid="uid://dkkdu1fxeuvnf" path="res://sprites/characters/playable/costumes/luigi/anim_wooigidance.png" id="9_ofg8p"]
 [ext_resource type="Texture2D" uid="uid://dq83lkl0dihpb" path="res://sprites/characters/playable/grape/anim_grapeEmote01.png" id="11_rg1ut"]
+[ext_resource type="Texture2D" uid="uid://yvnnxmdxblxd" path="res://sprites/characters/playable/costumes/applejuice/grapedance.png" id="12_0e4nn"]
 [ext_resource type="Texture2D" uid="uid://cayrr5aq5hnbv" path="res://sprites/characters/playable/jario/anim_jarioPortrait.png" id="12_5eu5h"]
 [ext_resource type="Texture2D" uid="uid://dq84ebtxo4qcv" path="res://sprites/characters/playable/wooigi/anim_wooigiPortrait.png" id="13_ng7mp"]
+[ext_resource type="Texture2D" uid="uid://cuuw740sc7lpe" path="res://sprites/characters/playable/costumes/tired-looking josh/joshidle.png" id="14_fwubx"]
 [ext_resource type="Texture2D" uid="uid://btf1b4owh4egc" path="res://sprites/characters/playable/grape/anim_grapePortrait.png" id="14_la5ps"]
 [ext_resource type="Texture2D" uid="uid://c3euyra70g651" path="res://sprites/characters/playable/josh/anim_joshPortrait.png" id="15_g85wf"]
 [ext_resource type="Texture2D" uid="uid://28ydft2i2y2b" path="res://sprites/gui/minigames/spr_frame.png" id="16_qp0yu"]
@@ -71,6 +74,38 @@ region = Rect2(192, 0, 32, 32)
 atlas = ExtResource("7_onxgo")
 region = Rect2(224, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnxny"]
+atlas = ExtResource("8_de7id")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkthi"]
+atlas = ExtResource("8_de7id")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fklx3"]
+atlas = ExtResource("8_de7id")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wb1si"]
+atlas = ExtResource("8_de7id")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjtyh"]
+atlas = ExtResource("8_de7id")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1t6m"]
+atlas = ExtResource("8_de7id")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3tek"]
+atlas = ExtResource("8_de7id")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6iqce"]
+atlas = ExtResource("8_de7id")
+region = Rect2(224, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_1aj0h"]
 animations = [{
 "frames": [{
@@ -102,7 +137,31 @@ animations = [{
 "name": &"dance",
 "speed": 12.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnxny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkthi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fklx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wb1si")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjtyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1t6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3tek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6iqce")
+}],
 "loop": true,
 "name": &"danceC",
 "speed": 12.0
@@ -249,6 +308,22 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("11_rg1ut")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uy05"]
+atlas = ExtResource("12_0e4nn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdtqm"]
+atlas = ExtResource("12_0e4nn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thoxi"]
+atlas = ExtResource("12_0e4nn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhesn"]
+atlas = ExtResource("12_0e4nn")
+region = Rect2(96, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_0eipc"]
 animations = [{
 "frames": [{
@@ -268,7 +343,19 @@ animations = [{
 "name": &"dance",
 "speed": 6.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4uy05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdtqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thoxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhesn")
+}],
 "loop": true,
 "name": &"danceC",
 "speed": 12.0
@@ -290,6 +377,22 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("9_570v7")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8mf3"]
+atlas = ExtResource("14_fwubx")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebvkj"]
+atlas = ExtResource("14_fwubx")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8mxv"]
+atlas = ExtResource("14_fwubx")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkk24"]
+atlas = ExtResource("14_fwubx")
+region = Rect2(96, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_rbhki"]
 animations = [{
 "frames": [{
@@ -309,7 +412,19 @@ animations = [{
 "name": &"dance",
 "speed": 12.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8mf3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebvkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8mxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkk24")
+}],
 "loop": true,
 "name": &"danceC",
 "speed": 12.0
@@ -456,6 +571,8 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_1aj0h")
 animation = &"danceC"
 autoplay = "dance"
+frame = 6
+frame_progress = 0.862394
 
 [node name="spr_character_wooigi" type="AnimatedSprite2D" parent="Characters"]
 visible = false
