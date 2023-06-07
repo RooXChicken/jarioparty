@@ -17,7 +17,7 @@ public partial class rm_credits : Node2D
 	public override void _Process(double delta)
 	{
 		if(obj_scroll.Position.Y > -6700)
-			obj_scroll.Position = new Vector2(0, obj_scroll.Position.Y - (500 * (float)delta));
+			obj_scroll.Position = new Vector2(0, obj_scroll.Position.Y - (50 * (float)delta));
 		GD.Print(obj_scroll.Position.Y);
 	}
 }
