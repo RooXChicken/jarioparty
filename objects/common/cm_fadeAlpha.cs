@@ -35,6 +35,8 @@ public partial class cm_fadeAlpha : Sprite2D
 			Variant _loop = GetMeta("Loop");
 			loop = _loop.As<bool>();
 		}
+
+		Modulate = new Color(1, 1, 1, alpha);
 	}
 
 	public override void _Process(double delta)

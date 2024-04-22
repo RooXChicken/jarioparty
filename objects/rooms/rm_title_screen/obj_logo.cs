@@ -22,6 +22,8 @@ public partial class obj_logo : Sprite2D
 		positionsLeft = new Vector2[] {
 			new Vector2(-64, 38), new Vector2(-78, 68), new Vector2(-94, 98), new Vector2(-46, 120)
 		};
+
+		Scale = new Vector2(scale, scale);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -12,7 +12,7 @@ public partial class obj_bg : Sprite2D
 	public override void _Ready()
 	{
 		Visible = false;
-		Position = new Vector2(xValue, Position.Y);
+		Position = new Vector2(Position.X - xValue, Position.Y);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
