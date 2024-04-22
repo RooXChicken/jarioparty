@@ -127,7 +127,7 @@ curve = SubResource("Curve2D_3rwww")
 
 [node name="pf_01" type="PathFollow2D" parent="Paths/pt_01"]
 z_index = 2
-position = Vector2(550.15, 263.097)
+position = Vector2(550.153, 263.097)
 progress = 6512.11
 rotates = false
 
@@ -181,254 +181,317 @@ curve = SubResource("Curve2D_4pwpr")
 [node name="spc_blue1" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-737, 752)
 scale = Vector2(1.49956, 1.49956)
+priority = 1
 
 [node name="spc_blue12" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-470, 750)
 scale = Vector2(1.49956, 1.49956)
+priority = 1
 
 [node name="spc_blue13" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-331, 758)
 scale = Vector2(1.49956, 1.49956)
+priority = 1
 
 [node name="spc_blue14" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-66, 787)
 scale = Vector2(1.49956, 1.49956)
+priority = 1
 
 [node name="spc_blue15" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(200, 827)
 scale = Vector2(1.49956, 1.49956)
+priority = 1
 
 [node name="spc_blue17" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(230, 691)
 scale = Vector2(1.49956, 1.49956)
+priority = 1
 
 [node name="spc_blue18" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(803, 869)
 scale = Vector2(1.49956, 1.49956)
+priority = 1
 
 [node name="spc_blue19" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(945, 871)
 scale = Vector2(1.49956, 1.49956)
+priority = 1
 
 [node name="spc_blue20" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(1179, 776)
 scale = Vector2(1.49956, 1.49956)
+priority = 1
 
 [node name="spc_blue21" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(1104, 663)
 scale = Vector2(1.49956, 1.49956)
+priority = 1
 
 [node name="spc_blue22" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(1140, 323)
 scale = Vector2(1.49956, 1.49956)
+priority = 1
 
 [node name="spc_blue23" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(413, 243)
 scale = Vector2(1.23053, 1.23053)
+priority = 1
 
 [node name="spc_blue24" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(305, 229)
 scale = Vector2(1.22362, 1.22362)
+priority = 1
 
 [node name="spc_blue34" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(202, 223)
 scale = Vector2(1.22362, 1.22362)
+priority = 1
 
 [node name="spc_blue37" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-133, 215)
 scale = Vector2(1.22362, 1.22362)
+priority = 1
 
 [node name="spc_blue25" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(91, 220)
 scale = Vector2(1.29956, 1.29956)
+priority = 1
 
 [node name="spc_blue32" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-278, 395)
 scale = Vector2(1.30002, 1.30002)
+priority = 1
 
 [node name="spc_blue33" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-307, 480)
 scale = Vector2(1.49956, 1.49956)
+priority = 1
 
 [node name="spc_blue27" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-446, 211)
 scale = Vector2(1.49956, 1.49956)
+priority = 1
 
 [node name="spc_blue28" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-727, 204)
 scale = Vector2(1.28533, 1.28533)
+priority = 1
 
 [node name="spc_blue29" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-1017, -142)
 scale = Vector2(1.49956, 1.49956)
+priority = 1
 
 [node name="spc_blue30" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-1310, -155)
 scale = Vector2(1.49956, 1.49956)
+priority = 1
 
 [node name="spc_blue31" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-1585, -154)
 scale = Vector2(1.49956, 1.49956)
+priority = 1
 
 [node name="spc_blue35" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-1981, -115)
 scale = Vector2(1.49956, 1.49956)
+priority = 1
 
 [node name="spc_blue36" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-2106, -61)
 scale = Vector2(1.49956, 1.49956)
+priority = 1
 
 [node name="spc_blue16" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(460, 844)
 scale = Vector2(1.49956, 1.49956)
+priority = 1
 
 [node name="spc_blue2" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-865, 755)
 scale = Vector2(1.44767, 1.44767)
+priority = 1
 
 [node name="spc_blue3" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-1006, 761)
 scale = Vector2(1.44767, 1.44767)
+priority = 1
 
 [node name="spc_blue4" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-1130, 777)
 scale = Vector2(1.44767, 1.44767)
+priority = 1
 
 [node name="spc_blue5" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-1379, 835)
 scale = Vector2(1.44767, 1.44767)
+priority = 1
 
 [node name="spc_blue6" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-1775, 888)
 scale = Vector2(1.44767, 1.44767)
+priority = 1
 
 [node name="spc_blue7" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-1912, 888)
 scale = Vector2(1.44767, 1.44767)
+priority = 1
 
 [node name="spc_blue9" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-2037, 741)
 scale = Vector2(1.34729, 1.34729)
+priority = 1
 
 [node name="spc_blue8" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-2013, 828)
 scale = Vector2(1.44767, 1.44767)
+priority = 1
 
 [node name="spc_blue10" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-2049, 650)
 scale = Vector2(1.23029, 1.23029)
+priority = 1
 
 [node name="spc_blue11" parent="Spaces" instance=ExtResource("5_4js1t")]
 position = Vector2(-2035, 561)
 scale = Vector2(1.0651, 1.0651)
+priority = 1
 
 [node name="spc_browser" parent="Spaces" instance=ExtResource("6_ra33q")]
 position = Vector2(-1721, -157)
 scale = Vector2(1.36892, 1.36892)
+priority = 1
 
 [node name="spc_chance" parent="Spaces" instance=ExtResource("7_r80gv")]
 position = Vector2(-271, 303)
 scale = Vector2(1.31694, 1.31694)
+priority = 1
 
 [node name="spc_chance2" parent="Spaces" instance=ExtResource("7_r80gv")]
 position = Vector2(418, 533)
 scale = Vector2(1.42959, 1.42959)
+priority = 1
 
 [node name="spc_event" parent="Spaces" instance=ExtResource("8_mtxx8")]
 position = Vector2(-1999, 491)
 scale = Vector2(1.02568, 1.02568)
+priority = 1
 
 [node name="spc_event3" parent="Spaces" instance=ExtResource("8_mtxx8")]
 position = Vector2(-1847, -146)
 scale = Vector2(1.21629, 1.21629)
+priority = 1
 
 [node name="spc_item" parent="Spaces" instance=ExtResource("9_kvsjk")]
 position = Vector2(62, 805)
 scale = Vector2(1.65577, 1.65577)
+priority = 1
 
 [node name="spc_item2" parent="Spaces" instance=ExtResource("9_kvsjk")]
 position = Vector2(715, 523)
 scale = Vector2(1.65577, 1.65577)
+priority = 1
 
 [node name="spc_red" parent="Spaces" instance=ExtResource("10_y1o5j")]
 position = Vector2(-600, 754)
 scale = Vector2(1.5718, 1.5718)
+priority = 1
 
 [node name="spc_red5" parent="Spaces" instance=ExtResource("10_y1o5j")]
 position = Vector2(-200, 773)
 scale = Vector2(1.51004, 1.51004)
+priority = 1
 
 [node name="spc_red6" parent="Spaces" instance=ExtResource("10_y1o5j")]
 position = Vector2(327, 836)
 scale = Vector2(1.41148, 1.41148)
+priority = 1
 
 [node name="spc_red8" parent="Spaces" instance=ExtResource("10_y1o5j")]
 position = Vector2(299, 585)
 scale = Vector2(1.41148, 1.41148)
+priority = 1
 
 [node name="spc_red10" parent="Spaces" instance=ExtResource("10_y1o5j")]
 position = Vector2(572, 518)
 scale = Vector2(1.41148, 1.41148)
+priority = 1
 
 [node name="spc_red7" parent="Spaces" instance=ExtResource("10_y1o5j")]
 position = Vector2(594, 844)
 scale = Vector2(1.5718, 1.5718)
+priority = 1
 
 [node name="spc_red11" parent="Spaces" instance=ExtResource("10_y1o5j")]
 position = Vector2(1093, 860)
 scale = Vector2(1.5718, 1.5718)
+priority = 1
 
 [node name="spc_red12" parent="Spaces" instance=ExtResource("10_y1o5j")]
 position = Vector2(994, 282)
 scale = Vector2(1.5718, 1.5718)
+priority = 1
 
 [node name="spc_red13" parent="Spaces" instance=ExtResource("10_y1o5j")]
 position = Vector2(838, 267)
 scale = Vector2(1.5718, 1.5718)
+priority = 1
 
 [node name="spc_red14" parent="Spaces" instance=ExtResource("10_y1o5j")]
 position = Vector2(543, 263)
 scale = Vector2(1.27264, 1.27264)
+priority = 1
 
 [node name="spc_red15" parent="Spaces" instance=ExtResource("10_y1o5j")]
 position = Vector2(-23, 215)
 scale = Vector2(1.19836, 1.19836)
+priority = 1
 
 [node name="spc_red19" parent="Spaces" instance=ExtResource("10_y1o5j")]
 position = Vector2(-421, 642)
 scale = Vector2(1.5718, 1.5718)
+priority = 1
 
 [node name="spc_red20" parent="Spaces" instance=ExtResource("10_y1o5j")]
 position = Vector2(-348, 559)
 scale = Vector2(1.5718, 1.5718)
+priority = 1
 
 [node name="spc_red16" parent="Spaces" instance=ExtResource("10_y1o5j")]
 position = Vector2(-584, 209)
 scale = Vector2(1.48515, 1.48515)
+priority = 1
 
 [node name="spc_red17" parent="Spaces" instance=ExtResource("10_y1o5j")]
 position = Vector2(-1169, -148)
 scale = Vector2(1.5718, 1.5718)
+priority = 1
 
 [node name="spc_red18" parent="Spaces" instance=ExtResource("10_y1o5j")]
 position = Vector2(-1445, -156)
 scale = Vector2(1.5718, 1.5718)
+priority = 1
 
 [node name="spc_red21" parent="Spaces" instance=ExtResource("10_y1o5j")]
 position = Vector2(-2003, 21)
 scale = Vector2(1.5718, 1.5718)
+priority = 1
 
 [node name="spc_red2" parent="Spaces" instance=ExtResource("10_y1o5j")]
 position = Vector2(-1252, 807)
 scale = Vector2(1.448, 1.448)
+priority = 1
 
 [node name="spc_red4" parent="Spaces" instance=ExtResource("10_y1o5j")]
 position = Vector2(-1637, 876)
 scale = Vector2(1.448, 1.448)
+priority = 1
 
 [node name="spc_red3" parent="Spaces" instance=ExtResource("10_y1o5j")]
 position = Vector2(-1501, 856)
 scale = Vector2(1.448, 1.448)
+priority = 1
 
 [node name="Flowers" type="Node" parent="Spaces"]
 
@@ -561,19 +624,23 @@ position = Vector2(-1637, 744)
 position = Vector2(-261, 217)
 rotation = 0.0176658
 scale = Vector2(2, 2)
+priority = 1
 metadata/Direction = 0
 
 [node name="spc_arrowLD" parent="Other" instance=ExtResource("17_18aba")]
 position = Vector2(1002, 549)
 scale = Vector2(1.5, 1.5)
+priority = 1
 metadata/Direction = 1
 
 [node name="spc_pathReset" parent="Other" instance=ExtResource("18_jimbb")]
 position = Vector2(-599, 754)
+priority = 1
 metadata/Progress = 1196.3
 
 [node name="spc_pathReset2" parent="Other" instance=ExtResource("18_jimbb")]
 position = Vector2(200, 826)
+priority = 1
 metadata/Progress = 394.07
 
 [node name="spc_shop" parent="Other" instance=ExtResource("19_wq666")]

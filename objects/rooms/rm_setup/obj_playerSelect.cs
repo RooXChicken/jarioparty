@@ -102,8 +102,8 @@ public partial class obj_playerSelect : Node2D
 			index = 0;
 			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_select");
 			for(int i = 0; i < 4; i++)
-			animation.Play("cloudtoport");
-			GetNode<Sprite2D>("Portraits/spr_frame");
+				animation.Play("cloudtoport");
+			//GetNode<Sprite2D>("Portraits/spr_frame");
 			SetFrogText((short)(characterIndex + 6));
 			ChangeIndex(0);
 		}
@@ -115,7 +115,19 @@ public partial class obj_playerSelect : Node2D
 			portraits[i].Frame = 0;
 			
 		portraits[index].Frame = 1;
-		if(Input.IsActionJustPressed("jump" + controllerIndex) && !players[index].Visible)
+
+		if(!Input.IsActionJustPressed("back" + controllerIndex))
+		{
+			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_back");
+			index--;
+			if(index < 0)
+			{
+				state = 0;
+			}
+		}
+
+		if(Input.IsActionJustPressed("jump" + controllerIndex))
+		if(!players[index].Visible)
 		{
 			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_select");
 			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex] = new PlayerData(-1, (ushort)index, (characterIndex >= ((GameManager)GetNode("/root/GameManager")).playerCount));
@@ -123,26 +135,7 @@ public partial class obj_playerSelect : Node2D
 			if(realPlayer)
 				((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].controllerIndex = controllerIndex;
 		
-			portraits[index].Visible = false;
-			players[index].Play("dance");
-			players[index].Visible = true;
-
-			// ((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(((GameManager)GetNode("/root/GameManager")).itemLookup[0]);
-			// ((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(((GameManager)GetNode("/root/GameManager")).itemLookup[1]);
-			// ((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(((GameManager)GetNode("/root/GameManager")).itemLookup[3]);
-
-			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].playerOrder = characterIndex + 1;
-
-			if(Input.IsActionPressed("costume" + controllerIndex))
-			{
-				((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].Costume = true;
-				players[index].Play("danceC");
-			}
-
-			controllerIndex++;
-			characterIndex++;
-
-			SetFrogText((short)(characterIndex + 6));
+			SetCharacterIndex();
 
 			if(characterIndex == 4)
 			{
@@ -154,6 +147,32 @@ public partial class obj_playerSelect : Node2D
 				state = 3;
 			}
 		}
+		else
+			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_badSelectionMove");
+	}
+
+	private void SetCharacterIndex()
+	{
+		portraits[index].Visible = false;
+		players[index].Play("dance");
+		players[index].Visible = true;
+
+		// ((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(((GameManager)GetNode("/root/GameManager")).itemLookup[0]);
+		// ((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(((GameManager)GetNode("/root/GameManager")).itemLookup[1]);
+		// ((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].items.Add(((GameManager)GetNode("/root/GameManager")).itemLookup[3]);
+
+		((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].playerOrder = characterIndex + 1;
+
+		if(Input.IsActionPressed("costume" + controllerIndex))
+		{
+			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].Costume = true;
+			players[index].Play("danceC");
+		}
+
+		controllerIndex++;
+		characterIndex++;
+
+		SetFrogText((short)(characterIndex + 6));
 	}
 
 	private void TimeSelect()
@@ -224,7 +243,13 @@ public partial class obj_playerSelect : Node2D
 					break;
 		}
 
-		if(state < 3)
+		if(state == 0)
+			if((short)(((GameManager)GetNode("/root/GameManager")).controllersConnected - 1) == 0)
+				((AudioController)GetNode("/root/AudioController")).PlaySound("gui_badSelectionMove");
+			else
+				((AudioController)GetNode("/root/AudioController")).PlaySound("gui_selectionMove");
+				
+		else if(state < 3)
 			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_selectionMove");
 
 		switch(index)
