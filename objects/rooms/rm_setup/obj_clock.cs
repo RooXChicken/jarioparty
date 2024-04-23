@@ -3,7 +3,7 @@ using System;
 
 public partial class obj_clock : Node2D
 {
-	public int Turns = -1;
+	public int Turns = 20;
 	public bool Lock = false;
 	private Sprite2D spr_clockArrow;
 	private RichTextLabel obj_text;
@@ -13,6 +13,10 @@ public partial class obj_clock : Node2D
 
 	private float joyhaxis;
 	private float joyvaxis;
+
+	private float dpadhaxis;
+	private float dpadvaxis;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -30,7 +34,15 @@ public partial class obj_clock : Node2D
 		if(!Visible || Lock)
 			return;
 		
-		GetControllerInput();
+		float newDpadhaxis = Input.GetAxis("clockTickLeft", "clockTickRight");
+
+		if(dpadhaxis != newDpadhaxis)
+		{
+			joyhaxis = newDpadhaxis*0.2f;
+			GetControllerInput(true);
+		}
+		else
+			GetControllerInput(false);
 
 		if(joyhaxis > 0 && spr_clockArrow.Rotation < 6.22f)
 		{
@@ -61,12 +73,21 @@ public partial class obj_clock : Node2D
 
 			obj_text.Text = text;
 			obj_text2.Text = text;
+
+			joyhaxis = 0;
 		}
 	}
 
-	private void GetControllerInput()
+	private void GetControllerInput(bool ignoreJoy)
 	{
+		dpadhaxis = Input.GetAxis("clockTickLeft", "clockTickRight");
+		dpadvaxis = Input.GetAxis("clockTickDown", "clockTickUp");
+
+		if(ignoreJoy)
+			return;
+
 		joyhaxis = Input.GetAxis("left" + 1, "right" + 1)*0.2f;
 		joyvaxis = Input.GetAxis("up" + 1, "down" + 1);
+
 	}
 }

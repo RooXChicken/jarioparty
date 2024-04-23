@@ -292,6 +292,26 @@ costume4={
 "events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":3,"button_index":7,"pressure":0.0,"pressed":true,"script":null)
 ]
 }
+clockTickUp={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":11,"pressure":0.0,"pressed":true,"script":null)
+]
+}
+clockTickDown={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":12,"pressure":0.0,"pressed":true,"script":null)
+]
+}
+clockTickLeft={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":13,"pressure":0.0,"pressed":true,"script":null)
+]
+}
+clockTickRight={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":14,"pressure":0.0,"pressed":true,"script":null)
+]
+}
 
 [rendering]
 

@@ -306,3 +306,4 @@ modulate = Color(1, 1, 1, 0)
 libraries = {
 "": SubResource("AnimationLibrary_u5ciq")
 }
+autoplay = "transition"

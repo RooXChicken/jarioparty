@@ -15,8 +15,9 @@ public partial class obj_cloudTransition : Node2D
 		if(_Backwards.As<bool>())
 		{
 			Visible = true;
-			anim_cloudTransition.Seek(1.5, true);
+			Modulate = new Color(1, 1, 1, 1);
 			anim_cloudTransition.PlayBackwards("clouds");
+			anim_cloudTransition.Seek(1.5, true);
 			return;
 		}
 	}

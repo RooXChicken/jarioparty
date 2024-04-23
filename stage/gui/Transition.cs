@@ -96,7 +96,6 @@ public partial class Transition : Node2D
 		else if(playerGoing == 4)
 		{
 			((GameManager)GetNode("/root/GameManager")).TurnNumber++;
-			//if(state == 5)
 			((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_minigame_info");
 			// else
 			// {

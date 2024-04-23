@@ -65,7 +65,10 @@ public partial class obj_logo : Sprite2D
 	{
 		if(!obj_transition.Visible && Input.IsActionJustPressed("jump1"))
 		{
-			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_titleScreenSelect");
+			if(index != 3)
+				((AudioController)GetNode("/root/AudioController")).PlaySound("gui_titleScreenSelect");
+			else
+				((AudioController)GetNode("/root/AudioController")).PlaySound("gui_escape");
 			obj_transition.Visible = true;
 		}
 		float joyvaxis = Input.GetAxis("down1", "up1");

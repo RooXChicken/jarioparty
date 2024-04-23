@@ -1,6 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8aev5txeeu72"]
+[gd_scene load_steps=5 format=3 uid="uid://b8aev5txeeu72"]
 
-[ext_resource type="Script" path="res://objects/rm_quit.cs" id="1_c41yk"]
+[ext_resource type="Texture2D" uid="uid://b4ksg4almvsd3" path="res://sprites/rooms/rm_title_screen/bg_cannotescape.png" id="1_k86sk"]
+[ext_resource type="Script" path="res://objects/rooms/rm_quit/bg_cannotescape.cs" id="2_qmafb"]
+[ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://fonts/heygorgeous.ttf" id="3_iechh"]
+
+[sub_resource type="Theme" id="Theme_j4nyb"]
+default_font = ExtResource("3_iechh")
+default_font_size = 10
 
 [node name="rm_quit" type="Node2D"]
-script = ExtResource("1_c41yk")
+
+[node name="bg_cannotescape" type="Sprite2D" parent="."]
+texture = ExtResource("1_k86sk")
+centered = false
+script = ExtResource("2_qmafb")
+
+[node name="obj_text" type="RichTextLabel" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 1)
+offset_left = 1.0
+offset_top = 691.0
+offset_right = 670.0
+offset_bottom = 904.0
+theme = SubResource("Theme_j4nyb")
+theme_override_font_sizes/normal_font_size = 16
+text = "Press anything to exit..."

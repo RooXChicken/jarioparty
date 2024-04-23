@@ -42,6 +42,10 @@ public partial class obj_shawarma : Node2D
 			shawarmaDialogue[4] = "hi";
 			shawarmaDialogue[5] = "Smash da A button on ur dope asf controller, let's roll some MFing DIIIIIIIIICE!\n\n\n  <Press A to roll>";
 			shawarmaDialogue[6] = "Oooh baby smack those dice!\n\n\n\n  Continue";
+			shawarmaDialogue[7] = "This message should not appear. If it does, I am silly";
+			shawarmaDialogue[8] = "This message should not appear. If it does, I am silly";
+			shawarmaDialogue[9] = "This message should not appear. If it does, I am silly";
+			shawarmaDialogue[10] = "This message should not appear. If it does, I am silly";
 			shawarmaDialogue[11] = "Since I am ballin, I finna give u all 10 coins to start.\n\n\n\n  Continue";
 			shawarmaDialogue[12] = "OKIII enjoy the dope party. Bye felicia!\n\n\n\n  Exit";
 		}
@@ -138,7 +142,8 @@ public partial class obj_shawarma : Node2D
 			}
 			else if(index == 1)
 			{
-				dialogueIndex++;
+				if(dialogueIndex != 5)
+					dialogueIndex++;
 				if(dialogueIndex == 4)
 				{
 					((AudioController)GetNode("/root/AudioController")).PlaySound("diceblockRoll");

@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://d36gbi32uwdwa"]
+[gd_scene load_steps=80 format=3 uid="uid://d36gbi32uwdwa"]
 
 [ext_resource type="Script" path="res://objects/rooms/rm_setup/obj_playerSelect.cs" id="1_ncrli"]
 [ext_resource type="Texture2D" uid="uid://cebqc24skftad" path="res://sprites/rooms/rm_setup/spr_cloud1p.png" id="2_xlbee"]
@@ -454,7 +454,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -495,9 +495,49 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 220)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_8bjvh"]
+resource_name = "playerSelect"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Clouds:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Clouds:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_eor52"]
 resource_name = "porttoclock"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -527,6 +567,7 @@ tracks/1/keys = {
 _data = {
 "RESET": SubResource("Animation_hr21l"),
 "cloudtoport": SubResource("Animation_y8054"),
+"playerSelect": SubResource("Animation_8bjvh"),
 "porttoclock": SubResource("Animation_eor52")
 }
 
@@ -534,6 +575,7 @@ _data = {
 script = ExtResource("1_ncrli")
 
 [node name="Clouds" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
 
 [node name="spr_cloudp1" type="Sprite2D" parent="Clouds"]
 scale = Vector2(2, 2)
@@ -599,6 +641,7 @@ animation = &"danceC"
 autoplay = "dance"
 
 [node name="Portraits" type="Node2D" parent="."]
+visible = false
 
 [node name="spr_portrait_jario" type="Sprite2D" parent="Portraits"]
 position = Vector2(0, -220)
@@ -634,3 +677,5 @@ root_node = NodePath("../Portraits")
 libraries = {
 "": SubResource("AnimationLibrary_4lcu4")
 }
+
+[connection signal="animation_finished" from="anim_player" to="." method="OnAnimationFinished"]

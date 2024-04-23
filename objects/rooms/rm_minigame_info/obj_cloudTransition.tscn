@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqumai6udoy6u"]
+[gd_scene load_steps=7 format=3 uid="uid://dqumai6udoy6u"]
 
 [ext_resource type="Texture2D" uid="uid://dadt8dhssdv3b" path="res://sprites/rooms/rm_minigame_info/spr_transitionCloud.png" id="1_fkl40"]
 [ext_resource type="Script" path="res://objects/rooms/rm_minigame_info/obj_cloudTransition.cs" id="1_ond87"]
-[ext_resource type="Texture2D" uid="uid://ckycs5xx3t4m" path="res://sprites/common/spr_oneblackpixel.png" id="2_x7dw3"]
-[ext_resource type="Shader" path="res://shaders/shd_invert.gdshader" id="3_esae4"]
+[ext_resource type="Texture2D" uid="uid://bafq22qmok25h" path="res://sprites/common/spr_onewhitepixel.png" id="3_781dr"]
 
 [sub_resource type="Animation" id="Animation_4pt11"]
 length = 0.001
@@ -306,19 +305,19 @@ tracks/11/path = NodePath("cloud4:modulate")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(1.5, 2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
-tracks/12/enabled = true
+tracks/12/enabled = false
 tracks/12/path = NodePath("spr_bg:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(1, 1.4),
+"times": PackedFloat32Array(1.4, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -329,9 +328,6 @@ _data = {
 "RESET": SubResource("Animation_4pt11"),
 "clouds": SubResource("Animation_q4neq")
 }
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f6g5k"]
-shader = ExtResource("3_esae4")
 
 [node name="obj_cloudTransition" type="Node2D"]
 script = ExtResource("1_ond87")
@@ -364,7 +360,6 @@ libraries = {
 [node name="spr_bg" type="Sprite2D" parent="."]
 visible = false
 z_index = -1
-material = SubResource("ShaderMaterial_f6g5k")
 position = Vector2(640, 360)
 scale = Vector2(1280, 720)
-texture = ExtResource("2_x7dw3")
+texture = ExtResource("3_781dr")

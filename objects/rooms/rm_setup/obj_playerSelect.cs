@@ -24,6 +24,9 @@ public partial class obj_playerSelect : Node2D
 	private Vector2[] positions = new Vector2[4];
 
 	private AnimationPlayer animation;
+	private bool ready = false;
+	private bool locked = false;
+	private bool isBackwards = false;
 
 	public override void _Ready()
 	{
@@ -57,8 +60,21 @@ public partial class obj_playerSelect : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if(!Visible)
+		if(!Visible || locked)
 			return;
+
+		if(!ready)
+		{
+			if(!animation.IsPlaying())
+			{
+				for(int i = 0; i < 4; i++)
+					clouds[i].Modulate = selected;
+				for(int i = 0; i < ((GameManager)GetNode("/root/GameManager")).controllersConnected; i++)
+					clouds[i].Modulate = regular;
+				animation.Play("playerSelect");
+			}
+		}
+
 		GetControllerInput();
 		if(joyhaxis > 0 && !moving)
 		{
@@ -90,19 +106,37 @@ public partial class obj_playerSelect : Node2D
 
 	private void PlayerCountSelect()
 	{
+		// if(animation.IsPlaying())
+		// 	return;
 		for(int i = 0; i < 4; i++)
 			clouds[i].Modulate = selected;
 		for(int i = 0; i < ((GameManager)GetNode("/root/GameManager")).controllersConnected; i++)
 			clouds[i].Modulate = regular;
 
-		if(Input.IsActionJustPressed("jump" + controllerIndex))
+		if(Input.IsActionJustPressed("back" + controllerIndex))
+		{
+			animation.PlayBackwards("playerSelect");
+			foreach(Sprite2D sprite in portraits)
+				sprite.Visible = false;
+			GetNode<Sprite2D>("Portraits/spr_frame").Visible = false;
+			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_back");
+			SetFrogText((short)(1));
+			isBackwards = true;
+			locked = true;
+		}
+		else if(Input.IsActionJustPressed("jump" + controllerIndex))
 		{
 			((GameManager)GetNode("/root/GameManager")).playerCount = (short)(index + 1);
 			state = 1;
 			index = 0;
+			characterIndex = 0;
 			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_select");
-			for(int i = 0; i < 4; i++)
-				animation.Play("cloudtoport");
+			GetNode<Node2D>("Portraits").Visible = false;
+			animation.Play("cloudtoport");
+
+			foreach(Sprite2D sprite in portraits)
+				sprite.Visible = true;
+			GetNode<Node2D>("Portraits/spr_frame").Visible = true; //weird
 			//GetNode<Sprite2D>("Portraits/spr_frame");
 			SetFrogText((short)(characterIndex + 6));
 			ChangeIndex(0);
@@ -116,17 +150,31 @@ public partial class obj_playerSelect : Node2D
 			
 		portraits[index].Frame = 1;
 
-		if(!Input.IsActionJustPressed("back" + controllerIndex))
+		if(Input.IsActionJustPressed("back" + controllerIndex))
 		{
 			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_back");
-			index--;
-			if(index < 0)
+			characterIndex--;
+			if(characterIndex < 0)
 			{
 				state = 0;
+				for(int i = 0; i < 4; i++)
+					animation.PlayBackwards("cloudtoport");
+				//GetNode<Sprite2D>("Portraits/spr_frame");
+				SetFrogText((short)(characterIndex + 6));
+				ChangeIndex(0);
+
+				foreach(Sprite2D sprite in portraits)
+					sprite.Frame = 0;
+			}
+			else
+			{
+				players[((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].characterIndex].Visible = false;
+				portraits[((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].characterIndex].Visible = true;
+				SetFrogText((short)(characterIndex + 6));
+				//((GameManager)GetNode("/root/GameManager")).playerData[characterIndex] = new PlayerData(-1, (ushort)index, (characterIndex >= ((GameManager)GetNode("/root/GameManager")).playerCount));
 			}
 		}
-
-		if(Input.IsActionJustPressed("jump" + controllerIndex))
+		else if(Input.IsActionJustPressed("jump" + controllerIndex))
 		if(!players[index].Visible)
 		{
 			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_select");
@@ -180,21 +228,40 @@ public partial class obj_playerSelect : Node2D
 		int turns = ((obj_clock)obj_clock).Turns;
 		if(turns != -1)
 		{
-			if(turns <= 10)
+			if(turns <= 2)
 				SetFrogText((short)(11));
-			else if(turns <= 40)
+			else if(turns <= 10)
 				SetFrogText((short)(12));
-			else
+			else if(turns <= 40)
 				SetFrogText((short)(13));
+			else if(turns <= 55)
+				SetFrogText((short)(14));
+			else
+				SetFrogText((short)(15));
 		}
-		if(Input.IsActionJustPressed("jump" + 1))
+		if(Input.IsActionJustPressed("back" + 1))
+		{
+			animation.PlayBackwards("porttoclock");
+			obj_clock.Visible = false;
+			SetFrogText((short)(9));
+			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_back");
+			characterIndex--;
+			players[((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].characterIndex].Visible = false;
+			portraits[((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].characterIndex].Visible = true;
+			SetFrogText((short)(characterIndex + 6));
+			//((GameManager)GetNode("/root/GameManager")).playerData[characterIndex] = new PlayerData(-1, (ushort)index, (characterIndex >= ((GameManager)GetNode("/root/GameManager")).playerCount));
+			spr_hand.Visible = true;
+			state = 1;
+		}
+		else if(Input.IsActionJustPressed("jump" + 1))
 		{
 			if(turns == -1)
 				turns = 20;
 			
 			((GameManager)GetNode("/root/GameManager")).TurnsMax = turns;
-			SetFrogText((short)(14));
+			SetFrogText((short)(16));
 			((obj_clock)obj_clock).Lock = true;
+			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_select");
 			state = 4;
 		}
 
@@ -204,6 +271,12 @@ public partial class obj_playerSelect : Node2D
 
 	private void FinalStage()
 	{
+		if(Input.IsActionJustPressed("back1"))
+		{
+			state = 3;
+			((obj_clock)obj_clock).Lock = false;
+			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_back");
+		}
 		if(Input.IsActionJustPressed("jump" + 1))
 			LoadGame();
 	}
@@ -291,8 +364,22 @@ public partial class obj_playerSelect : Node2D
 		joyhaxis = Input.GetAxis("left" + controllerIndex, "right" + controllerIndex);
 		joyvaxis = Input.GetAxis("up" + controllerIndex, "down" + controllerIndex);
 	}
+	
+	private void OnAnimationFinished(StringName anim_name)
+	{
+		ready = true;
+		if(isBackwards)
+		{
+			isBackwards = false;
+			Visible = false;
+			((obj_frog)GetNode<AnimatedSprite2D>("../obj_frog")).locked = false;
+			ready = false;
+			locked = false;
+		}
 
-	private void AnimationFinished(StringName anim_name)
+	}
+
+	private void FrogTransition(StringName anim_name)
 	{
 		((GameManager)GetNode("/root/GameManager")).SwitchScene("rm_map");
 	}

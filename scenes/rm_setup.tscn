@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cevjlhgprryav"]
+[gd_scene load_steps=16 format=3 uid="uid://cevjlhgprryav"]
 
 [ext_resource type="PackedScene" uid="uid://d1j2nfn5erdj8" path="res://objects/rooms/rm_setup/obj_dialoguebox.tscn" id="1_aga6h"]
 [ext_resource type="Script" path="res://objects/rooms/rm_setup/obj_frog.cs" id="1_jeo2x"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://sngjuww5tnt6" path="res://sprites/characters/npc/frog/anim_frogFall.png" id="3_wx207"]
 [ext_resource type="Texture2D" uid="uid://bn8yqkdwc5sxo" path="res://sprites/rooms/rm_setup/bg_setup.png" id="5_djedi"]
 [ext_resource type="PackedScene" uid="uid://d36gbi32uwdwa" path="res://objects/rooms/rm_setup/obj_playerSelect.tscn" id="6_41bc8"]
+[ext_resource type="Texture2D" uid="uid://ckycs5xx3t4m" path="res://sprites/common/spr_oneblackpixel.png" id="8_o8qds"]
+[ext_resource type="Script" path="res://objects/common/cm_transition.cs" id="9_c6v00"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yjxb4"]
 atlas = ExtResource("3_wx207")
@@ -205,4 +207,25 @@ libraries = {
 "": SubResource("AnimationLibrary_y0wob")
 }
 
-[connection signal="animation_finished" from="anim_transition" to="obj_playerSelect" method="AnimationFinished"]
+[node name="obj_fadein" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 15
+position = Vector2(640, 360)
+scale = Vector2(1280, 720)
+texture = ExtResource("8_o8qds")
+script = ExtResource("9_c6v00")
+metadata/start = 1.0
+metadata/End = 0.0
+metadata/Multiplier = -1.5
+
+[node name="obj_fadeout" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 15
+position = Vector2(640, 360)
+scale = Vector2(1280, 720)
+texture = ExtResource("8_o8qds")
+script = ExtResource("9_c6v00")
+metadata/NextRoom = "rm_title_screen"
+
+[connection signal="animation_finished" from="anim_transition" to="obj_playerSelect" method="FrogTransition"]

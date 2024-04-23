@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public partial class cm_transition : Sprite2D
 {
@@ -30,6 +31,15 @@ public partial class cm_transition : Sprite2D
 			Variant _mult = GetMeta("Multiplier");
 			alphaMultiplier = _mult.As<float>();
 		}
+
+		if(HasMeta("NextRoom"))
+		{
+			Variant _nextRoom = GetMeta("NextRoom");
+			nextRoom = _nextRoom.As<String>();
+		}
+
+		alpha = start;
+		Modulate = new Color(0, 0, 0, alpha);
 	}
 
 	public override void _Process(double delta)
@@ -38,10 +48,11 @@ public partial class cm_transition : Sprite2D
 			return;
 		
 		alpha += alphaMultiplier * (float)delta;
+		alpha = Math.Clamp(alpha, 0, 1);
 
 		Modulate = new Color(0, 0, 0, alpha);
 
-		if(alpha > 1)
+		if(alpha == end)
 		{
 			done = true;
 			t_nextRoom = new Alarm(0.5, true, this, new Callable(this, "NextRoom"));
@@ -50,6 +61,7 @@ public partial class cm_transition : Sprite2D
 
 	public void NextRoom()
 	{
-		((GameManager)GetNode("/root/GameManager")).SwitchScene(nextRoom);
+		if(nextRoom != "")
+			((GameManager)GetNode("/root/GameManager")).SwitchScene(nextRoom);
 	}
 }

@@ -109,8 +109,8 @@ public partial class obj_dialogueController : Node2D
 			if(Input.IsActionJustPressed("jump" + controllerIndex))
 				ChangeDialogue();
 
-			if(Input.IsActionJustPressed("punch" + controllerIndex))
-				dialogueIndex = 0;
+			// if(Input.IsActionJustPressed("punch" + controllerIndex))
+			// 	dialogueIndex = 0;
 		}
 
 		spr_arrow.Position = new Vector2(17.5f, -6 - (arrowIndex * -5.5f));

@@ -35,7 +35,7 @@ public partial class GameManager : Node
 				new List<string>() {"gun", "score"}, "mus_minigame_susville", -5, new int[] {8, 7}, new int[] {}),
 			new MinigameBase(5, 2, "Balley Ball", "balleyball", "It's a classic game of Balley Ball! Jump to hit the ball to the other side, and keep it from hitting the sand!\n\n     - Move (To the ball!)\n     - Jump (Hit the ball!)",
 				new List<string>() {"move", "jump", "jump_balley", "score", "win"}, "mus_minigame_balleyball", -5, new int[] {8, 1}, new int[] {}),
-			new MinigameBase(6, 3, "Tug-o-Jar", "tugojar", "It's a friendly game of tug-o-war! Just don't fall into the inescapable pit and die! Good luck!\n     - Pull (With great force!)",
+			new MinigameBase(6, 3, "Tug-o-Jar", "tugojar", "It's a friendly game of tug-o-war! Just don't fall into the inescapable pit and die! Good luck!\n\n     - Pull (With great force!)",
 				new List<string>() {"pull", "win"}, "mus_minigame_tugojar", 60, new int[] {1}, new int[] {})
 		};
 	public Random rand = new Random();
