@@ -11,13 +11,21 @@ public partial class obj_button : Node2D
 		Variant _Button = GetMeta("Button");
 		button = _Button.As<int>();
 
-		spr_button = GetNode<AnimatedSprite2D>("spr_button");
-		spr_button.SpriteFrames = GD.Load<SpriteFrames>("res://sprites/gui/controls/anim_buttons" + button + ".tres");
-		spr_button.Play();
+		SetButton(button);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+	}
+
+	public void SetButton(int index, bool visible = false)
+	{
+		spr_button = GetNode<AnimatedSprite2D>("spr_button");
+		spr_button.SpriteFrames = GD.Load<SpriteFrames>("res://sprites/gui/controls/anim_buttons" + index + ".tres");
+		spr_button.Play();
+
+		if(visible)
+			Visible = true;
 	}
 }

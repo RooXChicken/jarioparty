@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cevjlhgprryav"]
+[gd_scene load_steps=17 format=3 uid="uid://cevjlhgprryav"]
 
 [ext_resource type="PackedScene" uid="uid://d1j2nfn5erdj8" path="res://objects/rooms/rm_setup/obj_dialoguebox.tscn" id="1_aga6h"]
 [ext_resource type="Script" path="res://objects/rooms/rm_setup/obj_frog.cs" id="1_jeo2x"]
 [ext_resource type="PackedScene" uid="uid://nkjbi4qp5kog" path="res://objects/rooms/rm_setup/obj_clock.tscn" id="3_nxk67"]
 [ext_resource type="Script" path="res://objects/common/cm_bg.cs" id="3_tacu8"]
 [ext_resource type="Texture2D" uid="uid://sngjuww5tnt6" path="res://sprites/characters/npc/frog/anim_frogFall.png" id="3_wx207"]
+[ext_resource type="PackedScene" uid="uid://cyuw4sqoswqgt" path="res://objects/common/buttons/obj_button.tscn" id="4_eu0eg"]
 [ext_resource type="Texture2D" uid="uid://bn8yqkdwc5sxo" path="res://sprites/rooms/rm_setup/bg_setup.png" id="5_djedi"]
 [ext_resource type="PackedScene" uid="uid://d36gbi32uwdwa" path="res://objects/rooms/rm_setup/obj_playerSelect.tscn" id="6_41bc8"]
 [ext_resource type="Texture2D" uid="uid://ckycs5xx3t4m" path="res://sprites/common/spr_oneblackpixel.png" id="8_o8qds"]
@@ -181,6 +182,26 @@ position = Vector2(600, 560)
 visible = false
 z_index = 5
 position = Vector2(0, -124)
+
+[node name="obj_buttonA" parent="." instance=ExtResource("4_eu0eg")]
+z_index = 8
+position = Vector2(990, 600)
+scale = Vector2(0.25, 0.25)
+metadata/Button = 1
+
+[node name="obj_buttonStick" parent="." instance=ExtResource("4_eu0eg")]
+visible = false
+z_index = 8
+position = Vector2(940, 600)
+scale = Vector2(0.25, 0.25)
+metadata/Button = 8
+
+[node name="obj_buttonDpad" parent="." instance=ExtResource("4_eu0eg")]
+visible = false
+z_index = 8
+position = Vector2(890, 600)
+scale = Vector2(0.25, 0.25)
+metadata/Button = 5
 
 [node name="obj_frog" type="AnimatedSprite2D" parent="."]
 z_index = 10

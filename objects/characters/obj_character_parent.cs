@@ -54,6 +54,7 @@ public partial class obj_character_parent : RigidBody2D
 	public override void _Ready()
 	{
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/player/snd_jump.wav", "plr_jump");
+		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/player/snd_punch.wav", "plr_punch");
 		joyhaxis = 0;
 		joyvaxis = 0;
 
@@ -131,12 +132,13 @@ public partial class obj_character_parent : RigidBody2D
 				sprite.Animation = "win";
 			return;
 		}
-			
+		
 		GetControllerInput();
+			
+		ProcessAnimations();
 
 		idleTimer += (float)delta;
 		jumpCountdown -= (float)delta;
-		ProcessAnimations();
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -191,14 +193,17 @@ public partial class obj_character_parent : RigidBody2D
 			animvaxis = joyvaxis;
 		}
 
-		if(abilities.Contains("punch") && controllerIndex >= 0 && Input.IsActionJustPressed("punch" + controllerIndex) && sprite.Animation != "punch")
+		if(!joyLock && abilities.Contains("punch") && controllerIndex >= 0 && Input.IsActionJustPressed("punch" + controllerIndex) && sprite.Animation != "punch")
 		{
-			joyLock = true;
-			sprite.Animation = "attack";
-			sprite.Frame = 0;
+			if(jumpBar.Punch)
+			{
+				joyLock = true;
+				sprite.Animation = "attack";
+				sprite.Frame = 0;
 
-			resetAnim = false;
-			ResetJoystick();
+				resetAnim = false;
+				ResetJoystick();
+			}
 		}
 
 		if(abilities.Contains("jump") && controllerIndex >= 0 && Input.IsActionJustPressed("jump" + controllerIndex))
@@ -427,10 +432,8 @@ public partial class obj_character_parent : RigidBody2D
 	private void FireJump()
 	{
 		jumpCountdown = 0.1f;
-		jumping = true;
-		//sprite.Animation = "jumpUp";
+
 		t_jumpDuration.WaitTime = Math.Clamp((1.4-GetNode<obj_fire>("../../obj_fire").speed) * 0.6f, 0.05, 1);
-		//GD.Print(t_jumpDuration.WaitTime);
 		t_jumpDuration.Start();
 	}
 
@@ -438,7 +441,6 @@ public partial class obj_character_parent : RigidBody2D
 	{
 		if(abilities.Contains("shadow"))
 		{
-			//GD.Print(sprite.Animation + " | " + sprite.Frame);
 			shadow.Texture = sprite.SpriteFrames.GetFrameTexture(sprite.Animation, sprite.Frame);
 		}
 
@@ -468,6 +470,7 @@ public partial class obj_character_parent : RigidBody2D
 						area.GetNode<obj_character_parent>("../").t_stun.Start();
 						area.GetNode<obj_character_parent>("../").joyLock = true;
 						area.GetNode<obj_character_parent>("../").ResetJoystick();
+						((AudioController)GetNode("/root/AudioController")).PlaySound("plr_punch");
 						area.GetNode<obj_character_parent>("../").sprite.Animation = "hurt";
 					}
 					break;
@@ -478,6 +481,12 @@ public partial class obj_character_parent : RigidBody2D
 			}
 		}
 	}
+
+	private void AnimationChanged()
+	{
+		// Replace with function body.
+	}
+
 
 	public void EndStun()
 	{

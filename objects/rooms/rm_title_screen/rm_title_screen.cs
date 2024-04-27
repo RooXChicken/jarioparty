@@ -12,13 +12,9 @@ public partial class rm_title_screen : Node2D
 	{
 		((AudioController)GetNode("/root/AudioController")).PlayMusic("res://sound/rooms/rm_title_screen/mus_main.wav");
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/gui/snd_title_select.wav", "gui_titleScreenSelect");
-		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/gui/snd_common_selectionmove.wav", "gui_selectionMove");
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/gui/snd_common_badselectionmove.wav", "gui_badSelectionMove");
-		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/gui/snd_common_select.wav", "gui_select");
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/gui/snd_common_badselect.wav", "gui_badSelect");
-		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/gui/snd_common_back.wav", "gui_back");
 		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/gui/snd_common_dialog_advance.wav", "dialog_advance");
-		((AudioController)GetNode("/root/AudioController")).PreLoad("res://sound/gui/snd_common_escape.wav", "gui_escape");
 
 		obj_logo = GetNode<Sprite2D>("obj_logo");
 		obj_logo.Visible = false;

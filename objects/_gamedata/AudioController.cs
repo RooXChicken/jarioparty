@@ -37,7 +37,7 @@ public partial class AudioController : Node2D
 			loadedSounds.Add(path, stream);
 	}
 
-	public void PlaySound(string path, bool loop = false)
+	public void PlaySound(string path, bool loop = false, bool bypassPause = false)
 	{
 		if(path == "")// || AudioServer.GetOutputDeviceList().Length <= 1)
 			return;
@@ -54,9 +54,11 @@ public partial class AudioController : Node2D
 
 		pool[index].Stream = loadedSounds[path];
 		pool[index].Play();
+		//pool[index].ProcessMode = bypassPause ? Node.ProcessModeEnum.Inherit : Node.ProcessModeEnum.Always;
 
 		if(!playingSoundIndex.ContainsKey(path))
 			playingSoundIndex.Add(path, index);
+
 	}
 
 	public void PlayMusic(string path)

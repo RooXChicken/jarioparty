@@ -39,6 +39,8 @@ public partial class GameManager : Node
 				new List<string>() {"pull", "win"}, "mus_minigame_tugojar", 60, new int[] {1}, new int[] {})
 		};
 	public Random rand = new Random();
+	public bool Paused = false;
+	public int PausePlayer = 0;
 
 	public Texture2D[] PlayerNameImages = new Texture2D[] {
 		GD.Load<Texture2D>("res://sprites/gui/roundStart/spr_jario.png"), GD.Load<Texture2D>("res://sprites/gui/roundStart/spr_wooigi.png"), GD.Load<Texture2D>("res://sprites/gui/roundStart/spr_grapejuice.png"), GD.Load<Texture2D>("res://sprites/gui/roundStart/spr_josh.png")
@@ -56,6 +58,8 @@ public partial class GameManager : Node
 		//GetNode<AnimatedSprite2D>("/root/rm_game/LoadingScreen").Play("default");
 		//DisplayServer.WindowSetPosition(new Vector2I((DisplayServer.ScreenGetSize().X - 1280) / 2, (DisplayServer.ScreenGetSize().Y - 720) / 2));
 		//DisplayServer.WindowSetSize(new Vector2I(1280, 720));
+
+		ProcessMode = Node.ProcessModeEnum.Always;
 
 		foreach(ItemBase item in itemLookup)
 		{
@@ -79,6 +83,28 @@ public partial class GameManager : Node
 
 			Fullscreen = !Fullscreen;
 		}
+
+		if(Paused)
+		{
+			if(Input.IsActionJustPressed("pause" + PausePlayer))
+			{
+				Paused = false;
+				((obj_pause)GetNode<CanvasLayer>("/root/rm_game/obj_pause")).TogglePause();
+			}
+		}
+		else
+		{
+			for(int i = 1; i <= 4; i++)
+			{
+				if(Input.IsActionJustPressed("pause" + i))
+				{
+					Paused = !Paused;
+					PausePlayer = i;
+					((obj_pause)GetNode<CanvasLayer>("/root/rm_game/obj_pause")).TogglePause();
+				}
+			}
+		}
+
 	}
 
 	public void SwitchScene(string scene, bool _autoComplete = true, bool autoDisableLoadingScreen = true)
@@ -109,8 +135,9 @@ public partial class GameManager : Node
 		numsLeft.Add(4);
 	}
 
-	public void LoadDefaults()
+	public void LoadDefaults(int minigame)
 	{
+		CurrentMinigame = minigame;
 		for(int i = 0; i < 4; i++)
 		{
 			playerData[i] = new PlayerData(-1, (ushort)i, (i >= 1));

@@ -307,11 +307,11 @@ collision_mask = 13
 mass = 2.4
 physics_material_override = SubResource("PhysicsMaterial_km6qn")
 gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
 continuous_cd = 2
 max_contacts_reported = 8
 contact_monitor = true
-can_sleep = false
-lock_rotation = true
 linear_damp = 25.0
 script = ExtResource("1_y278h")
 metadata/Player = 0
@@ -371,7 +371,7 @@ position = Vector2(26, 9.5)
 shape = SubResource("RectangleShape2D_fy8et")
 debug_color = Color(0.705882, 0, 0.152941, 0.419608)
 
-[connection signal="animation_changed" from="scaleManager/obj_sprite" to="." method="SpriteChanged"]
+[connection signal="animation_changed" from="scaleManager/obj_sprite" to="." method="AnimationChanged"]
 [connection signal="frame_changed" from="scaleManager/obj_sprite" to="." method="SpriteChanged"]
 [connection signal="area_entered" from="obj_interaction" to="obj_interaction" method="OnBodyEntered"]
 [connection signal="area_exited" from="obj_interaction" to="obj_interaction" method="OnBodyExit"]

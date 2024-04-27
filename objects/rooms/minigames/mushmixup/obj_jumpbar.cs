@@ -5,6 +5,7 @@ public partial class obj_jumpbar : Node2D
 {
 	public float JumpTime {get {return (value / MaxJumpValue);} }
 	public float Jump {get {float v = value / MaxJumpValue; value = 0; return v;} }
+	public bool Punch {get {bool result = false; if(value >= 40f) {result = true; value -= 40f;} return result;} }
 	private float value = 0;
 	private Sprite2D bar;
 

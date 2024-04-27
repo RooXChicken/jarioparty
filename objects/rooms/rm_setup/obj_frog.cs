@@ -44,6 +44,7 @@ public partial class obj_frog : AnimatedSprite2D
 		obj_dialoguebox = GetNode<Node2D>("../obj_dialoguebox");
 		obj_bg = (cm_bg)GetNode<Sprite2D>("../obj_bg");
 		UpdateTextbox();
+
 		//stupid = new Alarm(0.1, true, this, new Callable(this, "GoToMinigame"));
 		//GoToMinigame();
 	}

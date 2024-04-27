@@ -1,7 +1,10 @@
-[gd_scene load_steps=47 format=3 uid="uid://b7skutroo2b4r"]
+[gd_scene load_steps=51 format=3 uid="uid://b7skutroo2b4r"]
 
 [ext_resource type="PackedScene" uid="uid://bsr12jypdlteh" path="res://scenes/rm_splash_screen.tscn" id="1_i5ty8"]
+[ext_resource type="FontFile" uid="uid://bb7xt58iiflku" path="res://fonts/heygorgeous.ttf" id="2_4tioq"]
 [ext_resource type="Texture2D" uid="uid://bl1ibo0rue45n" path="res://sprites/gui/spr_loadingScreen.png" id="2_7em7y"]
+[ext_resource type="Script" path="res://objects/_gamedata/obj_pause.cs" id="2_fv5xh"]
+[ext_resource type="Texture2D" uid="uid://cdgt1o0cfp2vj" path="res://sprites/rooms/rm_minigame_info/spr_arrowUp.png" id="5_uc233"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xwnth"]
 atlas = ExtResource("2_7em7y")
@@ -312,13 +315,20 @@ animations = [{
 "speed": 16.0
 }]
 
+[sub_resource type="Theme" id="Theme_33dmo"]
+default_font = ExtResource("2_4tioq")
+default_font_size = 10
+
 [node name="rm_game" type="Node2D"]
 
 [node name="ActiveScene" parent="." instance=ExtResource("1_i5ty8")]
+process_mode = 1
 
 [node name="AudioPool" type="Node" parent="."]
+process_mode = 1
 
 [node name="Items" type="Node" parent="."]
+process_mode = 1
 
 [node name="spr_load" type="AnimatedSprite2D" parent="."]
 process_mode = 3
@@ -331,3 +341,41 @@ sprite_frames = SubResource("SpriteFrames_alceq")
 frame_progress = 0.490021
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 1
+
+[node name="obj_pause" type="CanvasLayer" parent="."]
+process_mode = 2
+layer = 2
+visible = false
+script = ExtResource("2_fv5xh")
+
+[node name="obj_text" type="RichTextLabel" parent="obj_pause"]
+process_mode = 2
+z_index = 4095
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -391.0
+offset_top = -100.0
+offset_right = 391.0
+offset_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_33dmo")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "[center]Player # Paused!
+Resume
+Options
+Escape"
+
+[node name="spr_arrow" type="Sprite2D" parent="obj_pause"]
+position = Vector2(510, 465)
+rotation = 1.57079
+scale = Vector2(2, 2)
+texture = ExtResource("5_uc233")

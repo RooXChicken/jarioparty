@@ -16,6 +16,7 @@ public partial class obj_mapGUI : CanvasLayer
 			GetNode<Node2D>("TurnsLeft").Visible = false;
 
 		GetNode<RichTextLabel>("TurnsLeft/obj_text").Text = "[center]" + ((GameManager)GetNode("/root/GameManager")).TurnNumber + "/" + ((GameManager)GetNode("/root/GameManager")).TurnsMax;
+		SwitchPlayers(1);
 	}
 
 	public void Initialize()

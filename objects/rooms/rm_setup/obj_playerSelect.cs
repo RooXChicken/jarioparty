@@ -72,6 +72,7 @@ public partial class obj_playerSelect : Node2D
 				for(int i = 0; i < ((GameManager)GetNode("/root/GameManager")).controllersConnected; i++)
 					clouds[i].Modulate = regular;
 				animation.Play("playerSelect");
+				GetNode<Node2D>("../obj_buttonStick").Visible = true;
 			}
 		}
 
@@ -123,6 +124,7 @@ public partial class obj_playerSelect : Node2D
 			SetFrogText((short)(1));
 			isBackwards = true;
 			locked = true;
+			GetNode<Node2D>("../obj_buttonStick").Visible = false;
 		}
 		else if(Input.IsActionJustPressed("jump" + controllerIndex))
 		{
@@ -193,6 +195,7 @@ public partial class obj_playerSelect : Node2D
 				SetFrogText((short)(10));
 				spr_hand.Visible = false;
 				state = 3;
+				GetNode<Node2D>("../obj_buttonDpad").Visible = true;
 			}
 		}
 		else
@@ -251,6 +254,7 @@ public partial class obj_playerSelect : Node2D
 			SetFrogText((short)(characterIndex + 6));
 			//((GameManager)GetNode("/root/GameManager")).playerData[characterIndex] = new PlayerData(-1, (ushort)index, (characterIndex >= ((GameManager)GetNode("/root/GameManager")).playerCount));
 			spr_hand.Visible = true;
+			GetNode<Node2D>("../obj_buttonDpad").Visible = false;
 			state = 1;
 		}
 		else if(Input.IsActionJustPressed("jump" + 1))

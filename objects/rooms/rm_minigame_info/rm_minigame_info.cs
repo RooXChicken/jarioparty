@@ -4,6 +4,7 @@ using System;
 public partial class rm_minigame_info : Node2D
 {
 	private AnimationPlayer anim_whackitu;
+	private Sprite2D spr_minigamePreview;
 	private Node2D spr_whackitu;
 	private RichTextLabel obj_text;
 	private bool itemWindowShown = false;
@@ -22,6 +23,7 @@ public partial class rm_minigame_info : Node2D
 		MinigameBase game = ((GameManager)GetNode("/root/GameManager")).minigameLookup[minigame];
 
 		anim_whackitu = GetNode<AnimationPlayer>("anim_whackitu");
+		spr_minigamePreview = GetNode<Sprite2D>("spr_minigamePreview");
 		obj_text = GetNode<RichTextLabel>("obj_text");
 		obj_text.Text = game.Description;
 		nextMinigame = "rm_minigame_" + game.MinigameRoom;
@@ -43,6 +45,15 @@ public partial class rm_minigame_info : Node2D
 		}
 
 		((AudioController)GetNode("/root/AudioController")).PlaySound("mus_playMinigamesIntro");
+		
+		try
+		{
+			spr_minigamePreview = GD.Load<Sprite2D>("res://sprites/rooms/rm_minigame_info/previews/spr_preview_" + game.MinigameRoom + ".png");//res://sprites/rooms/rm_minigame_info/previews/spr_preview_mushmixup.png
+		}
+		catch(Exception e)
+		{
+			GD.Print("Minigame preview does not exist! " + e);
+		}
 
 		t_music = new Alarm(0.72, true, this, new Callable(this, "PlayMusic"));
 	}
