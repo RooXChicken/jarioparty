@@ -6,7 +6,8 @@ public partial class obj_playerSelect : Node2D
 	private short index = 0;
 	private short state = 0; //0 = clouds; 1 = player select; 2 = map select; 3 = time select
 	private short characterIndex = 0;
-	private short controllerIndex = 1;
+	private short controllerIndex = 0;
+	private short[] controllerIndecies = new short[4] {1, 1, 1, 1};
 	private bool realPlayer = true;
 	private short controllersConnected = 0;
 	private float joyhaxis = 0;
@@ -107,14 +108,12 @@ public partial class obj_playerSelect : Node2D
 
 	private void PlayerCountSelect()
 	{
-		// if(animation.IsPlaying())
-		// 	return;
 		for(int i = 0; i < 4; i++)
 			clouds[i].Modulate = selected;
 		for(int i = 0; i < ((GameManager)GetNode("/root/GameManager")).controllersConnected; i++)
 			clouds[i].Modulate = regular;
 
-		if(Input.IsActionJustPressed("back" + controllerIndex))
+		if(Input.IsActionJustPressed("back" + controllerIndecies[controllerIndex]))
 		{
 			animation.PlayBackwards("playerSelect");
 			foreach(Sprite2D sprite in portraits)
@@ -126,7 +125,7 @@ public partial class obj_playerSelect : Node2D
 			locked = true;
 			GetNode<Node2D>("../obj_buttonStick").Visible = false;
 		}
-		else if(Input.IsActionJustPressed("jump" + controllerIndex))
+		else if(Input.IsActionJustPressed("jump" + controllerIndecies[controllerIndex]))
 		{
 			((GameManager)GetNode("/root/GameManager")).playerCount = (short)(index + 1);
 			state = 1;
@@ -142,6 +141,11 @@ public partial class obj_playerSelect : Node2D
 			//GetNode<Sprite2D>("Portraits/spr_frame");
 			SetFrogText((short)(characterIndex + 6));
 			ChangeIndex(0);
+
+			controllerIndecies = new short[4] {1, 1, 1, 1};
+
+			for(int i = 0; i < ((GameManager)GetNode("/root/GameManager")).controllersConnected; i++)
+				controllerIndecies[i] = (short)(i+1);
 		}
 	}
 
@@ -152,7 +156,7 @@ public partial class obj_playerSelect : Node2D
 			
 		portraits[index].Frame = 1;
 
-		if(Input.IsActionJustPressed("back" + controllerIndex))
+		if(Input.IsActionJustPressed("back" + controllerIndecies[controllerIndex]))
 		{
 			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_back");
 			characterIndex--;
@@ -176,14 +180,14 @@ public partial class obj_playerSelect : Node2D
 				//((GameManager)GetNode("/root/GameManager")).playerData[characterIndex] = new PlayerData(-1, (ushort)index, (characterIndex >= ((GameManager)GetNode("/root/GameManager")).playerCount));
 			}
 		}
-		else if(Input.IsActionJustPressed("jump" + controllerIndex))
+		else if(Input.IsActionJustPressed("jump" + controllerIndecies[controllerIndex]))
 		if(!players[index].Visible)
 		{
 			((AudioController)GetNode("/root/AudioController")).PlaySound("gui_select");
 			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex] = new PlayerData(-1, (ushort)index, (characterIndex >= ((GameManager)GetNode("/root/GameManager")).playerCount));
 			
 			if(realPlayer)
-				((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].controllerIndex = controllerIndex;
+				((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].controllerIndex = controllerIndecies[controllerIndex];
 		
 			SetCharacterIndex();
 
@@ -214,7 +218,7 @@ public partial class obj_playerSelect : Node2D
 
 		((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].playerOrder = characterIndex + 1;
 
-		if(Input.IsActionPressed("costume" + controllerIndex))
+		if(Input.IsActionPressed("costume" + controllerIndecies[controllerIndex]))
 		{
 			((GameManager)GetNode("/root/GameManager")).playerData[characterIndex].Costume = true;
 			players[index].Play("danceC");
@@ -355,18 +359,23 @@ public partial class obj_playerSelect : Node2D
 	private void GetControllerInput()
 	{
 		((GameManager)GetNode("/root/GameManager")).controllersConnected = Input.GetConnectedJoypads().Count;
-		//((GameManager)GetNode("/root/GameManager")).controllersConnected = 4;
+		//GD.Print(((GameManager)GetNode("/root/GameManager")).controllersConnected);
+
 		if(joyhaxis == 0)
 			moving = false;
 
-		if(characterIndex >= ((GameManager)GetNode("/root/GameManager")).playerCount)
+		controllerIndex = characterIndex;
+		if(controllerIndex < 0)
+			controllerIndex = 0;
+
+		if(controllerIndex >= ((GameManager)GetNode("/root/GameManager")).playerCount)
 		{
-			controllerIndex = 1;
+			controllerIndex = 0;
 			realPlayer = false;
 		}
 
-		joyhaxis = Input.GetAxis("left" + controllerIndex, "right" + controllerIndex);
-		joyvaxis = Input.GetAxis("up" + controllerIndex, "down" + controllerIndex);
+		joyhaxis = Input.GetAxis("left" + controllerIndecies[controllerIndex], "right" + controllerIndecies[controllerIndex]);
+		joyvaxis = Input.GetAxis("up" + controllerIndecies[controllerIndex], "down" + controllerIndecies[controllerIndex]);
 	}
 	
 	private void OnAnimationFinished(StringName anim_name)

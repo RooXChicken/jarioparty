@@ -10,7 +10,7 @@ public partial class GameManager : Node
 	public int TurnNumber = 1;
 	public int TurnsMax = 20;
 
-	public int controllersConnected = 0;
+	public int controllersConnected = -1;
 	public int CurrentMinigame = 5;
 	public bool MinigameStarted = false;
 	public bool MinigameOver = false;
