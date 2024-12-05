@@ -60,6 +60,7 @@ public partial class obj_character_parent : RigidBody2D
 
 		rand = new Random();
 		
+		
 		feetArea = GetNode<Area2D>("obj_feetArea");
 		collider = GetNode<CollisionShape2D>("obj_hitbox");
 		sprite = GetNode<AnimatedSprite2D>("scaleManager/obj_sprite");
@@ -270,6 +271,7 @@ public partial class obj_character_parent : RigidBody2D
 		if(abilities.Contains("jump_phy") && controllerIndex >= 0 && !Input.IsActionPressed("jump" + controllerIndex) && LinearVelocity.Y < 0)
 		{
 			StopJump();
+			
 		}
 	}
 
@@ -431,7 +433,7 @@ public partial class obj_character_parent : RigidBody2D
 
 	private void FireJump()
 	{
-		jumpCountdown = 0.1f;
+		jumpCountdown = 0.2f;
 
 		t_jumpDuration.WaitTime = Math.Clamp((1.4-GetNode<obj_fire>("../../obj_fire").speed) * 0.6f, 0.05, 1);
 		t_jumpDuration.Start();
@@ -486,7 +488,6 @@ public partial class obj_character_parent : RigidBody2D
 	{
 		// Replace with function body.
 	}
-
 
 	public void EndStun()
 	{

@@ -36,6 +36,12 @@ public partial class spr_bagPaper : Sprite2D
 				if(alpha < 1)
 					alpha += (float)delta * 2;
 				break;
+			case 2:
+				Position = Position.Lerp(end, (float)delta * 6);
+
+				if(alpha > 0.3f)
+					alpha -= (float)delta * 2;
+				break;
 		}
 
 		GetNode<Node2D>("../../").Modulate = new Color(1, 1, 1, alpha);

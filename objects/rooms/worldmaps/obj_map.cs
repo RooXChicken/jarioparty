@@ -14,6 +14,7 @@ public partial class obj_map : Node2D
 	private double delta = 0;
 	private float speed = 3f;
 	private Vector2 zoomLevel = new Vector2(1, 1);
+	public float currentZoom = 1;
 	public bool cameraStarted = false;
 
 	// Called when the node enters the scene tree for the first time.
@@ -30,7 +31,7 @@ public partial class obj_map : Node2D
 	public void Initialize()
 	{
 		obj_camera.Position = new Vector2(0, 0);
-		obj_camera.Zoom = new Vector2(0.35f, 0.35f);
+		SetZoomLevel(0.35f);
 		if(!((GameManager)GetNode("/root/GameManager")).playerData[0].PlayerStarted)
 		{
 			
@@ -74,7 +75,7 @@ public partial class obj_map : Node2D
 		//GD.Print("Player " + _player);
 	}
 
-	public void SetZoomLevel(float _zoom) { zoomLevel = new Vector2(_zoom, _zoom); }
+	public void SetZoomLevel(float _zoom) { zoomLevel = new Vector2(_zoom, _zoom); currentZoom = _zoom; }
 	public void SetPosition (Vector2 _pos) { offset = _pos - playerGoing.Position; }
 	public void SetPosition () { offset = new Vector2(0, 0); }
 	public void SetSpeed(float _speed) { speed = _speed; }

@@ -4,6 +4,8 @@ using System;
 public partial class obj_mapGUI : CanvasLayer
 {
 	private Node[] wallets;
+	private int shownWallet = -1;
+	private obj_map camera;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -28,6 +30,8 @@ public partial class obj_mapGUI : CanvasLayer
 			wallets[i].GetNode<spr_bagPaper>("spr_bagPaperClip/spr_bagPaper").ChangeItems(((GameManager)GetNode("/root/GameManager")).playerData[i]);
 			wallets[i].GetNode<Sprite2D>("spr_icon").Texture = GD.Load<CompressedTexture2D>("res://stage/gui/sprites/ids/spr_" + ((GameManager)GetNode("/root/GameManager")).playerData[i].characterName.ToLower() + "ID.png");
 		}
+
+		camera = GetNode<obj_map>("../../");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,6 +39,16 @@ public partial class obj_mapGUI : CanvasLayer
 	{
 		for(int i = 0; i < 4; i++)
 		{
+			// if(camera.currentZoom == 0.35f)
+			// 	wallets[i].GetNode<spr_bagPaper>("spr_bagPaperClip/spr_bagPaper").state = 2;
+			// else
+			// {
+			// 	if(i == shownWallet - 1)
+			// 		wallets[i].GetNode<spr_bagPaper>("spr_bagPaperClip/spr_bagPaper").state = 1;
+			// 	else
+			// 		wallets[i].GetNode<spr_bagPaper>("spr_bagPaperClip/spr_bagPaper").state = 0;
+			// }
+
 			int coins = ((GameManager)GetNode("/root/GameManager")).playerData[i].coins;
 			int stars = ((GameManager)GetNode("/root/GameManager")).playerData[i].stars;
 			bool moved = false;
@@ -85,6 +99,7 @@ public partial class obj_mapGUI : CanvasLayer
 
 	public void SwitchPlayers(int _playerGoing)
 	{
+		shownWallet = _playerGoing;
 		for(int i = 0; i < 4; i++)
 		{
 			if(i == _playerGoing - 1)
